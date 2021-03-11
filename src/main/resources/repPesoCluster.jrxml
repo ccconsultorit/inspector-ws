@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repPesoCluster" pageWidth="400" pageHeight="500" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c72f96d9-38c2-435f-af49-97a4a2b29c57">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="687"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
+	<parameter name="idSolicitud" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[select  c.id_solicitud,  p.nombre productor,  c.nombre_marca marca,  pc.numero, pc.peso
+from  tab_sol_productor p, tab_sol_calidad c, tab_sol_cal_peso_cluster pc
+where p.id_sol_productor = c.id_sol_productor
+  and pc.id_sol_calidad = c.id_sol_calidad
+  and p.estado = 'A'
+  and c.estado = 'A'
+  and p.id_solicitud = $P{idSolicitud}]]>
+	</queryString>
+	<field name="id_solicitud" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<field name="productor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="productor"/>
+		<property name="com.jaspersoft.studio.field.label" value="productor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_productor"/>
+	</field>
+	<field name="marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<field name="numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="numero"/>
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_cal_peso_cluster"/>
+	</field>
+	<field name="peso" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="peso"/>
+		<property name="com.jaspersoft.studio.field.label" value="peso"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_cal_peso_cluster"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{productor}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<frame>
+					<reportElement mode="Transparent" x="6" y="1" width="326" height="28" forecolor="#B89F7D" backcolor="#70A9C6" uuid="619d89ef-7c2f-4167-a52a-be5e7af8783c"/>
+					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="102" y="1" width="210" height="25" forecolor="#030000" uuid="2187fac7-7130-4a2e-aa99-ae4eab58336f">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="SansSerif" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{productor}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement style="SubTitle" x="0" y="1" width="100" height="25" forecolor="#050000" uuid="27c83471-ae91-467c-8b80-0f2a2bf10961">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Left">
+							<font fontName="SansSerif" size="18" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Productor:]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{marca}]]></groupExpression>
+		<groupHeader>
+			<band height="51">
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="108" y="2" width="224" height="25" forecolor="#030000" uuid="3a616ee3-2799-4183-84b9-c4ef0a67c703">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font fontName="SansSerif" size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+				</textField>
+				<frame>
+					<reportElement x="6" y="29" width="326" height="20" uuid="793d06e1-d7cc-4d62-ad99-d289a8ce0026"/>
+					<staticText>
+						<reportElement style="Column header" positionType="Float" x="37" y="1" width="109" height="18" forecolor="#000000" uuid="ec5abbda-6656-45c4-93cd-827f95644bc7">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d96a400-d1d3-4db1-bcce-2395c9e24c63"/>
+						</reportElement>
+						<textElement textAlignment="Center">
+							<font fontName="Arial" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Numero]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" positionType="Float" x="194" y="1" width="109" height="18" forecolor="#000000" uuid="f4066098-f6e6-4fee-94ff-2e2e48bd46e0">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="423caed5-65e4-49ca-bec9-ecd496a78c15"/>
+						</reportElement>
+						<textElement textAlignment="Center">
+							<font fontName="Arial" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Peso]]></text>
+					</staticText>
+				</frame>
+				<staticText>
+					<reportElement style="SubTitle" x="6" y="2" width="100" height="25" forecolor="#050000" uuid="09c7d56d-4884-45d8-b0a2-17d1b67cc5be">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Marca:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" mode="Opaque" x="6" y="2" width="326" height="34" forecolor="#FFFCFC" backcolor="#1A8CD9" uuid="7a8ee983-690c-4f4d-9330-42613bd3d628">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso Promedio Cluster]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="36" y="21" width="282" height="1" uuid="1f2efa15-468e-4870-8f24-1cb1eda2034d"/>
+			</line>
+			<frame>
+				<reportElement x="6" y="1" width="326" height="20" uuid="dec77cf2-1014-4b3e-9934-7f0c65a83bce"/>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="37" y="1" width="109" height="18" uuid="a50c1c18-b51b-432f-b549-6fe601dbade6">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d96a400-d1d3-4db1-bcce-2395c9e24c63"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="194" y="0" width="109" height="18" uuid="abe67711-819a-48c4-986c-64da0f50dd87">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="423caed5-65e4-49ca-bec9-ecd496a78c15"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repCalidad" pageWidth="595" pageHeight="1000" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="e9bb1a27-f975-4aa4-98f9-75524c5daafa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<subDataset name="DsCalidad" uuid="3931bac4-c5a0-46f1-a1d9-bb095ca027d0">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<queryString language="SQL">
+			<![CDATA[select avg(calidad) porcentaje, avg(calidad) || ' % Calidad' tipo
+from tab_sol_calidad
+group by  id_solicitud
+union 
+select (100 - avg(calidad)) porcentaje, (100 - avg(calidad)) || ' % Mala Calidad' tipo
+from tab_sol_calidad
+group by  id_solicitud]]>
+		</queryString>
+		<field name="porcentaje" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="porcentaje"/>
+			<property name="com.jaspersoft.studio.field.label" value="porcentaje"/>
+		</field>
+		<field name="tipo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="tipo"/>
+			<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+		</field>
+	</subDataset>
+	<parameter name="semana" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[21]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idSolicitud" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[select  c.id_solicitud, p.nombre productor,  c.nombre_marca,  c.calidad 
+from  tab_sol_productor p, tab_sol_calidad c
+where p.id_sol_productor = c.id_sol_productor
+  and p.estado = 'A'
+  and c.estado = 'A'
+  and p.id_solicitud = $P{idSolicitud}]]>
+	</queryString>
+	<field name="id_solicitud" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<field name="productor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="productor"/>
+		<property name="com.jaspersoft.studio.field.label" value="productor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_productor"/>
+	</field>
+	<field name="nombre_marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre_marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre_marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<field name="calidad" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="calidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="calidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<group name="Productor">
+		<groupExpression><![CDATA[$F{productor}]]></groupExpression>
+		<groupHeader>
+			<band height="58">
+				<textField>
+					<reportElement style="SubTitle" x="160" y="3" width="357" height="25" forecolor="#000000" uuid="4abefbae-0e28-4a03-a7e7-7b8c42708a17">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{productor}]]></textFieldExpression>
+				</textField>
+				<frame>
+					<reportElement mode="Opaque" x="61" y="30" width="458" height="28" backcolor="#666666" uuid="97d36ae9-fd57-465a-a876-f3758e4ddd78"/>
+					<staticText>
+						<reportElement style="Column header" x="0" y="2" width="229" height="25" uuid="763d9564-41db-4743-acdf-3cd922b670e5">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a7acc7d-6487-4648-8f35-659671f22cb0"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="SansSerif" size="16"/>
+						</textElement>
+						<text><![CDATA[Marca]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" x="229" y="2" width="229" height="25" uuid="4892b842-100c-46f4-a9af-cdb03ffd6fc0">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2cae1e7e-06c7-4b04-9466-adfcba482d03"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="SansSerif" size="16"/>
+						</textElement>
+						<text><![CDATA[Calidad]]></text>
+					</staticText>
+				</frame>
+				<staticText>
+					<reportElement style="SubTitle" x="60" y="3" width="100" height="25" forecolor="#000000" uuid="78edabe0-b136-4404-a98e-6e783e37efc0">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Productor:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="204">
+				<pie3DChart>
+					<chart isShowLegend="true" evaluationTime="Report">
+						<reportElement mode="Opaque" x="61" y="6" width="456" height="190" uuid="2334bfb6-bc02-4cc9-ac26-513d16227fa9"/>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<pieDataset maxCount="20">
+						<dataset resetType="Report">
+							<datasetRun subDataset="DsCalidad" uuid="2d2ac365-d978-4681-9da2-527ca6908b3b">
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+						</dataset>
+						<keyExpression><![CDATA[$F{tipo}]]></keyExpression>
+						<valueExpression><![CDATA[$F{porcentaje}]]></valueExpression>
+						<labelExpression><![CDATA[$F{tipo}]]></labelExpression>
+					</pieDataset>
+					<pie3DPlot>
+						<plot>
+							<seriesColor seriesOrder="0" color="#F21124"/>
+							<seriesColor seriesOrder="1" color="#36D941"/>
+						</plot>
+						<itemLabel/>
+					</pie3DPlot>
+				</pie3DChart>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="555" height="40" forecolor="#253994" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="34" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CERTIFICACIÓN]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="SubTitle" x="312" y="63" width="79" height="26" uuid="dfca2522-ff5f-4411-b1cd-17a35b47ab18"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{semana}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="10" y="40" width="360" height="80" uuid="adc0e8a0-c05e-4c7f-a8c2-b4650480a902"/>
+				<textElement textAlignment="Left" verticalAlignment="Justified">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Estimados,
+
+Certifico la calidad y porcentaje de calidad, Semana
+
+A continuación, describimos lo siguiente:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" mode="Opaque" x="61" y="0" width="458" height="34" forecolor="#FFFFFF" backcolor="#1A8CD9" uuid="9826ae42-aa32-4834-a27a-b6caff1f95f1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Porcentaje de Calidad de Productores]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<frame>
+				<reportElement x="61" y="1" width="458" height="15" uuid="5d75be3e-ea39-4b96-baf8-b49497315044"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="229" height="15" uuid="8c7f0379-8e11-4395-bdc7-162d8cf0610e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a7acc7d-6487-4648-8f35-659671f22cb0"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{nombre_marca}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="229" y="0" width="229" height="15" uuid="78fa19e8-df6f-4559-853a-f2dfbc1493e6">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2cae1e7e-06c7-4b04-9466-adfcba482d03"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{calidad}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="61" y="16" width="458" height="1" uuid="2b97af27-2a1e-491f-a0f4-b2549a3510ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<lastPageFooter>
+		<band height="202">
+			<staticText>
+				<reportElement style="SubTitle" x="5" y="11" width="550" height="59" uuid="41d31977-ebf2-4220-8466-af7f45fd6838"/>
+				<textElement textAlignment="Left" verticalAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Como verifiacadora tenemos la obligación de corregir estos daños en la fruta para garantizar la calidad en la exportación del banano, buscando siempre el bienestar de nuestros clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="5" y="72" width="550" height="33" uuid="5fdb4100-53a4-4d72-ac26-d7f08cd5ce14"/>
+				<textElement textAlignment="Left" verticalAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Atentamente,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="424" y="180" width="131" height="20" forecolor="#000000" uuid="f8570c2f-4404-4725-885a-4eb3c26abb4a"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>
