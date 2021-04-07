@@ -15,7 +15,7 @@ import java.util.List;
 public class SolicitudCompletaDto  {
 
     private Long idSolicitud;
-    int semana;
+    int nroSemana;
     String exportador;
     String cliente;
     String tipoSolicitud;
@@ -24,9 +24,11 @@ public class SolicitudCompletaDto  {
     String codigoMagap;
     String puertoEmbarque;
     String zona;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime fechaInicio;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime fechaTermino;
     String contenedor;
     String nomEvaluador01;
@@ -34,6 +36,7 @@ public class SolicitudCompletaDto  {
     String nomEvaluador02;
     String ciEvaluador02;
     String observacion;
+    String estRegSol;
 
     private Long idSolContenedor;
     String numeroContenedor;
@@ -53,6 +56,7 @@ public class SolicitudCompletaDto  {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime fechaSalida;
     String observacionC;
+    String estRegCon;
 
     private Long idSolSelloLlegada;
     String candadoPlastico;

@@ -18,8 +18,8 @@ public class SolContenedorDao implements ISolContenedorDao {
     private ISolContenedorDao iSolContenedorDao;
 
     @Override
-    public SolContenedorDto save(SolContenedorDto solContenedor) {
-        if (solContenedor.getIdSolContenedor() == 0) {
+    public SolContenedorDto save(SolContenedorDto solContenedor, String estRegCon) {
+        if (estRegCon.equals("NUE")) {
             return insert(solContenedor);
         } else {
             return update(solContenedor);

@@ -18,7 +18,7 @@ public interface ISolicitudDao {
 
     List<SolicitudCompletaDto> getSolicitudesByEstado(String estado);
 
-    Long save(SolicitudDto solicitud);
+    Long save(SolicitudDto solicitud, String estRegSol);
 
     void delete(Long idSolicitud);
 

@@ -30,7 +30,7 @@ public abstract class BaseSolicitudDto {
     protected EstadoSolicitudEnum estado;
 
     {
-        estado = EstadoSolicitudEnum.ING;
+        estado = EstadoSolicitudEnum.EXP;
         fechaIngreso = LocalDateTime.now();
     }
 

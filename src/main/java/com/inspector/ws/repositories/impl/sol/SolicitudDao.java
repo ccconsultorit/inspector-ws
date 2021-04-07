@@ -78,7 +78,7 @@ public class SolicitudDao implements ISolicitudDao {
         var CG = TAB_SOL_CONSOLIDADO_GANCHO.as("CG");
         var DS = TAB_SOL_CAL_DEFECTO_SELECCION.as("DS");
 
-        return create.select(S.CLIENTE)
+        return create.select(S.ID_SOLICITUD,S.CLIENTE, S.EXPORTADOR)
                 .from(S)
                 .leftJoin(C).on(S.ID_SOLICITUD.eq(C.ID_SOLICITUD))
                 .leftJoin(SL).on(S.ID_SOLICITUD.eq(SL.ID_SOLICITUD))
@@ -94,8 +94,8 @@ public class SolicitudDao implements ISolicitudDao {
     }
 
     @Override
-    public Long save(SolicitudDto solicitud) {
-        if (solicitud.getIdSolicitud() == 0) {
+    public Long save(SolicitudDto solicitud, String estRegSol) {
+        if (estRegSol.equals("NUE")) {
             return insert(solicitud);
         } else {
             return update(solicitud);
@@ -104,7 +104,7 @@ public class SolicitudDao implements ISolicitudDao {
 
     private Long insert(SolicitudDto solicitud) {
         create.transaction(x -> {
-            solicitud.setIdSolicitud(DSL.using(x).nextval(SEC_SOLICITUD));
+            //solicitud.setIdSolicitud(DSL.using(x).nextval(SEC_SOLICITUD));
             DSL.using(x).newRecord(TAB_SOLICITUD, solicitud).insert();
         });
         return solicitud.getIdSolicitud();

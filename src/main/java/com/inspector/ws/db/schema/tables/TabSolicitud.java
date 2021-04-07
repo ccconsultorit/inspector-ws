@@ -20,7 +20,6 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row20;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -42,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
 
-    private static final long serialVersionUID = -1961630187;
+    private static final long serialVersionUID = -1370145422;
 
     /**
      * The reference instance of <code>public.tab_solicitud</code>
@@ -135,7 +134,7 @@ public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
     /**
      * The column <code>public.tab_solicitud.estado</code>.
      */
-    public final TableField<TabSolicitudRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.VARCHAR(1), this, "");
+    public final TableField<TabSolicitudRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.VARCHAR(3), this, "");
 
     /**
      * The column <code>public.tab_solicitud.fecha_ingreso</code>.
@@ -156,6 +155,26 @@ public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
      * The column <code>public.tab_solicitud.usuario_modifica</code>.
      */
     public final TableField<TabSolicitudRecord, Integer> USUARIO_MODIFICA = createField(DSL.name("usuario_modifica"), org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>public.tab_solicitud.nom_evaluador_01</code>.
+     */
+    public final TableField<TabSolicitudRecord, String> NOM_EVALUADOR_01 = createField(DSL.name("nom_evaluador_01"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>public.tab_solicitud.ci_evaluador_01</code>.
+     */
+    public final TableField<TabSolicitudRecord, String> CI_EVALUADOR_01 = createField(DSL.name("ci_evaluador_01"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>public.tab_solicitud.nom_evaluador_02</code>.
+     */
+    public final TableField<TabSolicitudRecord, String> NOM_EVALUADOR_02 = createField(DSL.name("nom_evaluador_02"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>public.tab_solicitud.ci_evaluador_02</code>.
+     */
+    public final TableField<TabSolicitudRecord, String> CI_EVALUADOR_02 = createField(DSL.name("ci_evaluador_02"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * Create a <code>public.tab_solicitud</code> table reference
@@ -247,14 +266,5 @@ public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
     @Override
     public TabSolicitud rename(Name name) {
         return new TabSolicitud(name, null);
-    }
-
-    // -------------------------------------------------------------------------
-    // Row20 type methods
-    // -------------------------------------------------------------------------
-
-    @Override
-    public Row20<Long, Integer, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer> fieldsRow() {
-        return (Row20) super.fieldsRow();
     }
 }

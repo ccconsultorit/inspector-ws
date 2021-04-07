@@ -13,7 +13,8 @@ public enum EstadoSolicitudEnum {
 
 	ING("INGRESADO"),
 	APR("APROBADO"),
-	ELI("ELIMINADO");
+	ELI("ELIMINADO"),
+	EXP("EXPORTADO");
 
 	private final String label;
 

@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface ISolContenedorDao {
 
-    SolContenedorDto save(SolContenedorDto solContenedor);
+    SolContenedorDto save(SolContenedorDto solContenedor, String estRegCon);
 
 }

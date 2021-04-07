@@ -104,13 +104,46 @@ public class SolicitudWs  {
         }
     }
 
+    /**
+     * Elimina el solicitud de forma logica
+     *
+     * @param idSolicitud Exceptions = {Collections$EmptyList@7948}  size = 0olicitud identificador del solicitud a ser eliminado
+     * @return true si el solicitud ha sido actualizado con exito
+     */
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
+    public ApiResponse<Boolean> delete(@RequestParam("idSolicitud") Long idSolicitud) {
+        try {
+            if (idSolicitud != null) {
+                iSolicitudDao.delete(idSolicitud);
+                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.ELIMINA_OK, true);
+            }
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.ELIMINA_ERR, false);
+        }
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
+    }
+
+    @RequestMapping(value = "modificarEstado", method = RequestMethod.GET)
+    public ApiResponse<Boolean> modificarEstado(@RequestParam("idSolicitud") Long idSolicitud,
+                                                @RequestParam("estado") String estado) {
+        try {
+            if (idSolicitud != null) {
+                iSolicitudDao.updateEstado(idSolicitud, estado);
+                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, true);
+            }
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, false);
+        }
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
+    }
+
     @RequestMapping(value = "guardarSolicitud", method = RequestMethod.POST)
     public ApiResponse<String> guardarSolicitud(@RequestBody SolicitudCompletaDto solicitudCompleto) {
         try {
             final Long idSolicitud;
             SolicitudDto solicitud = new SolicitudDto();
             solicitud.setIdSolicitud(solicitudCompleto.getIdSolicitud());
-            solicitud.setSemana(solicitudCompleto.getSemana());
+            solicitud.setSemana(solicitudCompleto.getNroSemana());
             solicitud.setExportador(solicitudCompleto.getExportador());
             solicitud.setCliente(solicitudCompleto.getCliente());
             solicitud.setTipoSolicitud(solicitudCompleto.getTipoSolicitud());
@@ -127,7 +160,7 @@ public class SolicitudWs  {
             solicitud.setNomEvaluador02(solicitudCompleto.getNomEvaluador02());
             solicitud.setCiEvaluador02(solicitudCompleto.getCiEvaluador02());
             solicitud.setObservacion(solicitudCompleto.getObservacion());
-            idSolicitud = iSolicitudDao.save(solicitud);
+            idSolicitud = iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
             String ids = idSolicitud.toString();
 
             SolContenedorDto solContenedor = new SolContenedorDto();
@@ -146,10 +179,10 @@ public class SolicitudWs  {
             solContenedor.setFechaCierre(solicitudCompleto.getFechaCierre());
             solContenedor.setFechaSalida(solicitudCompleto.getFechaSalida());
             solContenedor.setObservacion(solicitudCompleto.getObservacion());
-            solContenedor = iSolContenedorDao.save(solContenedor);
+            solContenedor = iSolContenedorDao.save(solContenedor, solicitudCompleto.getEstRegCon());
             solicitudCompleto.setIdSolContenedor(solContenedor.getIdSolContenedor());
             //ids = ids + "," + solContenedor.getIdSolContenedor().toString();
-
+            /*
             SolSelloLlegadaDto solSelloLlegada = new SolSelloLlegadaDto();
             solSelloLlegada.setIdSolSelloLlegada(solicitudCompleto.getIdSolSelloLlegada());
             solSelloLlegada.setIdSolicitud(idSolicitud);
@@ -462,7 +495,7 @@ public class SolicitudWs  {
                     //ids = ids + "," + solConCalibracionFrutaDto.getIdSolConCalibracionFruta().toString();
                 });
             });
-
+            */
             /*
             iSolImagenDao.delete(idSolicitud);
             solicitudCompleto.getSolImagenes().forEach(ima ->{
@@ -489,39 +522,6 @@ public class SolicitudWs  {
         } catch (Exception e) {
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, null);
         }
-    }
-
-    /**
-     * Elimina el solicitud de forma logica
-     *
-     * @param idSolicitud Exceptions = {Collections$EmptyList@7948}  size = 0olicitud identificador del solicitud a ser eliminado
-     * @return true si el solicitud ha sido actualizado con exito
-     */
-    @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public ApiResponse<Boolean> delete(@RequestParam("idSolicitud") Long idSolicitud) {
-        try {
-            if (idSolicitud != null) {
-                iSolicitudDao.delete(idSolicitud);
-                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.ELIMINA_OK, true);
-            }
-        } catch (Exception e) {
-            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.ELIMINA_ERR, false);
-        }
-        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
-    }
-
-    @RequestMapping(value = "updateEstado", method = RequestMethod.GET)
-    public ApiResponse<Boolean> delete(@RequestParam("idSolicitud") Long idSolicitud,
-                                       @RequestParam("estado") String estado) {
-        try {
-            if (idSolicitud != null) {
-                iSolicitudDao.updateEstado(idSolicitud, estado);
-                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, true);
-            }
-        } catch (Exception e) {
-            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, false);
-        }
-        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
     }
 
 }
