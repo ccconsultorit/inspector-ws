@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repCalidad" pageWidth="1500" pageHeight="842" columnWidth="1460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="e9bb1a27-f975-4aa4-98f9-75524c5daafa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<subDataset name="DsCalidad" uuid="3931bac4-c5a0-46f1-a1d9-bb095ca027d0">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<queryString language="SQL">
+			<![CDATA[select (d.sr*10/c.total_defectos) sr, (d.ct*10/c.total_defectos) ct, (d.dt*10/c.total_defectos) dt, (d.fl*10/c.total_defectos) fl, (d.dp*10/c.total_defectos) dp, 
+	   (d.sre*10/c.total_defectos) sre, (d.bre*10/c.total_defectos) bre, (d.nie*10/c.total_defectos) nie, (d.mf*10/c.total_defectos) mf
+from tab_sol_calidad c, 
+     (select x.id_sol_calidad, sum(CAST (sr as DOUBLE PRECISION)) sr, sum(CAST (ct as DOUBLE PRECISION)) ct, sum(CAST (dt as DOUBLE PRECISION)) dt, sum(CAST (fl as DOUBLE PRECISION)) fl, 
+	  sum(CAST (dp as DOUBLE PRECISION)) dp, sum(CAST (sre as DOUBLE PRECISION)) sre, sum(CAST (bre as DOUBLE PRECISION)) bre, sum(CAST (nie as DOUBLE PRECISION)) nie, sum(CAST (mf as DOUBLE PRECISION)) mf
+	  from tab_sol_cal_defecto_seleccion x
+	  where x.estado = 'A'
+		and x.id_sol_calidad = 1
+	  group by x.id_sol_calidad) d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and c.id_sol_calidad = 1]]>
+		</queryString>
+		<field name="sr" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="sr"/>
+			<property name="com.jaspersoft.studio.field.label" value="sr"/>
+		</field>
+		<field name="ct" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="ct"/>
+			<property name="com.jaspersoft.studio.field.label" value="ct"/>
+		</field>
+		<field name="dt" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="dt"/>
+			<property name="com.jaspersoft.studio.field.label" value="dt"/>
+		</field>
+		<field name="fl" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="fl"/>
+			<property name="com.jaspersoft.studio.field.label" value="fl"/>
+		</field>
+		<field name="dp" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="dp"/>
+			<property name="com.jaspersoft.studio.field.label" value="dp"/>
+		</field>
+		<field name="sre" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="sre"/>
+			<property name="com.jaspersoft.studio.field.label" value="sre"/>
+		</field>
+		<field name="bre" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="bre"/>
+			<property name="com.jaspersoft.studio.field.label" value="bre"/>
+		</field>
+		<field name="nie" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="nie"/>
+			<property name="com.jaspersoft.studio.field.label" value="nie"/>
+		</field>
+		<field name="mf" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="mf"/>
+			<property name="com.jaspersoft.studio.field.label" value="mf"/>
+		</field>
+	</subDataset>
+	<subDataset name="DsDefectos" uuid="533c845d-121c-4709-b7b0-661109f879e0">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<queryString language="SQL">
+			<![CDATA[select (sum(CAST (sr as DOUBLE PRECISION))*10/c.total_defectos) valor, 'SR ESTROPEO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (BR as DOUBLE PRECISION))*10/c.total_defectos) valor, 'BR DAÑO DE PULPA' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (NI as DOUBLE PRECISION))*10/c.total_defectos) valor, 'NI CUELLO ROTO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (MF as DOUBLE PRECISION))*10/c.total_defectos) valor, 'MF MUTILADO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (CT as DOUBLE PRECISION))*10/c.total_defectos) valor, 'CT CORTE DE CUCHILLO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (dp as DOUBLE PRECISION))*10/c.total_defectos) valor, 'DP' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (FL as DOUBLE PRECISION))*10/c.total_defectos) valor, 'FL FLORES' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (DP as DOUBLE PRECISION))*10/c.total_defectos) valor, 'DP' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (UG as DOUBLE PRECISION))*10/c.total_defectos) valor, 'UG' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (OG as DOUBLE PRECISION))*10/c.total_defectos) valor, 'OG SOBRE GRADO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (LS as DOUBLE PRECISION))*10/c.total_defectos) valor, 'LS' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (LG as DOUBLE PRECISION))*10/c.total_defectos) valor, 'LG' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (BM as DOUBLE PRECISION))*10/c.total_defectos) valor, 'BM DAÑO DE COLAPSIS' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (TS as DOUBLE PRECISION))*10/c.total_defectos) valor, 'TS DEDO CORTO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (CS as DOUBLE PRECISION))*10/c.total_defectos) valor, 'CS' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (OG as DOUBLE PRECISION))*10/c.total_defectos) valor, 'OG SOBRE GRADO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (WI as DOUBLE PRECISION))*10/c.total_defectos) valor, 'WI' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (SK as DOUBLE PRECISION))*10/c.total_defectos) valor, 'SK' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (YB as DOUBLE PRECISION))*10/c.total_defectos) valor, 'YB' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (RR as DOUBLE PRECISION))*10/c.total_defectos) valor, 'RR MANCHA ROJA' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (TC as DOUBLE PRECISION))*10/c.total_defectos) valor, 'TC MOQUILLO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (SP as DOUBLE PRECISION))*10/c.total_defectos) valor, 'SP' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (SM as DOUBLE PRECISION))*10/c.total_defectos) valor, 'SM FUMAGINA' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (TR as DOUBLE PRECISION))*10/c.total_defectos) valor, 'TR' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (AB as DOUBLE PRECISION))*10/c.total_defectos) valor, 'AB PULPA CREMA' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (CH as DOUBLE PRECISION))*10/c.total_defectos) valor, 'CH' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (TF as DOUBLE PRECISION))*10/c.total_defectos) valor, 'TF' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (UD as DOUBLE PRECISION))*10/c.total_defectos) valor, 'UD' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (PD as DOUBLE PRECISION))*10/c.total_defectos) valor, 'PD' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (FF as DOUBLE PRECISION))*10/c.total_defectos) valor, 'FF DEDOS MELLIZOS' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (DT as DOUBLE PRECISION))*10/c.total_defectos) valor, 'DT' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (SRE as DOUBLE PRECISION))*10/c.total_defectos) valor, 'SRE' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (BRE as DOUBLE PRECISION))*10/c.total_defectos) valor, 'BRE' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (NIE as DOUBLE PRECISION))*10/c.total_defectos) valor, 'NIE' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (FRE as DOUBLE PRECISION))*10/c.total_defectos) valor, 'FRE' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (SC as DOUBLE PRECISION))*10/c.total_defectos) valor, 'SC' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (ML as DOUBLE PRECISION))*10/c.total_defectos) valor, 'ML MAL FORMADO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (MD as DOUBLE PRECISION))*10/c.total_defectos) valor, 'MD' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (EC as DOUBLE PRECISION))*10/c.total_defectos) valor, 'EC' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (V as DOUBLE PRECISION))*10/c.total_defectos) valor, 'V VIRADO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (F as DOUBLE PRECISION))*10/c.total_defectos) valor, 'F FLOJO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (EA as DOUBLE PRECISION))*10/c.total_defectos) valor, 'EA EMPAQUE ALTO' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos  
+union  
+select (sum(CAST (PS as DOUBLE PRECISION))*10/c.total_defectos) valor, 'PS' Tipo 
+from tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where c.id_sol_calidad = d.id_sol_calidad
+  and c.estado = 'A'
+  and d.estado = 'A'
+  and c.id_sol_calidad = 1
+group by d.id_sol_calidad, c.total_defectos]]>
+		</queryString>
+		<field name="valor" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="valor"/>
+			<property name="com.jaspersoft.studio.field.label" value="valor"/>
+		</field>
+		<field name="tipo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="tipo"/>
+			<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+		</field>
+	</subDataset>
+	<parameter name="idSolicitud" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[select  c.id_solicitud, p.nombre productor,  c.nombre_marca,  c.calidad 
+from  tab_sol_productor p, tab_sol_calidad c
+where p.id_sol_productor = c.id_sol_productor
+  and p.estado = 'A'
+  and c.estado = 'A' 
+  and p.id_solicitud = $P{idSolicitud}]]>
+	</queryString>
+	<field name="id_solicitud" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<field name="productor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="productor"/>
+		<property name="com.jaspersoft.studio.field.label" value="productor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_productor"/>
+	</field>
+	<field name="nombre_marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre_marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre_marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<field name="calidad" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="calidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="calidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+	</field>
+	<group name="Productor">
+		<groupExpression><![CDATA[$F{productor}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<textField>
+					<reportElement style="SubTitle" x="100" y="1" width="360" height="25" forecolor="#050000" uuid="4abefbae-0e28-4a03-a7e7-7b8c42708a17">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="18" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{productor}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="SubTitle" x="6" y="1" width="94" height="25" forecolor="#050000" uuid="78edabe0-b136-4404-a98e-6e783e37efc0">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Productor:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15"/>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" mode="Opaque" x="4" y="0" width="1456" height="34" forecolor="#FFFFFF" backcolor="#1A8CD9" uuid="9826ae42-aa32-4834-a27a-b6caff1f95f1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grafico 1.- Demostración de Defectos por Marcas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="293" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement x="4" y="1" width="458" height="28" uuid="5d75be3e-ea39-4b96-baf8-b49497315044"/>
+				<textField>
+					<reportElement style="Detail" x="96" y="1" width="360" height="25" uuid="8c7f0379-8e11-4395-bdc7-162d8cf0610e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a7acc7d-6487-4648-8f35-659671f22cb0"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre_marca}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="SubTitle" x="2" y="1" width="94" height="25" forecolor="#050000" uuid="9f949e11-0f0d-48a4-89ac-9dea4d84289a">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Marca:]]></text>
+				</staticText>
+			</frame>
+			<stackedBar3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="4" y="33" width="1456" height="260" uuid="99f754e8-67a4-4ae6-86a3-ed21f4ae848b"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="DsDefectos" uuid="bb41cd60-07ec-4cb7-9a3a-8a41242a7027">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{tipo}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{tipo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{valor}]]></valueExpression>
+						<labelExpression><![CDATA[$F{tipo}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</stackedBar3DChart>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>
