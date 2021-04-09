@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class SolFincaDto extends BaseDto {
+public class TabSolFincaDto extends BaseDto {
 
     private Long idSolFinca;
     private Long idSolicitud;
@@ -27,7 +27,7 @@ public class SolFincaDto extends BaseDto {
     String embudo;
     String divisionTina;
 
-    public SolFincaDto() {}
+    public TabSolFincaDto() {}
 
     @Override
     public Long getId() {

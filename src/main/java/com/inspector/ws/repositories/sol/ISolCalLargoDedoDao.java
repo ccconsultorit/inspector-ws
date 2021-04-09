@@ -1,7 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolCalCalibreDto;
-import com.inspector.dto.sol.SolCalLargoDedoDto;
+import com.inspector.dto.sol.TabSolCalLargoDedoDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -10,6 +9,5 @@ import com.inspector.dto.sol.SolCalLargoDedoDto;
  */
 public interface ISolCalLargoDedoDao {
 
-    SolCalLargoDedoDto save(SolCalLargoDedoDto solCalLargoDedoDto);
-
+    public TabSolCalLargoDedoDto save(TabSolCalLargoDedoDto solCalLargoDedo, String estReg);
 }

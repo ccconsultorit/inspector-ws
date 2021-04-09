@@ -1,22 +1,16 @@
 package com.inspector.ws.controller.sol;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.inspector.ApiResponse;
 import com.inspector.dto.sol.*;
 import com.inspector.enumaraciones.ResponseCodeEnum;
 import com.inspector.util.Mensajes;
 import com.inspector.ws.repositories.impl.sol.SolCalLargoDedoDao;
-import com.inspector.ws.repositories.impl.sol.SolCalPesoClusterDao;
 import com.inspector.ws.repositories.sol.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -75,7 +69,7 @@ public class SolicitudWs  {
      * @return Listado de Solicituds
      */
     @RequestMapping(value = "getSolicitudes", method = RequestMethod.GET)
-    public ApiResponse<List<SolicitudDto>> getSolicitudes() {
+    public ApiResponse<List<TabSolicitudDto>> getSolicitudes() {
         try {
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolicitudDao.getAll());
         } catch (Exception e) {
@@ -95,7 +89,7 @@ public class SolicitudWs  {
     }
 
     @RequestMapping(value = "getSolicitudById", method = RequestMethod.GET)
-    public ApiResponse<SolicitudDto> getSolicitudById(@RequestParam("idSolicitud") Long idSolicitud) {
+    public ApiResponse<TabSolicitudDto> getSolicitudById(@RequestParam("idSolicitud") Long idSolicitud) {
         try {
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolicitudDao.getSolicitudById(idSolicitud));
         } catch (Exception e) {
@@ -141,7 +135,404 @@ public class SolicitudWs  {
     public ApiResponse<String> guardarSolicitud(@RequestBody SolicitudCompletaDto solicitudCompleto) {
         try {
             final Long idSolicitud;
-            SolicitudDto solicitud = new SolicitudDto();
+            TabSolicitudDto solicitud = new TabSolicitudDto();
+            solicitud.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            solicitud.setSemana(solicitudCompleto.getNroSemana());
+            solicitud.setExportador(solicitudCompleto.getExportador());
+            solicitud.setCliente(solicitudCompleto.getCliente());
+            solicitud.setTipoSolicitud(solicitudCompleto.getTipoSolicitud());
+            solicitud.setProductor(solicitudCompleto.getProductor());
+            solicitud.setCodigoProductor(solicitudCompleto.getCodProductor());
+            solicitud.setCodigoMagap(solicitudCompleto.getCodMagap());
+            solicitud.setPuertoEmbarque(solicitudCompleto.getPuertoEmbarque());
+            solicitud.setZona(solicitudCompleto.getZona());
+            solicitud.setFechaInicio(solicitudCompleto.getFechaInicio());
+            solicitud.setFechaTermino(solicitudCompleto.getFechaFin());
+            solicitud.setContenedor(solicitudCompleto.getContenedor());
+            solicitud.setNomEvaluador01(solicitudCompleto.getNomEvaluador01());
+            solicitud.setCiEvaluador01(solicitudCompleto.getCiEvaluador01());
+            solicitud.setNomEvaluador02(solicitudCompleto.getNomEvaluador02());
+            solicitud.setCiEvaluador02(solicitudCompleto.getCiEvaluador02());
+            solicitud.setObservacion(solicitudCompleto.getObservacion());
+            idSolicitud = iSolicitudDao.save(solicitud, "NUE");
+            //String ids = idSolicitud.toString();
+
+            TabSolContenedorDto solContenedor = new TabSolContenedorDto();
+            //solContenedor.setIdSolContenedor(solicitudCompleto.getIdSolContenedor());
+            solContenedor.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            solContenedor.setNumeroContenedor(solicitudCompleto.getNroContenedor());
+            solContenedor.setVapor(solicitudCompleto.getVapor());
+            solContenedor.setBooking(solicitudCompleto.getBooking());
+            solContenedor.setTipoContenedor(solicitudCompleto.getTipoContenedor());
+            solContenedor.setAgenciaNaviera(solicitudCompleto.getAgenciaNaviera());
+            solContenedor.setTare(solicitudCompleto.getTare());
+            solContenedor.setMaxGross(solicitudCompleto.getMaxGross());
+            solContenedor.setPuertoSalida(solicitudCompleto.getPuertoSalida());
+            solContenedor.setFechaLlegada(solicitudCompleto.getFechaLlegada());
+            solContenedor.setFechaApertura(solicitudCompleto.getFechaApertura());
+            solContenedor.setFechaCierre(solicitudCompleto.getFechaCierre());
+            solContenedor.setFechaSalida(solicitudCompleto.getFechaSalida());
+            solContenedor.setObservacion(solicitudCompleto.getObservacion());
+            solContenedor = iSolContenedorDao.save(solContenedor, "NUE");
+            //solicitudCompleto.setIdSolContenedor(solContenedor.getIdSolContenedor());
+            //ids = ids + "," + solContenedor.getIdSolContenedor().toString();
+
+            TabSolSelloLlegadaDto solSelloLlegada = new TabSolSelloLlegadaDto();
+            //solSelloLlegada.setIdSolSelloLlegada(solicitudCompleto.getIdSolSelloArribo());
+            solSelloLlegada.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            solSelloLlegada.setCandadoPlastico(solicitudCompleto.getCandadoPlastico());
+            solSelloLlegada.setCandadoBotella(solicitudCompleto.getCandadoBotella());
+            solSelloLlegada.setStickerLlegada(solicitudCompleto.getStickerLlegada());
+            solSelloLlegada.setRastreoSatelital(solicitudCompleto.getRastreoSatelital());
+            solSelloLlegada.setSelloCadena(solicitudCompleto.getSelloCadena());
+            solSelloLlegada.setStickerNavieraVentilador(solicitudCompleto.getStickerNaviera());
+            solSelloLlegada.setSelloLlegadaInterno01(solicitudCompleto.getSelloLlegada1());
+            solSelloLlegada.setSelloLlegadaInterno02(solicitudCompleto.getSelloLlegada2());
+            solSelloLlegada.setStickerPatioVentoleraExterna01(solicitudCompleto.getStickerPatioVentolera1());
+            solSelloLlegada.setStickerPatioVentoleraExterna02(solicitudCompleto.getStickerPatioVentolera2());
+            solSelloLlegada.setNroSerieFunda(solicitudCompleto.getNroSerie());
+            solSelloLlegada.setCandadoExportador(solicitudCompleto.getCandadoExportador());
+            solSelloLlegada.setObservacion(solicitudCompleto.getObservacionSA());
+            solSelloLlegada = iSolSelloLlegadaDao.save(solSelloLlegada, "NUE");
+            //solicitudCompleto.setIdSolSelloArribo(solSelloLlegada.getIdSolSelloLlegada());
+            //ids = ids + "," + solSelloLlegada.getIdSolSelloLlegada().toString();
+
+            TabSolSelloInstaladoDto solSelloInstalado = new TabSolSelloInstaladoDto();
+            //solSelloInstalado.setIdSolSelloInstalado(solicitudCompleto.getIdSolSelloInstalado());
+            solSelloInstalado.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            solSelloInstalado.setCandadoNaviera(solicitudCompleto.getCandadoNaviera());
+            solSelloInstalado.setSelloVerificador(solicitudCompleto.getSelloVerificador());
+            solSelloInstalado.setCableNaviera(solicitudCompleto.getCableNaviera());
+            solSelloInstalado.setCableExportadora(solicitudCompleto.getCableExportadora());
+            solSelloInstalado.setStickerNaviera(solicitudCompleto.getStickerNaviera());
+            solSelloInstalado.setStickerExportadora(solicitudCompleto.getStickerExportadora());
+            solSelloInstalado.setRastreo(solicitudCompleto.getRastreo());
+            solSelloInstalado.setTermografo01(solicitudCompleto.getTermografo01());
+            solSelloInstalado.setUbicacionTermografo01(solicitudCompleto.getUbicacion01());
+            solSelloInstalado.setTermografo02(solicitudCompleto.getTermografo02());
+            solSelloInstalado.setUbicacionTermografo02(solicitudCompleto.getUbicacion02());
+            solSelloInstalado.setFiltroProporcionado(solicitudCompleto.getFiltroProporcionado());
+            solSelloInstalado.setTermoking(solicitudCompleto.getTermoking());
+            solSelloInstalado = iSolSelloInstaladoDao.save(solSelloInstalado, "NUE");
+            //solicitudCompleto.setIdSolSelloInstalado(solSelloInstalado.getIdSolSelloInstalado());
+            //ids = ids + "," + solSelloInstalado.getIdSolSelloInstalado().toString();
+
+            TabSolTransportistaDto solTransportista = new TabSolTransportistaDto();
+            //solTransportista.setIdSolTransportista(solicitudCompleto.getIdSolTransportista());
+            solTransportista.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            solTransportista.setEmpresaTransporte(solicitudCompleto.getCompania());
+            solTransportista.setChofer(solicitudCompleto.getChofer());
+            solTransportista.setCedula(solicitudCompleto.getCedula());
+            solTransportista.setCelular(solicitudCompleto.getCelular());
+            solTransportista.setPlaca(solicitudCompleto.getPlaca());
+            solTransportista.setColorCabezal(solicitudCompleto.getColorCabezal());
+            solTransportista.setMarcaCabezal(solicitudCompleto.getMarcaCabezal());
+            solTransportista.setObservacion(solicitudCompleto.getObservacion());
+            solTransportista = iSolTransportistaDao.save(solTransportista, "NUE");
+            //solicitudCompleto.setIdSolTransportista(solTransportista.getIdSolTransportista());
+            //ids = ids + "," + solTransportista.getIdSolTransportista().toString();
+
+            TabSolProcesoDto solProceso = new TabSolProcesoDto();
+            //solProceso.setIdSolProceso(solicitudCompleto.getIdSolProceso());
+            solProceso.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            //solProceso.setIdSolProductor(solicitudCompleto.getIdSolProductor());
+            solProceso.setCajaProcesadaDespachada(solicitudCompleto.getCajaProcesada());
+            solProceso.setTipoFruta(solicitudCompleto.getTipoFruta());
+            solProceso.setTipoFunda(solicitudCompleto.getTipoFunda());
+            solProceso.setDensidadFunda(solicitudCompleto.getDensidadFunda());
+            solProceso.setTipoCaja(solicitudCompleto.getTipoCaja());
+            solProceso.setTipoPresentacion(solicitudCompleto.getTipoPresentacion());
+            solProceso.setTipoEstiba(solicitudCompleto.getTipoEstiba());
+            solProceso.setTiempoDescargaFumigacion(solicitudCompleto.getTiempoDescarga());
+            solProceso.setTipoCantulina(solicitudCompleto.getTipoCantulina());
+            solProceso = iSolProcesoDao.save(solProceso, "NUE");
+            //solicitudCompleto.setIdSolProceso(solProceso.getIdSolProceso());
+            //ids = ids + "," + solProceso.getIdSolProceso().toString();
+
+            TabSolControlPesoDto solControlPeso = new TabSolControlPesoDto();
+            //solControlPeso.setIdSolControlPeso(solicitudCompleto.getIdSolControlPeso());
+            solControlPeso.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            //solControlPeso.setIdSolProductor(solicitudCompleto.getIdSolProductor());
+            solControlPeso.setBalanzaRepesa(solicitudCompleto.getBalanzaRepesa());
+            solControlPeso.setCondicionBalanza(solicitudCompleto.getCondicionBalanza());
+            solControlPeso.setTipoBalanza(solicitudCompleto.getTipoBalanza());
+            solControlPeso.setPesoNetoFruta(solicitudCompleto.getPesoNetoFruta());
+            solControlPeso.setObservacion(solicitudCompleto.getObservacion());
+            solControlPeso = iSolControlPesoDao.save(solControlPeso, "NUE");
+            //solicitudCompleto.setIdSolControlPeso(solControlPeso.getIdSolControlPeso());
+            //ids = ids + "," + solControlPeso.getIdSolControlPeso().toString();
+
+            TabSolFincaDto solFinca = new TabSolFincaDto();
+            //solFinca.setIdSolFinca(solicitudCompleto.getIdSolFinca());
+            solFinca.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+            //solFinca.setIdSolProductor(solicitudCompleto.getIdSolProductor());
+            solFinca.setNombre(solicitudCompleto.getNombre());
+            solFinca.setFuenteAgua(solicitudCompleto.getFuenteAgua());
+            solFinca.setAguaCorrida(solicitudCompleto.getAguaCorrida());
+            solFinca.setEstadoPiso(solicitudCompleto.getEstadoPiso());
+            solFinca.setCableVia(solicitudCompleto.getCableVia());
+            solFinca.setEstadoTecho(solicitudCompleto.getEstadoTecho());
+            solFinca.setEstadoTina(solicitudCompleto.getEstadoTina());
+            solFinca.setFumigacion(solicitudCompleto.getFumigacion());
+            solFinca.setLavadoRacimo(solicitudCompleto.getLavadoRacimo());
+            solFinca.setEmbudo(solicitudCompleto.getEmbudo());
+            solFinca.setDivisionTina(solicitudCompleto.getDivisionTina());
+            solFinca = iSolFincaDao.save(solFinca, "NUE");
+            //solicitudCompleto.setIdSolFinca(solFinca.getIdSolFinca());
+            //ids = ids + "," + solFinca.getIdSolFinca().toString();
+
+            solicitudCompleto.getListSolCalidadDto().forEach(calidad ->{
+
+                TabSolCalidadDto solCalidad = new TabSolCalidadDto();
+                Long idSolCalidad;
+                //solCalidad.setIdSolCalidad(calidad.getIdSolCalidad());
+                solCalidad.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+
+                solCalidad.setNombreMarca(calidad.getNomMarca());
+                solCalidad.setNroQs(calidad.getNroQs());
+                solCalidad.setGuiaTransporte(calidad.getGuiaTransporte());
+                solCalidad.setGuiaRemision(calidad.getGuiaRemision());
+                solCalidad.setDefectuoso(calidad.getDefectuoso());
+                solCalidad.setTarjetaEmbarque(calidad.getTarjetaEmbarque());
+                solCalidad.setTotalCluster(calidad.getTotalCluster());
+                solCalidad.setTotalDefecto(calidad.getTotalDefecto());
+                solCalidad.setCalidad(calidad.getCalidad());
+                solCalidad.setLargoDedo(calidad.getLargoDedo());
+                solCalidad.setTotalPeso(calidad.getTotalPeso());
+                solCalidad.setPesoPromedio(calidad.getPesoPromedio());
+                solCalidad.setMayorDefectoSeleccion(calidad.getMayorDefectoSeleccion());
+                solCalidad.setMayorDefectoEmpaque(calidad.getMayorDefectoEmpaque());
+                solCalidad = iSolCalidadDao.save(solCalidad, "NUE");
+                idSolCalidad = solCalidad.getIdSolCalidad();
+                //solicitudCompleto.setIdSolCalidad(solCalidad.getIdSolCalidad());
+                //ids = ids + "," + solCalidad.getIdSolCalidad().toString();
+
+                calidad.getListSolCalDefectoSeleccionDto().forEach(defecto ->{
+                    TabSolCalDefectoSeleccionDto solDefectoSeleccion = new TabSolCalDefectoSeleccionDto();
+                    //solDefectoSeleccion.setIdSolCalDefectoSeleccion(defecto.getIdSolCalDefectoSeleccion());
+                    solDefectoSeleccion.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                    solDefectoSeleccion.setIdSolCalidad(idSolCalidad);
+                    solDefectoSeleccion.setPeso(defecto.getPeso());
+                    solDefectoSeleccion.setNumeroGanchoInspeccionado(defecto.getNumeroGanchoInspeccionado());
+                    solDefectoSeleccion.setPh(defecto.getPh());
+                    solDefectoSeleccion.setSr(defecto.getSr());
+                    solDefectoSeleccion.setBr(defecto.getBr());
+                    solDefectoSeleccion.setNi(defecto.getNi());
+                    solDefectoSeleccion.setMf(defecto.getMf());
+                    solDefectoSeleccion.setCt(defecto.getCt());
+                    solDefectoSeleccion.setFl(defecto.getFl());
+                    solDefectoSeleccion.setDp(defecto.getDp());
+                    solDefectoSeleccion.setUg(defecto.getUg());
+                    solDefectoSeleccion.setOg(defecto.getOg());
+                    solDefectoSeleccion.setLs(defecto.getLs());
+                    solDefectoSeleccion.setLg(defecto.getLg());
+                    solDefectoSeleccion.setBm(defecto.getBm());
+                    solDefectoSeleccion.setTs(defecto.getTs());
+                    solDefectoSeleccion.setCs(defecto.getCs());
+                    solDefectoSeleccion.setWi(defecto.getWi());
+                    solDefectoSeleccion.setSk(defecto.getSk());
+                    solDefectoSeleccion.setYb(defecto.getYb());
+                    solDefectoSeleccion.setRr(defecto.getRr());
+                    solDefectoSeleccion.setTc(defecto.getTc());
+                    solDefectoSeleccion.setSp(defecto.getSp());
+                    solDefectoSeleccion.setSm(defecto.getSm());
+                    solDefectoSeleccion.setTr(defecto.getTr());
+                    solDefectoSeleccion.setAb(defecto.getAb());
+                    solDefectoSeleccion.setCh(defecto.getCh());
+                    solDefectoSeleccion.setTf(defecto.getTf());
+                    solDefectoSeleccion.setUd(defecto.getUd());
+                    solDefectoSeleccion.setPd(defecto.getPd());
+                    solDefectoSeleccion.setFf(defecto.getFf());
+                    solDefectoSeleccion.setBs(defecto.getBs());
+                    solDefectoSeleccion.setDt(defecto.getDt());
+                    solDefectoSeleccion.setSre(defecto.getSre());
+                    solDefectoSeleccion.setBre(defecto.getBre());
+                    solDefectoSeleccion.setNie(defecto.getNie());
+                    solDefectoSeleccion.setFre(defecto.getFre());
+                    solDefectoSeleccion.setSc(defecto.getSc());
+                    solDefectoSeleccion.setMl(defecto.getMl());
+                    solDefectoSeleccion.setMd(defecto.getMd());
+                    solDefectoSeleccion.setEc(defecto.getEc());
+                    solDefectoSeleccion.setV(defecto.getV());
+                    solDefectoSeleccion.setF(defecto.getF());
+                    solDefectoSeleccion.setEa(defecto.getEa());
+                    solDefectoSeleccion.setPs(defecto.getPs());
+
+                    solDefectoSeleccion = iSolCalDefectoSeleccionDao.save(solDefectoSeleccion, "NUE");
+                    //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
+                    //ids = ids + "," + solDefectoSeleccion.getIdSolCalDefectoSeleccion().toString();
+                });
+
+
+                TabSolCalCalibreDto tabSolCalCalibreDto = new TabSolCalCalibreDto();
+                tabSolCalCalibreDto.setIdSolCalCalibre(tabSolCalCalibreDto.getIdSolCalCalibre());
+                tabSolCalCalibreDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                tabSolCalCalibreDto.setIdSolCalidad(idSolCalidad);
+                tabSolCalCalibreDto.setCalUg(calidad.getCalUg());
+                tabSolCalCalibreDto.setCalOg(calidad.getCalOg());
+                tabSolCalCalibreDto.setCal37(calidad.getCal37());
+                tabSolCalCalibreDto.setCal38(calidad.getCal38());
+                tabSolCalCalibreDto.setCal39(calidad.getCal39());
+                tabSolCalCalibreDto.setCal40(calidad.getCal40());
+                tabSolCalCalibreDto.setCal41(calidad.getCal41());
+                tabSolCalCalibreDto.setCal42(calidad.getCal42());
+                tabSolCalCalibreDto.setCal43(calidad.getCal43());
+                tabSolCalCalibreDto.setCal44(calidad.getCal44());
+                tabSolCalCalibreDto.setCal45(calidad.getCal45());
+                tabSolCalCalibreDto.setCal46(calidad.getCal46());
+                tabSolCalCalibreDto.setCal47(calidad.getCal47());
+                tabSolCalCalibreDto.setCal48(calidad.getCal48());
+                tabSolCalCalibreDto.setCal49(calidad.getCal49());
+                tabSolCalCalibreDto.setCal50(calidad.getCal50());
+                tabSolCalCalibreDto.setCal51(calidad.getCal51());
+                tabSolCalCalibreDto.setCal52(calidad.getCal52());
+                tabSolCalCalibreDto.setCal53(calidad.getCal53());
+                tabSolCalCalibreDto.setCal54(calidad.getCal54());
+                tabSolCalCalibreDto = iSolCalCalibreDao.save(tabSolCalCalibreDto, "NUE");
+                //solicitudCompleto.setIdSolPackingList(solPackingList.getIdSolPackingList());
+                //ids = ids + "," + solCalCalibreDto.getIdSolCalCalibre().toString();
+
+                TabSolCalLargoDedoDto tabSolCalLargoDedoDto = new TabSolCalLargoDedoDto();
+                tabSolCalLargoDedoDto.setIdSolCalLargoDedo(tabSolCalLargoDedoDto.getIdSolCalLargoDedo());
+                tabSolCalLargoDedoDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                tabSolCalLargoDedoDto.setIdSolCalidad(idSolCalidad);
+                tabSolCalLargoDedoDto.setLar8(calidad.getLar8());
+                tabSolCalLargoDedoDto.setLar8_2(calidad.getLar8_2());
+                tabSolCalLargoDedoDto.setLar8_4(calidad.getLar8_4());
+                tabSolCalLargoDedoDto.setLar8_6(calidad.getLar8_6());
+                tabSolCalLargoDedoDto.setLar8_8(calidad.getLar8_8());
+                tabSolCalLargoDedoDto.setLar9(calidad.getLar9());
+                tabSolCalLargoDedoDto.setLar9_2(calidad.getLar9_2());
+                tabSolCalLargoDedoDto.setLar9_4(calidad.getLar9_4());
+                tabSolCalLargoDedoDto.setLar9_6(calidad.getLar9_6());
+                tabSolCalLargoDedoDto.setLar9_8(calidad.getLar9_8());
+                tabSolCalLargoDedoDto.setLar10(calidad.getLar10());
+                tabSolCalLargoDedoDto.setLar10_2(calidad.getLar10_2());
+                tabSolCalLargoDedoDto.setLar10_4(calidad.getLar10_4());
+                tabSolCalLargoDedoDto.setLar10_6(calidad.getLar10_6());
+                tabSolCalLargoDedoDto.setLar10_8(calidad.getLar10_8());
+                tabSolCalLargoDedoDto.setLar11(calidad.getLar11());
+                tabSolCalLargoDedoDto.setLar11_2(calidad.getLar11_2());
+                tabSolCalLargoDedoDto.setLar11_4(calidad.getLar11_4());
+                tabSolCalLargoDedoDto.setLar11_6(calidad.getLar11_6());
+                tabSolCalLargoDedoDto.setLar11_8(calidad.getLar11_8());
+                tabSolCalLargoDedoDto = iSolCalLargoDedoDao.save(tabSolCalLargoDedoDto, "NUE");
+                //solicitudCompleto.setIdSolPackingList(solPackingList.getIdSolPackingList());
+                //ids = ids + "," + solCalLargoDedoDto.getIdSolCalLargoDedo().toString();
+
+                calidad.getListSolCalPesoClusterDto().forEach(peso ->{
+                    TabSolCalPesoClusterDto tabSolCalPesoClusterDto = new TabSolCalPesoClusterDto();
+                    tabSolCalPesoClusterDto.setIdSolCalPesoCluster(peso.getIdSolCalPesoCluster());
+                    tabSolCalPesoClusterDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                    tabSolCalPesoClusterDto.setIdSolCalidad(idSolCalidad);
+
+                    tabSolCalPesoClusterDto.setNumero(peso.getNumero());
+                    tabSolCalPesoClusterDto.setPeso(peso.getPeso());
+                    tabSolCalPesoClusterDto = iSolCalPesoClusterDao.save(tabSolCalPesoClusterDto, "NUE");
+                    //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
+                    ////ids = ids + "," + solCalPesoClusterDto.getIdSolCalPesoCluster().toString();
+                });
+
+                calidad.getListSolCalPackingListDto().forEach(packing ->{
+                    TabSolCalPackingListDto tabSolCalPackingListDto = new TabSolCalPackingListDto();
+                    tabSolCalPackingListDto.setIdSolCalPackingList(packing.getIdSolCalPackingList());
+                    tabSolCalPackingListDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                    tabSolCalPackingListDto.setIdSolCalidad(idSolCalidad);
+
+                    tabSolCalPackingListDto.setNumeracion(packing.getNumeracion());
+                    tabSolCalPackingListDto.setSticker(packing.getSticker());
+                    tabSolCalPackingListDto = iSolCalPackingListDao.save(tabSolCalPackingListDto, "NUE");
+                    //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
+                    ////ids = ids + "," + solCalPackingListDto.getIdSolCalPackingList().toString();
+                });
+            });
+
+            TabSolConsolidadoGanchoDto solConsolidadoGancho = new TabSolConsolidadoGanchoDto();
+            solConsolidadoGancho.setIdSolConsolidadoGancho(solicitudCompleto.getIdSolConsolidadoGancho());
+            solConsolidadoGancho.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+
+            solConsolidadoGancho.setEnFunde(solicitudCompleto.getEnFunde());
+            solConsolidadoGancho.setRacimoCosechado(solicitudCompleto.getRacimoCosechado());
+            solConsolidadoGancho.setRacimoRechazado(solicitudCompleto.getRacimoRechazado());
+            solConsolidadoGancho.setRacimoProcesado(solicitudCompleto.getRacimoProcesado());
+            solConsolidadoGancho.setMutante(solicitudCompleto.getMutante());
+            solConsolidadoGancho.setSpecklin(solicitudCompleto.getSpecklin());
+            solConsolidadoGancho.setPuntaAmarilla(solicitudCompleto.getPuntaAmarilla());
+            solConsolidadoGancho.setCrema(solicitudCompleto.getCrema());
+            solConsolidadoGancho.setManchaRoja(solicitudCompleto.getManchaRoja());
+            solConsolidadoGancho.setAlterado(solicitudCompleto.getAlterado());
+            solConsolidadoGancho.setPobre(solicitudCompleto.getPobre());
+            solConsolidadoGancho.setCaido(solicitudCompleto.getCaido());
+            solConsolidadoGancho.setSobreGrado(solicitudCompleto.getSobreGrado());
+            solConsolidadoGancho.setBajoGrado(solicitudCompleto.getBajoGrado());
+            solConsolidadoGancho.setMosaico(solicitudCompleto.getMosaico());
+            solConsolidadoGancho.setRasgunoAnimal(solicitudCompleto.getRasgunoAnimal());
+            solConsolidadoGancho.setExplosivo(solicitudCompleto.getExplosivo());
+            solConsolidadoGancho.setHerwinea(solicitudCompleto.getHerwinea());
+            solConsolidadoGancho.setSinCinta(solicitudCompleto.getSinCinta());
+            solConsolidadoGancho.setCochinilla(solicitudCompleto.getCochinilla());
+            solConsolidadoGancho.setEscama(solicitudCompleto.getEscama());
+            solConsolidadoGancho.setFumagina(solicitudCompleto.getFumagina());
+            solConsolidadoGancho.setPesonudo(solicitudCompleto.getPesonudo());
+            solConsolidadoGancho.setObservacion(solicitudCompleto.getObservacion());
+
+            solConsolidadoGancho = iSolConsolidadoGanchoDao.save(solConsolidadoGancho, "NUE");
+            Long idSolConsolidadoGancho = solConsolidadoGancho.getIdSolConsolidadoGancho();
+            //solicitudCompleto.setIdSolConsolidadoGancho(solConsolidadoGancho.getIdSolConsolidadoGancho());
+            //ids = ids + "," + solConsolidadoGancho.getIdSolConsolidadoGancho().toString();
+
+            solConsolidadoGancho.getListTabSolConCalibracionFrutaDto().forEach(fruta ->{
+                TabSolConCalibracionFrutaDto tabSolConCalibracionFrutaDto = new TabSolConCalibracionFrutaDto();
+                tabSolConCalibracionFrutaDto.setIdSolConCalibracionFruta(fruta.getIdSolConCalibracionFruta());
+                tabSolConCalibracionFrutaDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                tabSolConCalibracionFrutaDto.setIdSolConsolidadoGancho(idSolConsolidadoGancho);
+
+                tabSolConCalibracionFrutaDto.setNumSemana(fruta.getNumSemana());
+                tabSolConCalibracionFrutaDto.setColor(fruta.getColor());
+                tabSolConCalibracionFrutaDto.setNumRacimo(fruta.getNumRacimo());
+                tabSolConCalibracionFrutaDto = iSolConCalibracionFrutaDao.save(tabSolConCalibracionFrutaDto, "NUE");
+                //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
+                //ids = ids + "," + solConCalibracionFrutaDto.getIdSolConCalibracionFruta().toString();
+            });
+
+            /*
+            iSolImagenDao.delete(idSolicitud);
+            solicitudCompleto.getSolImagenes().forEach(ima ->{
+                SolImagenDto imagenDto = new SolImagenDto();
+                imagenDto.setIdSolicitud(idSolicitud);
+
+                Object o1 = JSONValue.parse(ima);
+                JSONObject jsonObj = (JSONObject) o1;
+                String idSolImagen = (String) jsonObj.get("idSolImagen");
+                String nombre = (String) jsonObj.get("nombre");
+                String descripcion = (String) jsonObj.get("descripcion");
+                String seccion = (String) jsonObj.get("seccion");
+                String imagen = (String) jsonObj.get("imagen");
+                imagenDto.setIdSolImagen(Long.parseLong(idSolImagen));
+                imagenDto.setNombre(nombre);
+                imagenDto.setDescripcion(descripcion);
+                imagenDto.setSeccion(seccion);
+                imagenDto.setImagen(imagen);
+
+                iSolImagenDao.save(imagenDto);
+            });
+            */
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, idSolicitud.toString());
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, null);
+        }
+    }
+}
+
+
+
+    /*
+
+    @RequestMapping(value = "guardarSolicitudProducto", method = RequestMethod.POST)
+    public ApiResponse<String> guardarSolicitudProducto(@RequestBody SolicitudCompletaDto solicitudCompleto) {
+        try {
+            final Long idSolicitud;
+            TabSolicitudDto solicitud = new TabSolicitudDto();
             solicitud.setIdSolicitud(solicitudCompleto.getIdSolicitud());
             solicitud.setSemana(solicitudCompleto.getNroSemana());
             solicitud.setExportador(solicitudCompleto.getExportador());
@@ -163,7 +554,7 @@ public class SolicitudWs  {
             idSolicitud = iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
             String ids = idSolicitud.toString();
 
-            SolContenedorDto solContenedor = new SolContenedorDto();
+            TabSolContenedorDto solContenedor = new TabSolContenedorDto();
             solContenedor.setIdSolContenedor(solicitudCompleto.getIdSolContenedor());
             solContenedor.setIdSolicitud(idSolicitud);
             solContenedor.setNumeroContenedor(solicitudCompleto.getNumeroContenedor());
@@ -182,8 +573,8 @@ public class SolicitudWs  {
             solContenedor = iSolContenedorDao.save(solContenedor, solicitudCompleto.getEstRegCon());
             solicitudCompleto.setIdSolContenedor(solContenedor.getIdSolContenedor());
             //ids = ids + "," + solContenedor.getIdSolContenedor().toString();
-            /*
-            SolSelloLlegadaDto solSelloLlegada = new SolSelloLlegadaDto();
+
+            TabSolSelloLlegadaDto solSelloLlegada = new TabSolSelloLlegadaDto();
             solSelloLlegada.setIdSolSelloLlegada(solicitudCompleto.getIdSolSelloLlegada());
             solSelloLlegada.setIdSolicitud(idSolicitud);
             solSelloLlegada.setCandadoPlastico(solicitudCompleto.getCandadoPlastico());
@@ -203,7 +594,7 @@ public class SolicitudWs  {
             solicitudCompleto.setIdSolSelloLlegada(solSelloLlegada.getIdSolSelloLlegada());
             //ids = ids + "," + solSelloLlegada.getIdSolSelloLlegada().toString();
 
-            SolSelloInstaladoDto solSelloInstalado = new SolSelloInstaladoDto();
+            TabSolSelloInstaladoDto solSelloInstalado = new TabSolSelloInstaladoDto();
             solSelloInstalado.setIdSolSelloInstalado(solicitudCompleto.getIdSolSelloInstalado());
             solSelloInstalado.setIdSolicitud(idSolicitud);
             solSelloInstalado.setCandadoNaviera(solicitudCompleto.getCandadoNaviera());
@@ -224,7 +615,7 @@ public class SolicitudWs  {
             //ids = ids + "," + solSelloInstalado.getIdSolSelloInstalado().toString();
 
             solicitudCompleto.getListSolProductorDto().forEach(productor ->{
-                SolTransportistaDto solTransportista = new SolTransportistaDto();
+                TabSolTransportistaDto solTransportista = new TabSolTransportistaDto();
                 solTransportista.setIdSolTransportista(productor.getSolTransportistaDto().getIdSolTransportista());
                 solTransportista.setIdSolProductor(productor.getSolTransportistaDto().getIdSolProductor());
                 solTransportista.setIdSolicitud(idSolicitud);
@@ -240,7 +631,7 @@ public class SolicitudWs  {
                 //solicitudCompleto.setIdSolTransportista(solTransportista.getIdSolTransportista());
                 //ids = ids + "," + solTransportista.getIdSolTransportista().toString();
 
-                SolProcesoDto solProceso = new SolProcesoDto();
+                TabSolProcesoDto solProceso = new TabSolProcesoDto();
                 solProceso.setIdSolProceso(productor.getSolProcesoDto().getIdSolProceso());
                 solProceso.setIdSolicitud(idSolicitud);
                 solProceso.setIdSolProductor(productor.getSolProcesoDto().getIdSolProductor());
@@ -257,7 +648,7 @@ public class SolicitudWs  {
                 //solicitudCompleto.setIdSolProceso(solProceso.getIdSolProceso());
                 //ids = ids + "," + solProceso.getIdSolProceso().toString();
 
-                SolControlPesoDto solControlPeso = new SolControlPesoDto();
+                TabSolControlPesoDto solControlPeso = new TabSolControlPesoDto();
                 solControlPeso.setIdSolControlPeso(productor.getSolControlPesoDto().getIdSolControlPeso());
                 solControlPeso.setIdSolicitud(idSolicitud);
                 solControlPeso.setIdSolProductor(productor.getSolControlPesoDto().getIdSolProductor());
@@ -270,7 +661,7 @@ public class SolicitudWs  {
                 //solicitudCompleto.setIdSolControlPeso(solControlPeso.getIdSolControlPeso());
                 //ids = ids + "," + solControlPeso.getIdSolControlPeso().toString();
 
-                SolFincaDto solFinca = new SolFincaDto();
+                TabSolFincaDto solFinca = new TabSolFincaDto();
                 solFinca.setIdSolFinca(productor.getSolFincaDto().getIdSolFinca());
                 solFinca.setIdSolicitud(idSolicitud);
                 solFinca.setIdSolProductor(productor.getSolFincaDto().getIdSolProductor());
@@ -289,9 +680,9 @@ public class SolicitudWs  {
                 //solicitudCompleto.setIdSolFinca(solFinca.getIdSolFinca());
                 //ids = ids + "," + solFinca.getIdSolFinca().toString();
 
-                productor.getListSolCalidadDto().forEach(calidad ->{
+                productor.getListTabSolCalidadDto().forEach(calidad ->{
 
-                    SolCalidadDto solCalidad = new SolCalidadDto();
+                    TabSolCalidadDto solCalidad = new TabSolCalidadDto();
                     solCalidad.setIdSolCalidad(calidad.getIdSolCalidad());
                     solCalidad.setIdSolicitud(idSolicitud);
 
@@ -313,8 +704,8 @@ public class SolicitudWs  {
                     //solicitudCompleto.setIdSolCalidad(solCalidad.getIdSolCalidad());
                     //ids = ids + "," + solCalidad.getIdSolCalidad().toString();
 
-                    calidad.getListSolCalDefectoSeleccionDto().forEach(defecto ->{
-                        SolCalDefectoSeleccionDto solDefectoSeleccion = new SolCalDefectoSeleccionDto();
+                    calidad.getListTabSolCalDefectoSeleccionDto().forEach(defecto ->{
+                        TabSolCalDefectoSeleccionDto solDefectoSeleccion = new TabSolCalDefectoSeleccionDto();
                         solDefectoSeleccion.setIdSolCalDefectoSeleccion(defecto.getIdSolCalDefectoSeleccion());
                         solDefectoSeleccion.setIdSolicitud(idSolicitud);
 
@@ -370,86 +761,86 @@ public class SolicitudWs  {
                     });
 
 
-                    SolCalCalibreDto solCalCalibreDto = new SolCalCalibreDto();
-                    solCalCalibreDto.setIdSolCalCalibre(solCalCalibreDto.getIdSolCalCalibre());
-                    solCalCalibreDto.setIdSolicitud(idSolicitud);
-                    solCalCalibreDto.setCalUg(calidad.getSolCalCalibreDto().getCalUg());
-                    solCalCalibreDto.setCalOg(calidad.getSolCalCalibreDto().getCalOg());
-                    solCalCalibreDto.setCal37(calidad.getSolCalCalibreDto().getCal37());
-                    solCalCalibreDto.setCal38(calidad.getSolCalCalibreDto().getCal38());
-                    solCalCalibreDto.setCal39(calidad.getSolCalCalibreDto().getCal39());
-                    solCalCalibreDto.setCal40(calidad.getSolCalCalibreDto().getCal40());
-                    solCalCalibreDto.setCal41(calidad.getSolCalCalibreDto().getCal41());
-                    solCalCalibreDto.setCal42(calidad.getSolCalCalibreDto().getCal42());
-                    solCalCalibreDto.setCal43(calidad.getSolCalCalibreDto().getCal43());
-                    solCalCalibreDto.setCal44(calidad.getSolCalCalibreDto().getCal44());
-                    solCalCalibreDto.setCal45(calidad.getSolCalCalibreDto().getCal45());
-                    solCalCalibreDto.setCal46(calidad.getSolCalCalibreDto().getCal46());
-                    solCalCalibreDto.setCal47(calidad.getSolCalCalibreDto().getCal47());
-                    solCalCalibreDto.setCal48(calidad.getSolCalCalibreDto().getCal48());
-                    solCalCalibreDto.setCal49(calidad.getSolCalCalibreDto().getCal49());
-                    solCalCalibreDto.setCal50(calidad.getSolCalCalibreDto().getCal50());
-                    solCalCalibreDto.setCal51(calidad.getSolCalCalibreDto().getCal51());
-                    solCalCalibreDto.setCal52(calidad.getSolCalCalibreDto().getCal52());
-                    solCalCalibreDto.setCal53(calidad.getSolCalCalibreDto().getCal53());
-                    solCalCalibreDto.setCal54(calidad.getSolCalCalibreDto().getCal54());
-                    solCalCalibreDto = iSolCalCalibreDao.save(solCalCalibreDto);
+                    TabSolCalCalibreDto tabSolCalCalibreDto = new TabSolCalCalibreDto();
+                    tabSolCalCalibreDto.setIdSolCalCalibre(tabSolCalCalibreDto.getIdSolCalCalibre());
+                    tabSolCalCalibreDto.setIdSolicitud(idSolicitud);
+                    tabSolCalCalibreDto.setCalUg(calidad.getTabSolCalCalibreDto().getCalUg());
+                    tabSolCalCalibreDto.setCalOg(calidad.getTabSolCalCalibreDto().getCalOg());
+                    tabSolCalCalibreDto.setCal37(calidad.getTabSolCalCalibreDto().getCal37());
+                    tabSolCalCalibreDto.setCal38(calidad.getTabSolCalCalibreDto().getCal38());
+                    tabSolCalCalibreDto.setCal39(calidad.getTabSolCalCalibreDto().getCal39());
+                    tabSolCalCalibreDto.setCal40(calidad.getTabSolCalCalibreDto().getCal40());
+                    tabSolCalCalibreDto.setCal41(calidad.getTabSolCalCalibreDto().getCal41());
+                    tabSolCalCalibreDto.setCal42(calidad.getTabSolCalCalibreDto().getCal42());
+                    tabSolCalCalibreDto.setCal43(calidad.getTabSolCalCalibreDto().getCal43());
+                    tabSolCalCalibreDto.setCal44(calidad.getTabSolCalCalibreDto().getCal44());
+                    tabSolCalCalibreDto.setCal45(calidad.getTabSolCalCalibreDto().getCal45());
+                    tabSolCalCalibreDto.setCal46(calidad.getTabSolCalCalibreDto().getCal46());
+                    tabSolCalCalibreDto.setCal47(calidad.getTabSolCalCalibreDto().getCal47());
+                    tabSolCalCalibreDto.setCal48(calidad.getTabSolCalCalibreDto().getCal48());
+                    tabSolCalCalibreDto.setCal49(calidad.getTabSolCalCalibreDto().getCal49());
+                    tabSolCalCalibreDto.setCal50(calidad.getTabSolCalCalibreDto().getCal50());
+                    tabSolCalCalibreDto.setCal51(calidad.getTabSolCalCalibreDto().getCal51());
+                    tabSolCalCalibreDto.setCal52(calidad.getTabSolCalCalibreDto().getCal52());
+                    tabSolCalCalibreDto.setCal53(calidad.getTabSolCalCalibreDto().getCal53());
+                    tabSolCalCalibreDto.setCal54(calidad.getTabSolCalCalibreDto().getCal54());
+                    tabSolCalCalibreDto = iSolCalCalibreDao.save(tabSolCalCalibreDto);
                     //solicitudCompleto.setIdSolPackingList(solPackingList.getIdSolPackingList());
                     //ids = ids + "," + solCalCalibreDto.getIdSolCalCalibre().toString();
 
-                    SolCalLargoDedoDto solCalLargoDedoDto = new SolCalLargoDedoDto();
-                    solCalLargoDedoDto.setIdSolCalLargoDedo(solCalLargoDedoDto.getIdSolCalLargoDedo());
-                    solCalLargoDedoDto.setIdSolicitud(idSolicitud);
-                    solCalLargoDedoDto.setLar8(calidad.getSolCalLargoDedoDto().getLar8());
-                    solCalLargoDedoDto.setLar8_2(calidad.getSolCalLargoDedoDto().getLar8_2());
-                    solCalLargoDedoDto.setLar8_4(calidad.getSolCalLargoDedoDto().getLar8_4());
-                    solCalLargoDedoDto.setLar8_6(calidad.getSolCalLargoDedoDto().getLar8_6());
-                    solCalLargoDedoDto.setLar8_8(calidad.getSolCalLargoDedoDto().getLar8_8());
-                    solCalLargoDedoDto.setLar9(calidad.getSolCalLargoDedoDto().getLar9());
-                    solCalLargoDedoDto.setLar9_2(calidad.getSolCalLargoDedoDto().getLar9_2());
-                    solCalLargoDedoDto.setLar9_4(calidad.getSolCalLargoDedoDto().getLar9_4());
-                    solCalLargoDedoDto.setLar9_6(calidad.getSolCalLargoDedoDto().getLar9_6());
-                    solCalLargoDedoDto.setLar9_8(calidad.getSolCalLargoDedoDto().getLar9_8());
-                    solCalLargoDedoDto.setLar10(calidad.getSolCalLargoDedoDto().getLar10());
-                    solCalLargoDedoDto.setLar10_2(calidad.getSolCalLargoDedoDto().getLar10_2());
-                    solCalLargoDedoDto.setLar10_4(calidad.getSolCalLargoDedoDto().getLar10_4());
-                    solCalLargoDedoDto.setLar10_6(calidad.getSolCalLargoDedoDto().getLar10_6());
-                    solCalLargoDedoDto.setLar10_8(calidad.getSolCalLargoDedoDto().getLar10_8());
-                    solCalLargoDedoDto.setLar11(calidad.getSolCalLargoDedoDto().getLar11());
-                    solCalLargoDedoDto.setLar11_2(calidad.getSolCalLargoDedoDto().getLar11_2());
-                    solCalLargoDedoDto.setLar11_4(calidad.getSolCalLargoDedoDto().getLar11_4());
-                    solCalLargoDedoDto.setLar11_6(calidad.getSolCalLargoDedoDto().getLar11_6());
-                    solCalLargoDedoDto.setLar11_8(calidad.getSolCalLargoDedoDto().getLar11_8());
-                    solCalLargoDedoDto = iSolCalLargoDedoDao.save(solCalLargoDedoDto);
+                    TabSolCalLargoDedoDto tabSolCalLargoDedoDto = new TabSolCalLargoDedoDto();
+                    tabSolCalLargoDedoDto.setIdSolCalLargoDedo(tabSolCalLargoDedoDto.getIdSolCalLargoDedo());
+                    tabSolCalLargoDedoDto.setIdSolicitud(idSolicitud);
+                    tabSolCalLargoDedoDto.setLar8(calidad.getTabSolCalLargoDedoDto().getLar8());
+                    tabSolCalLargoDedoDto.setLar8_2(calidad.getTabSolCalLargoDedoDto().getLar8_2());
+                    tabSolCalLargoDedoDto.setLar8_4(calidad.getTabSolCalLargoDedoDto().getLar8_4());
+                    tabSolCalLargoDedoDto.setLar8_6(calidad.getTabSolCalLargoDedoDto().getLar8_6());
+                    tabSolCalLargoDedoDto.setLar8_8(calidad.getTabSolCalLargoDedoDto().getLar8_8());
+                    tabSolCalLargoDedoDto.setLar9(calidad.getTabSolCalLargoDedoDto().getLar9());
+                    tabSolCalLargoDedoDto.setLar9_2(calidad.getTabSolCalLargoDedoDto().getLar9_2());
+                    tabSolCalLargoDedoDto.setLar9_4(calidad.getTabSolCalLargoDedoDto().getLar9_4());
+                    tabSolCalLargoDedoDto.setLar9_6(calidad.getTabSolCalLargoDedoDto().getLar9_6());
+                    tabSolCalLargoDedoDto.setLar9_8(calidad.getTabSolCalLargoDedoDto().getLar9_8());
+                    tabSolCalLargoDedoDto.setLar10(calidad.getTabSolCalLargoDedoDto().getLar10());
+                    tabSolCalLargoDedoDto.setLar10_2(calidad.getTabSolCalLargoDedoDto().getLar10_2());
+                    tabSolCalLargoDedoDto.setLar10_4(calidad.getTabSolCalLargoDedoDto().getLar10_4());
+                    tabSolCalLargoDedoDto.setLar10_6(calidad.getTabSolCalLargoDedoDto().getLar10_6());
+                    tabSolCalLargoDedoDto.setLar10_8(calidad.getTabSolCalLargoDedoDto().getLar10_8());
+                    tabSolCalLargoDedoDto.setLar11(calidad.getTabSolCalLargoDedoDto().getLar11());
+                    tabSolCalLargoDedoDto.setLar11_2(calidad.getTabSolCalLargoDedoDto().getLar11_2());
+                    tabSolCalLargoDedoDto.setLar11_4(calidad.getTabSolCalLargoDedoDto().getLar11_4());
+                    tabSolCalLargoDedoDto.setLar11_6(calidad.getTabSolCalLargoDedoDto().getLar11_6());
+                    tabSolCalLargoDedoDto.setLar11_8(calidad.getTabSolCalLargoDedoDto().getLar11_8());
+                    tabSolCalLargoDedoDto = iSolCalLargoDedoDao.save(tabSolCalLargoDedoDto);
                     //solicitudCompleto.setIdSolPackingList(solPackingList.getIdSolPackingList());
                     //ids = ids + "," + solCalLargoDedoDto.getIdSolCalLargoDedo().toString();
 
-                    calidad.getListSolCalPesoClusterDto().forEach(peso ->{
-                        SolCalPesoClusterDto solCalPesoClusterDto = new SolCalPesoClusterDto();
-                        solCalPesoClusterDto.setIdSolCalPesoCluster(peso.getIdSolCalPesoCluster());
-                        solCalPesoClusterDto.setIdSolicitud(idSolicitud);
+                    calidad.getListTabSolCalPesoClusterDto().forEach(peso ->{
+                        TabSolCalPesoClusterDto tabSolCalPesoClusterDto = new TabSolCalPesoClusterDto();
+                        tabSolCalPesoClusterDto.setIdSolCalPesoCluster(peso.getIdSolCalPesoCluster());
+                        tabSolCalPesoClusterDto.setIdSolicitud(idSolicitud);
 
-                        solCalPesoClusterDto.setNumero(peso.getNumero());
-                        solCalPesoClusterDto.setPeso(peso.getPeso());
-                        solCalPesoClusterDto = iSolCalPesoClusterDao.save(solCalPesoClusterDto);
+                        tabSolCalPesoClusterDto.setNumero(peso.getNumero());
+                        tabSolCalPesoClusterDto.setPeso(peso.getPeso());
+                        tabSolCalPesoClusterDto = iSolCalPesoClusterDao.save(tabSolCalPesoClusterDto);
                         //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
                         ////ids = ids + "," + solCalPesoClusterDto.getIdSolCalPesoCluster().toString();
                     });
 
-                    calidad.getListSolCalPackingListDto().forEach(packing ->{
-                        SolCalPackingListDto solCalPackingListDto = new SolCalPackingListDto();
-                        solCalPackingListDto.setIdSolCalPackingList(packing.getIdSolCalPackingList());
-                        solCalPackingListDto.setIdSolicitud(idSolicitud);
+                    calidad.getListTabSolCalPackingListDto().forEach(packing ->{
+                        TabSolCalPackingListDto tabSolCalPackingListDto = new TabSolCalPackingListDto();
+                        tabSolCalPackingListDto.setIdSolCalPackingList(packing.getIdSolCalPackingList());
+                        tabSolCalPackingListDto.setIdSolicitud(idSolicitud);
 
-                        solCalPackingListDto.setNumeracion(packing.getNumeracion());
-                        solCalPackingListDto.setSticker(packing.getSticker());
-                        solCalPackingListDto = iSolCalPackingListDao.save(solCalPackingListDto);
+                        tabSolCalPackingListDto.setNumeracion(packing.getNumeracion());
+                        tabSolCalPackingListDto.setSticker(packing.getSticker());
+                        tabSolCalPackingListDto = iSolCalPackingListDao.save(tabSolCalPackingListDto);
                         //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
                         ////ids = ids + "," + solCalPackingListDto.getIdSolCalPackingList().toString();
                     });
                 });
 
-                SolConsolidadoGanchoDto solConsolidadoGancho = new SolConsolidadoGanchoDto();
+                TabSolConsolidadoGanchoDto solConsolidadoGancho = new TabSolConsolidadoGanchoDto();
                 solConsolidadoGancho.setIdSolConsolidadoGancho(productor.getSolConsolidadoGanchoDto().getIdSolConsolidadoGancho());
                 solConsolidadoGancho.setIdSolicitud(idSolicitud);
 
@@ -482,46 +873,23 @@ public class SolicitudWs  {
                 //solicitudCompleto.setIdSolConsolidadoGancho(solConsolidadoGancho.getIdSolConsolidadoGancho());
                 //ids = ids + "," + solConsolidadoGancho.getIdSolConsolidadoGancho().toString();
 
-                solConsolidadoGancho.getListSolConCalibracionFrutaDto().forEach(fruta ->{
-                    SolConCalibracionFrutaDto solConCalibracionFrutaDto = new SolConCalibracionFrutaDto();
-                    solConCalibracionFrutaDto.setIdSolConCalibracionFruta(fruta.getIdSolConCalibracionFruta());
-                    solConCalibracionFrutaDto.setIdSolicitud(idSolicitud);
+                solConsolidadoGancho.getListTabSolConCalibracionFrutaDto().forEach(fruta ->{
+                    TabSolConCalibracionFrutaDto tabSolConCalibracionFrutaDto = new TabSolConCalibracionFrutaDto();
+                    tabSolConCalibracionFrutaDto.setIdSolConCalibracionFruta(fruta.getIdSolConCalibracionFruta());
+                    tabSolConCalibracionFrutaDto.setIdSolicitud(idSolicitud);
 
-                    solConCalibracionFrutaDto.setNumSemana(fruta.getNumSemana());
-                    solConCalibracionFrutaDto.setColor(fruta.getColor());
-                    solConCalibracionFrutaDto.setNumRacimo(fruta.getNumRacimo());
-                    solConCalibracionFrutaDto = iSolConCalibracionFrutaDao.save(solConCalibracionFrutaDto);
+                    tabSolConCalibracionFrutaDto.setNumSemana(fruta.getNumSemana());
+                    tabSolConCalibracionFrutaDto.setColor(fruta.getColor());
+                    tabSolConCalibracionFrutaDto.setNumRacimo(fruta.getNumRacimo());
+                    tabSolConCalibracionFrutaDto = iSolConCalibracionFrutaDao.save(tabSolConCalibracionFrutaDto);
                     //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
                     //ids = ids + "," + solConCalibracionFrutaDto.getIdSolConCalibracionFruta().toString();
                 });
             });
-            */
-            /*
-            iSolImagenDao.delete(idSolicitud);
-            solicitudCompleto.getSolImagenes().forEach(ima ->{
-                SolImagenDto imagenDto = new SolImagenDto();
-                imagenDto.setIdSolicitud(idSolicitud);
 
-                Object o1 = JSONValue.parse(ima);
-                JSONObject jsonObj = (JSONObject) o1;
-                String idSolImagen = (String) jsonObj.get("idSolImagen");
-                String nombre = (String) jsonObj.get("nombre");
-                String descripcion = (String) jsonObj.get("descripcion");
-                String seccion = (String) jsonObj.get("seccion");
-                String imagen = (String) jsonObj.get("imagen");
-                imagenDto.setIdSolImagen(Long.parseLong(idSolImagen));
-                imagenDto.setNombre(nombre);
-                imagenDto.setDescripcion(descripcion);
-                imagenDto.setSeccion(seccion);
-                imagenDto.setImagen(imagen);
-
-                iSolImagenDao.save(imagenDto);
-            });
-            */
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, ids);
         } catch (Exception e) {
-            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, null);
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, null);
         }
     }
-
-}
+    */

@@ -1,7 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolCalCalibreDto;
-import com.inspector.dto.sol.SolCalPesoClusterDto;
+import com.inspector.dto.sol.TabSolCalPesoClusterDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -10,6 +9,5 @@ import com.inspector.dto.sol.SolCalPesoClusterDto;
  */
 public interface ISolCalPesoClusterDao {
 
-    SolCalPesoClusterDto save(SolCalPesoClusterDto solCalPesoClusterDto);
-
+    public TabSolCalPesoClusterDto save(TabSolCalPesoClusterDto solCalPesoCluster, String estReg);
 }

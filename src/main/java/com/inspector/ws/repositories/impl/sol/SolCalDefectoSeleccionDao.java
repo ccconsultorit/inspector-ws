@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolCalDefectoSeleccionDto;
+import com.inspector.dto.sol.TabSolCalDefectoSeleccionDto;
+import com.inspector.dto.sol.TabSolCalidadDto;
 import com.inspector.ws.repositories.sol.ISolCalDefectoSeleccionDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,15 +19,15 @@ public class SolCalDefectoSeleccionDao implements ISolCalDefectoSeleccionDao {
     private ISolCalDefectoSeleccionDao iSolDefectoSeleccionDao;
 
     @Override
-    public SolCalDefectoSeleccionDto save(SolCalDefectoSeleccionDto solCalDefectoSeleccion) {
-        if (solCalDefectoSeleccion.getIdSolCalDefectoSeleccion() == 0) {
+    public TabSolCalDefectoSeleccionDto save(TabSolCalDefectoSeleccionDto solCalDefectoSeleccion, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solCalDefectoSeleccion);
         } else {
             return update(solCalDefectoSeleccion);
         }
     }
 
-    private SolCalDefectoSeleccionDto insert(SolCalDefectoSeleccionDto solDefectoSeleccion) {
+    private TabSolCalDefectoSeleccionDto insert(TabSolCalDefectoSeleccionDto solDefectoSeleccion) {
         create.transaction(x -> {
             solDefectoSeleccion.setIdSolCalDefectoSeleccion(DSL.using(x).nextval(SEC_SOL_DEFECTO_SELECCION));
             DSL.using(x).newRecord(TAB_SOL_CAL_DEFECTO_SELECCION, solDefectoSeleccion).insert();
@@ -34,7 +35,7 @@ public class SolCalDefectoSeleccionDao implements ISolCalDefectoSeleccionDao {
         return solDefectoSeleccion;
     }
 
-    public SolCalDefectoSeleccionDto update(SolCalDefectoSeleccionDto solDefectoSeleccion) {
+    public TabSolCalDefectoSeleccionDto update(TabSolCalDefectoSeleccionDto solDefectoSeleccion) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_CAL_DEFECTO_SELECCION, solDefectoSeleccion).update();
         });

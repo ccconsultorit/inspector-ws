@@ -1,13 +1,10 @@
 package com.inspector.dto.sol;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.inspector.dto.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Getter
@@ -16,12 +13,12 @@ public class SolicitudCompletaDto  {
 
     private Long idSolicitud;
     int nroSemana;
-    String exportador;
-    String cliente;
     String tipoSolicitud;
+    String cliente;
+    String exportador;
     String productor;
-    String codigoProductor;
-    String codigoMagap;
+    String codProductor;
+    String codMagap;
     String puertoEmbarque;
     String zona;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
@@ -29,7 +26,7 @@ public class SolicitudCompletaDto  {
     protected LocalDateTime fechaInicio;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaTermino;
+    protected LocalDateTime fechaFin;
     String contenedor;
     String nomEvaluador01;
     String ciEvaluador01;
@@ -39,7 +36,7 @@ public class SolicitudCompletaDto  {
     String estRegSol;
 
     private Long idSolContenedor;
-    String numeroContenedor;
+    String nroContenedor;
     String vapor;
     String booking;
     String tipoContenedor;
@@ -55,40 +52,115 @@ public class SolicitudCompletaDto  {
     protected LocalDateTime fechaCierre;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime fechaSalida;
-    String observacionC;
+    String observacionCon;
     String estRegCon;
 
-    private Long idSolSelloLlegada;
+    private Long idSolSelloArribo;
     String candadoPlastico;
     String candadoBotella;
     String stickerLlegada;
     String rastreoSatelital;
     String selloCadena;
-    String stickerNavieraVentilador;
-    String selloLlegadaInterno01;
-    String selloLlegadaInterno02;
-    String stickerPatioVentoleraExterna01;
-    String stickerPatioVentoleraExterna02;
-    String nroSerieFunda;
+    String stickerNaviera;
+    String selloLlegada1;
+    String selloLlegada2;
+    String stickerPatioVentolera1;
+    String stickerPatioVentolera2;
+    String nroSerie;
     String candadoExportador;
-    String observacionSL;
+    String observacionSA;
+    String estRegSA;
 
     private Long idSolSelloInstalado;
     String candadoNaviera;
     String selloVerificador;
     String cableNaviera;
     String cableExportadora;
-    String stickerNaviera;
+    //String stickerNaviera;
     String stickerExportadora;
     String rastreo;
     String termografo01;
-    String ubicacionTermografo01;
+    String ubicacion01;
     String termografo02;
-    String ubicacionTermografo02;
+    String ubicacion02;
     String filtroProporcionado;
     String termoking;
+    String estRegSI;
 
-    List<SolProductorDto> listSolProductorDto;
+    private Long idSolTransportista;
+    String compania;
+    String chofer;
+    String cedula;
+    String celular;
+    String placa;
+    String colorCabezal;
+    String marcaCabezal;
+    String observacionTra;
+    String estRegTra;
+
+    private Long idSolProceso;
+    int cajaProcesada;
+    String tipoFruta;
+    String tipoFunda;
+    String densidadFunda;
+    String tipoCaja;
+    String tipoPresentacion;
+    String tipoEstiba;
+    String tiempoDescarga;
+    String tipoCantulina;
+    String estRegPro;
+
+    private Long idSolControlPeso;
+    String balanzaRepesa;
+    String condicionBalanza;
+    String tipoBalanza;
+    double pesoNetoFruta;
+    String observacionCtr;
+    String estRegCtr;
+
+    private Long idSolFinca;
+    String nombre;
+    String fuenteAgua;
+    String aguaCorrida;
+    String estadoPiso;
+    String cableVia;
+    String estadoTecho;
+    String estadoTina;
+    String fumigacion;
+    String lavadoRacimo;
+    String embudo;
+    String divisionTina;
+    String estRegFin;
+
+    private Long idSolConsolidadoGancho;
+    int enFunde;
+    int racimoCosechado;
+    int racimoRechazado;
+    int racimoProcesado;
+    int mutante;
+    int specklin;
+    int puntaAmarilla;
+    int crema;
+    int manchaRoja;
+    int alterado;
+    int pobre;
+    int caido;
+    int sobreGrado;
+    int bajoGrado;
+    int mosaico;
+    int rasgunoAnimal;
+    int explosivo;
+    int herwinea;
+    int sinCinta;
+    int cochinilla;
+    int escama;
+    int fumagina;
+    int pesonudo;
+    String observacionCG;
+    String estRegCG;
+
+    List<SolCalidadDto> listSolCalidadDto;
+    SolConsolidadoGanchoDto solConsolidadoGanchoDto;
 
     public SolicitudCompletaDto() {}
 

@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolConCalibracionFrutaDto;
+import com.inspector.dto.sol.TabSolConCalibracionFrutaDto;
+import com.inspector.dto.sol.TabSolFincaDto;
 import com.inspector.ws.repositories.sol.ISolConCalibracionFrutaDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -17,15 +18,15 @@ public class SolConCalibracionFrutaDao implements ISolConCalibracionFrutaDao {
     private DSLContext create;
 
     @Override
-    public SolConCalibracionFrutaDto save(SolConCalibracionFrutaDto solConCalibracionFruta) {
-        if (solConCalibracionFruta.getIdSolConCalibracionFruta() == 0) {
+    public TabSolConCalibracionFrutaDto save(TabSolConCalibracionFrutaDto solConCalibracionFruta, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solConCalibracionFruta);
         } else {
             return update(solConCalibracionFruta);
         }
     }
 
-    private SolConCalibracionFrutaDto insert(SolConCalibracionFrutaDto solConCalibracionFruta) {
+    private TabSolConCalibracionFrutaDto insert(TabSolConCalibracionFrutaDto solConCalibracionFruta) {
         create.transaction(x -> {
             solConCalibracionFruta.setIdSolConCalibracionFruta(DSL.using(x).nextval(SEC_SOL_CON_CALIBRACION_FRUTA));
             DSL.using(x).newRecord(TAB_SOL_CON_CALIBRACION_FRUTA, solConCalibracionFruta).insert();
@@ -33,7 +34,7 @@ public class SolConCalibracionFrutaDao implements ISolConCalibracionFrutaDao {
         return solConCalibracionFruta;
     }
 
-    public SolConCalibracionFrutaDto update(SolConCalibracionFrutaDto solConCalibracionFruta) {
+    public TabSolConCalibracionFrutaDto update(TabSolConCalibracionFrutaDto solConCalibracionFruta) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_CON_CALIBRACION_FRUTA, solConCalibracionFruta).update();
         });

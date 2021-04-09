@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class SolicitudDto extends BaseSolicitudDto {
+public class TabSolicitudDto extends BaseSolicitudDto {
 
     private Long idSolicitud;
     int semana;
@@ -33,7 +33,7 @@ public class SolicitudDto extends BaseSolicitudDto {
     String ciEvaluador02;
     String observacion;
 
-    public SolicitudDto() {}
+    public TabSolicitudDto() {}
 
     @Override
     public Long getId() {

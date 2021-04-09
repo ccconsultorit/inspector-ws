@@ -1,8 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolContenedorDto;
-
-import java.util.List;
+import com.inspector.dto.sol.TabSolContenedorDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -11,6 +9,6 @@ import java.util.List;
  */
 public interface ISolContenedorDao {
 
-    SolContenedorDto save(SolContenedorDto solContenedor, String estRegCon);
+    TabSolContenedorDto save(TabSolContenedorDto solContenedor, String estRegCon);
 
 }

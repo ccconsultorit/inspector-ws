@@ -1,18 +1,15 @@
 package com.inspector.ws.repositories.impl.sol;
 
 import com.inspector.dto.sol.SolicitudCompletaDto;
-import com.inspector.dto.sol.SolicitudDto;
+import com.inspector.dto.sol.TabSolicitudDto;
 import com.inspector.enumaraciones.EstadoEnum;
 import com.inspector.ws.repositories.sol.ISolicitudDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
-import org.jooq.impl.SQLDataType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.inspector.ws.db.schema.tables.TabSolicitud.TAB_SOLICITUD;
@@ -26,9 +23,6 @@ import static com.inspector.ws.db.schema.tables.TabSolFinca.TAB_SOL_FINCA;
 import static com.inspector.ws.db.schema.tables.TabSolCalidad.TAB_SOL_CALIDAD;
 import static com.inspector.ws.db.schema.tables.TabSolConsolidadoGancho.TAB_SOL_CONSOLIDADO_GANCHO;
 import static com.inspector.ws.db.schema.tables.TabSolCalDefectoSeleccion.TAB_SOL_CAL_DEFECTO_SELECCION;
-import static com.inspector.ws.db.schema.tables.TabSolImagen.TAB_SOL_IMAGEN;
-
-import static com.inspector.ws.db.schema.Sequences.SEC_SOLICITUD;
 
 @Repository
 public class SolicitudDao implements ISolicitudDao {
@@ -43,10 +37,10 @@ public class SolicitudDao implements ISolicitudDao {
      * @return Listado SolicitudDto
      */
     @Override
-    public List<SolicitudDto> getAll() {
+    public List<TabSolicitudDto> getAll() {
         return create.selectFrom(TAB_SOLICITUD)
                 .where(TAB_SOLICITUD.ESTADO.eq(EstadoEnum.A.name()))
-                .fetchInto(SolicitudDto.class);
+                .fetchInto(TabSolicitudDto.class);
     }
 
     /**
@@ -55,10 +49,10 @@ public class SolicitudDao implements ISolicitudDao {
      * @return SolicitudDto
      */
     @Override
-    public SolicitudDto getSolicitudById(Long idSolicitud) {
+    public TabSolicitudDto getSolicitudById(Long idSolicitud) {
         return create.selectFrom(TAB_SOLICITUD)
                 .where(TAB_SOLICITUD.ID_SOLICITUD.eq(idSolicitud))
-                .fetchOneInto(SolicitudDto.class);
+                .fetchOneInto(TabSolicitudDto.class);
     }
 
 
@@ -94,7 +88,7 @@ public class SolicitudDao implements ISolicitudDao {
     }
 
     @Override
-    public Long save(SolicitudDto solicitud, String estRegSol) {
+    public Long save(TabSolicitudDto solicitud, String estRegSol) {
         if (estRegSol.equals("NUE")) {
             return insert(solicitud);
         } else {
@@ -102,7 +96,7 @@ public class SolicitudDao implements ISolicitudDao {
         }
     }
 
-    private Long insert(SolicitudDto solicitud) {
+    private Long insert(TabSolicitudDto solicitud) {
         create.transaction(x -> {
             //solicitud.setIdSolicitud(DSL.using(x).nextval(SEC_SOLICITUD));
             DSL.using(x).newRecord(TAB_SOLICITUD, solicitud).insert();
@@ -110,7 +104,7 @@ public class SolicitudDao implements ISolicitudDao {
         return solicitud.getIdSolicitud();
     }
 
-    public Long update(SolicitudDto solicitud) {
+    public Long update(TabSolicitudDto solicitud) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOLICITUD, solicitud).update();
         });

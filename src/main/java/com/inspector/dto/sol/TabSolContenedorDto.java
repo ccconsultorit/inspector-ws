@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
-public class SolContenedorDto extends BaseDto {
+public class TabSolContenedorDto extends BaseDto {
 
     private Long idSolContenedor;
     private Long idSolicitud;
@@ -32,7 +32,7 @@ public class SolContenedorDto extends BaseDto {
     protected LocalDateTime fechaSalida;
     String observacion;
 
-    public SolContenedorDto() {}
+    public TabSolContenedorDto() {}
 
     @Override
     public Long getId() {

@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolCalPackingListDto;
+import com.inspector.dto.sol.TabSolCalPackingListDto;
+import com.inspector.dto.sol.TabSolCalPesoClusterDto;
 import com.inspector.ws.repositories.sol.ISolCalPackingListDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -17,15 +18,15 @@ public class SolCalPackingListDao implements ISolCalPackingListDao {
     private DSLContext create;
 
     @Override
-    public SolCalPackingListDto save(SolCalPackingListDto solCalPackingList) {
-        if (solCalPackingList.getIdSolCalPackingList() == 0) {
+    public TabSolCalPackingListDto save(TabSolCalPackingListDto solCalPackingList, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solCalPackingList);
         } else {
             return update(solCalPackingList);
         }
     }
 
-    private SolCalPackingListDto insert(SolCalPackingListDto solCalPackingList) {
+    private TabSolCalPackingListDto insert(TabSolCalPackingListDto solCalPackingList) {
         create.transaction(x -> {
             solCalPackingList.setIdSolCalPackingList(DSL.using(x).nextval(SEC_SOL_CAL_PACKING_LIST));
             DSL.using(x).newRecord(TAB_SOL_CAL_PACKING_LIST, solCalPackingList).insert();
@@ -33,7 +34,7 @@ public class SolCalPackingListDao implements ISolCalPackingListDao {
         return solCalPackingList;
     }
 
-    public SolCalPackingListDto update(SolCalPackingListDto solCalPackingList) {
+    public TabSolCalPackingListDto update(TabSolCalPackingListDto solCalPackingList) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_CAL_PACKING_LIST, solCalPackingList).update();
         });

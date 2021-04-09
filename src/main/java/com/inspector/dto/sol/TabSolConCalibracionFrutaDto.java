@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolConCalibracionFrutaDto {
+public class TabSolConCalibracionFrutaDto extends BaseDto {
 
     private Long idSolConCalibracionFruta;
     private Long idSolicitud;
@@ -15,6 +15,10 @@ public class SolConCalibracionFrutaDto {
     String color;
     int numRacimo;
 
-    public SolConCalibracionFrutaDto() {}
+    public TabSolConCalibracionFrutaDto() {}
 
+    @Override
+    public Long getId() {
+        return idSolConCalibracionFruta;
+    }
 }

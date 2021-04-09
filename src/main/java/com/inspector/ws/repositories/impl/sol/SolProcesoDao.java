@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolProcesoDto;
+import com.inspector.dto.sol.TabSolProcesoDto;
+import com.inspector.dto.sol.TabSolTransportistaDto;
 import com.inspector.ws.repositories.sol.ISolProcesoDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,15 +19,15 @@ public class SolProcesoDao implements ISolProcesoDao {
     private ISolProcesoDao iSolProcesoDao;
 
     @Override
-    public SolProcesoDto save(SolProcesoDto solProceso) {
-        if (solProceso.getIdSolProceso() == 0) {
+    public TabSolProcesoDto save(TabSolProcesoDto solProceso, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solProceso);
         } else {
             return update(solProceso);
         }
     }
 
-    private SolProcesoDto insert(SolProcesoDto solProceso) {
+    private TabSolProcesoDto insert(TabSolProcesoDto solProceso) {
         create.transaction(x -> {
             solProceso.setIdSolProceso(DSL.using(x).nextval(SEC_SOL_PROCESO));
             DSL.using(x).newRecord(TAB_SOL_PROCESO, solProceso).insert();
@@ -34,7 +35,7 @@ public class SolProcesoDao implements ISolProcesoDao {
         return solProceso;
     }
 
-    public SolProcesoDto update(SolProcesoDto solProceso) {
+    public TabSolProcesoDto update(TabSolProcesoDto solProceso) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_PROCESO, solProceso).update();
         });

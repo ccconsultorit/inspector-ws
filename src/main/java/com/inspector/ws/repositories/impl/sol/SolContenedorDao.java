@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolContenedorDto;
+import com.inspector.dto.sol.TabSolContenedorDto;
 import com.inspector.ws.repositories.sol.ISolContenedorDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,7 +18,7 @@ public class SolContenedorDao implements ISolContenedorDao {
     private ISolContenedorDao iSolContenedorDao;
 
     @Override
-    public SolContenedorDto save(SolContenedorDto solContenedor, String estRegCon) {
+    public TabSolContenedorDto save(TabSolContenedorDto solContenedor, String estRegCon) {
         if (estRegCon.equals("NUE")) {
             return insert(solContenedor);
         } else {
@@ -26,7 +26,7 @@ public class SolContenedorDao implements ISolContenedorDao {
         }
     }
 
-    private SolContenedorDto insert(SolContenedorDto solContenedor) {
+    private TabSolContenedorDto insert(TabSolContenedorDto solContenedor) {
         create.transaction(x -> {
             solContenedor.setIdSolContenedor(DSL.using(x).nextval(SEC_SOL_CONTENEDOR));
             DSL.using(x).newRecord(TAB_SOL_CONTENEDOR, solContenedor).insert();
@@ -34,7 +34,7 @@ public class SolContenedorDao implements ISolContenedorDao {
         return solContenedor;
     }
 
-    public SolContenedorDto update(SolContenedorDto solContenedor) {
+    public TabSolContenedorDto update(TabSolContenedorDto solContenedor) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_CONTENEDOR, solContenedor).update();
         });

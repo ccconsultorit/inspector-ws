@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolCalPesoClusterDto {
+public class TabSolCalPesoClusterDto extends BaseDto {
 
     private Long idSolCalPesoCluster;
     private Long idSolCalidad;
@@ -15,6 +15,10 @@ public class SolCalPesoClusterDto {
     int		numero	;
     double	peso	;
 
-    public SolCalPesoClusterDto() {}
+    public TabSolCalPesoClusterDto() {}
 
+    @Override
+    public Long getId() {
+        return idSolCalPesoCluster;
+    }
 }

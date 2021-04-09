@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolSelloInstaladoDto extends BaseDto {
+public class TabSolSelloInstaladoDto extends BaseDto {
 
     private Long idSolSelloInstalado;
     private Long idSolicitud;
@@ -24,7 +24,7 @@ public class SolSelloInstaladoDto extends BaseDto {
     String filtroProporcionado;
     String termoking;
 
-    public SolSelloInstaladoDto() {}
+    public TabSolSelloInstaladoDto() {}
 
     @Override
     public Long getId() {

@@ -1,5 +1,6 @@
 package com.inspector.dto.sol;
 
+import com.inspector.dto.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,10 +8,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class SolConsolidadoGanchoDto {
+public class TabSolConsolidadoGanchoDto extends BaseDto {
 
-    private Long idSolicitud;
     private Long idSolConsolidadoGancho;
+    private Long idSolicitud;
     int enFunde;
     int racimoCosechado;
     int racimoRechazado;
@@ -34,12 +35,14 @@ public class SolConsolidadoGanchoDto {
     int escama;
     int fumagina;
     int pesonudo;
-    String observacionCG;
-    String estRegCG;
+    String observacion;
 
-    List<SolConCalibracionFrutaDto> listSolConCalibracionFrutaDto;
+    List<TabSolConCalibracionFrutaDto> listTabSolConCalibracionFrutaDto;
 
-    public SolConsolidadoGanchoDto() {}
+    public TabSolConsolidadoGanchoDto() {}
 
-
+    @Override
+    public Long getId() {
+        return idSolConsolidadoGancho;
+    }
 }

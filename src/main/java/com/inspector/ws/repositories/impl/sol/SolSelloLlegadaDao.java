@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolSelloLlegadaDto;
+import com.inspector.dto.sol.TabSolSelloLlegadaDto;
+import com.inspector.dto.sol.TabSolicitudDto;
 import com.inspector.ws.repositories.sol.ISolSelloLlegadaDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,15 +19,15 @@ public class SolSelloLlegadaDao implements ISolSelloLlegadaDao {
     private ISolSelloLlegadaDao iSolSelloLlegadaDao;
 
     @Override
-    public SolSelloLlegadaDto save(SolSelloLlegadaDto solSelloLlegada) {
-        if (solSelloLlegada.getIdSolSelloLlegada() == 0) {
+    public TabSolSelloLlegadaDto save(TabSolSelloLlegadaDto solSelloLlegada, String estReg) {
+            if (estReg.equals("NUE")) {
             return insert(solSelloLlegada);
         } else {
             return update(solSelloLlegada);
         }
     }
 
-    private SolSelloLlegadaDto insert(SolSelloLlegadaDto solSelloLlegada) {
+    private TabSolSelloLlegadaDto insert(TabSolSelloLlegadaDto solSelloLlegada) {
         create.transaction(x -> {
             solSelloLlegada.setIdSolSelloLlegada(DSL.using(x).nextval(SEC_SOL_SELLO_LLEGADA));
             DSL.using(x).newRecord(TAB_SOL_SELLO_LLEGADA, solSelloLlegada).insert();
@@ -34,7 +35,7 @@ public class SolSelloLlegadaDao implements ISolSelloLlegadaDao {
         return solSelloLlegada;
     }
 
-    public SolSelloLlegadaDto update(SolSelloLlegadaDto solSelloLlegada) {
+    public TabSolSelloLlegadaDto update(TabSolSelloLlegadaDto solSelloLlegada) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_SELLO_LLEGADA, solSelloLlegada).update();
         });

@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolTransportistaDto;
+import com.inspector.dto.sol.TabSolSelloInstaladoDto;
+import com.inspector.dto.sol.TabSolTransportistaDto;
 import com.inspector.ws.repositories.sol.ISolTransportistaDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,15 +19,15 @@ public class SolTransportistaDao implements ISolTransportistaDao {
     private ISolTransportistaDao iSolTransportistaDao;
 
     @Override
-    public SolTransportistaDto save(SolTransportistaDto solTransportista) {
-        if (solTransportista.getIdSolTransportista() == 0) {
+    public TabSolTransportistaDto save(TabSolTransportistaDto solTransportista, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solTransportista);
         } else {
             return update(solTransportista);
         }
     }
 
-    private SolTransportistaDto insert(SolTransportistaDto solTransportista) {
+    private TabSolTransportistaDto insert(TabSolTransportistaDto solTransportista) {
         create.transaction(x -> {
             solTransportista.setIdSolTransportista(DSL.using(x).nextval(SEC_SOL_TRANSPORTISTA));
             DSL.using(x).newRecord(TAB_SOL_TRANSPORTISTA, solTransportista).insert();
@@ -34,7 +35,7 @@ public class SolTransportistaDao implements ISolTransportistaDao {
         return solTransportista;
     }
 
-    public SolTransportistaDto update(SolTransportistaDto solTransportista) {
+    public TabSolTransportistaDto update(TabSolTransportistaDto solTransportista) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_TRANSPORTISTA, solTransportista).update();
         });

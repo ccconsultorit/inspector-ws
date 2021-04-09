@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolControlPesoDto;
+import com.inspector.dto.sol.TabSolControlPesoDto;
+import com.inspector.dto.sol.TabSolProcesoDto;
 import com.inspector.ws.repositories.sol.ISolControlPesoDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,15 +19,15 @@ public class SolControlPesoDao implements ISolControlPesoDao {
     private ISolControlPesoDao iSolControlPesoDao;
 
     @Override
-    public SolControlPesoDto save(SolControlPesoDto solControlPeso) {
-        if (solControlPeso.getIdSolControlPeso() == 0) {
+    public TabSolControlPesoDto save(TabSolControlPesoDto solControlPeso, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solControlPeso);
         } else {
             return update(solControlPeso);
         }
     }
 
-    private SolControlPesoDto insert(SolControlPesoDto solControlPeso) {
+    private TabSolControlPesoDto insert(TabSolControlPesoDto solControlPeso) {
         create.transaction(x -> {
             solControlPeso.setIdSolControlPeso(DSL.using(x).nextval(SEC_SOL_CONTROL_PESO));
             DSL.using(x).newRecord(TAB_SOL_CONTROL_PESO, solControlPeso).insert();
@@ -34,7 +35,7 @@ public class SolControlPesoDao implements ISolControlPesoDao {
         return solControlPeso;
     }
 
-    public SolControlPesoDto update(SolControlPesoDto solControlPeso) {
+    public TabSolControlPesoDto update(TabSolControlPesoDto solControlPeso) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_CONTROL_PESO, solControlPeso).update();
         });

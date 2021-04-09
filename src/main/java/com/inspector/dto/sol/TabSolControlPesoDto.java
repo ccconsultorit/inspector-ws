@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class SolControlPesoDto extends BaseDto {
+public class TabSolControlPesoDto extends BaseDto {
 
     private Long idSolControlPeso;
     private Long idSolicitud;
@@ -20,7 +20,7 @@ public class SolControlPesoDto extends BaseDto {
     double pesoNetoFruta;
     String observacion;
 
-    public SolControlPesoDto() {}
+    public TabSolControlPesoDto() {}
 
     @Override
     public Long getId() {

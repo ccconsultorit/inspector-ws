@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolControlPesoDto;
+import com.inspector.dto.sol.TabSolControlPesoDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,6 @@ import com.inspector.dto.sol.SolControlPesoDto;
  */
 public interface ISolControlPesoDao {
 
-    SolControlPesoDto save(SolControlPesoDto solControlPeso);
+    public TabSolControlPesoDto save(TabSolControlPesoDto solControlPeso, String estReg);
 
 }

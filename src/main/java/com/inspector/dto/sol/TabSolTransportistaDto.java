@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolTransportistaDto extends BaseDto {
+public class TabSolTransportistaDto extends BaseDto {
 
     private Long idSolTransportista;
     private Long idSolicitud;
@@ -20,7 +20,7 @@ public class SolTransportistaDto extends BaseDto {
     String marcaCabezal;
     String observacion;
 
-    public SolTransportistaDto() {}
+    public TabSolTransportistaDto() {}
 
     @Override
     public Long getId() {

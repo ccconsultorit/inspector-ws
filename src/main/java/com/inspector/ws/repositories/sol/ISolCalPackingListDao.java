@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolCalPackingListDto;
+import com.inspector.dto.sol.TabSolCalPackingListDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,5 @@ import com.inspector.dto.sol.SolCalPackingListDto;
  */
 public interface ISolCalPackingListDao {
 
-    SolCalPackingListDto save(SolCalPackingListDto solCalPackingListDto);
-
+    public TabSolCalPackingListDto save(TabSolCalPackingListDto solCalPackingList, String estReg);
 }

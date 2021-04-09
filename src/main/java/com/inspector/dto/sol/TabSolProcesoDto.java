@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class SolProcesoDto extends BaseDto {
+public class TabSolProcesoDto extends BaseDto {
 
     private Long idSolProceso;
     private Long idSolicitud;
@@ -24,7 +24,7 @@ public class SolProcesoDto extends BaseDto {
     String tiempoDescargaFumigacion;
     String tipoCantulina;
 
-    public SolProcesoDto() {}
+    public TabSolProcesoDto() {}
 
     @Override
     public Long getId() {

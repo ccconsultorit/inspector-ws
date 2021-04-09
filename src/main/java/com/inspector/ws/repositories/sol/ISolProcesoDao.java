@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolProcesoDto;
+import com.inspector.dto.sol.TabSolProcesoDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,6 @@ import com.inspector.dto.sol.SolProcesoDto;
  */
 public interface ISolProcesoDao {
 
-    SolProcesoDto save(SolProcesoDto solProceso);
+    public TabSolProcesoDto save(TabSolProcesoDto solProceso, String estReg);
 
 }

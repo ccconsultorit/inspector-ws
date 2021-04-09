@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolTransportistaDto;
+import com.inspector.dto.sol.TabSolTransportistaDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,6 @@ import com.inspector.dto.sol.SolTransportistaDto;
  */
 public interface ISolTransportistaDao {
 
-    SolTransportistaDto save(SolTransportistaDto solTransportista);
+    public TabSolTransportistaDto save(TabSolTransportistaDto solTransportista, String estReg);
 
-}
+    }

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolSelloLlegadaDto extends BaseDto {
+public class TabSolSelloLlegadaDto extends BaseDto {
 
     private Long idSolSelloLlegada;
     private Long idSolicitud;
@@ -24,7 +24,7 @@ public class SolSelloLlegadaDto extends BaseDto {
     String candadoExportador;
     String observacion;
 
-    public SolSelloLlegadaDto() {}
+    public TabSolSelloLlegadaDto() {}
 
     @Override
     public Long getId() {

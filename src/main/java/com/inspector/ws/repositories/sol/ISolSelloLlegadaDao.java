@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolSelloLlegadaDto;
+import com.inspector.dto.sol.TabSolSelloLlegadaDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,6 @@ import com.inspector.dto.sol.SolSelloLlegadaDto;
  */
 public interface ISolSelloLlegadaDao {
 
-    SolSelloLlegadaDto save(SolSelloLlegadaDto solSelloLlegada);
+    TabSolSelloLlegadaDto save(TabSolSelloLlegadaDto solSelloLlegada, String estReg);
 
 }

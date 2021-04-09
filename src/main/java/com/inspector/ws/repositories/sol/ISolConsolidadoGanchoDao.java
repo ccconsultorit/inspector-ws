@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolConsolidadoGanchoDto;
+import com.inspector.dto.sol.TabSolConsolidadoGanchoDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,5 @@ import com.inspector.dto.sol.SolConsolidadoGanchoDto;
  */
 public interface ISolConsolidadoGanchoDao {
 
-    SolConsolidadoGanchoDto save(SolConsolidadoGanchoDto solConsolidadoGancho);
-
+    public TabSolConsolidadoGanchoDto save(TabSolConsolidadoGanchoDto solConsolidadoGancho, String estReg);
 }

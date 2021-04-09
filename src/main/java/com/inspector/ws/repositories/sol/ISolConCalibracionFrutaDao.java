@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolConCalibracionFrutaDto;
+import com.inspector.dto.sol.TabSolConCalibracionFrutaDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,5 @@ import com.inspector.dto.sol.SolConCalibracionFrutaDto;
  */
 public interface ISolConCalibracionFrutaDao {
 
-    SolConCalibracionFrutaDto save(SolConCalibracionFrutaDto solConCalibracionFrutaDto);
-
+    public TabSolConCalibracionFrutaDto save(TabSolConCalibracionFrutaDto solConCalibracionFruta, String estReg);
 }

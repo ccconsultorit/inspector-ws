@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolCalCalibreDto;
+import com.inspector.dto.sol.TabSolCalCalibreDto;
+import com.inspector.dto.sol.TabSolCalDefectoSeleccionDto;
 import com.inspector.ws.repositories.sol.ISolCalCalibreDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -17,15 +18,15 @@ public class SolCalCalibreDao implements ISolCalCalibreDao {
     private DSLContext create;
 
     @Override
-    public SolCalCalibreDto save(SolCalCalibreDto solCalCalibre) {
-        if (solCalCalibre.getIdSolCalCalibre() == 0) {
+    public TabSolCalCalibreDto save(TabSolCalCalibreDto solCalCalibre, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solCalCalibre);
         } else {
             return update(solCalCalibre);
         }
     }
 
-    private SolCalCalibreDto insert(SolCalCalibreDto solCalCalibre) {
+    private TabSolCalCalibreDto insert(TabSolCalCalibreDto solCalCalibre) {
         create.transaction(x -> {
             solCalCalibre.setIdSolCalCalibre(DSL.using(x).nextval(SEC_SOL_CAL_CALIBRE));
             DSL.using(x).newRecord(TAB_SOL_CAL_CALIBRE, solCalCalibre).insert();
@@ -33,7 +34,7 @@ public class SolCalCalibreDao implements ISolCalCalibreDao {
         return solCalCalibre;
     }
 
-    public SolCalCalibreDto update(SolCalCalibreDto solCalCalibre) {
+    public TabSolCalCalibreDto update(TabSolCalCalibreDto solCalCalibre) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_CAL_CALIBRE, solCalCalibre).update();
         });

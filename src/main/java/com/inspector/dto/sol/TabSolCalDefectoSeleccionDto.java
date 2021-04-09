@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolCalDefectoSeleccionDto {
+public class TabSolCalDefectoSeleccionDto extends BaseDto {
 
     private Long idSolCalDefectoSeleccion;
     private Long idSolCalidad;
@@ -57,6 +57,10 @@ public class SolCalDefectoSeleccionDto {
     int		ea	;
     int		ps	;
 
-    public SolCalDefectoSeleccionDto() {}
+    public TabSolCalDefectoSeleccionDto() {}
 
+    @Override
+    public Long getId() {
+        return idSolCalDefectoSeleccion;
+    }
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SolCalPackingListDto {
+public class TabSolCalPackingListDto extends BaseDto {
 
     private Long idSolCalPackingList;
     private Long idSolicitud;
@@ -14,6 +14,10 @@ public class SolCalPackingListDto {
     int numeracion;
     String sticker;
 
-    public SolCalPackingListDto() {}
+    public TabSolCalPackingListDto() {}
 
+    @Override
+    public Long getId() {
+        return idSolCalPackingList;
+    }
 }

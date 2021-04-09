@@ -1,7 +1,7 @@
 package com.inspector.ws.repositories.sol;
 
 import com.inspector.dto.sol.SolicitudCompletaDto;
-import com.inspector.dto.sol.SolicitudDto;
+import com.inspector.dto.sol.TabSolicitudDto;
 
 import java.util.List;
 
@@ -12,13 +12,13 @@ import java.util.List;
  */
 public interface ISolicitudDao {
 
-    List<SolicitudDto> getAll();
+    List<TabSolicitudDto> getAll();
 
-    SolicitudDto getSolicitudById(Long solicitudId);
+    TabSolicitudDto getSolicitudById(Long solicitudId);
 
     List<SolicitudCompletaDto> getSolicitudesByEstado(String estado);
 
-    Long save(SolicitudDto solicitud, String estRegSol);
+    Long save(TabSolicitudDto solicitud, String estRegSol);
 
     void delete(Long idSolicitud);
 

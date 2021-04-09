@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolFincaDto;
+import com.inspector.dto.sol.TabSolControlPesoDto;
+import com.inspector.dto.sol.TabSolFincaDto;
 import com.inspector.ws.repositories.sol.ISolFincaDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
@@ -18,15 +19,15 @@ public class SolFincaDao implements ISolFincaDao {
     private ISolFincaDao iSolFincaDao;
 
     @Override
-    public SolFincaDto save(SolFincaDto solFinca) {
-        if (solFinca.getIdSolFinca() == 0) {
+    public TabSolFincaDto save(TabSolFincaDto solFinca, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solFinca);
         } else {
             return update(solFinca);
         }
     }
 
-    private SolFincaDto insert(SolFincaDto solFinca) {
+    private TabSolFincaDto insert(TabSolFincaDto solFinca) {
         create.transaction(x -> {
             solFinca.setIdSolFinca(DSL.using(x).nextval(SEC_SOL_FINCA));
             DSL.using(x).newRecord(TAB_SOL_FINCA, solFinca).insert();
@@ -34,7 +35,7 @@ public class SolFincaDao implements ISolFincaDao {
         return solFinca;
     }
 
-    public SolFincaDto update(SolFincaDto solFinca) {
+    public TabSolFincaDto update(TabSolFincaDto solFinca) {
         create.transaction(x -> {
             DSL.using(x).newRecord(TAB_SOL_FINCA, solFinca).update();
         });

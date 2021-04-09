@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.SolCalDefectoSeleccionDto;
+import com.inspector.dto.sol.TabSolCalDefectoSeleccionDto;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -9,6 +9,6 @@ import com.inspector.dto.sol.SolCalDefectoSeleccionDto;
  */
 public interface ISolCalDefectoSeleccionDao {
 
-    SolCalDefectoSeleccionDto save(SolCalDefectoSeleccionDto solCalDefectoSeleccion);
+    public TabSolCalDefectoSeleccionDto save(TabSolCalDefectoSeleccionDto solCalDefectoSeleccion, String estReg);
 
 }
