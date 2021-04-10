@@ -13,6 +13,7 @@ public class SolCalPackingListDto {
     private Long idSolCalidad;
     int numeracion;
     String sticker;
+    String estRegPL; // nuevo
 
     public SolCalPackingListDto() {}
 

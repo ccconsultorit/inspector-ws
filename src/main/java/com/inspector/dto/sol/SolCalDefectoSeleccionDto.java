@@ -56,6 +56,7 @@ public class SolCalDefectoSeleccionDto {
     int		f	;
     int		ea	;
     int		ps	;
+    String estRegDS; // nuevo
 
     public SolCalDefectoSeleccionDto() {}
 

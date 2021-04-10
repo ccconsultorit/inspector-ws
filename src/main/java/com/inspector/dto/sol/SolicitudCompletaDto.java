@@ -34,6 +34,7 @@ public class SolicitudCompletaDto  {
     String ciEvaluador02;
     String observacion;
     String estRegSol;
+    String areaAGuardar;
 
     private Long idSolContenedor;
     String nroContenedor;

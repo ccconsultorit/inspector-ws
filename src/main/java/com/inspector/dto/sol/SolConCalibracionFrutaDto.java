@@ -14,6 +14,7 @@ public class SolConCalibracionFrutaDto {
     int numSemana;
     String color;
     int numRacimo;
+    String estRegCF;
 
     public SolConCalibracionFrutaDto() {}
 

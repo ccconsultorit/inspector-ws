@@ -14,6 +14,7 @@ public class SolCalPesoClusterDto {
     private Long idSolicitud;
     int		numero	;
     double	peso	;
+    String estRegPC; // nuevo
 
     public SolCalPesoClusterDto() {}
 
