@@ -13,7 +13,7 @@ public class TabSolCalDefectoSeleccionDto extends BaseDto {
     private Long idSolicitud;
     double	peso	;
     int 	numeroGanchoInspeccionado	;
-    String	ph	;
+    double	ph	;
     int		sr	;
     int		br	;
     int		ni	;

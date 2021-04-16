@@ -160,8 +160,8 @@ public class SolicitudCompletaDto  {
     String observacionCG;
     String estRegCG;
 
-    List<SolCalidadDto> listSolCalidadDto;
-    SolConsolidadoGanchoDto solConsolidadoGanchoDto;
+    List<SolCalidadDto> listSolCalidad;
+    List<SolConCalibracionFrutaDto> listSolCalibracion;
 
     public SolicitudCompletaDto() {}
 

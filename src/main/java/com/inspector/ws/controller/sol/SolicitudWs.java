@@ -298,7 +298,7 @@ public class SolicitudWs  {
                 //ids = ids + "," + solFinca.getIdSolFinca().toString();
             }
 
-            solicitudCompleto.getListSolCalidadDto().forEach(calidad ->{
+            solicitudCompleto.getListSolCalidad().forEach(calidad ->{
 
                 Long idSolCalidad = 0L;
                 if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("Calidad") ) {
@@ -327,14 +327,14 @@ public class SolicitudWs  {
                 }
 
                 Long finalIdSolCalidad = idSolCalidad;
-                calidad.getListSolCalDefectoSeleccionDto().forEach(defecto ->{
+                calidad.getListSolCalDefectoSeleccion().forEach(defecto ->{
                     if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("DefectoSeleccion") ) {
                         TabSolCalDefectoSeleccionDto solDefectoSeleccion = new TabSolCalDefectoSeleccionDto();
                         //solDefectoSeleccion.setIdSolCalDefectoSeleccion(defecto.getIdSolCalDefectoSeleccion());
                         solDefectoSeleccion.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                         solDefectoSeleccion.setIdSolCalidad(finalIdSolCalidad);
                         solDefectoSeleccion.setPeso(defecto.getPeso());
-                        solDefectoSeleccion.setNumeroGanchoInspeccionado(defecto.getNumeroGanchoInspeccionado());
+                        solDefectoSeleccion.setNumeroGanchoInspeccionado(defecto.getNumGanchoInspeccionado());
                         solDefectoSeleccion.setPh(defecto.getPh());
                         solDefectoSeleccion.setSr(defecto.getSr());
                         solDefectoSeleccion.setBr(defecto.getBr());
@@ -446,7 +446,7 @@ public class SolicitudWs  {
                     //ids = ids + "," + solCalLargoDedoDto.getIdSolCalLargoDedo().toString();
                 }
 
-                calidad.getListSolCalPesoClusterDto().forEach(peso ->{
+                calidad.getListSolCalPesoCluster().forEach(peso ->{
                     if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("PesoCluster") ) {
                         TabSolCalPesoClusterDto tabSolCalPesoClusterDto = new TabSolCalPesoClusterDto();
                         tabSolCalPesoClusterDto.setIdSolCalPesoCluster(peso.getIdSolCalPesoCluster());
@@ -461,7 +461,7 @@ public class SolicitudWs  {
                     }
                 });
 
-                calidad.getListSolCalPackingListDto().forEach(packing ->{
+                calidad.getListSolCalPackingList().forEach(packing ->{
                     if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("PackingList") ) {
                         TabSolCalPackingListDto tabSolCalPackingListDto = new TabSolCalPackingListDto();
                         tabSolCalPackingListDto.setIdSolCalPackingList(packing.getIdSolCalPackingList());
@@ -515,7 +515,7 @@ public class SolicitudWs  {
             }
 
             Long finalIdSolConsolidadoGancho = idSolConsolidadoGancho;
-            solicitudCompleto.getSolConsolidadoGanchoDto().getListSolConCalibracionFrutaDto().forEach(fruta ->{
+            solicitudCompleto.getListSolCalibracion().forEach(fruta ->{
                 if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("CaligracionFruta") ) {
                     TabSolConCalibracionFrutaDto tabSolConCalibracionFrutaDto = new TabSolConCalibracionFrutaDto();
                     tabSolConCalibracionFrutaDto.setIdSolConCalibracionFruta(fruta.getIdSolConCalibracionFruta());

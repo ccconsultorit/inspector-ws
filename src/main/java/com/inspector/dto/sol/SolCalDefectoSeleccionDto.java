@@ -12,8 +12,8 @@ public class SolCalDefectoSeleccionDto {
     private Long idSolCalidad;
     private Long idSolicitud;
     double	peso	;
-    int 	numeroGanchoInspeccionado	;
-    String	ph	;
+    int 	numGanchoInspeccionado	;
+    double	ph	;
     int		sr	;
     int		br	;
     int		ni	;
@@ -57,6 +57,7 @@ public class SolCalDefectoSeleccionDto {
     int		ea	;
     int		ps	;
     String estRegDS; // nuevo
+    String areaAGuardar;
 
     public SolCalDefectoSeleccionDto() {}
 

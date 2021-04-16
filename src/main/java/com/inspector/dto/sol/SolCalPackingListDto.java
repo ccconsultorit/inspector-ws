@@ -9,11 +9,12 @@ import lombok.Setter;
 public class SolCalPackingListDto {
 
     private Long idSolCalPackingList;
-    private Long idSolicitud;
     private Long idSolCalidad;
+    private Long idSolicitud;
     int numeracion;
     String sticker;
     String estRegPL; // nuevo
+    String areaAGuardar;
 
     public SolCalPackingListDto() {}
 

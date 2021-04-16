@@ -27,6 +27,7 @@ public class SolCalidadDto{
     String mayorDefectoSeleccion;
     String mayorDefectoEmpaque;
     String estRegCal; // nuevo
+    String areaAGuardar;
 
     private Long idSolCalCalibre;
     int		calUg	;
@@ -74,9 +75,9 @@ public class SolCalidadDto{
     int		lar11_8	;
     String estRegLD; // nuevo
 
-    List<SolCalDefectoSeleccionDto> listSolCalDefectoSeleccionDto;
-    List<SolCalPesoClusterDto> listSolCalPesoClusterDto;
-    List<SolCalPackingListDto> listSolCalPackingListDto;
+    List<SolCalDefectoSeleccionDto> listSolCalDefectoSeleccion;
+    List<SolCalPesoClusterDto> listSolCalPesoCluster;
+    List<SolCalPackingListDto> listSolCalPackingList;
 
     public SolCalidadDto() {}
 

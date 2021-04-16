@@ -9,12 +9,13 @@ import lombok.Setter;
 public class SolConCalibracionFrutaDto {
 
     private Long idSolConCalibracionFruta;
-    private Long idSolicitud;
     private Long idSolConsolidadoGancho;
+    private Long idSolicitud;
     int numSemana;
     String color;
     int numRacimo;
     String estRegCF;
+    String areaAGuardar;
 
     public SolConCalibracionFrutaDto() {}
 
