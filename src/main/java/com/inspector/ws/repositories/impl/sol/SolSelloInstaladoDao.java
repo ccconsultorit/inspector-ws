@@ -19,12 +19,20 @@ public class SolSelloInstaladoDao implements ISolSelloInstaladoDao {
     private ISolSelloInstaladoDao iSolSelloInstaladoDao;
 
     @Override
+    public TabSolSelloInstaladoDto getSolSelloInstaladoById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_SELLO_INSTALADO)
+                .where(TAB_SOL_SELLO_INSTALADO.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolSelloInstaladoDto.class);
+    }
+
+    @Override
     public TabSolSelloInstaladoDto save(TabSolSelloInstaladoDto solSelloInstalado, String estReg) {
         if (estReg.equals("NUE")) {
             return insert(solSelloInstalado);
-        } else {
+        } else if (estReg.equals("MOD")){
             return update(solSelloInstalado);
-        }
+        } else
+            return null;
     }
 
     private TabSolSelloInstaladoDto insert(TabSolSelloInstaladoDto solSelloInstalado) {

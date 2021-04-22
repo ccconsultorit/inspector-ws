@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolConsolidadoGancho extends TableImpl<TabSolConsolidadoGanchoRecord> {
 
-    private static final long serialVersionUID = -1320047450;
+    private static final long serialVersionUID = -49238959;
 
     /**
      * The reference instance of <code>public.tab_sol_consolidado_gancho</code>
@@ -62,24 +62,24 @@ public class TabSolConsolidadoGancho extends TableImpl<TabSolConsolidadoGanchoRe
     public final TableField<TabSolConsolidadoGanchoRecord, Long> ID_SOL_CONSOLIDADO_GANCHO = createField(DSL.name("id_sol_consolidado_gancho"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_consolidado_gancho.enfunde</code>.
+     * The column <code>public.tab_sol_consolidado_gancho.en_funde</code>.
      */
-    public final TableField<TabSolConsolidadoGanchoRecord, String> ENFUNDE = createField(DSL.name("enfunde"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolConsolidadoGanchoRecord, String> EN_FUNDE = createField(DSL.name("en_funde"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_consolidado_gancho.racimos_cosechados</code>.
+     * The column <code>public.tab_sol_consolidado_gancho.racimo_cosechado</code>.
      */
-    public final TableField<TabSolConsolidadoGanchoRecord, Integer> RACIMOS_COSECHADOS = createField(DSL.name("racimos_cosechados"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolConsolidadoGanchoRecord, Integer> RACIMO_COSECHADO = createField(DSL.name("racimo_cosechado"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_consolidado_gancho.racimos_rechazados</code>.
+     * The column <code>public.tab_sol_consolidado_gancho.racimo_rechazado</code>.
      */
-    public final TableField<TabSolConsolidadoGanchoRecord, Integer> RACIMOS_RECHAZADOS = createField(DSL.name("racimos_rechazados"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolConsolidadoGanchoRecord, Integer> RACIMO_RECHAZADO = createField(DSL.name("racimo_rechazado"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_consolidado_gancho.racimos_procesados</code>.
+     * The column <code>public.tab_sol_consolidado_gancho.racimo_procesado</code>.
      */
-    public final TableField<TabSolConsolidadoGanchoRecord, Integer> RACIMOS_PROCESADOS = createField(DSL.name("racimos_procesados"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolConsolidadoGanchoRecord, Integer> RACIMO_PROCESADO = createField(DSL.name("racimo_procesado"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_consolidado_gancho.mutante</code>.
@@ -87,9 +87,9 @@ public class TabSolConsolidadoGancho extends TableImpl<TabSolConsolidadoGanchoRe
     public final TableField<TabSolConsolidadoGanchoRecord, Integer> MUTANTE = createField(DSL.name("mutante"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_consolidado_gancho.specklin</code>.
+     * The column <code>public.tab_sol_consolidado_gancho.spacklin</code>.
      */
-    public final TableField<TabSolConsolidadoGanchoRecord, Integer> SPECKLIN = createField(DSL.name("specklin"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolConsolidadoGanchoRecord, Integer> SPACKLIN = createField(DSL.name("spacklin"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_consolidado_gancho.punta_amarilla</code>.

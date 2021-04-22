@@ -14,7 +14,7 @@ public class TabSolContenedorDto extends BaseDto {
 
     private Long idSolContenedor;
     private Long idSolicitud;
-    String numeroContenedor;
+    String nroContenedor;
     String vapor;
     String booking;
     String tipoContenedor;

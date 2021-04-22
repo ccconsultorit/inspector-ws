@@ -19,12 +19,21 @@ public class SolControlPesoDao implements ISolControlPesoDao {
     private ISolControlPesoDao iSolControlPesoDao;
 
     @Override
-    public TabSolControlPesoDto save(TabSolControlPesoDto solControlPeso, String estReg) {
+    public TabSolControlPesoDto getSolControlPesoById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_CONTROL_PESO)
+                .where(TAB_SOL_CONTROL_PESO.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolControlPesoDto.class);
+    }
+
+
+    @Override
+    public TabSolControlPesoDto save(TabSolControlPesoDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solControlPeso);
-        } else {
-            return update(solControlPeso);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolControlPesoDto insert(TabSolControlPesoDto solControlPeso) {

@@ -19,12 +19,20 @@ public class SolSelloLlegadaDao implements ISolSelloLlegadaDao {
     private ISolSelloLlegadaDao iSolSelloLlegadaDao;
 
     @Override
-    public TabSolSelloLlegadaDto save(TabSolSelloLlegadaDto solSelloLlegada, String estReg) {
-            if (estReg.equals("NUE")) {
-            return insert(solSelloLlegada);
-        } else {
-            return update(solSelloLlegada);
-        }
+    public TabSolSelloLlegadaDto getSolSelloLlegadaById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_SELLO_LLEGADA)
+                .where(TAB_SOL_SELLO_LLEGADA.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolSelloLlegadaDto.class);
+    }
+
+    @Override
+    public TabSolSelloLlegadaDto save(TabSolSelloLlegadaDto objeto, String estReg) {
+        if (estReg.equals("NUE")) {
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolSelloLlegadaDto insert(TabSolSelloLlegadaDto solSelloLlegada) {

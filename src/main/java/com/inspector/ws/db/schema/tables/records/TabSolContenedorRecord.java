@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedorRecord> implements Record19<Long, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, LocalDateTime, LocalDateTime, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> {
 
-    private static final long serialVersionUID = -1298170740;
+    private static final long serialVersionUID = -1548231622;
 
     /**
      * Setter for <code>public.tab_sol_contenedor.id_sol_contenedor</code>.
@@ -47,16 +47,16 @@ public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedor
     }
 
     /**
-     * Setter for <code>public.tab_sol_contenedor.numero_contenedor</code>.
+     * Setter for <code>public.tab_sol_contenedor.nro_contenedor</code>.
      */
-    public void setNumeroContenedor(String value) {
+    public void setNroContenedor(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_contenedor.numero_contenedor</code>.
+     * Getter for <code>public.tab_sol_contenedor.nro_contenedor</code>.
      */
-    public String getNumeroContenedor() {
+    public String getNroContenedor() {
         return (String) get(1);
     }
 
@@ -328,7 +328,7 @@ public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedor
 
     @Override
     public Field<String> field2() {
-        return TabSolContenedor.TAB_SOL_CONTENEDOR.NUMERO_CONTENEDOR;
+        return TabSolContenedor.TAB_SOL_CONTENEDOR.NRO_CONTENEDOR;
     }
 
     @Override
@@ -423,7 +423,7 @@ public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedor
 
     @Override
     public String component2() {
-        return getNumeroContenedor();
+        return getNroContenedor();
     }
 
     @Override
@@ -518,7 +518,7 @@ public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedor
 
     @Override
     public String value2() {
-        return getNumeroContenedor();
+        return getNroContenedor();
     }
 
     @Override
@@ -614,7 +614,7 @@ public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedor
 
     @Override
     public TabSolContenedorRecord value2(String value) {
-        setNumeroContenedor(value);
+        setNroContenedor(value);
         return this;
     }
 
@@ -758,11 +758,11 @@ public class TabSolContenedorRecord extends UpdatableRecordImpl<TabSolContenedor
     /**
      * Create a detached, initialised TabSolContenedorRecord
      */
-    public TabSolContenedorRecord(Long idSolContenedor, String numeroContenedor, String vapor, String booking, String tipoContenedor, String agenciaNaviera, String tare, String maxGross, String puertoSalida, LocalDateTime fechaLlegada, LocalDateTime fechaApertura, LocalDateTime fechaCierre, LocalDateTime fechaSalida, String observacion, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
+    public TabSolContenedorRecord(Long idSolContenedor, String nroContenedor, String vapor, String booking, String tipoContenedor, String agenciaNaviera, String tare, String maxGross, String puertoSalida, LocalDateTime fechaLlegada, LocalDateTime fechaApertura, LocalDateTime fechaCierre, LocalDateTime fechaSalida, String observacion, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
         super(TabSolContenedor.TAB_SOL_CONTENEDOR);
 
         set(0, idSolContenedor);
-        set(1, numeroContenedor);
+        set(1, nroContenedor);
         set(2, vapor);
         set(3, booking);
         set(4, tipoContenedor);

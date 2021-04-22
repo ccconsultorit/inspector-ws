@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord> implements Record17<Long, Integer, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long, Long> {
 
-    private static final long serialVersionUID = 512592855;
+    private static final long serialVersionUID = 1912941756;
 
     /**
      * Setter for <code>public.tab_sol_proceso.id_sol_proceso</code>.
@@ -47,16 +47,16 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
     }
 
     /**
-     * Setter for <code>public.tab_sol_proceso.cajas_procesadas_despachadas</code>.
+     * Setter for <code>public.tab_sol_proceso.caja_procesada</code>.
      */
-    public void setCajasProcesadasDespachadas(Integer value) {
+    public void setCajaProcesada(Integer value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_proceso.cajas_procesadas_despachadas</code>.
+     * Getter for <code>public.tab_sol_proceso.caja_procesada</code>.
      */
-    public Integer getCajasProcesadasDespachadas() {
+    public Integer getCajaProcesada() {
         return (Integer) get(1);
     }
 
@@ -75,16 +75,16 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
     }
 
     /**
-     * Setter for <code>public.tab_sol_proceso.tipo_funda_multiple</code>.
+     * Setter for <code>public.tab_sol_proceso.tipo_funda</code>.
      */
-    public void setTipoFundaMultiple(String value) {
+    public void setTipoFunda(String value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_proceso.tipo_funda_multiple</code>.
+     * Getter for <code>public.tab_sol_proceso.tipo_funda</code>.
      */
-    public String getTipoFundaMultiple() {
+    public String getTipoFunda() {
         return (String) get(3);
     }
 
@@ -103,30 +103,30 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
     }
 
     /**
-     * Setter for <code>public.tab_sol_proceso.tipo_caja_multiple</code>.
+     * Setter for <code>public.tab_sol_proceso.tipo_caja</code>.
      */
-    public void setTipoCajaMultiple(String value) {
+    public void setTipoCaja(String value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_proceso.tipo_caja_multiple</code>.
+     * Getter for <code>public.tab_sol_proceso.tipo_caja</code>.
      */
-    public String getTipoCajaMultiple() {
+    public String getTipoCaja() {
         return (String) get(5);
     }
 
     /**
-     * Setter for <code>public.tab_sol_proceso.tipo_presentacion_multiple</code>.
+     * Setter for <code>public.tab_sol_proceso.tipo_presentacion</code>.
      */
-    public void setTipoPresentacionMultiple(String value) {
+    public void setTipoPresentacion(String value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_proceso.tipo_presentacion_multiple</code>.
+     * Getter for <code>public.tab_sol_proceso.tipo_presentacion</code>.
      */
-    public String getTipoPresentacionMultiple() {
+    public String getTipoPresentacion() {
         return (String) get(6);
     }
 
@@ -145,16 +145,16 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
     }
 
     /**
-     * Setter for <code>public.tab_sol_proceso.tiempo_descarga_fumigacion</code>.
+     * Setter for <code>public.tab_sol_proceso.tiempo_descarga</code>.
      */
-    public void setTiempoDescargaFumigacion(String value) {
+    public void setTiempoDescarga(String value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_proceso.tiempo_descarga_fumigacion</code>.
+     * Getter for <code>public.tab_sol_proceso.tiempo_descarga</code>.
      */
-    public String getTiempoDescargaFumigacion() {
+    public String getTiempoDescarga() {
         return (String) get(8);
     }
 
@@ -300,7 +300,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public Field<Integer> field2() {
-        return TabSolProceso.TAB_SOL_PROCESO.CAJAS_PROCESADAS_DESPACHADAS;
+        return TabSolProceso.TAB_SOL_PROCESO.CAJA_PROCESADA;
     }
 
     @Override
@@ -310,7 +310,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public Field<String> field4() {
-        return TabSolProceso.TAB_SOL_PROCESO.TIPO_FUNDA_MULTIPLE;
+        return TabSolProceso.TAB_SOL_PROCESO.TIPO_FUNDA;
     }
 
     @Override
@@ -320,12 +320,12 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public Field<String> field6() {
-        return TabSolProceso.TAB_SOL_PROCESO.TIPO_CAJA_MULTIPLE;
+        return TabSolProceso.TAB_SOL_PROCESO.TIPO_CAJA;
     }
 
     @Override
     public Field<String> field7() {
-        return TabSolProceso.TAB_SOL_PROCESO.TIPO_PRESENTACION_MULTIPLE;
+        return TabSolProceso.TAB_SOL_PROCESO.TIPO_PRESENTACION;
     }
 
     @Override
@@ -335,7 +335,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public Field<String> field9() {
-        return TabSolProceso.TAB_SOL_PROCESO.TIEMPO_DESCARGA_FUMIGACION;
+        return TabSolProceso.TAB_SOL_PROCESO.TIEMPO_DESCARGA;
     }
 
     @Override
@@ -385,7 +385,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public Integer component2() {
-        return getCajasProcesadasDespachadas();
+        return getCajaProcesada();
     }
 
     @Override
@@ -395,7 +395,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public String component4() {
-        return getTipoFundaMultiple();
+        return getTipoFunda();
     }
 
     @Override
@@ -405,12 +405,12 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public String component6() {
-        return getTipoCajaMultiple();
+        return getTipoCaja();
     }
 
     @Override
     public String component7() {
-        return getTipoPresentacionMultiple();
+        return getTipoPresentacion();
     }
 
     @Override
@@ -420,7 +420,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public String component9() {
-        return getTiempoDescargaFumigacion();
+        return getTiempoDescarga();
     }
 
     @Override
@@ -470,7 +470,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public Integer value2() {
-        return getCajasProcesadasDespachadas();
+        return getCajaProcesada();
     }
 
     @Override
@@ -480,7 +480,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public String value4() {
-        return getTipoFundaMultiple();
+        return getTipoFunda();
     }
 
     @Override
@@ -490,12 +490,12 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public String value6() {
-        return getTipoCajaMultiple();
+        return getTipoCaja();
     }
 
     @Override
     public String value7() {
-        return getTipoPresentacionMultiple();
+        return getTipoPresentacion();
     }
 
     @Override
@@ -505,7 +505,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public String value9() {
-        return getTiempoDescargaFumigacion();
+        return getTiempoDescarga();
     }
 
     @Override
@@ -556,7 +556,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public TabSolProcesoRecord value2(Integer value) {
-        setCajasProcesadasDespachadas(value);
+        setCajaProcesada(value);
         return this;
     }
 
@@ -568,7 +568,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public TabSolProcesoRecord value4(String value) {
-        setTipoFundaMultiple(value);
+        setTipoFunda(value);
         return this;
     }
 
@@ -580,13 +580,13 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public TabSolProcesoRecord value6(String value) {
-        setTipoCajaMultiple(value);
+        setTipoCaja(value);
         return this;
     }
 
     @Override
     public TabSolProcesoRecord value7(String value) {
-        setTipoPresentacionMultiple(value);
+        setTipoPresentacion(value);
         return this;
     }
 
@@ -598,7 +598,7 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
 
     @Override
     public TabSolProcesoRecord value9(String value) {
-        setTiempoDescargaFumigacion(value);
+        setTiempoDescarga(value);
         return this;
     }
 
@@ -686,18 +686,18 @@ public class TabSolProcesoRecord extends UpdatableRecordImpl<TabSolProcesoRecord
     /**
      * Create a detached, initialised TabSolProcesoRecord
      */
-    public TabSolProcesoRecord(Long idSolProceso, Integer cajasProcesadasDespachadas, String tipoFruta, String tipoFundaMultiple, String densidadFunda, String tipoCajaMultiple, String tipoPresentacionMultiple, String tipoEstiba, String tiempoDescargaFumigacion, String tipoCantulina, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
+    public TabSolProcesoRecord(Long idSolProceso, Integer cajaProcesada, String tipoFruta, String tipoFunda, String densidadFunda, String tipoCaja, String tipoPresentacion, String tipoEstiba, String tiempoDescarga, String tipoCantulina, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
         super(TabSolProceso.TAB_SOL_PROCESO);
 
         set(0, idSolProceso);
-        set(1, cajasProcesadasDespachadas);
+        set(1, cajaProcesada);
         set(2, tipoFruta);
-        set(3, tipoFundaMultiple);
+        set(3, tipoFunda);
         set(4, densidadFunda);
-        set(5, tipoCajaMultiple);
-        set(6, tipoPresentacionMultiple);
+        set(5, tipoCaja);
+        set(6, tipoPresentacion);
         set(7, tipoEstiba);
-        set(8, tiempoDescargaFumigacion);
+        set(8, tiempoDescarga);
         set(9, tipoCantulina);
         set(10, estado);
         set(11, fechaIngreso);

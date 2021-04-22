@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolConsolidadoGanchoRecord extends UpdatableRecordImpl<TabSolConsolidadoGanchoRecord> {
 
-    private static final long serialVersionUID = -577775166;
+    private static final long serialVersionUID = 887502858;
 
     /**
      * Setter for <code>public.tab_sol_consolidado_gancho.id_sol_consolidado_gancho</code>.
@@ -44,58 +44,58 @@ public class TabSolConsolidadoGanchoRecord extends UpdatableRecordImpl<TabSolCon
     }
 
     /**
-     * Setter for <code>public.tab_sol_consolidado_gancho.enfunde</code>.
+     * Setter for <code>public.tab_sol_consolidado_gancho.en_funde</code>.
      */
-    public void setEnfunde(String value) {
+    public void setEnFunde(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_consolidado_gancho.enfunde</code>.
+     * Getter for <code>public.tab_sol_consolidado_gancho.en_funde</code>.
      */
-    public String getEnfunde() {
+    public String getEnFunde() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>public.tab_sol_consolidado_gancho.racimos_cosechados</code>.
+     * Setter for <code>public.tab_sol_consolidado_gancho.racimo_cosechado</code>.
      */
-    public void setRacimosCosechados(Integer value) {
+    public void setRacimoCosechado(Integer value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_consolidado_gancho.racimos_cosechados</code>.
+     * Getter for <code>public.tab_sol_consolidado_gancho.racimo_cosechado</code>.
      */
-    public Integer getRacimosCosechados() {
+    public Integer getRacimoCosechado() {
         return (Integer) get(2);
     }
 
     /**
-     * Setter for <code>public.tab_sol_consolidado_gancho.racimos_rechazados</code>.
+     * Setter for <code>public.tab_sol_consolidado_gancho.racimo_rechazado</code>.
      */
-    public void setRacimosRechazados(Integer value) {
+    public void setRacimoRechazado(Integer value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_consolidado_gancho.racimos_rechazados</code>.
+     * Getter for <code>public.tab_sol_consolidado_gancho.racimo_rechazado</code>.
      */
-    public Integer getRacimosRechazados() {
+    public Integer getRacimoRechazado() {
         return (Integer) get(3);
     }
 
     /**
-     * Setter for <code>public.tab_sol_consolidado_gancho.racimos_procesados</code>.
+     * Setter for <code>public.tab_sol_consolidado_gancho.racimo_procesado</code>.
      */
-    public void setRacimosProcesados(Integer value) {
+    public void setRacimoProcesado(Integer value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_consolidado_gancho.racimos_procesados</code>.
+     * Getter for <code>public.tab_sol_consolidado_gancho.racimo_procesado</code>.
      */
-    public Integer getRacimosProcesados() {
+    public Integer getRacimoProcesado() {
         return (Integer) get(4);
     }
 
@@ -114,16 +114,16 @@ public class TabSolConsolidadoGanchoRecord extends UpdatableRecordImpl<TabSolCon
     }
 
     /**
-     * Setter for <code>public.tab_sol_consolidado_gancho.specklin</code>.
+     * Setter for <code>public.tab_sol_consolidado_gancho.spacklin</code>.
      */
-    public void setSpecklin(Integer value) {
+    public void setSpacklin(Integer value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_consolidado_gancho.specklin</code>.
+     * Getter for <code>public.tab_sol_consolidado_gancho.spacklin</code>.
      */
-    public Integer getSpecklin() {
+    public Integer getSpacklin() {
         return (Integer) get(6);
     }
 
@@ -500,16 +500,16 @@ public class TabSolConsolidadoGanchoRecord extends UpdatableRecordImpl<TabSolCon
     /**
      * Create a detached, initialised TabSolConsolidadoGanchoRecord
      */
-    public TabSolConsolidadoGanchoRecord(Long idSolConsolidadoGancho, String enfunde, Integer racimosCosechados, Integer racimosRechazados, Integer racimosProcesados, Integer mutante, Integer specklin, Integer puntaAmarilla, Integer crema, Integer manchaRoja, Integer alterado, Integer pobre, Integer caido, Integer sobreGrado, Integer bajoGrado, Integer mosaico, Integer rasgunoAnimal, Integer explosivo, Integer herwinea, Integer sinCinta, Integer cochinilla, Integer escama, Integer fumagina, Integer pesonudo, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
+    public TabSolConsolidadoGanchoRecord(Long idSolConsolidadoGancho, String enFunde, Integer racimoCosechado, Integer racimoRechazado, Integer racimoProcesado, Integer mutante, Integer spacklin, Integer puntaAmarilla, Integer crema, Integer manchaRoja, Integer alterado, Integer pobre, Integer caido, Integer sobreGrado, Integer bajoGrado, Integer mosaico, Integer rasgunoAnimal, Integer explosivo, Integer herwinea, Integer sinCinta, Integer cochinilla, Integer escama, Integer fumagina, Integer pesonudo, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
         super(TabSolConsolidadoGancho.TAB_SOL_CONSOLIDADO_GANCHO);
 
         set(0, idSolConsolidadoGancho);
-        set(1, enfunde);
-        set(2, racimosCosechados);
-        set(3, racimosRechazados);
-        set(4, racimosProcesados);
+        set(1, enFunde);
+        set(2, racimoCosechado);
+        set(3, racimoRechazado);
+        set(4, racimoProcesado);
         set(5, mutante);
-        set(6, specklin);
+        set(6, spacklin);
         set(7, puntaAmarilla);
         set(8, crema);
         set(9, manchaRoja);

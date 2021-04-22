@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolContenedor extends TableImpl<TabSolContenedorRecord> {
 
-    private static final long serialVersionUID = 1205034584;
+    private static final long serialVersionUID = -182544601;
 
     /**
      * The reference instance of <code>public.tab_sol_contenedor</code>
@@ -63,9 +63,9 @@ public class TabSolContenedor extends TableImpl<TabSolContenedorRecord> {
     public final TableField<TabSolContenedorRecord, Long> ID_SOL_CONTENEDOR = createField(DSL.name("id_sol_contenedor"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_contenedor.numero_contenedor</code>.
+     * The column <code>public.tab_sol_contenedor.nro_contenedor</code>.
      */
-    public final TableField<TabSolContenedorRecord, String> NUMERO_CONTENEDOR = createField(DSL.name("numero_contenedor"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolContenedorRecord, String> NRO_CONTENEDOR = createField(DSL.name("nro_contenedor"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_contenedor.vapor</code>.

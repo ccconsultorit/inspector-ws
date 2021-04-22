@@ -18,12 +18,13 @@ public class SolConCalibracionFrutaDao implements ISolConCalibracionFrutaDao {
     private DSLContext create;
 
     @Override
-    public TabSolConCalibracionFrutaDto save(TabSolConCalibracionFrutaDto solConCalibracionFruta, String estReg) {
+    public TabSolConCalibracionFrutaDto save(TabSolConCalibracionFrutaDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solConCalibracionFruta);
-        } else {
-            return update(solConCalibracionFruta);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolConCalibracionFrutaDto insert(TabSolConCalibracionFrutaDto solConCalibracionFruta) {

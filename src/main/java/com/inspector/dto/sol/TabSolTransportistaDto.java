@@ -11,7 +11,7 @@ public class TabSolTransportistaDto extends BaseDto {
     private Long idSolTransportista;
     private Long idSolicitud;
     private Long idSolProductor;
-    String empresaTransporte;
+    String compania;
     String chofer;
     String cedula;
     String celular;

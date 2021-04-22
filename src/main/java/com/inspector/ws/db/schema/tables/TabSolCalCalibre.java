@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalCalibre extends TableImpl<TabSolCalCalibreRecord> {
 
-    private static final long serialVersionUID = -380846703;
+    private static final long serialVersionUID = 672198193;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_calibre</code>
@@ -62,14 +62,14 @@ public class TabSolCalCalibre extends TableImpl<TabSolCalCalibreRecord> {
     public final TableField<TabSolCalCalibreRecord, Long> ID_SOL_CAL_CALIBRE = createField(DSL.name("id_sol_cal_calibre"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.ug</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal_ug</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> UG = createField(DSL.name("ug"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL_UG = createField(DSL.name("cal_ug"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.og</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal_og</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> OG = createField(DSL.name("og"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL_OG = createField(DSL.name("cal_og"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_cal_calibre.cal_37</code>.

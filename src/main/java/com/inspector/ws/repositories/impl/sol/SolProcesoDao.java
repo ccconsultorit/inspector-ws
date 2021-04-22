@@ -19,12 +19,20 @@ public class SolProcesoDao implements ISolProcesoDao {
     private ISolProcesoDao iSolProcesoDao;
 
     @Override
-    public TabSolProcesoDto save(TabSolProcesoDto solProceso, String estReg) {
+    public TabSolProcesoDto getSolProcesoById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_PROCESO)
+                .where(TAB_SOL_PROCESO.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolProcesoDto.class);
+    }
+
+    @Override
+    public TabSolProcesoDto save(TabSolProcesoDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solProceso);
-        } else {
-            return update(solProceso);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolProcesoDto insert(TabSolProcesoDto solProceso) {

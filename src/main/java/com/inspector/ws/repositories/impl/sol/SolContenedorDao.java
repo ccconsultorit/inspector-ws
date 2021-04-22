@@ -18,12 +18,20 @@ public class SolContenedorDao implements ISolContenedorDao {
     private ISolContenedorDao iSolContenedorDao;
 
     @Override
-    public TabSolContenedorDto save(TabSolContenedorDto solContenedor, String estRegCon) {
-        if (estRegCon.equals("NUE")) {
-            return insert(solContenedor);
-        } else {
-            return update(solContenedor);
-        }
+    public TabSolContenedorDto getSolContenedorById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_CONTENEDOR)
+                .where(TAB_SOL_CONTENEDOR.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolContenedorDto.class);
+    }
+
+    @Override
+    public TabSolContenedorDto save(TabSolContenedorDto objeto, String estReg) {
+        if (estReg.equals("NUE")) {
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolContenedorDto insert(TabSolContenedorDto solContenedor) {

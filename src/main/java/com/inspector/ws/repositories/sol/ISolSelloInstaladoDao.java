@@ -1,6 +1,6 @@
 package com.inspector.ws.repositories.sol;
 
-import com.inspector.dto.sol.TabSolSelloInstaladoDto;
+import com.inspector.dto.sol.*;
 
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
@@ -8,6 +8,8 @@ import com.inspector.dto.sol.TabSolSelloInstaladoDto;
  * @author ccuenca
  */
 public interface ISolSelloInstaladoDao {
+
+    TabSolSelloInstaladoDto getSolSelloInstaladoById(Long idSolicitud);
 
     public TabSolSelloInstaladoDto save(TabSolSelloInstaladoDto solSelloInstalado, String estReg);
 

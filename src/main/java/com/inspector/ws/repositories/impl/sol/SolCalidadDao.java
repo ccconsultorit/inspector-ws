@@ -19,12 +19,13 @@ public class SolCalidadDao implements ISolCalidadDao {
     private ISolCalidadDao iSolCalidadDao;
 
     @Override
-    public TabSolCalidadDto save(TabSolCalidadDto solCalidad, String estReg) {
+    public TabSolCalidadDto save(TabSolCalidadDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solCalidad);
-        } else {
-            return update(solCalidad);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolCalidadDto insert(TabSolCalidadDto solCalidad) {

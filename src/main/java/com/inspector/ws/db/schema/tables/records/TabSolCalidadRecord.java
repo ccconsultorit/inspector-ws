@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord> {
 
-    private static final long serialVersionUID = 663195079;
+    private static final long serialVersionUID = -1326544021;
 
     /**
      * Setter for <code>public.tab_sol_calidad.id_sol_calidad</code>.
@@ -44,16 +44,16 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
     }
 
     /**
-     * Setter for <code>public.tab_sol_calidad.nombre_marca</code>.
+     * Setter for <code>public.tab_sol_calidad.nom_marca</code>.
      */
-    public void setNombreMarca(String value) {
+    public void setNomMarca(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_calidad.nombre_marca</code>.
+     * Getter for <code>public.tab_sol_calidad.nom_marca</code>.
      */
-    public String getNombreMarca() {
+    public String getNomMarca() {
         return (String) get(1);
     }
 
@@ -142,16 +142,16 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
     }
 
     /**
-     * Setter for <code>public.tab_sol_calidad.total_defectos</code>.
+     * Setter for <code>public.tab_sol_calidad.total_defecto</code>.
      */
-    public void setTotalDefectos(Integer value) {
+    public void setTotalDefecto(Integer value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_calidad.total_defectos</code>.
+     * Getter for <code>public.tab_sol_calidad.total_defecto</code>.
      */
-    public Integer getTotalDefectos() {
+    public Integer getTotalDefecto() {
         return (Integer) get(8);
     }
 
@@ -351,6 +351,20 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
         return (Long) get(22);
     }
 
+    /**
+     * Setter for <code>public.tab_sol_calidad.total_embarcado</code>.
+     */
+    public void setTotalEmbarcado(Integer value) {
+        set(23, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_sol_calidad.total_embarcado</code>.
+     */
+    public Integer getTotalEmbarcado() {
+        return (Integer) get(23);
+    }
+
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -374,18 +388,18 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
     /**
      * Create a detached, initialised TabSolCalidadRecord
      */
-    public TabSolCalidadRecord(Long idSolCalidad, String nombreMarca, String nroQs, String guiaTransporte, String guiaRemision, Integer defectuoso, String tarjetaEmbarque, Integer totalCluster, Integer totalDefectos, Float calidad, Float calibracion, Float largoDedo, Float totalPeso, Float pesoPromedio, String mayorDefectoSeleccion, String mayorDefectoEmpaque, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
+    public TabSolCalidadRecord(Long idSolCalidad, String nomMarca, String nroQs, String guiaTransporte, String guiaRemision, Integer defectuoso, String tarjetaEmbarque, Integer totalCluster, Integer totalDefecto, Float calidad, Float calibracion, Float largoDedo, Float totalPeso, Float pesoPromedio, String mayorDefectoSeleccion, String mayorDefectoEmpaque, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor, Integer totalEmbarcado) {
         super(TabSolCalidad.TAB_SOL_CALIDAD);
 
         set(0, idSolCalidad);
-        set(1, nombreMarca);
+        set(1, nomMarca);
         set(2, nroQs);
         set(3, guiaTransporte);
         set(4, guiaRemision);
         set(5, defectuoso);
         set(6, tarjetaEmbarque);
         set(7, totalCluster);
-        set(8, totalDefectos);
+        set(8, totalDefecto);
         set(9, calidad);
         set(10, calibracion);
         set(11, largoDedo);
@@ -400,5 +414,6 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
         set(20, usuarioModifica);
         set(21, idSolicitud);
         set(22, idSolProductor);
+        set(23, totalEmbarcado);
     }
 }

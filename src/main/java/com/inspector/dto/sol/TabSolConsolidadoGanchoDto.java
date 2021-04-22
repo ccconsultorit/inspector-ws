@@ -17,7 +17,7 @@ public class TabSolConsolidadoGanchoDto extends BaseDto {
     int racimoRechazado;
     int racimoProcesado;
     int mutante;
-    int specklin;
+    int spacklin;
     int puntaAmarilla;
     int crema;
     int manchaRoja;

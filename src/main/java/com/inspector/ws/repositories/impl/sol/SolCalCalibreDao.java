@@ -18,12 +18,13 @@ public class SolCalCalibreDao implements ISolCalCalibreDao {
     private DSLContext create;
 
     @Override
-    public TabSolCalCalibreDto save(TabSolCalCalibreDto solCalCalibre, String estReg) {
+    public TabSolCalCalibreDto save(TabSolCalCalibreDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solCalCalibre);
-        } else {
-            return update(solCalCalibre);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolCalCalibreDto insert(TabSolCalCalibreDto solCalCalibre) {

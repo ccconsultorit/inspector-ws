@@ -56,7 +56,7 @@ public class SolicitudCompletaDto  {
     String observacionCon;
     String estRegCon;
 
-    private Long idSolSelloArribo;
+    private Long idSolSelloLlegada;
     String candadoPlastico;
     String candadoBotella;
     String stickerLlegada;
@@ -74,7 +74,7 @@ public class SolicitudCompletaDto  {
 
     private Long idSolSelloInstalado;
     String candadoNaviera;
-    String selloVerificador;
+    String selloVerificadora;
     String cableNaviera;
     String cableExportadora;
     //String stickerNaviera;
@@ -139,7 +139,7 @@ public class SolicitudCompletaDto  {
     int racimoRechazado;
     int racimoProcesado;
     int mutante;
-    int specklin;
+    int spacklin;
     int puntaAmarilla;
     int crema;
     int manchaRoja;

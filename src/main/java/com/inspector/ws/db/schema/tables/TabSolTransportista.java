@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolTransportista extends TableImpl<TabSolTransportistaRecord> {
 
-    private static final long serialVersionUID = -1775984085;
+    private static final long serialVersionUID = 336443702;
 
     /**
      * The reference instance of <code>public.tab_sol_transportista</code>
@@ -63,9 +63,9 @@ public class TabSolTransportista extends TableImpl<TabSolTransportistaRecord> {
     public final TableField<TabSolTransportistaRecord, Long> ID_SOL_TRANSPORTISTA = createField(DSL.name("id_sol_transportista"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_transportista.compania_transporte</code>.
+     * The column <code>public.tab_sol_transportista.compania</code>.
      */
-    public final TableField<TabSolTransportistaRecord, String> COMPANIA_TRANSPORTE = createField(DSL.name("compania_transporte"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolTransportistaRecord, String> COMPANIA = createField(DSL.name("compania"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_transportista.chofer</code>.

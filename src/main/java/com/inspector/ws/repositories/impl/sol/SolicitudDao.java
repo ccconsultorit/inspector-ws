@@ -1,7 +1,6 @@
 package com.inspector.ws.repositories.impl.sol;
 
-import com.inspector.dto.sol.SolicitudCompletaDto;
-import com.inspector.dto.sol.TabSolicitudDto;
+import com.inspector.dto.sol.*;
 import com.inspector.enumaraciones.EstadoEnum;
 import com.inspector.ws.repositories.sol.ISolicitudDao;
 import org.jooq.DSLContext;
@@ -54,8 +53,6 @@ public class SolicitudDao implements ISolicitudDao {
                 .where(TAB_SOLICITUD.ID_SOLICITUD.eq(idSolicitud))
                 .fetchOneInto(TabSolicitudDto.class);
     }
-
-
 
     @Override
     public List<SolicitudCompletaDto> getSolicitudesByEstado(String estado) {

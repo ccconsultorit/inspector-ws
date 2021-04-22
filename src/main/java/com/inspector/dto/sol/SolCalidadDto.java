@@ -18,9 +18,11 @@ public class SolCalidadDto{
     String guiaRemision;
     int defectuoso;
     String tarjetaEmbarque;
+    double totalEmbarcado;
     double totalCluster;
     double totalDefecto;
     double calidad;
+    double calibracion;
     double largoDedo;
     double totalPeso;
     double pesoPromedio;
@@ -53,26 +55,26 @@ public class SolCalidadDto{
     String estRegClb; // nuevo
 
     private Long idSolCalLargoDedo;
-    int		lar8	;
-    int		lar8_2	;
-    int		lar8_4	;
-    int		lar8_6	;
-    int		lar8_8	;
-    int		lar9	;
-    int		lar9_2	;
-    int		lar9_4	;
-    int		lar9_6	;
-    int		lar9_8	;
-    int		lar10	;
-    int		lar10_2	;
-    int		lar10_4	;
-    int		lar10_6	;
-    int		lar10_8	;
-    int		lar11	;
-    int		lar11_2	;
-    int		lar11_4	;
-    int		lar11_6	;
-    int		lar11_8	;
+    int		lar80	;
+    int		lar82	;
+    int		lar84	;
+    int		lar86	;
+    int		lar88	;
+    int		lar90	;
+    int		lar92	;
+    int		lar94	;
+    int		lar96	;
+    int		lar98	;
+    int		lar100	;
+    int		lar102	;
+    int		lar104	;
+    int		lar106	;
+    int		lar108	;
+    int		lar110	;
+    int		lar112	;
+    int		lar114	;
+    int		lar116	;
+    int		lar118	;
     String estRegLD; // nuevo
 
     List<SolCalDefectoSeleccionDto> listSolCalDefectoSeleccion;

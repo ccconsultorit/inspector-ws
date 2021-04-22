@@ -19,12 +19,20 @@ public class SolTransportistaDao implements ISolTransportistaDao {
     private ISolTransportistaDao iSolTransportistaDao;
 
     @Override
-    public TabSolTransportistaDto save(TabSolTransportistaDto solTransportista, String estReg) {
+    public TabSolTransportistaDto getSolTransporteById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_TRANSPORTISTA)
+                .where(TAB_SOL_TRANSPORTISTA.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolTransportistaDto.class);
+    }
+
+    @Override
+    public TabSolTransportistaDto save(TabSolTransportistaDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solTransportista);
-        } else {
-            return update(solTransportista);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolTransportistaDto insert(TabSolTransportistaDto solTransportista) {

@@ -20,7 +20,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row20;
+import org.jooq.Row19;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> {
 
-    private static final long serialVersionUID = -101926954;
+    private static final long serialVersionUID = -1487008503;
 
     /**
      * The reference instance of <code>public.tab_sol_sello_instalado</code>
@@ -81,11 +81,6 @@ public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> 
      * The column <code>public.tab_sol_sello_instalado.cable_exportadora</code>.
      */
     public final TableField<TabSolSelloInstaladoRecord, String> CABLE_EXPORTADORA = createField(DSL.name("cable_exportadora"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
-
-    /**
-     * The column <code>public.tab_sol_sello_instalado.sticker_naviera</code>.
-     */
-    public final TableField<TabSolSelloInstaladoRecord, String> STICKER_NAVIERA = createField(DSL.name("sticker_naviera"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_sello_instalado.sticker_exportadora</code>.
@@ -254,11 +249,11 @@ public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> 
     }
 
     // -------------------------------------------------------------------------
-    // Row20 type methods
+    // Row19 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row20<Long, String, String, String, String, String, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> fieldsRow() {
-        return (Row20) super.fieldsRow();
+    public Row19<Long, String, String, String, String, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> fieldsRow() {
+        return (Row19) super.fieldsRow();
     }
 }

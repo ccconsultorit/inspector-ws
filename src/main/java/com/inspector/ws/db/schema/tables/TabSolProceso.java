@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
 
-    private static final long serialVersionUID = 1150573242;
+    private static final long serialVersionUID = -1094459875;
 
     /**
      * The reference instance of <code>public.tab_sol_proceso</code>
@@ -63,9 +63,9 @@ public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
     public final TableField<TabSolProcesoRecord, Long> ID_SOL_PROCESO = createField(DSL.name("id_sol_proceso"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_proceso.cajas_procesadas_despachadas</code>.
+     * The column <code>public.tab_sol_proceso.caja_procesada</code>.
      */
-    public final TableField<TabSolProcesoRecord, Integer> CAJAS_PROCESADAS_DESPACHADAS = createField(DSL.name("cajas_procesadas_despachadas"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolProcesoRecord, Integer> CAJA_PROCESADA = createField(DSL.name("caja_procesada"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_proceso.tipo_fruta</code>.
@@ -73,9 +73,9 @@ public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
     public final TableField<TabSolProcesoRecord, String> TIPO_FRUTA = createField(DSL.name("tipo_fruta"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_proceso.tipo_funda_multiple</code>.
+     * The column <code>public.tab_sol_proceso.tipo_funda</code>.
      */
-    public final TableField<TabSolProcesoRecord, String> TIPO_FUNDA_MULTIPLE = createField(DSL.name("tipo_funda_multiple"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolProcesoRecord, String> TIPO_FUNDA = createField(DSL.name("tipo_funda"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_proceso.densidad_funda</code>.
@@ -83,14 +83,14 @@ public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
     public final TableField<TabSolProcesoRecord, String> DENSIDAD_FUNDA = createField(DSL.name("densidad_funda"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_proceso.tipo_caja_multiple</code>.
+     * The column <code>public.tab_sol_proceso.tipo_caja</code>.
      */
-    public final TableField<TabSolProcesoRecord, String> TIPO_CAJA_MULTIPLE = createField(DSL.name("tipo_caja_multiple"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolProcesoRecord, String> TIPO_CAJA = createField(DSL.name("tipo_caja"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_proceso.tipo_presentacion_multiple</code>.
+     * The column <code>public.tab_sol_proceso.tipo_presentacion</code>.
      */
-    public final TableField<TabSolProcesoRecord, String> TIPO_PRESENTACION_MULTIPLE = createField(DSL.name("tipo_presentacion_multiple"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolProcesoRecord, String> TIPO_PRESENTACION = createField(DSL.name("tipo_presentacion"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_proceso.tipo_estiba</code>.
@@ -98,9 +98,9 @@ public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
     public final TableField<TabSolProcesoRecord, String> TIPO_ESTIBA = createField(DSL.name("tipo_estiba"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_proceso.tiempo_descarga_fumigacion</code>.
+     * The column <code>public.tab_sol_proceso.tiempo_descarga</code>.
      */
-    public final TableField<TabSolProcesoRecord, String> TIEMPO_DESCARGA_FUMIGACION = createField(DSL.name("tiempo_descarga_fumigacion"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolProcesoRecord, String> TIEMPO_DESCARGA = createField(DSL.name("tiempo_descarga"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_proceso.tipo_cantulina</code>.

@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalidad extends TableImpl<TabSolCalidadRecord> {
 
-    private static final long serialVersionUID = -1425269519;
+    private static final long serialVersionUID = -651976080;
 
     /**
      * The reference instance of <code>public.tab_sol_calidad</code>
@@ -62,9 +62,9 @@ public class TabSolCalidad extends TableImpl<TabSolCalidadRecord> {
     public final TableField<TabSolCalidadRecord, Long> ID_SOL_CALIDAD = createField(DSL.name("id_sol_calidad"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_calidad.nombre_marca</code>.
+     * The column <code>public.tab_sol_calidad.nom_marca</code>.
      */
-    public final TableField<TabSolCalidadRecord, String> NOMBRE_MARCA = createField(DSL.name("nombre_marca"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolCalidadRecord, String> NOM_MARCA = createField(DSL.name("nom_marca"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_calidad.nro_qs</code>.
@@ -97,9 +97,9 @@ public class TabSolCalidad extends TableImpl<TabSolCalidadRecord> {
     public final TableField<TabSolCalidadRecord, Integer> TOTAL_CLUSTER = createField(DSL.name("total_cluster"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_calidad.total_defectos</code>.
+     * The column <code>public.tab_sol_calidad.total_defecto</code>.
      */
-    public final TableField<TabSolCalidadRecord, Integer> TOTAL_DEFECTOS = createField(DSL.name("total_defectos"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalidadRecord, Integer> TOTAL_DEFECTO = createField(DSL.name("total_defecto"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_calidad.calidad</code>.
@@ -170,6 +170,11 @@ public class TabSolCalidad extends TableImpl<TabSolCalidadRecord> {
      * The column <code>public.tab_sol_calidad.id_sol_productor</code>.
      */
     public final TableField<TabSolCalidadRecord, Long> ID_SOL_PRODUCTOR = createField(DSL.name("id_sol_productor"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_calidad.total_embarcado</code>.
+     */
+    public final TableField<TabSolCalidadRecord, Integer> TOTAL_EMBARCADO = createField(DSL.name("total_embarcado"), org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>public.tab_sol_calidad</code> table reference

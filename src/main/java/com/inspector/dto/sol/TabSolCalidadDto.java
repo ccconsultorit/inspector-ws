@@ -12,15 +12,17 @@ public class TabSolCalidadDto extends BaseDto {
 
     private Long idSolCalidad;
     private Long idSolicitud;
-    String nombreMarca;
+    String nomMarca;
     String nroQs;
     String guiaTransporte;
     String guiaRemision;
     int defectuoso;
     String tarjetaEmbarque;
     double totalCluster;
+    double totalEmbarcado;
     double totalDefecto;
     double calidad;
+    double calibracion;
     double largoDedo;
     double totalPeso;
     double pesoPromedio;

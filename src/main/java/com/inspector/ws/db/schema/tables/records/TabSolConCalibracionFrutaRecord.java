@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolConCalibracionFrutaRecord> implements Record10<Long, Integer, String, Integer, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> {
 
-    private static final long serialVersionUID = -1789426786;
+    private static final long serialVersionUID = -1457989428;
 
     /**
      * Setter for <code>public.tab_sol_con_calibracion_fruta.id_sol_con_calibracion_fruta</code>.
@@ -75,16 +75,16 @@ public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolC
     }
 
     /**
-     * Setter for <code>public.tab_sol_con_calibracion_fruta.numero_racimos</code>.
+     * Setter for <code>public.tab_sol_con_calibracion_fruta.num_racimos</code>.
      */
-    public void setNumeroRacimos(Integer value) {
+    public void setNumRacimos(Integer value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_con_calibracion_fruta.numero_racimos</code>.
+     * Getter for <code>public.tab_sol_con_calibracion_fruta.num_racimos</code>.
      */
-    public Integer getNumeroRacimos() {
+    public Integer getNumRacimos() {
         return (Integer) get(3);
     }
 
@@ -212,7 +212,7 @@ public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolC
 
     @Override
     public Field<Integer> field4() {
-        return TabSolConCalibracionFruta.TAB_SOL_CON_CALIBRACION_FRUTA.NUMERO_RACIMOS;
+        return TabSolConCalibracionFruta.TAB_SOL_CON_CALIBRACION_FRUTA.NUM_RACIMOS;
     }
 
     @Override
@@ -262,7 +262,7 @@ public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolC
 
     @Override
     public Integer component4() {
-        return getNumeroRacimos();
+        return getNumRacimos();
     }
 
     @Override
@@ -312,7 +312,7 @@ public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolC
 
     @Override
     public Integer value4() {
-        return getNumeroRacimos();
+        return getNumRacimos();
     }
 
     @Override
@@ -365,7 +365,7 @@ public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolC
 
     @Override
     public TabSolConCalibracionFrutaRecord value4(Integer value) {
-        setNumeroRacimos(value);
+        setNumRacimos(value);
         return this;
     }
 
@@ -434,13 +434,13 @@ public class TabSolConCalibracionFrutaRecord extends UpdatableRecordImpl<TabSolC
     /**
      * Create a detached, initialised TabSolConCalibracionFrutaRecord
      */
-    public TabSolConCalibracionFrutaRecord(Long idSolConCalibracionFruta, Integer numSemana, String color, Integer numeroRacimos, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolConsolidadoGancho) {
+    public TabSolConCalibracionFrutaRecord(Long idSolConCalibracionFruta, Integer numSemana, String color, Integer numRacimos, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolConsolidadoGancho) {
         super(TabSolConCalibracionFruta.TAB_SOL_CON_CALIBRACION_FRUTA);
 
         set(0, idSolConCalibracionFruta);
         set(1, numSemana);
         set(2, color);
-        set(3, numeroRacimos);
+        set(3, numRacimos);
         set(4, estado);
         set(5, fechaIngreso);
         set(6, fechaModifica);

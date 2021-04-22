@@ -18,12 +18,13 @@ public class SolCalPesoClusterDao implements ISolCalPesoClusterDao {
     private DSLContext create;
 
     @Override
-    public TabSolCalPesoClusterDto save(TabSolCalPesoClusterDto solCalPesoCluster, String estReg) {
+    public TabSolCalPesoClusterDto save(TabSolCalPesoClusterDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solCalPesoCluster);
-        } else {
-            return update(solCalPesoCluster);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolCalPesoClusterDto insert(TabSolCalPesoClusterDto solCalPesoCluster) {

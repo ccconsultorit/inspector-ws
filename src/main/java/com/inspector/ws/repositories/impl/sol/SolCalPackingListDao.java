@@ -18,12 +18,13 @@ public class SolCalPackingListDao implements ISolCalPackingListDao {
     private DSLContext create;
 
     @Override
-    public TabSolCalPackingListDto save(TabSolCalPackingListDto solCalPackingList, String estReg) {
+    public TabSolCalPackingListDto save(TabSolCalPackingListDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solCalPackingList);
-        } else {
-            return update(solCalPackingList);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolCalPackingListDto insert(TabSolCalPackingListDto solCalPackingList) {

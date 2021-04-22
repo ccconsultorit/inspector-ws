@@ -15,12 +15,12 @@ public class TabSolSelloLlegadaDto extends BaseDto {
     String stickerLlegada;
     String rastreoSatelital;
     String selloCadena;
-    String stickerNavieraVentilador;
-    String selloLlegadaInterno01;
-    String selloLlegadaInterno02;
-    String stickerPatioVentoleraExterna01;
-    String stickerPatioVentoleraExterna02;
-    String nroSerieFunda;
+    String stickerNaviera;
+    String selloLlegada1;
+    String selloLlegada2;
+    String stickerPatioVentolera1;
+    String stickerPatioVentolera2;
+    String nroSerie;
     String candadoExportador;
     String observacion;
 

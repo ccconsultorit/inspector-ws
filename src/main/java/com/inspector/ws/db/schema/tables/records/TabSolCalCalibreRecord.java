@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalCalibreRecord extends UpdatableRecordImpl<TabSolCalCalibreRecord> {
 
-    private static final long serialVersionUID = 1682386949;
+    private static final long serialVersionUID = -232392473;
 
     /**
      * Setter for <code>public.tab_sol_cal_calibre.id_sol_cal_calibre</code>.
@@ -44,30 +44,30 @@ public class TabSolCalCalibreRecord extends UpdatableRecordImpl<TabSolCalCalibre
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.ug</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal_ug</code>.
      */
-    public void setUg(Integer value) {
+    public void setCalUg(Integer value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.ug</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal_ug</code>.
      */
-    public Integer getUg() {
+    public Integer getCalUg() {
         return (Integer) get(1);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.og</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal_og</code>.
      */
-    public void setOg(Integer value) {
+    public void setCalOg(Integer value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.og</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal_og</code>.
      */
-    public Integer getOg() {
+    public Integer getCalOg() {
         return (Integer) get(2);
     }
 
@@ -430,12 +430,12 @@ public class TabSolCalCalibreRecord extends UpdatableRecordImpl<TabSolCalCalibre
     /**
      * Create a detached, initialised TabSolCalCalibreRecord
      */
-    public TabSolCalCalibreRecord(Long idSolCalCalibre, Integer ug, Integer og, Integer cal_37, Integer cal_38, Integer cal_39, Integer cal_40, Integer cal_41, Integer cal_42, Integer cal_43, Integer cal_44, Integer cal_45, Integer cal_46, Integer cal_47, Integer cal_48, Integer cal_49, Integer cal_50, Integer cal_51, Integer cal_52, Integer cal_53, Integer cal_54, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
+    public TabSolCalCalibreRecord(Long idSolCalCalibre, Integer calUg, Integer calOg, Integer cal_37, Integer cal_38, Integer cal_39, Integer cal_40, Integer cal_41, Integer cal_42, Integer cal_43, Integer cal_44, Integer cal_45, Integer cal_46, Integer cal_47, Integer cal_48, Integer cal_49, Integer cal_50, Integer cal_51, Integer cal_52, Integer cal_53, Integer cal_54, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
         super(TabSolCalCalibre.TAB_SOL_CAL_CALIBRE);
 
         set(0, idSolCalCalibre);
-        set(1, ug);
-        set(2, og);
+        set(1, calUg);
+        set(2, calOg);
         set(3, cal_37);
         set(4, cal_38);
         set(5, cal_39);

@@ -18,12 +18,13 @@ public class SolCalLargoDedoDao implements ISolCalLargoDedoDao {
     private DSLContext create;
 
     @Override
-    public TabSolCalLargoDedoDto save(TabSolCalLargoDedoDto solCalLargoDedo, String estReg) {
+    public TabSolCalLargoDedoDto save(TabSolCalLargoDedoDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solCalLargoDedo);
-        } else {
-            return update(solCalLargoDedo);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolCalLargoDedoDto insert(TabSolCalLargoDedoDto solCalLargoDedo) {

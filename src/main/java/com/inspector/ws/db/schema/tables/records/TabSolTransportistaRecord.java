@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTransportistaRecord> implements Record16<Long, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long, Long> {
 
-    private static final long serialVersionUID = 835097541;
+    private static final long serialVersionUID = 1040396616;
 
     /**
      * Setter for <code>public.tab_sol_transportista.id_sol_transportista</code>.
@@ -47,16 +47,16 @@ public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTranspo
     }
 
     /**
-     * Setter for <code>public.tab_sol_transportista.compania_transporte</code>.
+     * Setter for <code>public.tab_sol_transportista.compania</code>.
      */
-    public void setCompaniaTransporte(String value) {
+    public void setCompania(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_transportista.compania_transporte</code>.
+     * Getter for <code>public.tab_sol_transportista.compania</code>.
      */
-    public String getCompaniaTransporte() {
+    public String getCompania() {
         return (String) get(1);
     }
 
@@ -286,7 +286,7 @@ public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTranspo
 
     @Override
     public Field<String> field2() {
-        return TabSolTransportista.TAB_SOL_TRANSPORTISTA.COMPANIA_TRANSPORTE;
+        return TabSolTransportista.TAB_SOL_TRANSPORTISTA.COMPANIA;
     }
 
     @Override
@@ -366,7 +366,7 @@ public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTranspo
 
     @Override
     public String component2() {
-        return getCompaniaTransporte();
+        return getCompania();
     }
 
     @Override
@@ -446,7 +446,7 @@ public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTranspo
 
     @Override
     public String value2() {
-        return getCompaniaTransporte();
+        return getCompania();
     }
 
     @Override
@@ -527,7 +527,7 @@ public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTranspo
 
     @Override
     public TabSolTransportistaRecord value2(String value) {
-        setCompaniaTransporte(value);
+        setCompania(value);
         return this;
     }
 
@@ -650,11 +650,11 @@ public class TabSolTransportistaRecord extends UpdatableRecordImpl<TabSolTranspo
     /**
      * Create a detached, initialised TabSolTransportistaRecord
      */
-    public TabSolTransportistaRecord(Long idSolTransportista, String companiaTransporte, String chofer, String cedula, String celular, String placa, String colorCabezal, String marcaCabezal, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
+    public TabSolTransportistaRecord(Long idSolTransportista, String compania, String chofer, String cedula, String celular, String placa, String colorCabezal, String marcaCabezal, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
         super(TabSolTransportista.TAB_SOL_TRANSPORTISTA);
 
         set(0, idSolTransportista);
-        set(1, companiaTransporte);
+        set(1, compania);
         set(2, chofer);
         set(3, cedula);
         set(4, celular);

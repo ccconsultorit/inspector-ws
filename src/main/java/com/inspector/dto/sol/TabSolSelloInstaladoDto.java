@@ -11,16 +11,16 @@ public class TabSolSelloInstaladoDto extends BaseDto {
     private Long idSolSelloInstalado;
     private Long idSolicitud;
     String candadoNaviera;
-    String selloVerificador;
+    String selloVerificadora;
     String cableNaviera;
     String cableExportadora;
-    String stickerNaviera;
+    //String stickerNaviera;
     String stickerExportadora;
     String rastreo;
     String termografo01;
-    String ubicacionTermografo01;
+    String ubicacion01;
     String termografo02;
-    String ubicacionTermografo02;
+    String ubicacion02;
     String filtroProporcionado;
     String termoking;
 

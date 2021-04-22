@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
 
-    private static final long serialVersionUID = -1370145422;
+    private static final long serialVersionUID = -80561017;
 
     /**
      * The reference instance of <code>public.tab_solicitud</code>
@@ -62,9 +62,9 @@ public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
     public final TableField<TabSolicitudRecord, Long> ID_SOLICITUD = createField(DSL.name("id_solicitud"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_solicitud.semana</code>.
+     * The column <code>public.tab_solicitud.nro_semana</code>.
      */
-    public final TableField<TabSolicitudRecord, Integer> SEMANA = createField(DSL.name("semana"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolicitudRecord, Integer> NRO_SEMANA = createField(DSL.name("nro_semana"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_solicitud.exportador</code>.
@@ -87,14 +87,14 @@ public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
     public final TableField<TabSolicitudRecord, String> PRODUCTOR = createField(DSL.name("productor"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_solicitud.codigo_productor</code>.
+     * The column <code>public.tab_solicitud.cod_productor</code>.
      */
-    public final TableField<TabSolicitudRecord, String> CODIGO_PRODUCTOR = createField(DSL.name("codigo_productor"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolicitudRecord, String> COD_PRODUCTOR = createField(DSL.name("cod_productor"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_solicitud.codigo_magap</code>.
+     * The column <code>public.tab_solicitud.cod_magap</code>.
      */
-    public final TableField<TabSolicitudRecord, String> CODIGO_MAGAP = createField(DSL.name("codigo_magap"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolicitudRecord, String> COD_MAGAP = createField(DSL.name("cod_magap"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_solicitud.puerto_embarque</code>.
@@ -119,12 +119,7 @@ public class TabSolicitud extends TableImpl<TabSolicitudRecord> {
     /**
      * The column <code>public.tab_solicitud.contenedor</code>.
      */
-    public final TableField<TabSolicitudRecord, String> CONTENEDOR = createField(DSL.name("contenedor"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
-
-    /**
-     * The column <code>public.tab_solicitud.evaluador</code>.
-     */
-    public final TableField<TabSolicitudRecord, String> EVALUADOR = createField(DSL.name("evaluador"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolicitudRecord, String> CONTENEDOR = createField(DSL.name("contenedor"), org.jooq.impl.SQLDataType.VARCHAR(5).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_solicitud.observacion</code>.

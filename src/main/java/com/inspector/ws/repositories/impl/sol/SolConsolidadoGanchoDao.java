@@ -19,12 +19,20 @@ public class SolConsolidadoGanchoDao implements ISolConsolidadoGanchoDao {
     private ISolConsolidadoGanchoDao iSolConsolidadoGanchoDao;
 
     @Override
-    public TabSolConsolidadoGanchoDto save(TabSolConsolidadoGanchoDto solConsolidadoGancho, String estReg) {
+    public TabSolConsolidadoGanchoDto getSolConsolidadoGanchoById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_CONSOLIDADO_GANCHO)
+                .where(TAB_SOL_CONSOLIDADO_GANCHO.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolConsolidadoGanchoDto.class);
+    }
+
+    @Override
+    public TabSolConsolidadoGanchoDto save(TabSolConsolidadoGanchoDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solConsolidadoGancho);
-        } else {
-            return update(solConsolidadoGancho);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolConsolidadoGanchoDto insert(TabSolConsolidadoGanchoDto solConsolidadoGancho) {

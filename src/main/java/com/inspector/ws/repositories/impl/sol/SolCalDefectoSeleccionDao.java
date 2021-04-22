@@ -19,12 +19,13 @@ public class SolCalDefectoSeleccionDao implements ISolCalDefectoSeleccionDao {
     private ISolCalDefectoSeleccionDao iSolDefectoSeleccionDao;
 
     @Override
-    public TabSolCalDefectoSeleccionDto save(TabSolCalDefectoSeleccionDto solCalDefectoSeleccion, String estReg) {
+    public TabSolCalDefectoSeleccionDto save(TabSolCalDefectoSeleccionDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solCalDefectoSeleccion);
-        } else {
-            return update(solCalDefectoSeleccion);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolCalDefectoSeleccionDto insert(TabSolCalDefectoSeleccionDto solDefectoSeleccion) {

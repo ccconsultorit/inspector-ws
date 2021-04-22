@@ -13,13 +13,13 @@ import java.time.LocalDateTime;
 public class TabSolicitudDto extends BaseSolicitudDto {
 
     private Long idSolicitud;
-    int semana;
+    int nroSemana;
     String exportador;
     String cliente;
     String tipoSolicitud;
     String productor;
-    String codigoProductor;
-    String codigoMagap;
+    String codProductor;
+    String codMagap;
     String puertoEmbarque;
     String zona;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")

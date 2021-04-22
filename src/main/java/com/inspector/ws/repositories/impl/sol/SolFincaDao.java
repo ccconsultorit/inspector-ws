@@ -19,12 +19,20 @@ public class SolFincaDao implements ISolFincaDao {
     private ISolFincaDao iSolFincaDao;
 
     @Override
-    public TabSolFincaDto save(TabSolFincaDto solFinca, String estReg) {
+    public TabSolFincaDto getSolFincaById(Long idSolicitud) {
+        return create.selectFrom(TAB_SOL_FINCA)
+                .where(TAB_SOL_FINCA.ID_SOLICITUD.eq(idSolicitud))
+                .fetchOneInto(TabSolFincaDto.class);
+    }
+
+    @Override
+    public TabSolFincaDto save(TabSolFincaDto objeto, String estReg) {
         if (estReg.equals("NUE")) {
-            return insert(solFinca);
-        } else {
-            return update(solFinca);
-        }
+            return insert(objeto);
+        } else if (estReg.equals("MOD")){
+            return update(objeto);
+        } else
+            return null;
     }
 
     private TabSolFincaDto insert(TabSolFincaDto solFinca) {

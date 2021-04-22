@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> {
 
-    private static final long serialVersionUID = -2038568799;
+    private static final long serialVersionUID = -1676234955;
 
     /**
      * Setter for <code>public.tab_solicitud.id_solicitud</code>.
@@ -44,16 +44,16 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.semana</code>.
+     * Setter for <code>public.tab_solicitud.nro_semana</code>.
      */
-    public void setSemana(Integer value) {
+    public void setNroSemana(Integer value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.semana</code>.
+     * Getter for <code>public.tab_solicitud.nro_semana</code>.
      */
-    public Integer getSemana() {
+    public Integer getNroSemana() {
         return (Integer) get(1);
     }
 
@@ -114,30 +114,30 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.codigo_productor</code>.
+     * Setter for <code>public.tab_solicitud.cod_productor</code>.
      */
-    public void setCodigoProductor(String value) {
+    public void setCodProductor(String value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.codigo_productor</code>.
+     * Getter for <code>public.tab_solicitud.cod_productor</code>.
      */
-    public String getCodigoProductor() {
+    public String getCodProductor() {
         return (String) get(6);
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.codigo_magap</code>.
+     * Setter for <code>public.tab_solicitud.cod_magap</code>.
      */
-    public void setCodigoMagap(String value) {
+    public void setCodMagap(String value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.codigo_magap</code>.
+     * Getter for <code>public.tab_solicitud.cod_magap</code>.
      */
-    public String getCodigoMagap() {
+    public String getCodMagap() {
         return (String) get(7);
     }
 
@@ -212,157 +212,143 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.evaluador</code>.
-     */
-    public void setEvaluador(String value) {
-        set(13, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.evaluador</code>.
-     */
-    public String getEvaluador() {
-        return (String) get(13);
-    }
-
-    /**
      * Setter for <code>public.tab_solicitud.observacion</code>.
      */
     public void setObservacion(String value) {
-        set(14, value);
+        set(13, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.observacion</code>.
      */
     public String getObservacion() {
-        return (String) get(14);
+        return (String) get(13);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.estado</code>.
      */
     public void setEstado(String value) {
-        set(15, value);
+        set(14, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.estado</code>.
      */
     public String getEstado() {
-        return (String) get(15);
+        return (String) get(14);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.fecha_ingreso</code>.
      */
     public void setFechaIngreso(LocalDateTime value) {
-        set(16, value);
+        set(15, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.fecha_ingreso</code>.
      */
     public LocalDateTime getFechaIngreso() {
-        return (LocalDateTime) get(16);
+        return (LocalDateTime) get(15);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.fecha_modifica</code>.
      */
     public void setFechaModifica(LocalDateTime value) {
-        set(17, value);
+        set(16, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.fecha_modifica</code>.
      */
     public LocalDateTime getFechaModifica() {
-        return (LocalDateTime) get(17);
+        return (LocalDateTime) get(16);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.usuario_ingreso</code>.
      */
     public void setUsuarioIngreso(Integer value) {
-        set(18, value);
+        set(17, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.usuario_ingreso</code>.
      */
     public Integer getUsuarioIngreso() {
-        return (Integer) get(18);
+        return (Integer) get(17);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.usuario_modifica</code>.
      */
     public void setUsuarioModifica(Integer value) {
-        set(19, value);
+        set(18, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.usuario_modifica</code>.
      */
     public Integer getUsuarioModifica() {
-        return (Integer) get(19);
+        return (Integer) get(18);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.nom_evaluador_01</code>.
      */
     public void setNomEvaluador_01(String value) {
-        set(20, value);
+        set(19, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.nom_evaluador_01</code>.
      */
     public String getNomEvaluador_01() {
-        return (String) get(20);
+        return (String) get(19);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.ci_evaluador_01</code>.
      */
     public void setCiEvaluador_01(String value) {
-        set(21, value);
+        set(20, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.ci_evaluador_01</code>.
      */
     public String getCiEvaluador_01() {
-        return (String) get(21);
+        return (String) get(20);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.nom_evaluador_02</code>.
      */
     public void setNomEvaluador_02(String value) {
-        set(22, value);
+        set(21, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.nom_evaluador_02</code>.
      */
     public String getNomEvaluador_02() {
-        return (String) get(22);
+        return (String) get(21);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.ci_evaluador_02</code>.
      */
     public void setCiEvaluador_02(String value) {
-        set(23, value);
+        set(22, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.ci_evaluador_02</code>.
      */
     public String getCiEvaluador_02() {
-        return (String) get(23);
+        return (String) get(22);
     }
 
     // -------------------------------------------------------------------------
@@ -388,32 +374,31 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     /**
      * Create a detached, initialised TabSolicitudRecord
      */
-    public TabSolicitudRecord(Long idSolicitud, Integer semana, String exportador, String cliente, String tipoSolicitud, String productor, String codigoProductor, String codigoMagap, String puertoEmbarque, String zona, LocalDateTime fechaInicio, LocalDateTime fechaTermino, String contenedor, String evaluador, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, String nomEvaluador_01, String ciEvaluador_01, String nomEvaluador_02, String ciEvaluador_02) {
+    public TabSolicitudRecord(Long idSolicitud, Integer nroSemana, String exportador, String cliente, String tipoSolicitud, String productor, String codProductor, String codMagap, String puertoEmbarque, String zona, LocalDateTime fechaInicio, LocalDateTime fechaTermino, String contenedor, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, String nomEvaluador_01, String ciEvaluador_01, String nomEvaluador_02, String ciEvaluador_02) {
         super(TabSolicitud.TAB_SOLICITUD);
 
         set(0, idSolicitud);
-        set(1, semana);
+        set(1, nroSemana);
         set(2, exportador);
         set(3, cliente);
         set(4, tipoSolicitud);
         set(5, productor);
-        set(6, codigoProductor);
-        set(7, codigoMagap);
+        set(6, codProductor);
+        set(7, codMagap);
         set(8, puertoEmbarque);
         set(9, zona);
         set(10, fechaInicio);
         set(11, fechaTermino);
         set(12, contenedor);
-        set(13, evaluador);
-        set(14, observacion);
-        set(15, estado);
-        set(16, fechaIngreso);
-        set(17, fechaModifica);
-        set(18, usuarioIngreso);
-        set(19, usuarioModifica);
-        set(20, nomEvaluador_01);
-        set(21, ciEvaluador_01);
-        set(22, nomEvaluador_02);
-        set(23, ciEvaluador_02);
+        set(13, observacion);
+        set(14, estado);
+        set(15, fechaIngreso);
+        set(16, fechaModifica);
+        set(17, usuarioIngreso);
+        set(18, usuarioModifica);
+        set(19, nomEvaluador_01);
+        set(20, ciEvaluador_01);
+        set(21, nomEvaluador_02);
+        set(22, ciEvaluador_02);
     }
 }
