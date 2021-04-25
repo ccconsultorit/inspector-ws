@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLlegadaRecord> implements Record20<Long, String, String, String, String, String, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> {
 
-    private static final long serialVersionUID = -529633392;
+    private static final long serialVersionUID = 1179306638;
 
     /**
      * Setter for <code>public.tab_sol_sello_llegada.id_sol_sello_llegada</code>.
@@ -131,30 +131,30 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_llegada.sellos_llegada_1</code>.
+     * Setter for <code>public.tab_sol_sello_llegada.sello_arribo_01</code>.
      */
-    public void setSellosLlegada_1(String value) {
+    public void setSelloArribo_01(String value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_llegada.sellos_llegada_1</code>.
+     * Getter for <code>public.tab_sol_sello_llegada.sello_arribo_01</code>.
      */
-    public String getSellosLlegada_1() {
+    public String getSelloArribo_01() {
         return (String) get(7);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_llegada.sellos_llegada_2</code>.
+     * Setter for <code>public.tab_sol_sello_llegada.sello_llegada_2</code>.
      */
-    public void setSellosLlegada_2(String value) {
+    public void setSelloLlegada_2(String value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_llegada.sellos_llegada_2</code>.
+     * Getter for <code>public.tab_sol_sello_llegada.sello_llegada_2</code>.
      */
-    public String getSellosLlegada_2() {
+    public String getSelloLlegada_2() {
         return (String) get(8);
     }
 
@@ -372,12 +372,12 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public Field<String> field8() {
-        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLOS_LLEGADA_1;
+        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLO_ARRIBO_01;
     }
 
     @Override
     public Field<String> field9() {
-        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLOS_LLEGADA_2;
+        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLO_LLEGADA_2;
     }
 
     @Override
@@ -472,12 +472,12 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public String component8() {
-        return getSellosLlegada_1();
+        return getSelloArribo_01();
     }
 
     @Override
     public String component9() {
-        return getSellosLlegada_2();
+        return getSelloLlegada_2();
     }
 
     @Override
@@ -572,12 +572,12 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public String value8() {
-        return getSellosLlegada_1();
+        return getSelloArribo_01();
     }
 
     @Override
     public String value9() {
-        return getSellosLlegada_2();
+        return getSelloLlegada_2();
     }
 
     @Override
@@ -679,13 +679,13 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public TabSolSelloLlegadaRecord value8(String value) {
-        setSellosLlegada_1(value);
+        setSelloArribo_01(value);
         return this;
     }
 
     @Override
     public TabSolSelloLlegadaRecord value9(String value) {
-        setSellosLlegada_2(value);
+        setSelloLlegada_2(value);
         return this;
     }
 
@@ -794,7 +794,7 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
     /**
      * Create a detached, initialised TabSolSelloLlegadaRecord
      */
-    public TabSolSelloLlegadaRecord(Long idSolSelloLlegada, String candadoPlastico, String candadoBotella, String stickerLlegada, String rastreoSatelital, String selloCadena, String stickerNaviera, String sellosLlegada_1, String sellosLlegada_2, String stickerPatioVentolera_1, String stickerPatioVentolera_2, String nroSerie, String candadoExportador, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
+    public TabSolSelloLlegadaRecord(Long idSolSelloLlegada, String candadoPlastico, String candadoBotella, String stickerLlegada, String rastreoSatelital, String selloCadena, String stickerNaviera, String selloArribo_01, String selloLlegada_2, String stickerPatioVentolera_1, String stickerPatioVentolera_2, String nroSerie, String candadoExportador, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
         super(TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA);
 
         set(0, idSolSelloLlegada);
@@ -804,8 +804,8 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
         set(4, rastreoSatelital);
         set(5, selloCadena);
         set(6, stickerNaviera);
-        set(7, sellosLlegada_1);
-        set(8, sellosLlegada_2);
+        set(7, selloArribo_01);
+        set(8, selloLlegada_2);
         set(9, stickerPatioVentolera_1);
         set(10, stickerPatioVentolera_2);
         set(11, nroSerie);

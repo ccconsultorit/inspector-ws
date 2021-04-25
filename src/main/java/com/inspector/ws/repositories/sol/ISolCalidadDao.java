@@ -2,6 +2,8 @@ package com.inspector.ws.repositories.sol;
 
 import com.inspector.dto.sol.TabSolCalidadDto;
 
+import java.util.List;
+
 /**
  * Interface de metodos de consulta de datos de la tabla RolTab
  *
@@ -9,6 +11,10 @@ import com.inspector.dto.sol.TabSolCalidadDto;
  */
 public interface ISolCalidadDao {
 
-    public TabSolCalidadDto save(TabSolCalidadDto solCalidad, String estReg);
+    public List<TabSolCalidadDto> getSolCalidadXIdSolicitud(Long idSolicitud);
+    public TabSolCalidadDto getSolCalidadXId(Long idSolCalidad);
 
-}
+    public TabSolCalidadDto save(TabSolCalidadDto solCalidad, String estReg);
+    public void eliminarSolCalidad(Long idSolCalidad);
+
+    }

@@ -63,7 +63,7 @@ public class SolicitudCompletaDto  {
     String rastreoSatelital;
     String selloCadena;
     String stickerNaviera;
-    String selloLlegada1;
+    String selloArribo01;
     String selloLlegada2;
     String stickerPatioVentolera1;
     String stickerPatioVentolera2;

@@ -9,5 +9,6 @@ import com.inspector.dto.sol.TabSolCalCalibreDto;
  */
 public interface ISolCalCalibreDao {
 
+    public TabSolCalCalibreDto getSolCalCalibreXIdSolCalidad(Long idSolCalidad);
     public TabSolCalCalibreDto save(TabSolCalCalibreDto solCalCalibre, String estReg);
 }
