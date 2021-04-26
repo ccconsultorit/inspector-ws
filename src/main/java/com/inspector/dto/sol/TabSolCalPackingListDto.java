@@ -9,7 +9,6 @@ import lombok.Setter;
 public class TabSolCalPackingListDto extends BaseDto {
 
     private Long idSolCalPackingList;
-    private Long idSolicitud;
     private Long idSolCalidad;
     int numeracion;
     String sticker;

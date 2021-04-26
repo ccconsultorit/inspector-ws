@@ -10,8 +10,6 @@ public class TabSolCalPesoClusterDto extends BaseDto {
 
     private Long idSolCalPesoCluster;
     private Long idSolCalidad;
-    private Long idSolProductor;
-    private Long idSolicitud;
     int		numero	;
     double	peso	;
 

@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalDefectoSeleccionRecord extends UpdatableRecordImpl<TabSolCalDefectoSeleccionRecord> {
 
-    private static final long serialVersionUID = -460283248;
+    private static final long serialVersionUID = 1215764730;
 
     /**
      * Setter for <code>public.tab_sol_cal_defecto_seleccion.id_sol_cal_defecto_seleccion</code>.
@@ -58,16 +58,16 @@ public class TabSolCalDefectoSeleccionRecord extends UpdatableRecordImpl<TabSolC
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_defecto_seleccion.numero_gancho_inspeccionado</code>.
+     * Setter for <code>public.tab_sol_cal_defecto_seleccion.num_gancho_inspeccionado</code>.
      */
-    public void setNumeroGanchoInspeccionado(Integer value) {
+    public void setNumGanchoInspeccionado(Integer value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_defecto_seleccion.numero_gancho_inspeccionado</code>.
+     * Getter for <code>public.tab_sol_cal_defecto_seleccion.num_gancho_inspeccionado</code>.
      */
-    public Integer getNumeroGanchoInspeccionado() {
+    public Integer getNumGanchoInspeccionado() {
         return (Integer) get(2);
     }
 
@@ -780,12 +780,12 @@ public class TabSolCalDefectoSeleccionRecord extends UpdatableRecordImpl<TabSolC
     /**
      * Create a detached, initialised TabSolCalDefectoSeleccionRecord
      */
-    public TabSolCalDefectoSeleccionRecord(Long idSolCalDefectoSeleccion, Float peso, Integer numeroGanchoInspeccionado, String ph, Integer sr, Integer br, Integer ni, Integer mf, Integer ct, Integer fl, Integer dp, Integer ug, Integer og, Integer ls, Integer lg, Integer bm, Integer ts, Integer cs, Integer wi, Integer sk, Integer yb, Integer rr, Integer tc, Integer sp, Integer sm, Integer tr, Integer ab, Integer ch, Integer tf, Integer ud, Integer pd, Integer ff, Integer bs, Integer dt, Integer sre, Integer bre, Integer nie, Integer fre, Integer sc, Integer ml, Integer md, Integer ec, Integer v, Integer f, Integer ea, Integer ps, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
+    public TabSolCalDefectoSeleccionRecord(Long idSolCalDefectoSeleccion, Float peso, Integer numGanchoInspeccionado, String ph, Integer sr, Integer br, Integer ni, Integer mf, Integer ct, Integer fl, Integer dp, Integer ug, Integer og, Integer ls, Integer lg, Integer bm, Integer ts, Integer cs, Integer wi, Integer sk, Integer yb, Integer rr, Integer tc, Integer sp, Integer sm, Integer tr, Integer ab, Integer ch, Integer tf, Integer ud, Integer pd, Integer ff, Integer bs, Integer dt, Integer sre, Integer bre, Integer nie, Integer fre, Integer sc, Integer ml, Integer md, Integer ec, Integer v, Integer f, Integer ea, Integer ps, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
         super(TabSolCalDefectoSeleccion.TAB_SOL_CAL_DEFECTO_SELECCION);
 
         set(0, idSolCalDefectoSeleccion);
         set(1, peso);
-        set(2, numeroGanchoInspeccionado);
+        set(2, numGanchoInspeccionado);
         set(3, ph);
         set(4, sr);
         set(5, br);

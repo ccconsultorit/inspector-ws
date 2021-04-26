@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalDefectoSeleccion extends TableImpl<TabSolCalDefectoSeleccionRecord> {
 
-    private static final long serialVersionUID = -1002954437;
+    private static final long serialVersionUID = -54320637;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_defecto_seleccion</code>
@@ -67,9 +67,9 @@ public class TabSolCalDefectoSeleccion extends TableImpl<TabSolCalDefectoSelecci
     public final TableField<TabSolCalDefectoSeleccionRecord, Float> PESO = createField(DSL.name("peso"), org.jooq.impl.SQLDataType.REAL.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.REAL)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_defecto_seleccion.numero_gancho_inspeccionado</code>.
+     * The column <code>public.tab_sol_cal_defecto_seleccion.num_gancho_inspeccionado</code>.
      */
-    public final TableField<TabSolCalDefectoSeleccionRecord, Integer> NUMERO_GANCHO_INSPECCIONADO = createField(DSL.name("numero_gancho_inspeccionado"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalDefectoSeleccionRecord, Integer> NUM_GANCHO_INSPECCIONADO = createField(DSL.name("num_gancho_inspeccionado"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_cal_defecto_seleccion.ph</code>.

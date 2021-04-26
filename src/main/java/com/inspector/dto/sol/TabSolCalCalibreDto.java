@@ -10,7 +10,6 @@ public class TabSolCalCalibreDto extends BaseDto {
 
     private Long idSolCalCalibre;
     private Long idSolCalidad;
-    private Long idSolicitud;
     int		calUg	;
     int		calOg	;
     int		cal37	;

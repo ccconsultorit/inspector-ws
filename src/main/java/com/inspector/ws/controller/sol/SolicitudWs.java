@@ -60,8 +60,6 @@ public class SolicitudWs  {
     @Autowired
     private ISolConCalibracionFrutaDao iSolConCalibracionFrutaDao;
 
-
-
     private final static Logger LOG = LoggerFactory.getLogger(SolicitudWs.class);
 
     /**
@@ -109,6 +107,66 @@ public class SolicitudWs  {
         }
     }
 
+    @RequestMapping(value = "conSolCalDefectoSeleccionXIdSolCalidad", method = RequestMethod.GET)
+    public ApiResponse<List<TabSolCalDefectoSeleccionDto>> conSolCalDefectoSeleccionXIdSolCalidad(@RequestParam("idSolCalidad") Long idSolCalidad) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalDefectoSeleccionDao.getSolCalDefectosXIdSolCalidad(idSolCalidad));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolCalDefectoSeleccionXId", method = RequestMethod.GET)
+    public ApiResponse<TabSolCalDefectoSeleccionDto> conSolCalDefectoSeleccionXId(@RequestParam("idSolCalDefectoSeleccion") Long idSolCalDefectoSeleccion) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalDefectoSeleccionDao.getSolCalDefectosXId(idSolCalDefectoSeleccion));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolCalPesoClusterXIdSolCalidad", method = RequestMethod.GET)
+    public ApiResponse<List<TabSolCalPesoClusterDto>> conSolCalPesoClusterXIdSolCalidad(@RequestParam("idSolCalidad") Long idSolCalidad) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalPesoClusterDao.getSolCalPesoClusterXIdSolCalidad(idSolCalidad));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolCalPesoClusterXId", method = RequestMethod.GET)
+    public ApiResponse<TabSolCalPesoClusterDto> conSolCalPesoClusterXId(@RequestParam("idSolCalPesoCluster") Long idSolCalPesoCluster) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalPesoClusterDao.getSolCalPesoClusterXId(idSolCalPesoCluster));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolCalPackingListXIdSolCalidad", method = RequestMethod.GET)
+    public ApiResponse<List<TabSolCalPackingListDto>> conSolCalPackingListXIdSolCalidad(@RequestParam("idSolCalidad") Long idSolCalidad) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalPackingListDao.getSolCalPackingListXIdSolCalidad(idSolCalidad));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolCalPackingListXId", method = RequestMethod.GET)
+    public ApiResponse<TabSolCalPackingListDto> conSolCalPackingListXId(@RequestParam("idSolCalPackingList") Long idSolCalPackingList) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalPackingListDao.getSolCalPackingListXId(idSolCalPackingList));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
     @RequestMapping(value = "conSolicitudesXEstado", method = RequestMethod.GET)
     public ApiResponse<List<SolicitudCompletaDto>> conSolicitudesXEstado(@RequestParam("estado") String estado) {
         try {
@@ -118,6 +176,8 @@ public class SolicitudWs  {
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
         }
     }
+
+
 
     @RequestMapping(value = "conSolicitudXId", method = RequestMethod.GET)
     public ApiResponse<TabSolicitudDto> conSolicitudesXId(@RequestParam("idSolicitud") Long idSolicitud) {
@@ -286,7 +346,7 @@ public class SolicitudWs  {
             if (solCalidad.getAreaAGuardar().equals("Calibre")) {
                 TabSolCalCalibreDto tabSolCalCalibreDto = new TabSolCalCalibreDto();
                 tabSolCalCalibreDto.setIdSolCalCalibre(solCalidad.getIdSolCalCalibre());
-                tabSolCalCalibreDto.setIdSolicitud(solCalidad.getIdSolicitud());
+                //tabSolCalCalibreDto.setIdSolicitud(solCalidad.getIdSolicitud());
                 tabSolCalCalibreDto.setIdSolCalidad(solCalidad.getIdSolCalidad());
                 tabSolCalCalibreDto.setCalUg(solCalidad.getCalUg());
                 tabSolCalCalibreDto.setCalOg(solCalidad.getCalOg());
@@ -338,6 +398,98 @@ public class SolicitudWs  {
                 tabSolCalLargoDedoDto.setLar118(solCalidad.getLar118());
                 iSolCalLargoDedoDao.save(tabSolCalLargoDedoDto, solCalidad.getEstRegLD());
             }
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
+        }
+    }
+
+    @RequestMapping(value = "guardarSolCalDefecto", method = RequestMethod.POST)
+    public ApiResponse<String> guardarSolCalDefecto(@RequestBody SolCalDefectoSeleccionDto defecto) {
+        try {
+            TabSolCalDefectoSeleccionDto solDefectoSeleccion = new TabSolCalDefectoSeleccionDto();
+            solDefectoSeleccion.setIdSolCalDefectoSeleccion(defecto.getIdSolCalDefectoSeleccion());
+            solDefectoSeleccion.setIdSolCalidad(defecto.getIdSolCalidad());
+            solDefectoSeleccion.setPeso(defecto.getPeso());
+            solDefectoSeleccion.setNumGanchoInspeccionado(defecto.getNumGanchoInspeccionado());
+            solDefectoSeleccion.setPh(defecto.getPh());
+            solDefectoSeleccion.setSr(defecto.getSr());
+            solDefectoSeleccion.setBr(defecto.getBr());
+            solDefectoSeleccion.setNi(defecto.getNi());
+            solDefectoSeleccion.setMf(defecto.getMf());
+            solDefectoSeleccion.setCt(defecto.getCt());
+            solDefectoSeleccion.setFl(defecto.getFl());
+            solDefectoSeleccion.setDp(defecto.getDp());
+            solDefectoSeleccion.setUg(defecto.getUg());
+            solDefectoSeleccion.setOg(defecto.getOg());
+            solDefectoSeleccion.setLs(defecto.getLs());
+            solDefectoSeleccion.setLg(defecto.getLg());
+            solDefectoSeleccion.setBm(defecto.getBm());
+            solDefectoSeleccion.setTs(defecto.getTs());
+            solDefectoSeleccion.setCs(defecto.getCs());
+            solDefectoSeleccion.setWi(defecto.getWi());
+            solDefectoSeleccion.setSk(defecto.getSk());
+            solDefectoSeleccion.setYb(defecto.getYb());
+            solDefectoSeleccion.setRr(defecto.getRr());
+            solDefectoSeleccion.setTc(defecto.getTc());
+            solDefectoSeleccion.setSp(defecto.getSp());
+            solDefectoSeleccion.setSm(defecto.getSm());
+            solDefectoSeleccion.setTr(defecto.getTr());
+            solDefectoSeleccion.setAb(defecto.getAb());
+            solDefectoSeleccion.setCh(defecto.getCh());
+            solDefectoSeleccion.setTf(defecto.getTf());
+            solDefectoSeleccion.setUd(defecto.getUd());
+            solDefectoSeleccion.setPd(defecto.getPd());
+            solDefectoSeleccion.setFf(defecto.getFf());
+            solDefectoSeleccion.setBs(defecto.getBs());
+            solDefectoSeleccion.setDt(defecto.getDt());
+            solDefectoSeleccion.setSre(defecto.getSre());
+            solDefectoSeleccion.setBre(defecto.getBre());
+            solDefectoSeleccion.setNie(defecto.getNie());
+            solDefectoSeleccion.setFre(defecto.getFre());
+            solDefectoSeleccion.setSc(defecto.getSc());
+            solDefectoSeleccion.setMl(defecto.getMl());
+            solDefectoSeleccion.setMd(defecto.getMd());
+            solDefectoSeleccion.setEc(defecto.getEc());
+            solDefectoSeleccion.setV(defecto.getV());
+            solDefectoSeleccion.setF(defecto.getF());
+            solDefectoSeleccion.setEa(defecto.getEa());
+            solDefectoSeleccion.setPs(defecto.getPs());
+            iSolCalDefectoSeleccionDao.save(solDefectoSeleccion, defecto.getEstRegDS());
+
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
+        }
+    }
+
+    @RequestMapping(value = "guardarSolCalPesoCluster", method = RequestMethod.POST)
+    public ApiResponse<String> guardarSolCalPesoCluster(@RequestBody SolCalPesoClusterDto peso) {
+        try {
+            TabSolCalPesoClusterDto tabSolCalPesoClusterDto = new TabSolCalPesoClusterDto();
+            tabSolCalPesoClusterDto.setIdSolCalPesoCluster(peso.getIdSolCalPesoCluster());
+            tabSolCalPesoClusterDto.setIdSolCalidad(peso.getIdSolCalidad());
+            tabSolCalPesoClusterDto.setNumero(peso.getNumero());
+            tabSolCalPesoClusterDto.setPeso(peso.getPeso());
+            iSolCalPesoClusterDao.save(tabSolCalPesoClusterDto, peso.getEstRegPC());
+
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
+        }
+    }
+
+    @RequestMapping(value = "guardarSolCalPackingList", method = RequestMethod.POST)
+    public ApiResponse<String> guardarSolCalPackingList(@RequestBody SolCalPackingListDto packing) {
+        try {
+            TabSolCalPackingListDto tabSolCalPackingListDto = new TabSolCalPackingListDto();
+            tabSolCalPackingListDto.setIdSolCalPackingList(packing.getIdSolCalPackingList());
+            tabSolCalPackingListDto.setIdSolCalidad(packing.getIdSolCalidad());
+
+            tabSolCalPackingListDto.setNumeracion(packing.getNumeracion());
+            tabSolCalPackingListDto.setSticker(packing.getSticker());
+            iSolCalPackingListDao.save(tabSolCalPackingListDto, packing.getEstRegPL());
+
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
         } catch (Exception e) {
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
@@ -558,7 +710,6 @@ public class SolicitudWs  {
                         calidad.getListSolCalDefectoSeleccion().forEach(defecto -> {
                             TabSolCalDefectoSeleccionDto solDefectoSeleccion = new TabSolCalDefectoSeleccionDto();
                             //solDefectoSeleccion.setIdSolCalDefectoSeleccion(defecto.getIdSolCalDefectoSeleccion());
-                            solDefectoSeleccion.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                             solDefectoSeleccion.setIdSolCalidad(finalIdSolCalidad);
                             solDefectoSeleccion.setPeso(defecto.getPeso());
                             solDefectoSeleccion.setNumGanchoInspeccionado(defecto.getNumGanchoInspeccionado());
@@ -614,7 +765,7 @@ public class SolicitudWs  {
                     if (calidad.getEstRegClb().equals("NUE")) {
                         TabSolCalCalibreDto tabSolCalCalibreDto = new TabSolCalCalibreDto();
                         tabSolCalCalibreDto.setIdSolCalCalibre(tabSolCalCalibreDto.getIdSolCalCalibre());
-                        tabSolCalCalibreDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
+                        //tabSolCalCalibreDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                         tabSolCalCalibreDto.setIdSolCalidad(finalIdSolCalidad);
                         tabSolCalCalibreDto.setCalUg(calidad.getCalUg());
                         tabSolCalCalibreDto.setCalOg(calidad.getCalOg());
@@ -675,7 +826,6 @@ public class SolicitudWs  {
                         calidad.getListSolCalPesoCluster().forEach(peso -> {
                             TabSolCalPesoClusterDto tabSolCalPesoClusterDto = new TabSolCalPesoClusterDto();
                             tabSolCalPesoClusterDto.setIdSolCalPesoCluster(peso.getIdSolCalPesoCluster());
-                            tabSolCalPesoClusterDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                             tabSolCalPesoClusterDto.setIdSolCalidad(finalIdSolCalidad);
 
                             tabSolCalPesoClusterDto.setNumero(peso.getNumero());
@@ -689,7 +839,6 @@ public class SolicitudWs  {
                         calidad.getListSolCalPackingList().forEach(packing -> {
                             TabSolCalPackingListDto tabSolCalPackingListDto = new TabSolCalPackingListDto();
                             tabSolCalPackingListDto.setIdSolCalPackingList(packing.getIdSolCalPackingList());
-                            tabSolCalPackingListDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                             tabSolCalPackingListDto.setIdSolCalidad(finalIdSolCalidad);
 
                             tabSolCalPackingListDto.setNumeracion(packing.getNumeracion());
