@@ -28,6 +28,7 @@ public class SolCalidadDao implements ISolCalidadDao {
     public List<TabSolCalidadDto> getSolCalidadXIdSolicitud(Long idSolicitud) {
         return create.selectFrom(TAB_SOL_CALIDAD)
                 .where(TAB_SOL_CALIDAD.ID_SOLICITUD.eq(idSolicitud))
+                .and(TAB_SOL_CALIDAD.ESTADO.eq("A"))
                 .fetchInto(TabSolCalidadDto.class);
     }
 

@@ -14,5 +14,6 @@ public interface ISolCalDefectoSeleccionDao {
     public TabSolCalDefectoSeleccionDto getSolCalDefectosXId(Long idSolCalDefectoSeleccion);
     public List<TabSolCalDefectoSeleccionDto> getSolCalDefectosXIdSolCalidad(Long idSolCalidad);
     public TabSolCalDefectoSeleccionDto save(TabSolCalDefectoSeleccionDto solCalDefectoSeleccion, String estReg);
+    public void eliminarSolCalDefecto(Long idSolCalDefecto);
 
 }

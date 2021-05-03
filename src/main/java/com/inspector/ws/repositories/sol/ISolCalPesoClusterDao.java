@@ -14,4 +14,5 @@ public interface ISolCalPesoClusterDao {
     public List<TabSolCalPesoClusterDto> getSolCalPesoClusterXIdSolCalidad(Long idSolCalidad);
     public TabSolCalPesoClusterDto getSolCalPesoClusterXId(Long idSolCalPesoCluster);
     public TabSolCalPesoClusterDto save(TabSolCalPesoClusterDto solCalPesoCluster, String estReg);
+    public void eliminarSolCalPesoCluster(Long idSolCalPesoCluster);
 }

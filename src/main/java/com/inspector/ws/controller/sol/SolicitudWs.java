@@ -5,6 +5,7 @@ import com.inspector.dto.sol.*;
 import com.inspector.enumaraciones.ResponseCodeEnum;
 import com.inspector.util.Mensajes;
 import com.inspector.ws.db.schema.tables.TabSolCalidad;
+import com.inspector.ws.db.schema.tables.TabSolConCalibracionFruta;
 import com.inspector.ws.repositories.impl.sol.SolCalLargoDedoDao;
 import com.inspector.ws.repositories.sol.*;
 import org.slf4j.Logger;
@@ -269,6 +270,25 @@ public class SolicitudWs  {
         }
     }
 
+    @RequestMapping(value = "conSolConCalibracionFrutaXIdSolCon", method = RequestMethod.GET)
+    public ApiResponse<List<TabSolConCalibracionFrutaDto>> conSolConCalibracionFrutaXIdSolCon(@RequestParam("idSolConsolidadoGancho") Long idSolConsolidadoGancho) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolConCalibracionFrutaDao.getSolConCalibracionFrutaXIdSolCon(idSolConsolidadoGancho));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolConCalibracionFrutaXId", method = RequestMethod.GET)
+    public ApiResponse<TabSolConCalibracionFrutaDto> conSolConCalibracionFrutaXId(@RequestParam("idSonConCalibracionFruta") Long idSonConCalibracionFruta) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolConCalibracionFrutaDao.getSolConCalibracionFrutaXId(idSonConCalibracionFruta));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
 
     /**
      * Elimina el solicitud de forma logica
@@ -463,6 +483,19 @@ public class SolicitudWs  {
         }
     }
 
+    @RequestMapping(value = "eliminarSolCalDefecto", method = RequestMethod.GET)
+    public ApiResponse<Boolean> eliminarSolCalDefecto(@RequestParam("idSolCalDefectoSeleccion") Long idSolCalDefectoSeleccion) {
+        try {
+            if (idSolCalDefectoSeleccion != null) {
+                iSolCalDefectoSeleccionDao.eliminarSolCalDefecto(idSolCalDefectoSeleccion);
+                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, true);
+            }
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, false);
+        }
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
+    }
+
     @RequestMapping(value = "guardarSolCalPesoCluster", method = RequestMethod.POST)
     public ApiResponse<String> guardarSolCalPesoCluster(@RequestBody SolCalPesoClusterDto peso) {
         try {
@@ -477,6 +510,19 @@ public class SolicitudWs  {
         } catch (Exception e) {
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
         }
+    }
+
+    @RequestMapping(value = "eliminarSolCalPesoCluster", method = RequestMethod.GET)
+    public ApiResponse<Boolean> eliminarSolCalPesoCluster(@RequestParam("idSolCalPesoCluster") Long idSolCalPesoCluster) {
+        try {
+            if (idSolCalPesoCluster != null) {
+                iSolCalPesoClusterDao.eliminarSolCalPesoCluster(idSolCalPesoCluster);
+                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, true);
+            }
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, false);
+        }
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
     }
 
     @RequestMapping(value = "guardarSolCalPackingList", method = RequestMethod.POST)
@@ -494,6 +540,51 @@ public class SolicitudWs  {
         } catch (Exception e) {
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
         }
+    }
+
+    @RequestMapping(value = "eliminarSolCalPackingList", method = RequestMethod.GET)
+    public ApiResponse<Boolean> eliminarSolCalPackingList(@RequestParam("idSolCalPackingList") Long idSolCalPackingList) {
+        try {
+            if (idSolCalPackingList != null) {
+                iSolCalPackingListDao.eliminarSolCalPackingList(idSolCalPackingList);
+                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, true);
+            }
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, false);
+        }
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
+    }
+
+    @RequestMapping(value = "guardarSolConCalibracionFruta", method = RequestMethod.POST)
+    public ApiResponse<String> guardarSolConCalibracionFruta(@RequestBody SolConCalibracionFrutaDto calibracion) {
+        try {
+            TabSolConCalibracionFrutaDto tabSolConCalibracionFruta = new TabSolConCalibracionFrutaDto();
+            tabSolConCalibracionFruta.setIdSolConCalibracionFruta(calibracion.getIdSolConCalibracionFruta());
+            tabSolConCalibracionFruta.setIdSolConsolidadoGancho(calibracion.getIdSolConsolidadoGancho());
+            tabSolConCalibracionFruta.setIdSolicitud(calibracion.getIdSolicitud());
+
+            tabSolConCalibracionFruta.setColor(calibracion.getColor());
+            tabSolConCalibracionFruta.setNumRacimo(calibracion.getNumRacimo());
+            tabSolConCalibracionFruta.setNumSemana(calibracion.getNumSemana());
+            iSolConCalibracionFrutaDao.save(tabSolConCalibracionFruta, calibracion.getEstRegCF());
+
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
+        }
+    }
+
+    @RequestMapping(value = "eliminarSolConCalibracionFruta", method = RequestMethod.GET)
+    public ApiResponse<Boolean> eliminarSolConCalibracionFruta(@RequestParam("idSolConCalibracionFruta") Long idSolConCalibracionFruta) {
+        try {
+            if (idSolConCalibracionFruta != null) {
+                iSolConCalibracionFrutaDao.eliminarSolConCalibracionFruta(idSolConCalibracionFruta);
+                return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, true);
+            }
+        } catch (Exception e) {
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, false);
+        }
+        return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.NOT_FOUND, false);
     }
 
     @RequestMapping(value = "guardarSolicitud", method = RequestMethod.POST)

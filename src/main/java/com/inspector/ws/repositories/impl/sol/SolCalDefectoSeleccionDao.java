@@ -9,6 +9,7 @@ import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.inspector.ws.db.schema.Sequences.SEC_SOL_DEFECTO_SELECCION;
@@ -34,6 +35,7 @@ public class SolCalDefectoSeleccionDao implements ISolCalDefectoSeleccionDao {
     public List<TabSolCalDefectoSeleccionDto> getSolCalDefectosXIdSolCalidad(Long idSolCalidad) {
         return create.selectFrom(TAB_SOL_CAL_DEFECTO_SELECCION)
                 .where(TAB_SOL_CAL_DEFECTO_SELECCION.ID_SOL_CALIDAD.eq(idSolCalidad))
+                .and(TAB_SOL_CAL_DEFECTO_SELECCION.ESTADO.eq("A"))
                 .fetchInto(TabSolCalDefectoSeleccionDto.class);
     }
 
@@ -62,5 +64,13 @@ public class SolCalDefectoSeleccionDao implements ISolCalDefectoSeleccionDao {
         return solDefectoSeleccion;
     }
 
+    @Override
+    public void eliminarSolCalDefecto(Long idSolCalDefecto) {
 
+        var p = TAB_SOL_CAL_DEFECTO_SELECCION.as("p");
+        create.update(p)
+                .set(p.ESTADO , "I")
+                .set(p.FECHA_MODIFICA, LocalDateTime.now())
+                .where(p.ID_SOL_CAL_DEFECTO_SELECCION.equal(idSolCalDefecto)).execute();
+    }
 }

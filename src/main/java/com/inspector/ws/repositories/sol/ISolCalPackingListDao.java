@@ -13,5 +13,6 @@ public interface ISolCalPackingListDao {
 
     public List<TabSolCalPackingListDto> getSolCalPackingListXIdSolCalidad(Long idSolCalidad);
     public TabSolCalPackingListDto getSolCalPackingListXId(Long idSolCalPackingList) ;
-        public TabSolCalPackingListDto save(TabSolCalPackingListDto solCalPackingList, String estReg);
+    public TabSolCalPackingListDto save(TabSolCalPackingListDto solCalPackingList, String estReg);
+    public void eliminarSolCalPackingList(Long idSolCalPackingList) ;
 }

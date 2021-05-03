@@ -20,7 +20,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row8;
+import org.jooq.Row9;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> {
 
-    private static final long serialVersionUID = -1585628392;
+    private static final long serialVersionUID = -2125629928;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_peso_cluster</code>
@@ -96,6 +96,11 @@ public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> 
      * The column <code>public.tab_sol_cal_peso_cluster.id_sol_calidad</code>.
      */
     public final TableField<TabSolCalPesoClusterRecord, Long> ID_SOL_CALIDAD = createField(DSL.name("id_sol_calidad"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_cal_peso_cluster.estado</code>.
+     */
+    public final TableField<TabSolCalPesoClusterRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.CHAR(1), this, "");
 
     /**
      * Create a <code>public.tab_sol_cal_peso_cluster</code> table reference
@@ -194,11 +199,11 @@ public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> 
     }
 
     // -------------------------------------------------------------------------
-    // Row8 type methods
+    // Row9 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row8<Long, Integer, Float, LocalDateTime, LocalDateTime, Integer, Integer, Long> fieldsRow() {
-        return (Row8) super.fieldsRow();
+    public Row9<Long, Integer, Float, LocalDateTime, LocalDateTime, Integer, Integer, Long, String> fieldsRow() {
+        return (Row9) super.fieldsRow();
     }
 }

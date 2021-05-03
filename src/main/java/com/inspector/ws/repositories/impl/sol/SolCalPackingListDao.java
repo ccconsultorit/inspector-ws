@@ -9,6 +9,7 @@ import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.inspector.ws.db.schema.Sequences.SEC_SOL_CAL_PACKING_LIST;
@@ -26,6 +27,7 @@ public class SolCalPackingListDao implements ISolCalPackingListDao {
     public List<TabSolCalPackingListDto> getSolCalPackingListXIdSolCalidad(Long idSolCalidad) {
         return create.selectFrom(TAB_SOL_CAL_PACKING_LIST)
                 .where(TAB_SOL_CAL_PACKING_LIST.ID_SOL_CALIDAD.eq(idSolCalidad))
+                .and(TAB_SOL_CAL_PACKING_LIST.ESTADO.eq("A"))
                 .fetchInto(TabSolCalPackingListDto.class);
     }
 
@@ -61,5 +63,13 @@ public class SolCalPackingListDao implements ISolCalPackingListDao {
         return solCalPackingList;
     }
 
+    @Override
+    public void eliminarSolCalPackingList(Long idSolCalPackingList) {
 
+        var p = TAB_SOL_CAL_PACKING_LIST.as("p");
+        create.update(p)
+                .set(p.ESTADO , "I")
+                .set(p.FECHA_MODIFICA, LocalDateTime.now())
+                .where(p.ID_SOL_CAL_PACKING_LIST.equal(idSolCalPackingList)).execute();
+    }
 }
