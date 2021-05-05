@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLlegadaRecord> implements Record20<Long, String, String, String, String, String, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> {
 
-    private static final long serialVersionUID = 1179306638;
+    private static final long serialVersionUID = 1001378522;
 
     /**
      * Setter for <code>public.tab_sol_sello_llegada.id_sol_sello_llegada</code>.
@@ -131,58 +131,58 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_llegada.sello_arribo_01</code>.
+     * Setter for <code>public.tab_sol_sello_llegada.sello_llegada1</code>.
      */
-    public void setSelloArribo_01(String value) {
+    public void setSelloLlegada1(String value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_llegada.sello_arribo_01</code>.
+     * Getter for <code>public.tab_sol_sello_llegada.sello_llegada1</code>.
      */
-    public String getSelloArribo_01() {
+    public String getSelloLlegada1() {
         return (String) get(7);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_llegada.sello_llegada_2</code>.
+     * Setter for <code>public.tab_sol_sello_llegada.sello_llegada2</code>.
      */
-    public void setSelloLlegada_2(String value) {
+    public void setSelloLlegada2(String value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_llegada.sello_llegada_2</code>.
+     * Getter for <code>public.tab_sol_sello_llegada.sello_llegada2</code>.
      */
-    public String getSelloLlegada_2() {
+    public String getSelloLlegada2() {
         return (String) get(8);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera_1</code>.
+     * Setter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera1</code>.
      */
-    public void setStickerPatioVentolera_1(String value) {
+    public void setStickerPatioVentolera1(String value) {
         set(9, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera_1</code>.
+     * Getter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera1</code>.
      */
-    public String getStickerPatioVentolera_1() {
+    public String getStickerPatioVentolera1() {
         return (String) get(9);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera_2</code>.
+     * Setter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera2</code>.
      */
-    public void setStickerPatioVentolera_2(String value) {
+    public void setStickerPatioVentolera2(String value) {
         set(10, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera_2</code>.
+     * Getter for <code>public.tab_sol_sello_llegada.sticker_patio_ventolera2</code>.
      */
-    public String getStickerPatioVentolera_2() {
+    public String getStickerPatioVentolera2() {
         return (String) get(10);
     }
 
@@ -372,22 +372,22 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public Field<String> field8() {
-        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLO_ARRIBO_01;
+        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLO_LLEGADA1;
     }
 
     @Override
     public Field<String> field9() {
-        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLO_LLEGADA_2;
+        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.SELLO_LLEGADA2;
     }
 
     @Override
     public Field<String> field10() {
-        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.STICKER_PATIO_VENTOLERA_1;
+        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.STICKER_PATIO_VENTOLERA1;
     }
 
     @Override
     public Field<String> field11() {
-        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.STICKER_PATIO_VENTOLERA_2;
+        return TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA.STICKER_PATIO_VENTOLERA2;
     }
 
     @Override
@@ -472,22 +472,22 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public String component8() {
-        return getSelloArribo_01();
+        return getSelloLlegada1();
     }
 
     @Override
     public String component9() {
-        return getSelloLlegada_2();
+        return getSelloLlegada2();
     }
 
     @Override
     public String component10() {
-        return getStickerPatioVentolera_1();
+        return getStickerPatioVentolera1();
     }
 
     @Override
     public String component11() {
-        return getStickerPatioVentolera_2();
+        return getStickerPatioVentolera2();
     }
 
     @Override
@@ -572,22 +572,22 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public String value8() {
-        return getSelloArribo_01();
+        return getSelloLlegada1();
     }
 
     @Override
     public String value9() {
-        return getSelloLlegada_2();
+        return getSelloLlegada2();
     }
 
     @Override
     public String value10() {
-        return getStickerPatioVentolera_1();
+        return getStickerPatioVentolera1();
     }
 
     @Override
     public String value11() {
-        return getStickerPatioVentolera_2();
+        return getStickerPatioVentolera2();
     }
 
     @Override
@@ -679,25 +679,25 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
 
     @Override
     public TabSolSelloLlegadaRecord value8(String value) {
-        setSelloArribo_01(value);
+        setSelloLlegada1(value);
         return this;
     }
 
     @Override
     public TabSolSelloLlegadaRecord value9(String value) {
-        setSelloLlegada_2(value);
+        setSelloLlegada2(value);
         return this;
     }
 
     @Override
     public TabSolSelloLlegadaRecord value10(String value) {
-        setStickerPatioVentolera_1(value);
+        setStickerPatioVentolera1(value);
         return this;
     }
 
     @Override
     public TabSolSelloLlegadaRecord value11(String value) {
-        setStickerPatioVentolera_2(value);
+        setStickerPatioVentolera2(value);
         return this;
     }
 
@@ -794,7 +794,7 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
     /**
      * Create a detached, initialised TabSolSelloLlegadaRecord
      */
-    public TabSolSelloLlegadaRecord(Long idSolSelloLlegada, String candadoPlastico, String candadoBotella, String stickerLlegada, String rastreoSatelital, String selloCadena, String stickerNaviera, String selloArribo_01, String selloLlegada_2, String stickerPatioVentolera_1, String stickerPatioVentolera_2, String nroSerie, String candadoExportador, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
+    public TabSolSelloLlegadaRecord(Long idSolSelloLlegada, String candadoPlastico, String candadoBotella, String stickerLlegada, String rastreoSatelital, String selloCadena, String stickerNaviera, String selloLlegada1, String selloLlegada2, String stickerPatioVentolera1, String stickerPatioVentolera2, String nroSerie, String candadoExportador, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
         super(TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA);
 
         set(0, idSolSelloLlegada);
@@ -804,10 +804,10 @@ public class TabSolSelloLlegadaRecord extends UpdatableRecordImpl<TabSolSelloLle
         set(4, rastreoSatelital);
         set(5, selloCadena);
         set(6, stickerNaviera);
-        set(7, selloArribo_01);
-        set(8, selloLlegada_2);
-        set(9, stickerPatioVentolera_1);
-        set(10, stickerPatioVentolera_2);
+        set(7, selloLlegada1);
+        set(8, selloLlegada2);
+        set(9, stickerPatioVentolera1);
+        set(10, stickerPatioVentolera2);
         set(11, nroSerie);
         set(12, candadoExportador);
         set(13, observacion);

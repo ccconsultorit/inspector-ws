@@ -24,7 +24,8 @@ public interface ISolicitudDao {
 
     TabSolicitudDto getSolicitudById(Long solicitudId);
 
-    List<SolicitudCompletaDto> getSolicitudesByEstado(String estado);
+    List<SolicitudCompletaDto> getSolicitudesCompletaByEstado(String estado);
+    List<TabSolicitudDto> getSolicitudesByEstado(String estado);
 
     Long save(TabSolicitudDto solicitud, String estRegSol);
 

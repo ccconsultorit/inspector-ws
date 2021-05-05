@@ -21,17 +21,18 @@ public class SolicitudCompletaDto  {
     String codMagap;
     String puertoEmbarque;
     String zona;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaInicio;
+    //protected LocalDateTime fechaInicio;
+    String fechaInicio;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime fechaFin;
     String contenedor;
-    String nomEvaluador01;
-    String ciEvaluador01;
-    String nomEvaluador02;
-    String ciEvaluador02;
+    String nomEvaluador1;
+    String ciEvaluador1;
+    String nomEvaluador2;
+    String ciEvaluador2;
     String observacion;
     String estRegSol;
     String areaAGuardar;
@@ -63,7 +64,7 @@ public class SolicitudCompletaDto  {
     String rastreoSatelital;
     String selloCadena;
     String stickerNaviera;
-    String selloArribo01;
+    String selloLlegada1;
     String selloLlegada2;
     String stickerPatioVentolera1;
     String stickerPatioVentolera2;
@@ -80,10 +81,10 @@ public class SolicitudCompletaDto  {
     //String stickerNaviera;
     String stickerExportadora;
     String rastreo;
-    String termografo01;
-    String ubicacion01;
-    String termografo02;
-    String ubicacion02;
+    String termografo1;
+    String ubicacion1;
+    String termografo2;
+    String ubicacion2;
     String filtroProporcionado;
     String termoking;
     String estRegSI;

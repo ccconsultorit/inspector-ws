@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolConCalibracionFruta extends TableImpl<TabSolConCalibracionFrutaRecord> {
 
-    private static final long serialVersionUID = 1768391197;
+    private static final long serialVersionUID = -1102877968;
 
     /**
      * The reference instance of <code>public.tab_sol_con_calibracion_fruta</code>
@@ -73,9 +73,9 @@ public class TabSolConCalibracionFruta extends TableImpl<TabSolConCalibracionFru
     public final TableField<TabSolConCalibracionFrutaRecord, String> COLOR = createField(DSL.name("color"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_con_calibracion_fruta.num_racimos</code>.
+     * The column <code>public.tab_sol_con_calibracion_fruta.num_racimo</code>.
      */
-    public final TableField<TabSolConCalibracionFrutaRecord, Integer> NUM_RACIMOS = createField(DSL.name("num_racimos"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolConCalibracionFrutaRecord, Integer> NUM_RACIMO = createField(DSL.name("num_racimo"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_con_calibracion_fruta.estado</code>.

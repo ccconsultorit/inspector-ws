@@ -30,7 +30,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloInstaladoRecord> implements Record19<Long, String, String, String, String, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> {
 
-    private static final long serialVersionUID = -924884840;
+    private static final long serialVersionUID = -72172266;
 
     /**
      * Setter for <code>public.tab_sol_sello_instalado.id_sol_sello_instalado</code>.
@@ -131,58 +131,58 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_instalado.termografo01</code>.
+     * Setter for <code>public.tab_sol_sello_instalado.termografo1</code>.
      */
-    public void setTermografo01(String value) {
+    public void setTermografo1(String value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_instalado.termografo01</code>.
+     * Getter for <code>public.tab_sol_sello_instalado.termografo1</code>.
      */
-    public String getTermografo01() {
+    public String getTermografo1() {
         return (String) get(7);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_instalado.ubicacion01</code>.
+     * Setter for <code>public.tab_sol_sello_instalado.ubicacion1</code>.
      */
-    public void setUbicacion01(String value) {
+    public void setUbicacion1(String value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_instalado.ubicacion01</code>.
+     * Getter for <code>public.tab_sol_sello_instalado.ubicacion1</code>.
      */
-    public String getUbicacion01() {
+    public String getUbicacion1() {
         return (String) get(8);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_instalado.termografo02</code>.
+     * Setter for <code>public.tab_sol_sello_instalado.termografo2</code>.
      */
-    public void setTermografo02(String value) {
+    public void setTermografo2(String value) {
         set(9, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_instalado.termografo02</code>.
+     * Getter for <code>public.tab_sol_sello_instalado.termografo2</code>.
      */
-    public String getTermografo02() {
+    public String getTermografo2() {
         return (String) get(9);
     }
 
     /**
-     * Setter for <code>public.tab_sol_sello_instalado.ubicacion02</code>.
+     * Setter for <code>public.tab_sol_sello_instalado.ubicacion2</code>.
      */
-    public void setUbicacion02(String value) {
+    public void setUbicacion2(String value) {
         set(10, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_sello_instalado.ubicacion02</code>.
+     * Getter for <code>public.tab_sol_sello_instalado.ubicacion2</code>.
      */
-    public String getUbicacion02() {
+    public String getUbicacion2() {
         return (String) get(10);
     }
 
@@ -358,22 +358,22 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
 
     @Override
     public Field<String> field8() {
-        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.TERMOGRAFO01;
+        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.TERMOGRAFO1;
     }
 
     @Override
     public Field<String> field9() {
-        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.UBICACION01;
+        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.UBICACION1;
     }
 
     @Override
     public Field<String> field10() {
-        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.TERMOGRAFO02;
+        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.TERMOGRAFO2;
     }
 
     @Override
     public Field<String> field11() {
-        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.UBICACION02;
+        return TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO.UBICACION2;
     }
 
     @Override
@@ -453,22 +453,22 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
 
     @Override
     public String component8() {
-        return getTermografo01();
+        return getTermografo1();
     }
 
     @Override
     public String component9() {
-        return getUbicacion01();
+        return getUbicacion1();
     }
 
     @Override
     public String component10() {
-        return getTermografo02();
+        return getTermografo2();
     }
 
     @Override
     public String component11() {
-        return getUbicacion02();
+        return getUbicacion2();
     }
 
     @Override
@@ -548,22 +548,22 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
 
     @Override
     public String value8() {
-        return getTermografo01();
+        return getTermografo1();
     }
 
     @Override
     public String value9() {
-        return getUbicacion01();
+        return getUbicacion1();
     }
 
     @Override
     public String value10() {
-        return getTermografo02();
+        return getTermografo2();
     }
 
     @Override
     public String value11() {
-        return getUbicacion02();
+        return getUbicacion2();
     }
 
     @Override
@@ -650,25 +650,25 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
 
     @Override
     public TabSolSelloInstaladoRecord value8(String value) {
-        setTermografo01(value);
+        setTermografo1(value);
         return this;
     }
 
     @Override
     public TabSolSelloInstaladoRecord value9(String value) {
-        setUbicacion01(value);
+        setUbicacion1(value);
         return this;
     }
 
     @Override
     public TabSolSelloInstaladoRecord value10(String value) {
-        setTermografo02(value);
+        setTermografo2(value);
         return this;
     }
 
     @Override
     public TabSolSelloInstaladoRecord value11(String value) {
-        setUbicacion02(value);
+        setUbicacion2(value);
         return this;
     }
 
@@ -758,7 +758,7 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
     /**
      * Create a detached, initialised TabSolSelloInstaladoRecord
      */
-    public TabSolSelloInstaladoRecord(Long idSolSelloInstalado, String candadoNaviera, String selloVerificadora, String cableNaviera, String cableExportadora, String stickerExportadora, String rastreo, String termografo01, String ubicacion01, String termografo02, String ubicacion02, String filtroProporcionado, String termoking, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
+    public TabSolSelloInstaladoRecord(Long idSolSelloInstalado, String candadoNaviera, String selloVerificadora, String cableNaviera, String cableExportadora, String stickerExportadora, String rastreo, String termografo1, String ubicacion1, String termografo2, String ubicacion2, String filtroProporcionado, String termoking, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud) {
         super(TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO);
 
         set(0, idSolSelloInstalado);
@@ -768,10 +768,10 @@ public class TabSolSelloInstaladoRecord extends UpdatableRecordImpl<TabSolSelloI
         set(4, cableExportadora);
         set(5, stickerExportadora);
         set(6, rastreo);
-        set(7, termografo01);
-        set(8, ubicacion01);
-        set(9, termografo02);
-        set(10, ubicacion02);
+        set(7, termografo1);
+        set(8, ubicacion1);
+        set(9, termografo2);
+        set(10, ubicacion2);
         set(11, filtroProporcionado);
         set(12, termoking);
         set(13, estado);

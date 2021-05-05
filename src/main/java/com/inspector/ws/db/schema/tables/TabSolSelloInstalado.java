@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> {
 
-    private static final long serialVersionUID = -1487008503;
+    private static final long serialVersionUID = -1576960517;
 
     /**
      * The reference instance of <code>public.tab_sol_sello_instalado</code>
@@ -93,24 +93,24 @@ public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> 
     public final TableField<TabSolSelloInstaladoRecord, String> RASTREO = createField(DSL.name("rastreo"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_instalado.termografo01</code>.
+     * The column <code>public.tab_sol_sello_instalado.termografo1</code>.
      */
-    public final TableField<TabSolSelloInstaladoRecord, String> TERMOGRAFO01 = createField(DSL.name("termografo01"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloInstaladoRecord, String> TERMOGRAFO1 = createField(DSL.name("termografo1"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_instalado.ubicacion01</code>.
+     * The column <code>public.tab_sol_sello_instalado.ubicacion1</code>.
      */
-    public final TableField<TabSolSelloInstaladoRecord, String> UBICACION01 = createField(DSL.name("ubicacion01"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloInstaladoRecord, String> UBICACION1 = createField(DSL.name("ubicacion1"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_instalado.termografo02</code>.
+     * The column <code>public.tab_sol_sello_instalado.termografo2</code>.
      */
-    public final TableField<TabSolSelloInstaladoRecord, String> TERMOGRAFO02 = createField(DSL.name("termografo02"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloInstaladoRecord, String> TERMOGRAFO2 = createField(DSL.name("termografo2"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_instalado.ubicacion02</code>.
+     * The column <code>public.tab_sol_sello_instalado.ubicacion2</code>.
      */
-    public final TableField<TabSolSelloInstaladoRecord, String> UBICACION02 = createField(DSL.name("ubicacion02"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloInstaladoRecord, String> UBICACION2 = createField(DSL.name("ubicacion2"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_sello_instalado.filtro_proporcionado</code>.

@@ -169,7 +169,7 @@ public class SolicitudWs  {
     }
 
     @RequestMapping(value = "conSolicitudesXEstado", method = RequestMethod.GET)
-    public ApiResponse<List<SolicitudCompletaDto>> conSolicitudesXEstado(@RequestParam("estado") String estado) {
+    public ApiResponse<List<TabSolicitudDto>> conSolicitudesXEstado(@RequestParam("estado") String estado) {
         try {
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolicitudDao.getSolicitudesByEstado(estado));
         } catch (Exception e) {
@@ -177,8 +177,6 @@ public class SolicitudWs  {
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
         }
     }
-
-
 
     @RequestMapping(value = "conSolicitudXId", method = RequestMethod.GET)
     public ApiResponse<TabSolicitudDto> conSolicitudesXId(@RequestParam("idSolicitud") Long idSolicitud) {
@@ -561,7 +559,6 @@ public class SolicitudWs  {
             TabSolConCalibracionFrutaDto tabSolConCalibracionFruta = new TabSolConCalibracionFrutaDto();
             tabSolConCalibracionFruta.setIdSolConCalibracionFruta(calibracion.getIdSolConCalibracionFruta());
             tabSolConCalibracionFruta.setIdSolConsolidadoGancho(calibracion.getIdSolConsolidadoGancho());
-            tabSolConCalibracionFruta.setIdSolicitud(calibracion.getIdSolicitud());
 
             tabSolConCalibracionFruta.setColor(calibracion.getColor());
             tabSolConCalibracionFruta.setNumRacimo(calibracion.getNumRacimo());
@@ -606,10 +603,10 @@ public class SolicitudWs  {
                 solicitud.setFechaInicio(solicitudCompleto.getFechaInicio());
                 solicitud.setFechaTermino(solicitudCompleto.getFechaFin());
                 solicitud.setContenedor(solicitudCompleto.getContenedor());
-                solicitud.setNomEvaluador01(solicitudCompleto.getNomEvaluador01());
-                solicitud.setCiEvaluador01(solicitudCompleto.getCiEvaluador01());
-                solicitud.setNomEvaluador02(solicitudCompleto.getNomEvaluador02());
-                solicitud.setCiEvaluador02(solicitudCompleto.getCiEvaluador02());
+                solicitud.setNomEvaluador01(solicitudCompleto.getNomEvaluador1());
+                solicitud.setCiEvaluador01(solicitudCompleto.getCiEvaluador1());
+                solicitud.setNomEvaluador02(solicitudCompleto.getNomEvaluador2());
+                solicitud.setCiEvaluador02(solicitudCompleto.getCiEvaluador2());
                 solicitud.setObservacion(solicitudCompleto.getObservacion());
                 //idSolicitud = iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
                 iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
@@ -651,7 +648,7 @@ public class SolicitudWs  {
                     solSelloLlegada.setRastreoSatelital(solicitudCompleto.getRastreoSatelital());
                     solSelloLlegada.setSelloCadena(solicitudCompleto.getSelloCadena());
                     solSelloLlegada.setStickerNaviera(solicitudCompleto.getStickerNaviera());
-                    solSelloLlegada.setSelloArribo01(solicitudCompleto.getSelloArribo01());
+                    solSelloLlegada.setSelloLlegada1(solicitudCompleto.getSelloLlegada1());
                     solSelloLlegada.setSelloLlegada2(solicitudCompleto.getSelloLlegada2());
                     solSelloLlegada.setStickerPatioVentolera1(solicitudCompleto.getStickerPatioVentolera1());
                     solSelloLlegada.setStickerPatioVentolera2(solicitudCompleto.getStickerPatioVentolera2());
@@ -676,10 +673,10 @@ public class SolicitudWs  {
                     //solSelloInstalado.setStickerNaviera(solicitudCompleto.getStickerNaviera());
                     solSelloInstalado.setStickerExportadora(solicitudCompleto.getStickerExportadora());
                     solSelloInstalado.setRastreo(solicitudCompleto.getRastreo());
-                    solSelloInstalado.setTermografo01(solicitudCompleto.getTermografo01());
-                    solSelloInstalado.setUbicacion01(solicitudCompleto.getUbicacion01());
-                    solSelloInstalado.setTermografo02(solicitudCompleto.getTermografo02());
-                    solSelloInstalado.setUbicacion02(solicitudCompleto.getUbicacion02());
+                    solSelloInstalado.setTermografo1(solicitudCompleto.getTermografo1());
+                    solSelloInstalado.setUbicacion1(solicitudCompleto.getUbicacion1());
+                    solSelloInstalado.setTermografo2(solicitudCompleto.getTermografo2());
+                    solSelloInstalado.setUbicacion2(solicitudCompleto.getUbicacion2());
                     solSelloInstalado.setFiltroProporcionado(solicitudCompleto.getFiltroProporcionado());
                     solSelloInstalado.setTermoking(solicitudCompleto.getTermoking());
                     solSelloInstalado = iSolSelloInstaladoDao.save(solSelloInstalado, solicitudCompleto.getEstRegSI());
@@ -986,7 +983,6 @@ public class SolicitudWs  {
                 solicitudCompleto.getListSolCalibracion().forEach(fruta -> {
                     TabSolConCalibracionFrutaDto tabSolConCalibracionFrutaDto = new TabSolConCalibracionFrutaDto();
                     tabSolConCalibracionFrutaDto.setIdSolConCalibracionFruta(fruta.getIdSolConCalibracionFruta());
-                    tabSolConCalibracionFrutaDto.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     tabSolConCalibracionFrutaDto.setIdSolConsolidadoGancho(finalIdSolConsolidadoGancho);
 
                     tabSolConCalibracionFrutaDto.setNumSemana(fruta.getNumSemana());

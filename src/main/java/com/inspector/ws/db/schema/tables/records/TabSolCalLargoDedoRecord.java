@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalLargoDedoRecord extends UpdatableRecordImpl<TabSolCalLargoDedoRecord> {
 
-    private static final long serialVersionUID = -2128684910;
+    private static final long serialVersionUID = -103463600;
 
     /**
      * Setter for <code>public.tab_sol_cal_largo_dedo.id_sol_cal_largo_dedo</code>.
@@ -44,282 +44,282 @@ public class TabSolCalLargoDedoRecord extends UpdatableRecordImpl<TabSolCalLargo
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_80</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar80</code>.
      */
-    public void setLar_80(Integer value) {
+    public void setLar80(Integer value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_80</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar80</code>.
      */
-    public Integer getLar_80() {
+    public Integer getLar80() {
         return (Integer) get(1);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_82</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar82</code>.
      */
-    public void setLar_82(Integer value) {
+    public void setLar82(Integer value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_82</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar82</code>.
      */
-    public Integer getLar_82() {
+    public Integer getLar82() {
         return (Integer) get(2);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_84</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar84</code>.
      */
-    public void setLar_84(Integer value) {
+    public void setLar84(Integer value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_84</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar84</code>.
      */
-    public Integer getLar_84() {
+    public Integer getLar84() {
         return (Integer) get(3);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_86</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar86</code>.
      */
-    public void setLar_86(Integer value) {
+    public void setLar86(Integer value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_86</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar86</code>.
      */
-    public Integer getLar_86() {
+    public Integer getLar86() {
         return (Integer) get(4);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_88</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar88</code>.
      */
-    public void setLar_88(Integer value) {
+    public void setLar88(Integer value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_88</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar88</code>.
      */
-    public Integer getLar_88() {
+    public Integer getLar88() {
         return (Integer) get(5);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_90</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar90</code>.
      */
-    public void setLar_90(Integer value) {
+    public void setLar90(Integer value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_90</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar90</code>.
      */
-    public Integer getLar_90() {
+    public Integer getLar90() {
         return (Integer) get(6);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_92</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar92</code>.
      */
-    public void setLar_92(Integer value) {
+    public void setLar92(Integer value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_92</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar92</code>.
      */
-    public Integer getLar_92() {
+    public Integer getLar92() {
         return (Integer) get(7);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_94</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar94</code>.
      */
-    public void setLar_94(Integer value) {
+    public void setLar94(Integer value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_94</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar94</code>.
      */
-    public Integer getLar_94() {
+    public Integer getLar94() {
         return (Integer) get(8);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_96</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar96</code>.
      */
-    public void setLar_96(Integer value) {
+    public void setLar96(Integer value) {
         set(9, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_96</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar96</code>.
      */
-    public Integer getLar_96() {
+    public Integer getLar96() {
         return (Integer) get(9);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_98</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar98</code>.
      */
-    public void setLar_98(Integer value) {
+    public void setLar98(Integer value) {
         set(10, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_98</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar98</code>.
      */
-    public Integer getLar_98() {
+    public Integer getLar98() {
         return (Integer) get(10);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_100</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar100</code>.
      */
-    public void setLar_100(Integer value) {
+    public void setLar100(Integer value) {
         set(11, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_100</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar100</code>.
      */
-    public Integer getLar_100() {
+    public Integer getLar100() {
         return (Integer) get(11);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_102</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar102</code>.
      */
-    public void setLar_102(Integer value) {
+    public void setLar102(Integer value) {
         set(12, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_102</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar102</code>.
      */
-    public Integer getLar_102() {
+    public Integer getLar102() {
         return (Integer) get(12);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_104</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar104</code>.
      */
-    public void setLar_104(Integer value) {
+    public void setLar104(Integer value) {
         set(13, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_104</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar104</code>.
      */
-    public Integer getLar_104() {
+    public Integer getLar104() {
         return (Integer) get(13);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_106</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar106</code>.
      */
-    public void setLar_106(Integer value) {
+    public void setLar106(Integer value) {
         set(14, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_106</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar106</code>.
      */
-    public Integer getLar_106() {
+    public Integer getLar106() {
         return (Integer) get(14);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_108</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar108</code>.
      */
-    public void setLar_108(Integer value) {
+    public void setLar108(Integer value) {
         set(15, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_108</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar108</code>.
      */
-    public Integer getLar_108() {
+    public Integer getLar108() {
         return (Integer) get(15);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_110</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar110</code>.
      */
-    public void setLar_110(Integer value) {
+    public void setLar110(Integer value) {
         set(16, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_110</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar110</code>.
      */
-    public Integer getLar_110() {
+    public Integer getLar110() {
         return (Integer) get(16);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_112</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar112</code>.
      */
-    public void setLar_112(Integer value) {
+    public void setLar112(Integer value) {
         set(17, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_112</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar112</code>.
      */
-    public Integer getLar_112() {
+    public Integer getLar112() {
         return (Integer) get(17);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_114</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar114</code>.
      */
-    public void setLar_114(Integer value) {
+    public void setLar114(Integer value) {
         set(18, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_114</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar114</code>.
      */
-    public Integer getLar_114() {
+    public Integer getLar114() {
         return (Integer) get(18);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_116</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar116</code>.
      */
-    public void setLar_116(Integer value) {
+    public void setLar116(Integer value) {
         set(19, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_116</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar116</code>.
      */
-    public Integer getLar_116() {
+    public Integer getLar116() {
         return (Integer) get(19);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_largo_dedo.lar_118</code>.
+     * Setter for <code>public.tab_sol_cal_largo_dedo.lar118</code>.
      */
-    public void setLar_118(Integer value) {
+    public void setLar118(Integer value) {
         set(20, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_largo_dedo.lar_118</code>.
+     * Getter for <code>public.tab_sol_cal_largo_dedo.lar118</code>.
      */
-    public Integer getLar_118() {
+    public Integer getLar118() {
         return (Integer) get(20);
     }
 
@@ -430,30 +430,30 @@ public class TabSolCalLargoDedoRecord extends UpdatableRecordImpl<TabSolCalLargo
     /**
      * Create a detached, initialised TabSolCalLargoDedoRecord
      */
-    public TabSolCalLargoDedoRecord(Long idSolCalLargoDedo, Integer lar_80, Integer lar_82, Integer lar_84, Integer lar_86, Integer lar_88, Integer lar_90, Integer lar_92, Integer lar_94, Integer lar_96, Integer lar_98, Integer lar_100, Integer lar_102, Integer lar_104, Integer lar_106, Integer lar_108, Integer lar_110, Integer lar_112, Integer lar_114, Integer lar_116, Integer lar_118, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
+    public TabSolCalLargoDedoRecord(Long idSolCalLargoDedo, Integer lar80, Integer lar82, Integer lar84, Integer lar86, Integer lar88, Integer lar90, Integer lar92, Integer lar94, Integer lar96, Integer lar98, Integer lar100, Integer lar102, Integer lar104, Integer lar106, Integer lar108, Integer lar110, Integer lar112, Integer lar114, Integer lar116, Integer lar118, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
         super(TabSolCalLargoDedo.TAB_SOL_CAL_LARGO_DEDO);
 
         set(0, idSolCalLargoDedo);
-        set(1, lar_80);
-        set(2, lar_82);
-        set(3, lar_84);
-        set(4, lar_86);
-        set(5, lar_88);
-        set(6, lar_90);
-        set(7, lar_92);
-        set(8, lar_94);
-        set(9, lar_96);
-        set(10, lar_98);
-        set(11, lar_100);
-        set(12, lar_102);
-        set(13, lar_104);
-        set(14, lar_106);
-        set(15, lar_108);
-        set(16, lar_110);
-        set(17, lar_112);
-        set(18, lar_114);
-        set(19, lar_116);
-        set(20, lar_118);
+        set(1, lar80);
+        set(2, lar82);
+        set(3, lar84);
+        set(4, lar86);
+        set(5, lar88);
+        set(6, lar90);
+        set(7, lar92);
+        set(8, lar94);
+        set(9, lar96);
+        set(10, lar98);
+        set(11, lar100);
+        set(12, lar102);
+        set(13, lar104);
+        set(14, lar106);
+        set(15, lar108);
+        set(16, lar110);
+        set(17, lar112);
+        set(18, lar114);
+        set(19, lar116);
+        set(20, lar118);
         set(21, estado);
         set(22, fechaIngreso);
         set(23, fechaModifica);

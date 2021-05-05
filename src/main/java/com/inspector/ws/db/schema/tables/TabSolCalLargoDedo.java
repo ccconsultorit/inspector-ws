@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalLargoDedo extends TableImpl<TabSolCalLargoDedoRecord> {
 
-    private static final long serialVersionUID = 917919654;
+    private static final long serialVersionUID = -569567510;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_largo_dedo</code>
@@ -62,104 +62,104 @@ public class TabSolCalLargoDedo extends TableImpl<TabSolCalLargoDedoRecord> {
     public final TableField<TabSolCalLargoDedoRecord, Long> ID_SOL_CAL_LARGO_DEDO = createField(DSL.name("id_sol_cal_largo_dedo"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_80</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar80</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_80 = createField(DSL.name("lar_80"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR80 = createField(DSL.name("lar80"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_82</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar82</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_82 = createField(DSL.name("lar_82"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR82 = createField(DSL.name("lar82"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_84</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar84</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_84 = createField(DSL.name("lar_84"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR84 = createField(DSL.name("lar84"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_86</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar86</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_86 = createField(DSL.name("lar_86"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR86 = createField(DSL.name("lar86"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_88</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar88</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_88 = createField(DSL.name("lar_88"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR88 = createField(DSL.name("lar88"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_90</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar90</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_90 = createField(DSL.name("lar_90"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR90 = createField(DSL.name("lar90"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_92</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar92</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_92 = createField(DSL.name("lar_92"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR92 = createField(DSL.name("lar92"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_94</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar94</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_94 = createField(DSL.name("lar_94"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR94 = createField(DSL.name("lar94"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_96</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar96</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_96 = createField(DSL.name("lar_96"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR96 = createField(DSL.name("lar96"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_98</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar98</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_98 = createField(DSL.name("lar_98"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR98 = createField(DSL.name("lar98"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_100</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar100</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_100 = createField(DSL.name("lar_100"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR100 = createField(DSL.name("lar100"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_102</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar102</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_102 = createField(DSL.name("lar_102"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR102 = createField(DSL.name("lar102"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_104</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar104</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_104 = createField(DSL.name("lar_104"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR104 = createField(DSL.name("lar104"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_106</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar106</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_106 = createField(DSL.name("lar_106"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR106 = createField(DSL.name("lar106"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_108</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar108</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_108 = createField(DSL.name("lar_108"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR108 = createField(DSL.name("lar108"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_110</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar110</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_110 = createField(DSL.name("lar_110"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR110 = createField(DSL.name("lar110"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_112</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar112</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_112 = createField(DSL.name("lar_112"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR112 = createField(DSL.name("lar112"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_114</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar114</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_114 = createField(DSL.name("lar_114"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR114 = createField(DSL.name("lar114"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_116</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar116</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_116 = createField(DSL.name("lar_116"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR116 = createField(DSL.name("lar116"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_largo_dedo.lar_118</code>.
+     * The column <code>public.tab_sol_cal_largo_dedo.lar118</code>.
      */
-    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR_118 = createField(DSL.name("lar_118"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalLargoDedoRecord, Integer> LAR118 = createField(DSL.name("lar118"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_cal_largo_dedo.estado</code>.

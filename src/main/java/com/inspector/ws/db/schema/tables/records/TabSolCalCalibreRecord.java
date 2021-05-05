@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalCalibreRecord extends UpdatableRecordImpl<TabSolCalCalibreRecord> {
 
-    private static final long serialVersionUID = -232392473;
+    private static final long serialVersionUID = -1387259859;
 
     /**
      * Setter for <code>public.tab_sol_cal_calibre.id_sol_cal_calibre</code>.
@@ -72,254 +72,254 @@ public class TabSolCalCalibreRecord extends UpdatableRecordImpl<TabSolCalCalibre
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_37</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal37</code>.
      */
-    public void setCal_37(Integer value) {
+    public void setCal37(Integer value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_37</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal37</code>.
      */
-    public Integer getCal_37() {
+    public Integer getCal37() {
         return (Integer) get(3);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_38</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal38</code>.
      */
-    public void setCal_38(Integer value) {
+    public void setCal38(Integer value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_38</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal38</code>.
      */
-    public Integer getCal_38() {
+    public Integer getCal38() {
         return (Integer) get(4);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_39</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal39</code>.
      */
-    public void setCal_39(Integer value) {
+    public void setCal39(Integer value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_39</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal39</code>.
      */
-    public Integer getCal_39() {
+    public Integer getCal39() {
         return (Integer) get(5);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_40</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal40</code>.
      */
-    public void setCal_40(Integer value) {
+    public void setCal40(Integer value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_40</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal40</code>.
      */
-    public Integer getCal_40() {
+    public Integer getCal40() {
         return (Integer) get(6);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_41</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal41</code>.
      */
-    public void setCal_41(Integer value) {
+    public void setCal41(Integer value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_41</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal41</code>.
      */
-    public Integer getCal_41() {
+    public Integer getCal41() {
         return (Integer) get(7);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_42</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal42</code>.
      */
-    public void setCal_42(Integer value) {
+    public void setCal42(Integer value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_42</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal42</code>.
      */
-    public Integer getCal_42() {
+    public Integer getCal42() {
         return (Integer) get(8);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_43</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal43</code>.
      */
-    public void setCal_43(Integer value) {
+    public void setCal43(Integer value) {
         set(9, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_43</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal43</code>.
      */
-    public Integer getCal_43() {
+    public Integer getCal43() {
         return (Integer) get(9);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_44</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal44</code>.
      */
-    public void setCal_44(Integer value) {
+    public void setCal44(Integer value) {
         set(10, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_44</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal44</code>.
      */
-    public Integer getCal_44() {
+    public Integer getCal44() {
         return (Integer) get(10);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_45</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal45</code>.
      */
-    public void setCal_45(Integer value) {
+    public void setCal45(Integer value) {
         set(11, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_45</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal45</code>.
      */
-    public Integer getCal_45() {
+    public Integer getCal45() {
         return (Integer) get(11);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_46</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal46</code>.
      */
-    public void setCal_46(Integer value) {
+    public void setCal46(Integer value) {
         set(12, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_46</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal46</code>.
      */
-    public Integer getCal_46() {
+    public Integer getCal46() {
         return (Integer) get(12);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_47</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal47</code>.
      */
-    public void setCal_47(Integer value) {
+    public void setCal47(Integer value) {
         set(13, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_47</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal47</code>.
      */
-    public Integer getCal_47() {
+    public Integer getCal47() {
         return (Integer) get(13);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_48</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal48</code>.
      */
-    public void setCal_48(Integer value) {
+    public void setCal48(Integer value) {
         set(14, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_48</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal48</code>.
      */
-    public Integer getCal_48() {
+    public Integer getCal48() {
         return (Integer) get(14);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_49</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal49</code>.
      */
-    public void setCal_49(Integer value) {
+    public void setCal49(Integer value) {
         set(15, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_49</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal49</code>.
      */
-    public Integer getCal_49() {
+    public Integer getCal49() {
         return (Integer) get(15);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_50</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal50</code>.
      */
-    public void setCal_50(Integer value) {
+    public void setCal50(Integer value) {
         set(16, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_50</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal50</code>.
      */
-    public Integer getCal_50() {
+    public Integer getCal50() {
         return (Integer) get(16);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_51</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal51</code>.
      */
-    public void setCal_51(Integer value) {
+    public void setCal51(Integer value) {
         set(17, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_51</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal51</code>.
      */
-    public Integer getCal_51() {
+    public Integer getCal51() {
         return (Integer) get(17);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_52</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal52</code>.
      */
-    public void setCal_52(Integer value) {
+    public void setCal52(Integer value) {
         set(18, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_52</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal52</code>.
      */
-    public Integer getCal_52() {
+    public Integer getCal52() {
         return (Integer) get(18);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_53</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal53</code>.
      */
-    public void setCal_53(Integer value) {
+    public void setCal53(Integer value) {
         set(19, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_53</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal53</code>.
      */
-    public Integer getCal_53() {
+    public Integer getCal53() {
         return (Integer) get(19);
     }
 
     /**
-     * Setter for <code>public.tab_sol_cal_calibre.cal_54</code>.
+     * Setter for <code>public.tab_sol_cal_calibre.cal54</code>.
      */
-    public void setCal_54(Integer value) {
+    public void setCal54(Integer value) {
         set(20, value);
     }
 
     /**
-     * Getter for <code>public.tab_sol_cal_calibre.cal_54</code>.
+     * Getter for <code>public.tab_sol_cal_calibre.cal54</code>.
      */
-    public Integer getCal_54() {
+    public Integer getCal54() {
         return (Integer) get(20);
     }
 
@@ -430,30 +430,30 @@ public class TabSolCalCalibreRecord extends UpdatableRecordImpl<TabSolCalCalibre
     /**
      * Create a detached, initialised TabSolCalCalibreRecord
      */
-    public TabSolCalCalibreRecord(Long idSolCalCalibre, Integer calUg, Integer calOg, Integer cal_37, Integer cal_38, Integer cal_39, Integer cal_40, Integer cal_41, Integer cal_42, Integer cal_43, Integer cal_44, Integer cal_45, Integer cal_46, Integer cal_47, Integer cal_48, Integer cal_49, Integer cal_50, Integer cal_51, Integer cal_52, Integer cal_53, Integer cal_54, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
+    public TabSolCalCalibreRecord(Long idSolCalCalibre, Integer calUg, Integer calOg, Integer cal37, Integer cal38, Integer cal39, Integer cal40, Integer cal41, Integer cal42, Integer cal43, Integer cal44, Integer cal45, Integer cal46, Integer cal47, Integer cal48, Integer cal49, Integer cal50, Integer cal51, Integer cal52, Integer cal53, Integer cal54, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolCalidad) {
         super(TabSolCalCalibre.TAB_SOL_CAL_CALIBRE);
 
         set(0, idSolCalCalibre);
         set(1, calUg);
         set(2, calOg);
-        set(3, cal_37);
-        set(4, cal_38);
-        set(5, cal_39);
-        set(6, cal_40);
-        set(7, cal_41);
-        set(8, cal_42);
-        set(9, cal_43);
-        set(10, cal_44);
-        set(11, cal_45);
-        set(12, cal_46);
-        set(13, cal_47);
-        set(14, cal_48);
-        set(15, cal_49);
-        set(16, cal_50);
-        set(17, cal_51);
-        set(18, cal_52);
-        set(19, cal_53);
-        set(20, cal_54);
+        set(3, cal37);
+        set(4, cal38);
+        set(5, cal39);
+        set(6, cal40);
+        set(7, cal41);
+        set(8, cal42);
+        set(9, cal43);
+        set(10, cal44);
+        set(11, cal45);
+        set(12, cal46);
+        set(13, cal47);
+        set(14, cal48);
+        set(15, cal49);
+        set(16, cal50);
+        set(17, cal51);
+        set(18, cal52);
+        set(19, cal53);
+        set(20, cal54);
         set(21, estado);
         set(22, fechaIngreso);
         set(23, fechaModifica);

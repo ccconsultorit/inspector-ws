@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloLlegada extends TableImpl<TabSolSelloLlegadaRecord> {
 
-    private static final long serialVersionUID = 425052627;
+    private static final long serialVersionUID = 674786908;
 
     /**
      * The reference instance of <code>public.tab_sol_sello_llegada</code>
@@ -93,24 +93,24 @@ public class TabSolSelloLlegada extends TableImpl<TabSolSelloLlegadaRecord> {
     public final TableField<TabSolSelloLlegadaRecord, String> STICKER_NAVIERA = createField(DSL.name("sticker_naviera"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_llegada.sello_arribo_01</code>.
+     * The column <code>public.tab_sol_sello_llegada.sello_llegada1</code>.
      */
-    public final TableField<TabSolSelloLlegadaRecord, String> SELLO_ARRIBO_01 = createField(DSL.name("sello_arribo_01"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloLlegadaRecord, String> SELLO_LLEGADA1 = createField(DSL.name("sello_llegada1"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_llegada.sello_llegada_2</code>.
+     * The column <code>public.tab_sol_sello_llegada.sello_llegada2</code>.
      */
-    public final TableField<TabSolSelloLlegadaRecord, String> SELLO_LLEGADA_2 = createField(DSL.name("sello_llegada_2"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloLlegadaRecord, String> SELLO_LLEGADA2 = createField(DSL.name("sello_llegada2"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_llegada.sticker_patio_ventolera_1</code>.
+     * The column <code>public.tab_sol_sello_llegada.sticker_patio_ventolera1</code>.
      */
-    public final TableField<TabSolSelloLlegadaRecord, String> STICKER_PATIO_VENTOLERA_1 = createField(DSL.name("sticker_patio_ventolera_1"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloLlegadaRecord, String> STICKER_PATIO_VENTOLERA1 = createField(DSL.name("sticker_patio_ventolera1"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
-     * The column <code>public.tab_sol_sello_llegada.sticker_patio_ventolera_2</code>.
+     * The column <code>public.tab_sol_sello_llegada.sticker_patio_ventolera2</code>.
      */
-    public final TableField<TabSolSelloLlegadaRecord, String> STICKER_PATIO_VENTOLERA_2 = createField(DSL.name("sticker_patio_ventolera_2"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloLlegadaRecord, String> STICKER_PATIO_VENTOLERA2 = createField(DSL.name("sticker_patio_ventolera2"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_sello_llegada.nro_serie</code>.

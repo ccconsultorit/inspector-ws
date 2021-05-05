@@ -17,10 +17,10 @@ public class TabSolSelloInstaladoDto extends BaseDto {
     //String stickerNaviera;
     String stickerExportadora;
     String rastreo;
-    String termografo01;
-    String ubicacion01;
-    String termografo02;
-    String ubicacion02;
+    String termografo1;
+    String ubicacion1;
+    String termografo2;
+    String ubicacion2;
     String filtroProporcionado;
     String termoking;
 

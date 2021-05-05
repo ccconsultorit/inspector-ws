@@ -9,7 +9,6 @@ import lombok.Setter;
 public class TabSolConCalibracionFrutaDto extends BaseDto {
 
     private Long idSolConCalibracionFruta;
-    private Long idSolicitud;
     private Long idSolConsolidadoGancho;
     int numSemana;
     String color;

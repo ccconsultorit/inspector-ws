@@ -59,7 +59,7 @@ public class SolicitudDao implements ISolicitudDao {
     }
 
     @Override
-    public List<SolicitudCompletaDto> getSolicitudesByEstado(String estado) {
+    public List<SolicitudCompletaDto> getSolicitudesCompletaByEstado(String estado) {
 
         var S = TAB_SOLICITUD.as("S");
         var C = TAB_SOL_CONTENEDOR.as("C");
@@ -71,7 +71,6 @@ public class SolicitudDao implements ISolicitudDao {
         var F = TAB_SOL_FINCA.as("F");
         var CA = TAB_SOL_CALIDAD.as("CA");
         var CG = TAB_SOL_CONSOLIDADO_GANCHO.as("CG");
-        var DS = TAB_SOL_CAL_DEFECTO_SELECCION.as("DS");
 
         return create.select(S.ID_SOLICITUD,S.CLIENTE, S.EXPORTADOR)
                 .from(S)
@@ -83,9 +82,20 @@ public class SolicitudDao implements ISolicitudDao {
                 .leftJoin(CP).on(S.ID_SOLICITUD.eq(CP.ID_SOLICITUD))
                 .leftJoin(F).on(S.ID_SOLICITUD.eq(F.ID_SOLICITUD))
                 .leftJoin(CA).on(S.ID_SOLICITUD.eq(CA.ID_SOLICITUD))
+                .leftJoin(CG).on(S.ID_SOLICITUD.eq(CA.ID_SOLICITUD))
                 .where (S.ESTADO.eq(estado))
                 .orderBy(S.ID_SOLICITUD.desc())
                 .fetchInto(SolicitudCompletaDto.class);
+    }
+
+    @Override
+    public List<TabSolicitudDto> getSolicitudesByEstado(String estado) {
+
+        var S = TAB_SOLICITUD.as("S");
+        return create.selectFrom(S)
+                .where (S.ESTADO.eq(estado))
+                .orderBy(S.ID_SOLICITUD.desc())
+                .fetchInto(TabSolicitudDto.class);
     }
 
     @Override

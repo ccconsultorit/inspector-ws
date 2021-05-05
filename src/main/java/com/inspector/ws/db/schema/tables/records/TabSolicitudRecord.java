@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> {
 
-    private static final long serialVersionUID = -1676234955;
+    private static final long serialVersionUID = -824042051;
 
     /**
      * Setter for <code>public.tab_solicitud.id_solicitud</code>.
@@ -296,58 +296,58 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.nom_evaluador_01</code>.
+     * Setter for <code>public.tab_solicitud.nom_evaluador1</code>.
      */
-    public void setNomEvaluador_01(String value) {
+    public void setNomEvaluador1(String value) {
         set(19, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.nom_evaluador_01</code>.
+     * Getter for <code>public.tab_solicitud.nom_evaluador1</code>.
      */
-    public String getNomEvaluador_01() {
+    public String getNomEvaluador1() {
         return (String) get(19);
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.ci_evaluador_01</code>.
+     * Setter for <code>public.tab_solicitud.ci_evaluador1</code>.
      */
-    public void setCiEvaluador_01(String value) {
+    public void setCiEvaluador1(String value) {
         set(20, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.ci_evaluador_01</code>.
+     * Getter for <code>public.tab_solicitud.ci_evaluador1</code>.
      */
-    public String getCiEvaluador_01() {
+    public String getCiEvaluador1() {
         return (String) get(20);
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.nom_evaluador_02</code>.
+     * Setter for <code>public.tab_solicitud.nom_evaluador2</code>.
      */
-    public void setNomEvaluador_02(String value) {
+    public void setNomEvaluador2(String value) {
         set(21, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.nom_evaluador_02</code>.
+     * Getter for <code>public.tab_solicitud.nom_evaluador2</code>.
      */
-    public String getNomEvaluador_02() {
+    public String getNomEvaluador2() {
         return (String) get(21);
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.ci_evaluador_02</code>.
+     * Setter for <code>public.tab_solicitud.ci_evaluador2</code>.
      */
-    public void setCiEvaluador_02(String value) {
+    public void setCiEvaluador2(String value) {
         set(22, value);
     }
 
     /**
-     * Getter for <code>public.tab_solicitud.ci_evaluador_02</code>.
+     * Getter for <code>public.tab_solicitud.ci_evaluador2</code>.
      */
-    public String getCiEvaluador_02() {
+    public String getCiEvaluador2() {
         return (String) get(22);
     }
 
@@ -374,7 +374,7 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     /**
      * Create a detached, initialised TabSolicitudRecord
      */
-    public TabSolicitudRecord(Long idSolicitud, Integer nroSemana, String exportador, String cliente, String tipoSolicitud, String productor, String codProductor, String codMagap, String puertoEmbarque, String zona, LocalDateTime fechaInicio, LocalDateTime fechaTermino, String contenedor, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, String nomEvaluador_01, String ciEvaluador_01, String nomEvaluador_02, String ciEvaluador_02) {
+    public TabSolicitudRecord(Long idSolicitud, Integer nroSemana, String exportador, String cliente, String tipoSolicitud, String productor, String codProductor, String codMagap, String puertoEmbarque, String zona, LocalDateTime fechaInicio, LocalDateTime fechaTermino, String contenedor, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, String nomEvaluador1, String ciEvaluador1, String nomEvaluador2, String ciEvaluador2) {
         super(TabSolicitud.TAB_SOLICITUD);
 
         set(0, idSolicitud);
@@ -396,9 +396,9 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
         set(16, fechaModifica);
         set(17, usuarioIngreso);
         set(18, usuarioModifica);
-        set(19, nomEvaluador_01);
-        set(20, ciEvaluador_01);
-        set(21, nomEvaluador_02);
-        set(22, ciEvaluador_02);
+        set(19, nomEvaluador1);
+        set(20, ciEvaluador1);
+        set(21, nomEvaluador2);
+        set(22, ciEvaluador2);
     }
 }

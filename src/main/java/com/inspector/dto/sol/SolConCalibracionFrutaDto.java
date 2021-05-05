@@ -10,7 +10,6 @@ public class SolConCalibracionFrutaDto {
 
     private Long idSolConCalibracionFruta;
     private Long idSolConsolidadoGancho;
-    private Long idSolicitud;
     int numSemana;
     String color;
     int numRacimo;

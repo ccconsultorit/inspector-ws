@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalCalibre extends TableImpl<TabSolCalCalibreRecord> {
 
-    private static final long serialVersionUID = 672198193;
+    private static final long serialVersionUID = -117525451;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_calibre</code>
@@ -72,94 +72,94 @@ public class TabSolCalCalibre extends TableImpl<TabSolCalCalibreRecord> {
     public final TableField<TabSolCalCalibreRecord, Integer> CAL_OG = createField(DSL.name("cal_og"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_37</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal37</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_37 = createField(DSL.name("cal_37"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL37 = createField(DSL.name("cal37"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_38</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal38</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_38 = createField(DSL.name("cal_38"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL38 = createField(DSL.name("cal38"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_39</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal39</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_39 = createField(DSL.name("cal_39"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL39 = createField(DSL.name("cal39"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_40</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal40</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_40 = createField(DSL.name("cal_40"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL40 = createField(DSL.name("cal40"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_41</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal41</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_41 = createField(DSL.name("cal_41"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL41 = createField(DSL.name("cal41"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_42</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal42</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_42 = createField(DSL.name("cal_42"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL42 = createField(DSL.name("cal42"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_43</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal43</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_43 = createField(DSL.name("cal_43"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL43 = createField(DSL.name("cal43"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_44</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal44</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_44 = createField(DSL.name("cal_44"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL44 = createField(DSL.name("cal44"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_45</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal45</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_45 = createField(DSL.name("cal_45"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL45 = createField(DSL.name("cal45"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_46</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal46</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_46 = createField(DSL.name("cal_46"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL46 = createField(DSL.name("cal46"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_47</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal47</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_47 = createField(DSL.name("cal_47"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL47 = createField(DSL.name("cal47"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_48</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal48</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_48 = createField(DSL.name("cal_48"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL48 = createField(DSL.name("cal48"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_49</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal49</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_49 = createField(DSL.name("cal_49"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL49 = createField(DSL.name("cal49"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_50</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal50</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_50 = createField(DSL.name("cal_50"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL50 = createField(DSL.name("cal50"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_51</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal51</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_51 = createField(DSL.name("cal_51"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL51 = createField(DSL.name("cal51"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_52</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal52</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_52 = createField(DSL.name("cal_52"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL52 = createField(DSL.name("cal52"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_53</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal53</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_53 = createField(DSL.name("cal_53"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL53 = createField(DSL.name("cal53"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_calibre.cal_54</code>.
+     * The column <code>public.tab_sol_cal_calibre.cal54</code>.
      */
-    public final TableField<TabSolCalCalibreRecord, Integer> CAL_54 = createField(DSL.name("cal_54"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<TabSolCalCalibreRecord, Integer> CAL54 = createField(DSL.name("cal54"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.tab_sol_cal_calibre.estado</code>.
