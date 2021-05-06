@@ -4,8 +4,6 @@ import com.inspector.ApiResponse;
 import com.inspector.dto.sol.*;
 import com.inspector.enumaraciones.ResponseCodeEnum;
 import com.inspector.util.Mensajes;
-import com.inspector.ws.db.schema.tables.TabSolCalidad;
-import com.inspector.ws.db.schema.tables.TabSolConCalibracionFruta;
 import com.inspector.ws.repositories.impl.sol.SolCalLargoDedoDao;
 import com.inspector.ws.repositories.sol.*;
 import org.slf4j.Logger;
@@ -13,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -102,6 +102,16 @@ public class SolicitudWs  {
     public ApiResponse<TabSolCalCalibreDto> conSolCalCalibreXIdSolCalidad(@RequestParam("idSolCalidad") Long idSolCalidad) {
         try {
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalCalibreDao.getSolCalCalibreXIdSolCalidad(idSolCalidad));
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
+        }
+    }
+
+    @RequestMapping(value = "conSolCalLargoDedoXIdSolCalidad", method = RequestMethod.GET)
+    public ApiResponse<TabSolCalLargoDedoDto> conSolCalLargoDedoXIdSolCalidad(@RequestParam("idSolCalidad") Long idSolCalidad) {
+        try {
+            return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolCalLargoDedoDao.getSolCalLargoDedoXIdSolCalidad(idSolCalidad));
         } catch (Exception e) {
             LOG.info(e.getMessage());
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.PROCESO_ERR, null);
@@ -588,6 +598,7 @@ public class SolicitudWs  {
     public ApiResponse<String> guardarSolicitud(@RequestBody SolicitudCompletaDto solicitudCompleto) {
         try {
             //final Long idSolicitud;
+            DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("DatoGeneral") ){
                 TabSolicitudDto solicitud = new TabSolicitudDto();
                 solicitud.setIdSolicitud(solicitudCompleto.getIdSolicitud());
@@ -600,13 +611,15 @@ public class SolicitudWs  {
                 solicitud.setCodMagap(solicitudCompleto.getCodMagap());
                 solicitud.setPuertoEmbarque(solicitudCompleto.getPuertoEmbarque());
                 solicitud.setZona(solicitudCompleto.getZona());
-                solicitud.setFechaInicio(solicitudCompleto.getFechaInicio());
-                solicitud.setFechaTermino(solicitudCompleto.getFechaFin());
+                if (solicitudCompleto.getFechaInicio() != null && !solicitudCompleto.getFechaInicio().equals(" "))
+                    solicitud.setFechaInicio(LocalDateTime.parse(solicitudCompleto.getFechaInicio(), inputFormat));
+                if (solicitudCompleto.getFechaFin() != null && !solicitudCompleto.getFechaFin().equals(" "))
+                    solicitud.setFechaTermino(LocalDateTime.parse(solicitudCompleto.getFechaFin(), inputFormat));
                 solicitud.setContenedor(solicitudCompleto.getContenedor());
-                solicitud.setNomEvaluador01(solicitudCompleto.getNomEvaluador1());
-                solicitud.setCiEvaluador01(solicitudCompleto.getCiEvaluador1());
-                solicitud.setNomEvaluador02(solicitudCompleto.getNomEvaluador2());
-                solicitud.setCiEvaluador02(solicitudCompleto.getCiEvaluador2());
+                solicitud.setNomEvaluador1(solicitudCompleto.getNomEvaluador1());
+                solicitud.setCiEvaluador1(solicitudCompleto.getCiEvaluador1());
+                solicitud.setNomEvaluador2(solicitudCompleto.getNomEvaluador2());
+                solicitud.setCiEvaluador2(solicitudCompleto.getCiEvaluador2());
                 solicitud.setObservacion(solicitudCompleto.getObservacion());
                 //idSolicitud = iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
                 iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
@@ -626,10 +639,14 @@ public class SolicitudWs  {
                     solContenedor.setTare(solicitudCompleto.getTare());
                     solContenedor.setMaxGross(solicitudCompleto.getMaxGross());
                     solContenedor.setPuertoSalida(solicitudCompleto.getPuertoSalida());
-                    solContenedor.setFechaLlegada(solicitudCompleto.getFechaLlegada());
-                    solContenedor.setFechaApertura(solicitudCompleto.getFechaApertura());
-                    solContenedor.setFechaCierre(solicitudCompleto.getFechaCierre());
-                    solContenedor.setFechaSalida(solicitudCompleto.getFechaSalida());
+                    if (solicitudCompleto.getFechaLlegada() != null && !solicitudCompleto.getFechaLlegada().equals(" "))
+                        solContenedor.setFechaLlegada(LocalDateTime.parse(solicitudCompleto.getFechaLlegada(), inputFormat));
+                    if (solicitudCompleto.getFechaApertura() != null && !solicitudCompleto.getFechaApertura().equals(" "))
+                        solContenedor.setFechaApertura(LocalDateTime.parse(solicitudCompleto.getFechaApertura(), inputFormat));
+                    if (solicitudCompleto.getFechaCierre() != null && !solicitudCompleto.getFechaCierre().equals(" "))
+                        solContenedor.setFechaCierre(LocalDateTime.parse(solicitudCompleto.getFechaCierre(), inputFormat));
+                    if (solicitudCompleto.getFechaSalida() != null && !solicitudCompleto.getFechaSalida().equals(" "))
+                        solContenedor.setFechaSalida(LocalDateTime.parse(solicitudCompleto.getFechaSalida(), inputFormat));
                     solContenedor.setObservacion(solicitudCompleto.getObservacionCon());
                     solContenedor = iSolContenedorDao.save(solContenedor, solicitudCompleto.getEstRegCon());
                     //solicitudCompleto.setIdSolContenedor(solContenedor.getIdSolContenedor());

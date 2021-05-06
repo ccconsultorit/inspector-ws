@@ -21,13 +21,8 @@ public class SolicitudCompletaDto  {
     String codMagap;
     String puertoEmbarque;
     String zona;
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    //protected LocalDateTime fechaInicio;
     String fechaInicio;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaFin;
+    String fechaFin;
     String contenedor;
     String nomEvaluador1;
     String ciEvaluador1;
@@ -46,14 +41,10 @@ public class SolicitudCompletaDto  {
     String tare;
     String maxGross;
     String puertoSalida;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaLlegada;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaApertura;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaCierre;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime fechaSalida;
+    String fechaLlegada;
+    String fechaApertura;
+    String fechaCierre;
+    String fechaSalida;
     String observacionCon;
     String estRegCon;
 

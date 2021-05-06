@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
 public class TabSolicitudDto extends BaseSolicitudDto {
@@ -22,16 +23,15 @@ public class TabSolicitudDto extends BaseSolicitudDto {
     String codMagap;
     String puertoEmbarque;
     String zona;
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    //protected LocalDateTime fechaInicio;
-    String fechaInicio;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    protected LocalDateTime fechaInicio;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     protected LocalDateTime fechaTermino;
     String contenedor;
-    String nomEvaluador01;
-    String ciEvaluador01;
-    String nomEvaluador02;
-    String ciEvaluador02;
+    String nomEvaluador1;
+    String ciEvaluador1;
+    String nomEvaluador2;
+    String ciEvaluador2;
     String observacion;
 
     public TabSolicitudDto() {}

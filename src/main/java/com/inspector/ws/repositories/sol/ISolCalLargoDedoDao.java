@@ -10,4 +10,5 @@ import com.inspector.dto.sol.TabSolCalLargoDedoDto;
 public interface ISolCalLargoDedoDao {
 
     public TabSolCalLargoDedoDto save(TabSolCalLargoDedoDto solCalLargoDedo, String estReg);
+    public TabSolCalLargoDedoDto getSolCalLargoDedoXIdSolCalidad(Long idSolCalidad);
 }
