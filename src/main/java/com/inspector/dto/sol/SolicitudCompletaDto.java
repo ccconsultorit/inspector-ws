@@ -154,6 +154,7 @@ public class SolicitudCompletaDto  {
 
     List<SolCalidadDto> listSolCalidad;
     List<SolConCalibracionFrutaDto> listSolCalibracion;
+    List<SolImagenDto> listSolImagen;
 
     public SolicitudCompletaDto() {}
 

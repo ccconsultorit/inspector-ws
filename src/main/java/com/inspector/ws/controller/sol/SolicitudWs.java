@@ -597,10 +597,18 @@ public class SolicitudWs  {
     @RequestMapping(value = "guardarSolicitud", method = RequestMethod.POST)
     public ApiResponse<String> guardarSolicitud(@RequestBody SolicitudCompletaDto solicitudCompleto) {
         try {
-            //final Long idSolicitud;
+            TabSolicitudDto solicitud = new TabSolicitudDto();
+            TabSolContenedorDto solContenedor = new TabSolContenedorDto();
+            TabSolSelloLlegadaDto solSelloLlegada = new TabSolSelloLlegadaDto();
+            TabSolSelloInstaladoDto solSelloInstalado = new TabSolSelloInstaladoDto();
+            TabSolTransportistaDto solTransportista = new TabSolTransportistaDto();
+            TabSolProcesoDto solProceso = new TabSolProcesoDto();
+            TabSolControlPesoDto solControlPeso = new TabSolControlPesoDto();
+            TabSolFincaDto solFinca = new TabSolFincaDto();
+
             DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("DatoGeneral") ){
-                TabSolicitudDto solicitud = new TabSolicitudDto();
                 solicitud.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                 solicitud.setNroSemana(solicitudCompleto.getNroSemana());
                 solicitud.setExportador(solicitudCompleto.getExportador());
@@ -621,14 +629,11 @@ public class SolicitudWs  {
                 solicitud.setNomEvaluador2(solicitudCompleto.getNomEvaluador2());
                 solicitud.setCiEvaluador2(solicitudCompleto.getCiEvaluador2());
                 solicitud.setObservacion(solicitudCompleto.getObservacion());
-                //idSolicitud = iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
                 iSolicitudDao.save(solicitud, solicitudCompleto.getEstRegSol());
-                //String ids = idSolicitud.toString();
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("Contenedor") ) {
                 if (!solicitudCompleto.getEstRegCon().equals("")) {
-                    TabSolContenedorDto solContenedor = new TabSolContenedorDto();
                     solContenedor.setIdSolContenedor(solicitudCompleto.getIdSolContenedor());
                     solContenedor.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     solContenedor.setNroContenedor(solicitudCompleto.getNroContenedor());
@@ -649,14 +654,11 @@ public class SolicitudWs  {
                         solContenedor.setFechaSalida(LocalDateTime.parse(solicitudCompleto.getFechaSalida(), inputFormat));
                     solContenedor.setObservacion(solicitudCompleto.getObservacionCon());
                     solContenedor = iSolContenedorDao.save(solContenedor, solicitudCompleto.getEstRegCon());
-                    //solicitudCompleto.setIdSolContenedor(solContenedor.getIdSolContenedor());
-                    //ids = ids + "," + solContenedor.getIdSolContenedor().toString();
                 }
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("SelloLlegada") ) {
                 if (!solicitudCompleto.getEstRegSA().equals("")) {
-                    TabSolSelloLlegadaDto solSelloLlegada = new TabSolSelloLlegadaDto();
                     solSelloLlegada.setIdSolSelloLlegada(solicitudCompleto.getIdSolSelloLlegada());
                     solSelloLlegada.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     solSelloLlegada.setCandadoPlastico(solicitudCompleto.getCandadoPlastico());
@@ -673,14 +675,11 @@ public class SolicitudWs  {
                     solSelloLlegada.setCandadoExportador(solicitudCompleto.getCandadoExportador());
                     solSelloLlegada.setObservacion(solicitudCompleto.getObservacionSA());
                     solSelloLlegada = iSolSelloLlegadaDao.save(solSelloLlegada, solicitudCompleto.getEstRegSA());
-                    //solicitudCompleto.setIdSolSelloArribo(solSelloLlegada.getIdSolSelloLlegada());
-                    //ids = ids + "," + solSelloLlegada.getIdSolSelloLlegada().toString();
                 }
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("SelloInstalado") ) {
                 if (!solicitudCompleto.getEstRegSI().equals("")) {
-                    TabSolSelloInstaladoDto solSelloInstalado = new TabSolSelloInstaladoDto();
                     solSelloInstalado.setIdSolSelloInstalado(solicitudCompleto.getIdSolSelloInstalado());
                     solSelloInstalado.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     solSelloInstalado.setCandadoNaviera(solicitudCompleto.getCandadoNaviera());
@@ -697,14 +696,11 @@ public class SolicitudWs  {
                     solSelloInstalado.setFiltroProporcionado(solicitudCompleto.getFiltroProporcionado());
                     solSelloInstalado.setTermoking(solicitudCompleto.getTermoking());
                     solSelloInstalado = iSolSelloInstaladoDao.save(solSelloInstalado, solicitudCompleto.getEstRegSI());
-                    //solicitudCompleto.setIdSolSelloInstalado(solSelloInstalado.getIdSolSelloInstalado());
-                    //ids = ids + "," + solSelloInstalado.getIdSolSelloInstalado().toString();
                 }
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("Transportista") ) {
                 if (!solicitudCompleto.getEstRegTra().equals("")) {
-                    TabSolTransportistaDto solTransportista = new TabSolTransportistaDto();
                     solTransportista.setIdSolTransportista(solicitudCompleto.getIdSolTransportista());
                     solTransportista.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     solTransportista.setCompania(solicitudCompleto.getCompania());
@@ -716,14 +712,11 @@ public class SolicitudWs  {
                     solTransportista.setMarcaCabezal(solicitudCompleto.getMarcaCabezal());
                     solTransportista.setObservacion(solicitudCompleto.getObservacionTra());
                     solTransportista = iSolTransportistaDao.save(solTransportista, solicitudCompleto.getEstRegTra());
-                    //solicitudCompleto.setIdSolTransportista(solTransportista.getIdSolTransportista());
-                    //ids = ids + "," + solTransportista.getIdSolTransportista().toString();
                 }
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("Proceso") ) {
                 if (!solicitudCompleto.getEstRegPro().equals("")) {
-                    TabSolProcesoDto solProceso = new TabSolProcesoDto();
                     solProceso.setIdSolProceso(solicitudCompleto.getIdSolProceso());
                     solProceso.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     //solProceso.setIdSolProductor(solicitudCompleto.getIdSolProductor());
@@ -737,14 +730,11 @@ public class SolicitudWs  {
                     solProceso.setTiempoDescarga(solicitudCompleto.getTiempoDescarga());
                     solProceso.setTipoCantulina(solicitudCompleto.getTipoCantulina());
                     solProceso = iSolProcesoDao.save(solProceso, solicitudCompleto.getEstRegPro());
-                    //solicitudCompleto.setIdSolProceso(solProceso.getIdSolProceso());
-                    //ids = ids + "," + solProceso.getIdSolProceso().toString();
                 }
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("ControlPeso") ) {
                 if (!solicitudCompleto.getEstRegCtr().equals("")) {
-                    TabSolControlPesoDto solControlPeso = new TabSolControlPesoDto();
                     solControlPeso.setIdSolControlPeso(solicitudCompleto.getIdSolControlPeso());
                     solControlPeso.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     //solControlPeso.setIdSolProductor(solicitudCompleto.getIdSolProductor());
@@ -754,14 +744,11 @@ public class SolicitudWs  {
                     solControlPeso.setPesoNetoFruta(solicitudCompleto.getPesoNetoFruta());
                     solControlPeso.setObservacion(solicitudCompleto.getObservacionCtr());
                     solControlPeso = iSolControlPesoDao.save(solControlPeso, solicitudCompleto.getEstRegCtr());
-                    //solicitudCompleto.setIdSolControlPeso(solControlPeso.getIdSolControlPeso());
-                    //ids = ids + "," + solControlPeso.getIdSolControlPeso().toString();
                 }
             }
 
             if (solicitudCompleto.getAreaAGuardar().equals("Todos") || solicitudCompleto.getAreaAGuardar().equals("Finca") ) {
                 if (!solicitudCompleto.getEstRegFin().equals("")) {
-                    TabSolFincaDto solFinca = new TabSolFincaDto();
                     solFinca.setIdSolFinca(solicitudCompleto.getIdSolFinca());
                     solFinca.setIdSolicitud(solicitudCompleto.getIdSolicitud());
                     //solFinca.setIdSolProductor(solicitudCompleto.getIdSolProductor());
@@ -777,8 +764,6 @@ public class SolicitudWs  {
                     solFinca.setEmbudo(solicitudCompleto.getEmbudo());
                     solFinca.setDivisionTina(solicitudCompleto.getDivisionTina());
                     solFinca = iSolFincaDao.save(solFinca, solicitudCompleto.getEstRegFin());
-                    //solicitudCompleto.setIdSolFinca(solFinca.getIdSolFinca());
-                    //ids = ids + "," + solFinca.getIdSolFinca().toString();
                 }
             }
 
@@ -807,8 +792,6 @@ public class SolicitudWs  {
                     solCalidad.setMayorDefectoEmpaque(calidad.getMayorDefectoEmpaque());
                     solCalidad = iSolCalidadDao.save(solCalidad, calidad.getEstRegCal());
                     idSolCalidad = solCalidad.getIdSolCalidad();
-                    //solicitudCompleto.setIdSolCalidad(solCalidad.getIdSolCalidad());
-                    //ids = ids + "," + solCalidad.getIdSolCalidad().toString();
 
                     Long finalIdSolCalidad = idSolCalidad;
                     if (calidad.getListSolCalDefectoSeleccion() != null) {
@@ -862,8 +845,6 @@ public class SolicitudWs  {
                             solDefectoSeleccion.setEa(defecto.getEa());
                             solDefectoSeleccion.setPs(defecto.getPs());
                             solDefectoSeleccion = iSolCalDefectoSeleccionDao.save(solDefectoSeleccion, defecto.getEstRegDS());
-                            //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
-                            //ids = ids + "," + solDefectoSeleccion.getIdSolCalDefectoSeleccion().toString();
                         });
                     }
 
@@ -893,8 +874,6 @@ public class SolicitudWs  {
                         tabSolCalCalibreDto.setCal53(calidad.getCal53());
                         tabSolCalCalibreDto.setCal54(calidad.getCal54());
                         tabSolCalCalibreDto = iSolCalCalibreDao.save(tabSolCalCalibreDto, calidad.getEstRegClb());
-                        //solicitudCompleto.setIdSolPackingList(solPackingList.getIdSolPackingList());
-                        //ids = ids + "," + solCalCalibreDto.getIdSolCalCalibre().toString();
                     }
 
                     if (calidad.getEstRegLD().equals("NUE")) {
@@ -923,8 +902,6 @@ public class SolicitudWs  {
                         tabSolCalLargoDedoDto.setLar116(calidad.getLar116());
                         tabSolCalLargoDedoDto.setLar118(calidad.getLar118());
                         tabSolCalLargoDedoDto = iSolCalLargoDedoDao.save(tabSolCalLargoDedoDto, calidad.getEstRegLD());
-                        //solicitudCompleto.setIdSolPackingList(solPackingList.getIdSolPackingList());
-                        //ids = ids + "," + solCalLargoDedoDto.getIdSolCalLargoDedo().toString();
                     }
 
                     if (calidad.getListSolCalPesoCluster() != null) {
@@ -936,8 +913,6 @@ public class SolicitudWs  {
                             tabSolCalPesoClusterDto.setNumero(peso.getNumero());
                             tabSolCalPesoClusterDto.setPeso(peso.getPeso());
                             tabSolCalPesoClusterDto = iSolCalPesoClusterDao.save(tabSolCalPesoClusterDto, peso.getEstRegPC());
-                            //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
-                            ////ids = ids + "," + solCalPesoClusterDto.getIdSolCalPesoCluster().toString();
                         });
                     }
                     if (calidad.getListSolCalPackingList() != null) {
@@ -949,8 +924,6 @@ public class SolicitudWs  {
                             tabSolCalPackingListDto.setNumeracion(packing.getNumeracion());
                             tabSolCalPackingListDto.setSticker(packing.getSticker());
                             tabSolCalPackingListDto = iSolCalPackingListDao.save(tabSolCalPackingListDto, packing.getEstRegPL());
-                            //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
-                            ////ids = ids + "," + solCalPackingListDto.getIdSolCalPackingList().toString();
                         });
                     }
                 });
@@ -990,8 +963,6 @@ public class SolicitudWs  {
 
                     solConsolidadoGancho = iSolConsolidadoGanchoDao.save(solConsolidadoGancho, solicitudCompleto.getEstRegCG());
                     idSolConsolidadoGancho = solConsolidadoGancho.getIdSolConsolidadoGancho();
-                    //solicitudCompleto.setIdSolConsolidadoGancho(solConsolidadoGancho.getIdSolConsolidadoGancho());
-                    //ids = ids + "," + solConsolidadoGancho.getIdSolConsolidadoGancho().toString();
                 }
             }
 
@@ -1006,33 +977,67 @@ public class SolicitudWs  {
                     tabSolConCalibracionFrutaDto.setColor(fruta.getColor());
                     tabSolConCalibracionFrutaDto.setNumRacimo(fruta.getNumRacimo());
                     tabSolConCalibracionFrutaDto = iSolConCalibracionFrutaDao.save(tabSolConCalibracionFrutaDto, fruta.getEstRegCF());
-                    //solicitudCompleto.setIdSolDefectoSeleccion(solDefectoSeleccion.getIdSolDefectoSeleccion());
-                    //ids = ids + "," + solConCalibracionFrutaDto.getIdSolConCalibracionFruta().toString();
                 });
             }
-            /*
-            iSolImagenDao.delete(idSolicitud);
-            solicitudCompleto.getSolImagenes().forEach(ima ->{
-                SolImagenDto imagenDto = new SolImagenDto();
-                imagenDto.setIdSolicitud(idSolicitud);
 
-                Object o1 = JSONValue.parse(ima);
-                JSONObject jsonObj = (JSONObject) o1;
-                String idSolImagen = (String) jsonObj.get("idSolImagen");
-                String nombre = (String) jsonObj.get("nombre");
-                String descripcion = (String) jsonObj.get("descripcion");
-                String seccion = (String) jsonObj.get("seccion");
-                String imagen = (String) jsonObj.get("imagen");
-                imagenDto.setIdSolImagen(Long.parseLong(idSolImagen));
-                imagenDto.setNombre(nombre);
-                imagenDto.setDescripcion(descripcion);
-                imagenDto.setSeccion(seccion);
-                imagenDto.setImagen(imagen);
+            if (solicitudCompleto.getListSolImagen() != null) {
+                TabSolContenedorDto finalSolContenedor = solContenedor;
+                TabSolSelloLlegadaDto finalSolSelloLlegada = solSelloLlegada;
+                TabSolSelloInstaladoDto finalSolSelloInstalado = solSelloInstalado;
+                TabSolTransportistaDto finalSolTransportista = solTransportista;
+                TabSolProcesoDto finalSolProceso = solProceso;
+                TabSolControlPesoDto finalSolControlPeso = solControlPeso;
+                TabSolFincaDto finalSolFinca = solFinca;
 
-                iSolImagenDao.save(imagenDto);
-            });
-            */
+                solicitudCompleto.getListSolImagen().forEach(ima -> {
+                    TabSolImagenDto tabSolImagenDto = new TabSolImagenDto();
+
+                    if (ima.getIdDatoGeneral() > 0)
+                        tabSolImagenDto.setIdSolicitud(ima.getIdSolicitud());
+
+                    if (ima.getIdSolContenedor() > 0)
+                        tabSolImagenDto.setIdSolContenedor(finalSolContenedor.getIdSolContenedor());
+
+                    if (ima.getIdSolSelloLlegada() > 0)
+                        tabSolImagenDto.setIdSolSelloLlegada(finalSolSelloLlegada.getIdSolSelloLlegada());
+
+                    if (ima.getIdSolSelloInstalado() > 0)
+                        tabSolImagenDto.setIdSolSelloInstalado(finalSolSelloInstalado.getIdSolSelloInstalado());
+
+                    if (ima.getIdSolTransportista() > 0)
+                        tabSolImagenDto.setIdSolTransportista(finalSolTransportista.getIdSolTransportista());
+
+                    if (ima.getIdSolProceso() > 0)
+                        tabSolImagenDto.setIdSolProceso(finalSolProceso.getIdSolProceso());
+
+                    if (ima.getIdSolControlPeso() > 0)
+                        tabSolImagenDto.setIdSolControlPeso(finalSolControlPeso.getIdSolControlPeso());
+
+                    if (ima.getIdSolFinca() > 0)
+                        tabSolImagenDto.setIdSolFinca(finalSolFinca.getIdSolFinca());
+
+                    if (ima.getIdSolConsolidadoGancho() > 0)
+                        tabSolImagenDto.setIdSolConsolidadoGancho(finalIdSolConsolidadoGancho);
+
+                    /*
+                    if (ima.getIdSolCalidad() > 0)
+                        tabSolImagenDto.setIdSolCalidad(idSolCalidad);
+
+                    if (ima.getIdSolCalPackingList() > 0)
+                        tabSolImagenDto.setIdSolCalPackingList(idSolCalPackingList);
+                    */
+
+                    tabSolImagenDto.setNombre(ima.getNombre());
+                    tabSolImagenDto.setDescripcion(ima.getDescripcion());
+                    tabSolImagenDto.setSeccion(ima.getSeccion());
+                    tabSolImagenDto.setCargar(ima.getCargar());
+                    tabSolImagenDto.setImagen(ima.getImagen());
+                    tabSolImagenDto = iSolImagenDao.save(tabSolImagenDto, ima.getEstRegIma());
+                });
+            }
+
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
+
         } catch (Exception e) {
             iSolicitudDao.delete(solicitudCompleto.getIdSolicitud());
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
@@ -1409,3 +1414,26 @@ public class SolicitudWs  {
         }
     }
     */
+
+            /*
+            iSolImagenDao.delete(idSolicitud);
+            solicitudCompleto.getSolImagenes().forEach(ima ->{
+                SolImagenDto imagenDto = new SolImagenDto();
+                imagenDto.setIdSolicitud(idSolicitud);
+
+                Object o1 = JSONValue.parse(ima);
+                JSONObject jsonObj = (JSONObject) o1;
+                String idSolImagen = (String) jsonObj.get("idSolImagen");
+                String nombre = (String) jsonObj.get("nombre");
+                String descripcion = (String) jsonObj.get("descripcion");
+                String seccion = (String) jsonObj.get("seccion");
+                String imagen = (String) jsonObj.get("imagen");
+                imagenDto.setIdSolImagen(Long.parseLong(idSolImagen));
+                imagenDto.setNombre(nombre);
+                imagenDto.setDescripcion(descripcion);
+                imagenDto.setSeccion(seccion);
+                imagenDto.setImagen(imagen);
+
+                iSolImagenDao.save(imagenDto);
+            });
+            */

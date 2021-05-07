@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.sol;
 
 import com.inspector.dto.sol.SolImagenDto;
+import com.inspector.dto.sol.TabSolImagenDto;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface ISolImagenDao {
 
     List<SolImagenDto> getSolImagenesByIdSolicitud(Long idSolicitud);
 
-    SolImagenDto save(SolImagenDto solImagen);
+    public TabSolImagenDto save(TabSolImagenDto solImagen, String estReg);
 
     void delete(Long idSolicitud);
 

@@ -1,6 +1,7 @@
 package com.inspector.ws.repositories.impl.sol;
 
 import com.inspector.dto.sol.SolImagenDto;
+import com.inspector.dto.sol.TabSolImagenDto;
 import com.inspector.enumaraciones.EstadoEnum;
 import com.inspector.ws.repositories.sol.ISolImagenDao;
 import org.jooq.DSLContext;
@@ -71,15 +72,15 @@ public class SolImagenDao implements ISolImagenDao {
     }
 
     @Override
-    public SolImagenDto save(SolImagenDto solImagen) {
-        if (solImagen.getIdSolImagen() == 0) {
+    public TabSolImagenDto save(TabSolImagenDto solImagen, String estReg) {
+        if (estReg.equals("NUE")) {
             return insert(solImagen);
-        } else {
+        } else if (estReg.equals("MOD")){
             return update(solImagen);
-        }
+        } else
+            return null;
     }
-
-    private SolImagenDto insert(SolImagenDto solImagen) {
+    private TabSolImagenDto insert(TabSolImagenDto solImagen) {
         create.transaction(x -> {
             solImagen.setIdSolImagen(DSL.using(x).nextval(SEC_SOL_IMAGEN));
             DSL.using(x).newRecord(TAB_SOL_IMAGEN, solImagen).insert();
@@ -87,7 +88,7 @@ public class SolImagenDao implements ISolImagenDao {
         return solImagen;
     }
 
-    public SolImagenDto update(SolImagenDto solImagen) {
+    public TabSolImagenDto update(TabSolImagenDto solImagen) {
         //create.transaction(x -> {
         //    DSL.using(x).newRecord(TAB_SOL_IMAGEN, solImagen).update();
         //});

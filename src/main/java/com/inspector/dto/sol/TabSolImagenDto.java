@@ -4,11 +4,9 @@ import com.inspector.dto.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.File;
-
 @Getter
 @Setter
-public class SolImagenDto extends BaseDto {
+public class TabSolImagenDto extends BaseDto {
 
     private Long  idSolImagen;
     private Long  idSolicitud;
@@ -30,7 +28,7 @@ public class SolImagenDto extends BaseDto {
     String imagen;
     String estRegIma;
 
-    public SolImagenDto() {}
+    public TabSolImagenDto() {}
 
     @Override
     public Long getId() {
