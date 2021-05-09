@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> {
 
-    private static final long serialVersionUID = -1576960517;
+    private static final long serialVersionUID = -1309851899;
 
     /**
      * The reference instance of <code>public.tab_sol_sello_instalado</code>
@@ -120,7 +120,7 @@ public class TabSolSelloInstalado extends TableImpl<TabSolSelloInstaladoRecord> 
     /**
      * The column <code>public.tab_sol_sello_instalado.termoking</code>.
      */
-    public final TableField<TabSolSelloInstaladoRecord, String> TERMOKING = createField(DSL.name("termoking"), org.jooq.impl.SQLDataType.VARCHAR(3).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolSelloInstaladoRecord, String> TERMOKING = createField(DSL.name("termoking"), org.jooq.impl.SQLDataType.VARCHAR(50).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_sello_instalado.estado</code>.

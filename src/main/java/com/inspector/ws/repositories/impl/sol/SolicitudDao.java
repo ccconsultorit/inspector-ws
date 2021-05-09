@@ -26,6 +26,7 @@ import static com.inspector.ws.db.schema.tables.TabSolCalPesoCluster.TAB_SOL_CAL
 import static com.inspector.ws.db.schema.tables.TabSolCalPackingList.TAB_SOL_CAL_PACKING_LIST;
 import static com.inspector.ws.db.schema.tables.TabSolCalCalibre.TAB_SOL_CAL_CALIBRE;
 import static com.inspector.ws.db.schema.tables.TabSolConCalibracionFruta.TAB_SOL_CON_CALIBRACION_FRUTA;
+import static com.inspector.ws.db.schema.tables.TabSolImagen.TAB_SOL_IMAGEN;
 
 @Repository
 public class SolicitudDao implements ISolicitudDao {
@@ -180,6 +181,9 @@ public class SolicitudDao implements ISolicitudDao {
         create.delete(cal).where(cal.ID_SOLICITUD.equal(solicitudId)).execute();
 
         var cg = TAB_SOL_CONSOLIDADO_GANCHO.as("cg");
+        create.delete(cg).where(cg.ID_SOLICITUD.equal(solicitudId)).execute();
+
+        var ima = TAB_SOL_IMAGEN.as("cg");
         create.delete(cg).where(cg.ID_SOLICITUD.equal(solicitudId)).execute();
 
         var s = TAB_SOLICITUD.as("s");

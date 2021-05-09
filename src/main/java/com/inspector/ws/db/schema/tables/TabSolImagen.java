@@ -20,7 +20,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row11;
+import org.jooq.Row21;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolImagen extends TableImpl<TabSolImagenRecord> {
 
-    private static final long serialVersionUID = 2082089662;
+    private static final long serialVersionUID = 1059762322;
 
     /**
      * The reference instance of <code>public.tab_sol_imagen</code>
@@ -111,6 +111,56 @@ public class TabSolImagen extends TableImpl<TabSolImagenRecord> {
      * The column <code>public.tab_sol_imagen.id_solicitud</code>.
      */
     public final TableField<TabSolImagenRecord, Long> ID_SOLICITUD = createField(DSL.name("id_solicitud"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_contenedor</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_CONTENEDOR = createField(DSL.name("id_sol_contenedor"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_sello_llegada</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_SELLO_LLEGADA = createField(DSL.name("id_sol_sello_llegada"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_sello_instalado</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_SELLO_INSTALADO = createField(DSL.name("id_sol_sello_instalado"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_transportista</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_TRANSPORTISTA = createField(DSL.name("id_sol_transportista"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_proceso</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_PROCESO = createField(DSL.name("id_sol_proceso"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_control_peso</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_CONTROL_PESO = createField(DSL.name("id_sol_control_peso"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_finca</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_FINCA = createField(DSL.name("id_sol_finca"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_consolidado_gancho</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_CONSOLIDADO_GANCHO = createField(DSL.name("id_sol_consolidado_gancho"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_calidad</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_CALIDAD = createField(DSL.name("id_sol_calidad"), org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.tab_sol_imagen.id_sol_cal_packing_list</code>.
+     */
+    public final TableField<TabSolImagenRecord, Long> ID_SOL_CAL_PACKING_LIST = createField(DSL.name("id_sol_cal_packing_list"), org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
      * Create a <code>public.tab_sol_imagen</code> table reference
@@ -209,11 +259,11 @@ public class TabSolImagen extends TableImpl<TabSolImagenRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row11 type methods
+    // Row21 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row11<Long, String, String, String, byte[], String, LocalDateTime, LocalDateTime, Integer, Integer, Long> fieldsRow() {
-        return (Row11) super.fieldsRow();
+    public Row21<Long, String, String, String, byte[], String, LocalDateTime, LocalDateTime, Integer, Integer, Long, Long, Long, Long, Long, Long, Long, Long, Long, Long, Long> fieldsRow() {
+        return (Row21) super.fieldsRow();
     }
 }

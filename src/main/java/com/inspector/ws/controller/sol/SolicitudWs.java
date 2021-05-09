@@ -69,7 +69,7 @@ public class SolicitudWs  {
      * @return Listado de Solicituds
      */
     @RequestMapping(value = "conSolicitudes", method = RequestMethod.GET)
-    public ApiResponse<List<TabSolicitudDto>> getSolicitudes() {
+    public ApiResponse<List<TabSolicitudDto>> conSolicitudes() {
         try {
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.PROCESO_OK, iSolicitudDao.getAll());
         } catch (Exception e) {
@@ -992,6 +992,7 @@ public class SolicitudWs  {
                 solicitudCompleto.getListSolImagen().forEach(ima -> {
                     TabSolImagenDto tabSolImagenDto = new TabSolImagenDto();
 
+                    tabSolImagenDto.setIdSolicitud(ima.getIdSolicitud());
                     if (ima.getIdDatoGeneral() > 0)
                         tabSolImagenDto.setIdSolicitud(ima.getIdSolicitud());
 

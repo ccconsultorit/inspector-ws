@@ -12,15 +12,17 @@ import java.util.List;
  */
 public interface ISolImagenDao {
 
-    List<SolImagenDto> getAll();
-    SolImagenDto getSolImagenById(Long id);
+    List<TabSolImagenDto> getAll();
+    TabSolImagenDto getSolImagenById(Long id);
 
-    List<SolImagenDto> getSolImagenesByIdSolicitud(Long idSolicitud);
+    List<TabSolImagenDto> getSolImagenesByIdSolicitud(Long idSolicitud, String seccion);
 
     public TabSolImagenDto save(TabSolImagenDto solImagen, String estReg);
 
     void delete(Long idSolicitud);
 
-    void updateEstado(Long idSolImagen, String estado);
+    void updateEstado(Long TabSolImagenDto, String estado);
 
-}
+    public void eliminarSolImagen(Long idSolImagen);
+
+    }

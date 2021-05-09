@@ -14,6 +14,7 @@ import java.util.List;
 
 
 import static com.inspector.ws.db.schema.Sequences.SEC_SOL_IMAGEN;
+import static com.inspector.ws.db.schema.tables.TabSolConCalibracionFruta.TAB_SOL_CON_CALIBRACION_FRUTA;
 import static com.inspector.ws.db.schema.tables.TabSolImagen.TAB_SOL_IMAGEN;
 import static com.inspector.ws.db.schema.tables.TabSolicitud.TAB_SOLICITUD;
 
@@ -25,28 +26,102 @@ public class SolImagenDao implements ISolImagenDao {
     private DSLContext create;
 
     @Override
-    public List<SolImagenDto> getAll() {
+    public List<TabSolImagenDto> getAll() {
         return create.select().from(TAB_SOL_IMAGEN)
                 .where(TAB_SOL_IMAGEN.ESTADO.eq(EstadoEnum.A.name()))
-                .fetchInto(SolImagenDto.class);
+                .fetchInto(TabSolImagenDto.class);
     };
 
     @Override
-    public SolImagenDto getSolImagenById(Long id) {
+    public TabSolImagenDto getSolImagenById(Long id) {
         var a = TAB_SOL_IMAGEN.as("a");
         return create.select().from(a)
                 .where(a.ESTADO.eq(EstadoEnum.A.name()))
                 .and(a.ID_SOL_IMAGEN.eq(id))
-                .fetchOneInto(SolImagenDto.class);
+                .fetchOneInto(TabSolImagenDto.class);
     }
 
     @Override
-    public List<SolImagenDto> getSolImagenesByIdSolicitud(Long idSolicitud) {
+    public List<TabSolImagenDto> getSolImagenesByIdSolicitud(Long idSolicitud, String seccion) {
         var a = TAB_SOL_IMAGEN.as("a");
-        return create.select().from(a)
-                .where(a.ESTADO.eq(EstadoEnum.A.name()))
-                .and(a.ID_SOLICITUD.eq(idSolicitud))
-                .fetchInto(SolImagenDto.class);
+
+        if (seccion.equals("Solicitud")) {
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_CAL_PACKING_LIST.eq(0l))
+                    .and(a.ID_SOL_CALIDAD.eq(0l))
+                    .and(a.ID_SOL_CONSOLIDADO_GANCHO.eq(0l))
+                    .and(a.ID_SOL_CONTENEDOR.eq(0l))
+                    .and(a.ID_SOL_CONTROL_PESO.eq(0l))
+                    .and(a.ID_SOL_FINCA.eq(0l))
+                    .and(a.ID_SOL_PROCESO.eq(0l))
+                    .and(a.ID_SOL_SELLO_INSTALADO.eq(0l))
+                    .and(a.ID_SOL_SELLO_LLEGADA.eq(0l))
+                    .and(a.ID_SOL_TRANSPORTISTA.eq(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolCalPackingList")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_CAL_PACKING_LIST.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("Calidad")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_CALIDAD.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolConsolidadoGancho")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_CONSOLIDADO_GANCHO.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolContenedor")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_CONTENEDOR.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolControlPeso")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_CONTROL_PESO.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolFinca")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_FINCA.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolProceso")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_PROCESO.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolSelloInstalado")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_SELLO_INSTALADO.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolSelloLlegada")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_SELLO_LLEGADA.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }else if(seccion.equals("SolTransportista")){
+            return create.select().from(a)
+                    .where(a.ESTADO.eq(EstadoEnum.A.name()))
+                    .and(a.ID_SOLICITUD.eq(idSolicitud))
+                    .and(a.ID_SOL_TRANSPORTISTA.notEqual(0l))
+                    .fetchInto(TabSolImagenDto.class);
+        }
+        return null;
     }
 
     @Override
@@ -96,4 +171,10 @@ public class SolImagenDao implements ISolImagenDao {
         return solImagen;
     }
 
-}
+    @Override
+    public void eliminarSolImagen(Long idSolImagen) {
+
+        var p = TAB_SOL_IMAGEN.as("p");
+        create.delete(p)
+                .where(p.ID_SOL_IMAGEN.equal(idSolImagen)).execute();
+    }}
