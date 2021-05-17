@@ -29,34 +29,37 @@ import java.util.Map;
 @RequestMapping("reporteExportarWs")
 public class ReporteExportarWs {
 
-	private static final Logger LOG = LoggerFactory.getLogger(com.inspector.ws.controller.sol.ReporteExportarWs.class.getName());
+	private static final Logger LOG = LoggerFactory.getLogger(ReporteExportarWs.class);
 
 	@RequestMapping(value = "exportarReporteSolicitud", method = RequestMethod.GET)
 	public ResponseEntity<Resource> exportarReporteSolicitud(@RequestParam(name = "idSolicitud") Long idSolicitud,
 															 @RequestParam(name = "tipo") String tipo) {
 
-
+		System.out.println("idSol :" +idSolicitud + "tipo : "+ tipo);
 		byte[] result = null;
 		TipoReporteEnum tipoReporte = ReportExportUtil.getTipoReporte(tipo);
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("idSolicitud", idSolicitud);
 		parameters.put("logoOrion",	"/inspector/reportes/imagenes/logo_qsercon.jpg");
 
-		try (FileInputStream fisRep = new FileInputStream("/inspector/reportes/ReporteSolicitud.jasper")) {
+		try (FileInputStream fisRep = new FileInputStream("C:\\inspector\\reportes\\ReporteSolicitud.jasper")) {
+		//try (FileInputStream fisRep = new FileInputStream("/inspector/reportes/ReporteSolicitud.jasper")) {
 			ByteArrayOutputStream os = ReportExportUtil.getReport(tipoReporte, parameters, fisRep);
+			System.out.println("Generado reporte");
 			result = os.toByteArray();
 			os.close();
 			ByteArrayResource resource = new ByteArrayResource(result);
-
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-disposition", "inline; filename=" + "ReporteSolicitud" + "." + tipoReporte.name().toLowerCase());
 
+			headers.add("Content-disposition", "inline; filename=" + "reporteSolicitud" + "." + tipoReporte.name().toLowerCase());
 			result = os.toByteArray();
+
 			return ResponseEntity.ok().headers(headers).contentLength(result.length)
 					.contentType(MediaType.parseMediaType("application/octet-stream")).body(resource);
 		} catch (Exception e) {
-			LOG.debug("Error generando reporte " + e.getMessage());
+			System.out.println("Error generando reporte " + e.getMessage());
 		}
+		System.out.println("Termina generar reporte");
 		return null;
 	}
 

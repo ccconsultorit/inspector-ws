@@ -43,7 +43,7 @@ public class SolicitudDao implements ISolicitudDao {
     @Override
     public List<TabSolicitudDto> getAll() {
         return create.selectFrom(TAB_SOLICITUD)
-                .where(TAB_SOLICITUD.ESTADO.eq(EstadoEnum.A.name()))
+                //.where(TAB_SOLICITUD.ESTADO.eq(EstadoEnum.A.name()))
                 .fetchInto(TabSolicitudDto.class);
     }
 
