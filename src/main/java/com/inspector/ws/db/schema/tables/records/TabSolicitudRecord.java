@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> {
 
-    private static final long serialVersionUID = -824042051;
+    private static final long serialVersionUID = -1604580855;
 
     /**
      * Setter for <code>public.tab_solicitud.id_solicitud</code>.
@@ -212,143 +212,143 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     }
 
     /**
-     * Setter for <code>public.tab_solicitud.observacion</code>.
-     */
-    public void setObservacion(String value) {
-        set(13, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.observacion</code>.
-     */
-    public String getObservacion() {
-        return (String) get(13);
-    }
-
-    /**
-     * Setter for <code>public.tab_solicitud.estado</code>.
-     */
-    public void setEstado(String value) {
-        set(14, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.estado</code>.
-     */
-    public String getEstado() {
-        return (String) get(14);
-    }
-
-    /**
-     * Setter for <code>public.tab_solicitud.fecha_ingreso</code>.
-     */
-    public void setFechaIngreso(LocalDateTime value) {
-        set(15, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.fecha_ingreso</code>.
-     */
-    public LocalDateTime getFechaIngreso() {
-        return (LocalDateTime) get(15);
-    }
-
-    /**
-     * Setter for <code>public.tab_solicitud.fecha_modifica</code>.
-     */
-    public void setFechaModifica(LocalDateTime value) {
-        set(16, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.fecha_modifica</code>.
-     */
-    public LocalDateTime getFechaModifica() {
-        return (LocalDateTime) get(16);
-    }
-
-    /**
-     * Setter for <code>public.tab_solicitud.usuario_ingreso</code>.
-     */
-    public void setUsuarioIngreso(Integer value) {
-        set(17, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.usuario_ingreso</code>.
-     */
-    public Integer getUsuarioIngreso() {
-        return (Integer) get(17);
-    }
-
-    /**
-     * Setter for <code>public.tab_solicitud.usuario_modifica</code>.
-     */
-    public void setUsuarioModifica(Integer value) {
-        set(18, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_solicitud.usuario_modifica</code>.
-     */
-    public Integer getUsuarioModifica() {
-        return (Integer) get(18);
-    }
-
-    /**
      * Setter for <code>public.tab_solicitud.nom_evaluador1</code>.
      */
     public void setNomEvaluador1(String value) {
-        set(19, value);
+        set(13, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.nom_evaluador1</code>.
      */
     public String getNomEvaluador1() {
-        return (String) get(19);
+        return (String) get(13);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.ci_evaluador1</code>.
      */
     public void setCiEvaluador1(String value) {
-        set(20, value);
+        set(14, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.ci_evaluador1</code>.
      */
     public String getCiEvaluador1() {
-        return (String) get(20);
+        return (String) get(14);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.nom_evaluador2</code>.
      */
     public void setNomEvaluador2(String value) {
-        set(21, value);
+        set(15, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.nom_evaluador2</code>.
      */
     public String getNomEvaluador2() {
-        return (String) get(21);
+        return (String) get(15);
     }
 
     /**
      * Setter for <code>public.tab_solicitud.ci_evaluador2</code>.
      */
     public void setCiEvaluador2(String value) {
-        set(22, value);
+        set(16, value);
     }
 
     /**
      * Getter for <code>public.tab_solicitud.ci_evaluador2</code>.
      */
     public String getCiEvaluador2() {
-        return (String) get(22);
+        return (String) get(16);
+    }
+
+    /**
+     * Setter for <code>public.tab_solicitud.observacion</code>.
+     */
+    public void setObservacion(String value) {
+        set(17, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_solicitud.observacion</code>.
+     */
+    public String getObservacion() {
+        return (String) get(17);
+    }
+
+    /**
+     * Setter for <code>public.tab_solicitud.estado</code>.
+     */
+    public void setEstado(String value) {
+        set(18, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_solicitud.estado</code>.
+     */
+    public String getEstado() {
+        return (String) get(18);
+    }
+
+    /**
+     * Setter for <code>public.tab_solicitud.fecha_ingreso</code>.
+     */
+    public void setFechaIngreso(LocalDateTime value) {
+        set(19, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_solicitud.fecha_ingreso</code>.
+     */
+    public LocalDateTime getFechaIngreso() {
+        return (LocalDateTime) get(19);
+    }
+
+    /**
+     * Setter for <code>public.tab_solicitud.fecha_modifica</code>.
+     */
+    public void setFechaModifica(LocalDateTime value) {
+        set(20, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_solicitud.fecha_modifica</code>.
+     */
+    public LocalDateTime getFechaModifica() {
+        return (LocalDateTime) get(20);
+    }
+
+    /**
+     * Setter for <code>public.tab_solicitud.usuario_ingreso</code>.
+     */
+    public void setUsuarioIngreso(Integer value) {
+        set(21, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_solicitud.usuario_ingreso</code>.
+     */
+    public Integer getUsuarioIngreso() {
+        return (Integer) get(21);
+    }
+
+    /**
+     * Setter for <code>public.tab_solicitud.usuario_modifica</code>.
+     */
+    public void setUsuarioModifica(Integer value) {
+        set(22, value);
+    }
+
+    /**
+     * Getter for <code>public.tab_solicitud.usuario_modifica</code>.
+     */
+    public Integer getUsuarioModifica() {
+        return (Integer) get(22);
     }
 
     // -------------------------------------------------------------------------
@@ -374,7 +374,7 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
     /**
      * Create a detached, initialised TabSolicitudRecord
      */
-    public TabSolicitudRecord(Long idSolicitud, Integer nroSemana, String exportador, String cliente, String tipoSolicitud, String productor, String codProductor, String codMagap, String puertoEmbarque, String zona, LocalDateTime fechaInicio, LocalDateTime fechaTermino, String contenedor, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, String nomEvaluador1, String ciEvaluador1, String nomEvaluador2, String ciEvaluador2) {
+    public TabSolicitudRecord(Long idSolicitud, Integer nroSemana, String exportador, String cliente, String tipoSolicitud, String productor, String codProductor, String codMagap, String puertoEmbarque, String zona, LocalDateTime fechaInicio, LocalDateTime fechaTermino, String contenedor, String nomEvaluador1, String ciEvaluador1, String nomEvaluador2, String ciEvaluador2, String observacion, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica) {
         super(TabSolicitud.TAB_SOLICITUD);
 
         set(0, idSolicitud);
@@ -390,15 +390,15 @@ public class TabSolicitudRecord extends UpdatableRecordImpl<TabSolicitudRecord> 
         set(10, fechaInicio);
         set(11, fechaTermino);
         set(12, contenedor);
-        set(13, observacion);
-        set(14, estado);
-        set(15, fechaIngreso);
-        set(16, fechaModifica);
-        set(17, usuarioIngreso);
-        set(18, usuarioModifica);
-        set(19, nomEvaluador1);
-        set(20, ciEvaluador1);
-        set(21, nomEvaluador2);
-        set(22, ciEvaluador2);
+        set(13, nomEvaluador1);
+        set(14, ciEvaluador1);
+        set(15, nomEvaluador2);
+        set(16, ciEvaluador2);
+        set(17, observacion);
+        set(18, estado);
+        set(19, fechaIngreso);
+        set(20, fechaModifica);
+        set(21, usuarioIngreso);
+        set(22, usuarioModifica);
     }
 }

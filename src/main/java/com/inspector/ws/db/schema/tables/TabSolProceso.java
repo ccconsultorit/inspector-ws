@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
 
-    private static final long serialVersionUID = -1094459875;
+    private static final long serialVersionUID = 215145746;
 
     /**
      * The reference instance of <code>public.tab_sol_proceso</code>
@@ -100,7 +100,7 @@ public class TabSolProceso extends TableImpl<TabSolProcesoRecord> {
     /**
      * The column <code>public.tab_sol_proceso.tiempo_descarga</code>.
      */
-    public final TableField<TabSolProcesoRecord, String> TIEMPO_DESCARGA = createField(DSL.name("tiempo_descarga"), org.jooq.impl.SQLDataType.VARCHAR(20).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TabSolProcesoRecord, String> TIEMPO_DESCARGA = createField(DSL.name("tiempo_descarga"), org.jooq.impl.SQLDataType.VARCHAR(100).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>public.tab_sol_proceso.tipo_cantulina</code>.

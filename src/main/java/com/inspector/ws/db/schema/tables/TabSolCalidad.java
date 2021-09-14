@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalidad extends TableImpl<TabSolCalidadRecord> {
 
-    private static final long serialVersionUID = -651976080;
+    private static final long serialVersionUID = -892603247;
 
     /**
      * The reference instance of <code>public.tab_sol_calidad</code>
@@ -170,11 +170,6 @@ public class TabSolCalidad extends TableImpl<TabSolCalidadRecord> {
      * The column <code>public.tab_sol_calidad.id_sol_productor</code>.
      */
     public final TableField<TabSolCalidadRecord, Long> ID_SOL_PRODUCTOR = createField(DSL.name("id_sol_productor"), org.jooq.impl.SQLDataType.BIGINT, this, "");
-
-    /**
-     * The column <code>public.tab_sol_calidad.total_embarcado</code>.
-     */
-    public final TableField<TabSolCalidadRecord, Integer> TOTAL_EMBARCADO = createField(DSL.name("total_embarcado"), org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>public.tab_sol_calidad</code> table reference

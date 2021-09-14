@@ -1040,7 +1040,9 @@ public class SolicitudWs  {
             return new ApiResponse<>(ResponseCodeEnum.OK, Mensajes.GUARDA_OK, "OK");
 
         } catch (Exception e) {
-            iSolicitudDao.delete(solicitudCompleto.getIdSolicitud());
+            if (solicitudCompleto.getAreaAGuardar().equals("Todos")) {
+                iSolicitudDao.delete(solicitudCompleto.getIdSolicitud());
+            }
             return new ApiResponse<>(ResponseCodeEnum.ERR, Mensajes.GUARDA_ERR, "Error");
         }
     }

@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> {
 
-    private static final long serialVersionUID = -2125629928;
+    private static final long serialVersionUID = 970953100;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_peso_cluster</code>
@@ -68,9 +68,14 @@ public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> 
     public final TableField<TabSolCalPesoClusterRecord, Integer> NUMERO = createField(DSL.name("numero"), org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
-     * The column <code>public.tab_sol_cal_peso_cluster.peso</code>.
+     * The column <code>public.tab_sol_cal_peso_cluster.pero</code>.
      */
-    public final TableField<TabSolCalPesoClusterRecord, Float> PESO = createField(DSL.name("peso"), org.jooq.impl.SQLDataType.REAL.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.REAL)), this, "");
+    public final TableField<TabSolCalPesoClusterRecord, Float> PERO = createField(DSL.name("pero"), org.jooq.impl.SQLDataType.REAL.defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.REAL)), this, "");
+
+    /**
+     * The column <code>public.tab_sol_cal_peso_cluster.estado</code>.
+     */
+    public final TableField<TabSolCalPesoClusterRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.VARCHAR(1), this, "");
 
     /**
      * The column <code>public.tab_sol_cal_peso_cluster.fecha_ingreso</code>.
@@ -96,11 +101,6 @@ public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> 
      * The column <code>public.tab_sol_cal_peso_cluster.id_sol_calidad</code>.
      */
     public final TableField<TabSolCalPesoClusterRecord, Long> ID_SOL_CALIDAD = createField(DSL.name("id_sol_calidad"), org.jooq.impl.SQLDataType.BIGINT, this, "");
-
-    /**
-     * The column <code>public.tab_sol_cal_peso_cluster.estado</code>.
-     */
-    public final TableField<TabSolCalPesoClusterRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.CHAR(1), this, "");
 
     /**
      * Create a <code>public.tab_sol_cal_peso_cluster</code> table reference
@@ -203,7 +203,7 @@ public class TabSolCalPesoCluster extends TableImpl<TabSolCalPesoClusterRecord> 
     // -------------------------------------------------------------------------
 
     @Override
-    public Row9<Long, Integer, Float, LocalDateTime, LocalDateTime, Integer, Integer, Long, String> fieldsRow() {
+    public Row9<Long, Integer, Float, String, LocalDateTime, LocalDateTime, Integer, Integer, Long> fieldsRow() {
         return (Row9) super.fieldsRow();
     }
 }

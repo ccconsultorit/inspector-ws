@@ -24,39 +24,9 @@ import org.jooq.impl.SequenceImpl;
 public class Sequences {
 
     /**
-     * The sequence <code>public.sec_exportador</code>
-     */
-    public static final Sequence<Long> SEC_EXPORTADOR = new SequenceImpl<Long>("sec_exportador", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_finca</code>
-     */
-    public static final Sequence<Long> SEC_FINCA = new SequenceImpl<Long>("sec_finca", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_productor</code>
-     */
-    public static final Sequence<Long> SEC_PRODUCTOR = new SequenceImpl<Long>("sec_productor", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_puerto_embarque</code>
-     */
-    public static final Sequence<Long> SEC_PUERTO_EMBARQUE = new SequenceImpl<Long>("sec_puerto_embarque", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
      * The sequence <code>public.sec_sol_cal_calibre</code>
      */
     public static final Sequence<Long> SEC_SOL_CAL_CALIBRE = new SequenceImpl<Long>("sec_sol_cal_calibre", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_sol_calibracion_fruta</code>
-     */
-    public static final Sequence<Long> SEC_SOL_CALIBRACION_FRUTA = new SequenceImpl<Long>("sec_sol_calibracion_fruta", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_sol_calidad</code>
-     */
-    public static final Sequence<Long> SEC_SOL_CALIDAD = new SequenceImpl<Long>("sec_sol_calidad", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>public.sec_sol_cal_largo_dedo</code>
@@ -74,9 +44,24 @@ public class Sequences {
     public static final Sequence<Long> SEC_SOL_CAL_PESO_CLUSTER = new SequenceImpl<Long>("sec_sol_cal_peso_cluster", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>public.sec_sol_calibracion_fruta</code>
+     */
+    public static final Sequence<Long> SEC_SOL_CALIBRACION_FRUTA = new SequenceImpl<Long>("sec_sol_calibracion_fruta", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.sec_sol_calidad</code>
+     */
+    public static final Sequence<Long> SEC_SOL_CALIDAD = new SequenceImpl<Long>("sec_sol_calidad", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.sec_sol_con_calibracion_fruta</code>
      */
     public static final Sequence<Long> SEC_SOL_CON_CALIBRACION_FRUTA = new SequenceImpl<Long>("sec_sol_con_calibracion_fruta", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.sec_sol_consolidacion_gancho</code>
+     */
+    public static final Sequence<Long> SEC_SOL_CONSOLIDACION_GANCHO = new SequenceImpl<Long>("sec_sol_consolidacion_gancho", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>public.sec_sol_consolidado_gancho</code>
@@ -89,19 +74,9 @@ public class Sequences {
     public static final Sequence<Long> SEC_SOL_CONTENEDOR = new SequenceImpl<Long>("sec_sol_contenedor", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
-     * The sequence <code>public.sec_sol_control_gancho</code>
-     */
-    public static final Sequence<Long> SEC_SOL_CONTROL_GANCHO = new SequenceImpl<Long>("sec_sol_control_gancho", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
      * The sequence <code>public.sec_sol_control_peso</code>
      */
     public static final Sequence<Long> SEC_SOL_CONTROL_PESO = new SequenceImpl<Long>("sec_sol_control_peso", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_sol_defecto_empaque</code>
-     */
-    public static final Sequence<Long> SEC_SOL_DEFECTO_EMPAQUE = new SequenceImpl<Long>("sec_sol_defecto_empaque", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>public.sec_sol_defecto_seleccion</code>
@@ -114,39 +89,14 @@ public class Sequences {
     public static final Sequence<Long> SEC_SOL_FINCA = new SequenceImpl<Long>("sec_sol_finca", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
-     * The sequence <code>public.sec_solicitud</code>
-     */
-    public static final Sequence<Long> SEC_SOLICITUD = new SequenceImpl<Long>("sec_solicitud", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
      * The sequence <code>public.sec_sol_imagen</code>
      */
     public static final Sequence<Long> SEC_SOL_IMAGEN = new SequenceImpl<Long>("sec_sol_imagen", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
-     * The sequence <code>public.sec_sol_packing_list</code>
-     */
-    public static final Sequence<Long> SEC_SOL_PACKING_LIST = new SequenceImpl<Long>("sec_sol_packing_list", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_sol_ph</code>
-     */
-    public static final Sequence<Long> SEC_SOL_PH = new SequenceImpl<Long>("sec_sol_ph", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_sol_porcentaje_edad</code>
-     */
-    public static final Sequence<Long> SEC_SOL_PORCENTAJE_EDAD = new SequenceImpl<Long>("sec_sol_porcentaje_edad", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
      * The sequence <code>public.sec_sol_proceso</code>
      */
     public static final Sequence<Long> SEC_SOL_PROCESO = new SequenceImpl<Long>("sec_sol_proceso", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_sol_racimo_recusado</code>
-     */
-    public static final Sequence<Long> SEC_SOL_RACIMO_RECUSADO = new SequenceImpl<Long>("sec_sol_racimo_recusado", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>public.sec_sol_sello_instalado</code>
@@ -164,12 +114,7 @@ public class Sequences {
     public static final Sequence<Long> SEC_SOL_TRANSPORTISTA = new SequenceImpl<Long>("sec_sol_transportista", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
-     * The sequence <code>public.sec_usuario</code>
+     * The sequence <code>public.sec_solicitud</code>
      */
-    public static final Sequence<Long> SEC_USUARIO = new SequenceImpl<Long>("sec_usuario", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
-
-    /**
-     * The sequence <code>public.sec_zona</code>
-     */
-    public static final Sequence<Long> SEC_ZONA = new SequenceImpl<Long>("sec_zona", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+    public static final Sequence<Long> SEC_SOLICITUD = new SequenceImpl<Long>("sec_solicitud", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 }

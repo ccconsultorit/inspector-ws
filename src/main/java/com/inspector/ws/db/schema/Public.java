@@ -49,7 +49,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1273634139;
+    private static final long serialVersionUID = 1431446226;
 
     /**
      * The reference instance of <code>public</code>
@@ -67,11 +67,6 @@ public class Public extends SchemaImpl {
     public final TabSolCalDefectoSeleccion TAB_SOL_CAL_DEFECTO_SELECCION = com.inspector.ws.db.schema.tables.TabSolCalDefectoSeleccion.TAB_SOL_CAL_DEFECTO_SELECCION;
 
     /**
-     * The table <code>public.tab_sol_calidad</code>.
-     */
-    public final TabSolCalidad TAB_SOL_CALIDAD = com.inspector.ws.db.schema.tables.TabSolCalidad.TAB_SOL_CALIDAD;
-
-    /**
      * The table <code>public.tab_sol_cal_largo_dedo</code>.
      */
     public final TabSolCalLargoDedo TAB_SOL_CAL_LARGO_DEDO = com.inspector.ws.db.schema.tables.TabSolCalLargoDedo.TAB_SOL_CAL_LARGO_DEDO;
@@ -85,6 +80,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.tab_sol_cal_peso_cluster</code>.
      */
     public final TabSolCalPesoCluster TAB_SOL_CAL_PESO_CLUSTER = com.inspector.ws.db.schema.tables.TabSolCalPesoCluster.TAB_SOL_CAL_PESO_CLUSTER;
+
+    /**
+     * The table <code>public.tab_sol_calidad</code>.
+     */
+    public final TabSolCalidad TAB_SOL_CALIDAD = com.inspector.ws.db.schema.tables.TabSolCalidad.TAB_SOL_CALIDAD;
 
     /**
      * The table <code>public.tab_sol_con_calibracion_fruta</code>.
@@ -110,11 +110,6 @@ public class Public extends SchemaImpl {
      * The table <code>public.tab_sol_finca</code>.
      */
     public final TabSolFinca TAB_SOL_FINCA = com.inspector.ws.db.schema.tables.TabSolFinca.TAB_SOL_FINCA;
-
-    /**
-     * The table <code>public.tab_solicitud</code>.
-     */
-    public final TabSolicitud TAB_SOLICITUD = com.inspector.ws.db.schema.tables.TabSolicitud.TAB_SOLICITUD;
 
     /**
      * The table <code>public.tab_sol_imagen</code>.
@@ -147,6 +142,11 @@ public class Public extends SchemaImpl {
     public final TabSolTransportista TAB_SOL_TRANSPORTISTA = com.inspector.ws.db.schema.tables.TabSolTransportista.TAB_SOL_TRANSPORTISTA;
 
     /**
+     * The table <code>public.tab_solicitud</code>.
+     */
+    public final TabSolicitud TAB_SOLICITUD = com.inspector.ws.db.schema.tables.TabSolicitud.TAB_SOLICITUD;
+
+    /**
      * The table <code>public.tab_usuario</code>.
      */
     public final TabUsuario TAB_USUARIO = com.inspector.ws.db.schema.tables.TabUsuario.TAB_USUARIO;
@@ -173,36 +173,25 @@ public class Public extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
-            Sequences.SEC_EXPORTADOR,
-            Sequences.SEC_FINCA,
-            Sequences.SEC_PRODUCTOR,
-            Sequences.SEC_PUERTO_EMBARQUE,
             Sequences.SEC_SOL_CAL_CALIBRE,
-            Sequences.SEC_SOL_CALIBRACION_FRUTA,
-            Sequences.SEC_SOL_CALIDAD,
             Sequences.SEC_SOL_CAL_LARGO_DEDO,
             Sequences.SEC_SOL_CAL_PACKING_LIST,
             Sequences.SEC_SOL_CAL_PESO_CLUSTER,
+            Sequences.SEC_SOL_CALIBRACION_FRUTA,
+            Sequences.SEC_SOL_CALIDAD,
             Sequences.SEC_SOL_CON_CALIBRACION_FRUTA,
+            Sequences.SEC_SOL_CONSOLIDACION_GANCHO,
             Sequences.SEC_SOL_CONSOLIDADO_GANCHO,
             Sequences.SEC_SOL_CONTENEDOR,
-            Sequences.SEC_SOL_CONTROL_GANCHO,
             Sequences.SEC_SOL_CONTROL_PESO,
-            Sequences.SEC_SOL_DEFECTO_EMPAQUE,
             Sequences.SEC_SOL_DEFECTO_SELECCION,
             Sequences.SEC_SOL_FINCA,
-            Sequences.SEC_SOLICITUD,
             Sequences.SEC_SOL_IMAGEN,
-            Sequences.SEC_SOL_PACKING_LIST,
-            Sequences.SEC_SOL_PH,
-            Sequences.SEC_SOL_PORCENTAJE_EDAD,
             Sequences.SEC_SOL_PROCESO,
-            Sequences.SEC_SOL_RACIMO_RECUSADO,
             Sequences.SEC_SOL_SELLO_INSTALADO,
             Sequences.SEC_SOL_SELLO_LLEGADA,
             Sequences.SEC_SOL_TRANSPORTISTA,
-            Sequences.SEC_USUARIO,
-            Sequences.SEC_ZONA);
+            Sequences.SEC_SOLICITUD);
     }
 
     @Override
@@ -216,22 +205,22 @@ public class Public extends SchemaImpl {
         return Arrays.<Table<?>>asList(
             TabSolCalCalibre.TAB_SOL_CAL_CALIBRE,
             TabSolCalDefectoSeleccion.TAB_SOL_CAL_DEFECTO_SELECCION,
-            TabSolCalidad.TAB_SOL_CALIDAD,
             TabSolCalLargoDedo.TAB_SOL_CAL_LARGO_DEDO,
             TabSolCalPackingList.TAB_SOL_CAL_PACKING_LIST,
             TabSolCalPesoCluster.TAB_SOL_CAL_PESO_CLUSTER,
+            TabSolCalidad.TAB_SOL_CALIDAD,
             TabSolConCalibracionFruta.TAB_SOL_CON_CALIBRACION_FRUTA,
             TabSolConsolidadoGancho.TAB_SOL_CONSOLIDADO_GANCHO,
             TabSolContenedor.TAB_SOL_CONTENEDOR,
             TabSolControlPeso.TAB_SOL_CONTROL_PESO,
             TabSolFinca.TAB_SOL_FINCA,
-            TabSolicitud.TAB_SOLICITUD,
             TabSolImagen.TAB_SOL_IMAGEN,
             TabSolProceso.TAB_SOL_PROCESO,
             TabSolProductor.TAB_SOL_PRODUCTOR,
             TabSolSelloInstalado.TAB_SOL_SELLO_INSTALADO,
             TabSolSelloLlegada.TAB_SOL_SELLO_LLEGADA,
             TabSolTransportista.TAB_SOL_TRANSPORTISTA,
+            TabSolicitud.TAB_SOLICITUD,
             TabUsuario.TAB_USUARIO);
     }
 }

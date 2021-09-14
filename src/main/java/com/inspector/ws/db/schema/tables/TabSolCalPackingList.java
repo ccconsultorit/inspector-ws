@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalPackingList extends TableImpl<TabSolCalPackingListRecord> {
 
-    private static final long serialVersionUID = 1417574122;
+    private static final long serialVersionUID = 1872774937;
 
     /**
      * The reference instance of <code>public.tab_sol_cal_packing_list</code>
@@ -75,7 +75,7 @@ public class TabSolCalPackingList extends TableImpl<TabSolCalPackingListRecord> 
     /**
      * The column <code>public.tab_sol_cal_packing_list.estado</code>.
      */
-    public final TableField<TabSolCalPackingListRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.CHAR(1), this, "");
+    public final TableField<TabSolCalPackingListRecord, String> ESTADO = createField(DSL.name("estado"), org.jooq.impl.SQLDataType.VARCHAR(1), this, "");
 
     /**
      * The column <code>public.tab_sol_cal_packing_list.fecha_ingreso</code>.

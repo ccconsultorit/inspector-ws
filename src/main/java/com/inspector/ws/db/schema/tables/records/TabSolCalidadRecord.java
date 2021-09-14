@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord> {
 
-    private static final long serialVersionUID = -1326544021;
+    private static final long serialVersionUID = 1859936205;
 
     /**
      * Setter for <code>public.tab_sol_calidad.id_sol_calidad</code>.
@@ -351,20 +351,6 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
         return (Long) get(22);
     }
 
-    /**
-     * Setter for <code>public.tab_sol_calidad.total_embarcado</code>.
-     */
-    public void setTotalEmbarcado(Integer value) {
-        set(23, value);
-    }
-
-    /**
-     * Getter for <code>public.tab_sol_calidad.total_embarcado</code>.
-     */
-    public Integer getTotalEmbarcado() {
-        return (Integer) get(23);
-    }
-
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -388,7 +374,7 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
     /**
      * Create a detached, initialised TabSolCalidadRecord
      */
-    public TabSolCalidadRecord(Long idSolCalidad, String nomMarca, String nroQs, String guiaTransporte, String guiaRemision, Integer defectuoso, String tarjetaEmbarque, Integer totalCluster, Integer totalDefecto, Float calidad, Float calibracion, Float largoDedo, Float totalPeso, Float pesoPromedio, String mayorDefectoSeleccion, String mayorDefectoEmpaque, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor, Integer totalEmbarcado) {
+    public TabSolCalidadRecord(Long idSolCalidad, String nomMarca, String nroQs, String guiaTransporte, String guiaRemision, Integer defectuoso, String tarjetaEmbarque, Integer totalCluster, Integer totalDefecto, Float calidad, Float calibracion, Float largoDedo, Float totalPeso, Float pesoPromedio, String mayorDefectoSeleccion, String mayorDefectoEmpaque, String estado, LocalDateTime fechaIngreso, LocalDateTime fechaModifica, Integer usuarioIngreso, Integer usuarioModifica, Long idSolicitud, Long idSolProductor) {
         super(TabSolCalidad.TAB_SOL_CALIDAD);
 
         set(0, idSolCalidad);
@@ -414,6 +400,5 @@ public class TabSolCalidadRecord extends UpdatableRecordImpl<TabSolCalidadRecord
         set(20, usuarioModifica);
         set(21, idSolicitud);
         set(22, idSolProductor);
-        set(23, totalEmbarcado);
     }
 }

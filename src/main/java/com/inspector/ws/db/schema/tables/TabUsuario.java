@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TabUsuario extends TableImpl<TabUsuarioRecord> {
 
-    private static final long serialVersionUID = -1567145625;
+    private static final long serialVersionUID = -321410295;
 
     /**
      * The reference instance of <code>public.tab_usuario</code>
@@ -78,6 +78,11 @@ public class TabUsuario extends TableImpl<TabUsuarioRecord> {
     public final TableField<TabUsuarioRecord, String> APELLIDOS = createField(DSL.name("apellidos"), org.jooq.impl.SQLDataType.VARCHAR(100), this, "");
 
     /**
+     * The column <code>public.tab_usuario.correo</code>.
+     */
+    public final TableField<TabUsuarioRecord, String> CORREO = createField(DSL.name("correo"), org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+
+    /**
      * The column <code>public.tab_usuario.telefono</code>.
      */
     public final TableField<TabUsuarioRecord, String> TELEFONO = createField(DSL.name("telefono"), org.jooq.impl.SQLDataType.VARCHAR(20), this, "");
@@ -111,11 +116,6 @@ public class TabUsuario extends TableImpl<TabUsuarioRecord> {
      * The column <code>public.tab_usuario.fecha_modifica</code>.
      */
     public final TableField<TabUsuarioRecord, LocalDateTime> FECHA_MODIFICA = createField(DSL.name("fecha_modifica"), org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
-
-    /**
-     * The column <code>public.tab_usuario.correo</code>.
-     */
-    public final TableField<TabUsuarioRecord, String> CORREO = createField(DSL.name("correo"), org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * Create a <code>public.tab_usuario</code> table reference
@@ -201,7 +201,7 @@ public class TabUsuario extends TableImpl<TabUsuarioRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row12<Integer, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime, String> fieldsRow() {
+    public Row12<Integer, String, String, String, String, String, String, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
         return (Row12) super.fieldsRow();
     }
 }

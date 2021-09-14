@@ -51,11 +51,6 @@ public class Tables {
     public static final TabSolCalDefectoSeleccion TAB_SOL_CAL_DEFECTO_SELECCION = TabSolCalDefectoSeleccion.TAB_SOL_CAL_DEFECTO_SELECCION;
 
     /**
-     * The table <code>public.tab_sol_calidad</code>.
-     */
-    public static final TabSolCalidad TAB_SOL_CALIDAD = TabSolCalidad.TAB_SOL_CALIDAD;
-
-    /**
      * The table <code>public.tab_sol_cal_largo_dedo</code>.
      */
     public static final TabSolCalLargoDedo TAB_SOL_CAL_LARGO_DEDO = TabSolCalLargoDedo.TAB_SOL_CAL_LARGO_DEDO;
@@ -69,6 +64,11 @@ public class Tables {
      * The table <code>public.tab_sol_cal_peso_cluster</code>.
      */
     public static final TabSolCalPesoCluster TAB_SOL_CAL_PESO_CLUSTER = TabSolCalPesoCluster.TAB_SOL_CAL_PESO_CLUSTER;
+
+    /**
+     * The table <code>public.tab_sol_calidad</code>.
+     */
+    public static final TabSolCalidad TAB_SOL_CALIDAD = TabSolCalidad.TAB_SOL_CALIDAD;
 
     /**
      * The table <code>public.tab_sol_con_calibracion_fruta</code>.
@@ -94,11 +94,6 @@ public class Tables {
      * The table <code>public.tab_sol_finca</code>.
      */
     public static final TabSolFinca TAB_SOL_FINCA = TabSolFinca.TAB_SOL_FINCA;
-
-    /**
-     * The table <code>public.tab_solicitud</code>.
-     */
-    public static final TabSolicitud TAB_SOLICITUD = TabSolicitud.TAB_SOLICITUD;
 
     /**
      * The table <code>public.tab_sol_imagen</code>.
@@ -129,6 +124,11 @@ public class Tables {
      * The table <code>public.tab_sol_transportista</code>.
      */
     public static final TabSolTransportista TAB_SOL_TRANSPORTISTA = TabSolTransportista.TAB_SOL_TRANSPORTISTA;
+
+    /**
+     * The table <code>public.tab_solicitud</code>.
+     */
+    public static final TabSolicitud TAB_SOLICITUD = TabSolicitud.TAB_SOLICITUD;
 
     /**
      * The table <code>public.tab_usuario</code>.
