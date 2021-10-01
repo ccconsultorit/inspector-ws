@@ -5,7 +5,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="687"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Ver Desarrollo"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -19,38 +19,44 @@
 	<subDataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
 	<parameter name="idSolicitud" class="java.lang.Long"/>
 	<queryString language="SQL">
-		<![CDATA[select  c.id_solicitud,  p.nombre productor,  c.nombre_marca marca,  pc.numero, pc.peso
-from  tab_sol_productor p, tab_sol_calidad c, tab_sol_cal_peso_cluster pc
-where p.id_sol_productor = c.id_sol_productor
-  and pc.id_sol_calidad = c.id_sol_calidad
-  and p.estado = 'A'
-  and c.estado = 'A'
-  and p.id_solicitud = $P{idSolicitud}]]>
+		<![CDATA[SELECT s.id_solicitud,
+	s.productor,
+	pc.numero,
+	pc.pero,
+	c.nom_marca 
+FROM tab_solicitud s,
+	tab_sol_calidad c,
+	tab_sol_cal_peso_cluster pc
+WHERE 
+	 s.id_solicitud = c.id_solicitud 
+	 AND pc.id_sol_calidad = c.id_sol_calidad 
+	 AND c.estado = 'A' 
+	 AND s.id_solicitud = $P{idSolicitud}]]>
 	</queryString>
 	<field name="id_solicitud" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
 	<field name="productor" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="productor"/>
 		<property name="com.jaspersoft.studio.field.label" value="productor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_productor"/>
-	</field>
-	<field name="marca" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="marca"/>
-		<property name="com.jaspersoft.studio.field.label" value="marca"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
 	<field name="numero" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="numero"/>
 		<property name="com.jaspersoft.studio.field.label" value="numero"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_cal_peso_cluster"/>
 	</field>
-	<field name="peso" class="java.lang.Float">
-		<property name="com.jaspersoft.studio.field.name" value="peso"/>
-		<property name="com.jaspersoft.studio.field.label" value="peso"/>
+	<field name="pero" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="pero"/>
+		<property name="com.jaspersoft.studio.field.label" value="pero"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_cal_peso_cluster"/>
+	</field>
+	<field name="nom_marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
 	</field>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{productor}]]></groupExpression>
@@ -59,7 +65,7 @@ where p.id_sol_productor = c.id_sol_productor
 				<frame>
 					<reportElement mode="Transparent" x="6" y="1" width="326" height="28" forecolor="#B89F7D" backcolor="#70A9C6" uuid="619d89ef-7c2f-4167-a52a-be5e7af8783c"/>
 					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="102" y="1" width="210" height="25" forecolor="#030000" uuid="2187fac7-7130-4a2e-aa99-ae4eab58336f">
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="102" y="1" width="224" height="25" forecolor="#030000" uuid="2187fac7-7130-4a2e-aa99-ae4eab58336f">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
 						<textElement>
@@ -81,7 +87,7 @@ where p.id_sol_productor = c.id_sol_productor
 		</groupHeader>
 	</group>
 	<group name="Group2">
-		<groupExpression><![CDATA[$F{marca}]]></groupExpression>
+		<groupExpression><![CDATA[$F{nom_marca}]]></groupExpression>
 		<groupHeader>
 			<band height="51">
 				<textField isBlankWhenNull="true">
@@ -91,12 +97,12 @@ where p.id_sol_productor = c.id_sol_productor
 					<textElement>
 						<font fontName="SansSerif" size="16" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nom_marca}]]></textFieldExpression>
 				</textField>
 				<frame>
 					<reportElement x="6" y="29" width="326" height="20" uuid="793d06e1-d7cc-4d62-ad99-d289a8ce0026"/>
 					<staticText>
-						<reportElement style="Column header" positionType="Float" x="37" y="1" width="109" height="18" forecolor="#000000" uuid="ec5abbda-6656-45c4-93cd-827f95644bc7">
+						<reportElement style="Column header" positionType="Float" x="41" y="1" width="109" height="18" forecolor="#000000" uuid="ec5abbda-6656-45c4-93cd-827f95644bc7">
 							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d96a400-d1d3-4db1-bcce-2395c9e24c63"/>
 						</reportElement>
 						<textElement textAlignment="Center">
@@ -119,7 +125,7 @@ where p.id_sol_productor = c.id_sol_productor
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Left">
-						<font fontName="SansSerif" size="16" isBold="false"/>
+						<font fontName="SansSerif" size="16" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Marca:]]></text>
 				</staticText>
@@ -150,7 +156,7 @@ where p.id_sol_productor = c.id_sol_productor
 			<frame>
 				<reportElement x="6" y="1" width="326" height="20" uuid="dec77cf2-1014-4b3e-9934-7f0c65a83bce"/>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="37" y="1" width="109" height="18" uuid="a50c1c18-b51b-432f-b549-6fe601dbade6">
+					<reportElement style="Detail" positionType="Float" x="41" y="1" width="109" height="18" uuid="a50c1c18-b51b-432f-b549-6fe601dbade6">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d96a400-d1d3-4db1-bcce-2395c9e24c63"/>
 					</reportElement>
 					<textElement textAlignment="Center">
@@ -165,7 +171,7 @@ where p.id_sol_productor = c.id_sol_productor
 					<textElement textAlignment="Center">
 						<font fontName="Arial" size="14" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{pero}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

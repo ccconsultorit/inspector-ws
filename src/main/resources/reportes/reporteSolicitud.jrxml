@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tree_1" printOrder="Horizontal" pageWidth="800" pageHeight="2000" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tree_1" printOrder="Horizontal" pageWidth="780" pageHeight="1800" columnWidth="740" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
 	<property name="template.type" value="columnar"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Ver Desarrollo"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -24,27 +24,24 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="idSolicitud" class="java.lang.Long"/>
-	<parameter name="semana" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[21]]></defaultValueExpression>
-	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select 
 	s.id_solicitud			, 
-	s.semana		,
+	s.nro_semana		,
 	s.exportador	,
 	s.cliente	,
 	s.tipo_solicitud,
 	s.productor	,
-	s.codigo_productor,
-	s.codigo_magap,
+	s.cod_productor,
+	s.cod_magap,
 	s.puerto_embarque	,
 	s.zona	,
 	s.fecha_inicio,
 	s.fecha_termino,
 	s.contenedor,
-	s.evaluador	,
 	s.observacion,
-	c.numero_contenedor,
+	
+	c.nro_contenedor,
 	c.vapor,
 	c.booking,
 	c.tipo_contenedor,
@@ -56,63 +53,68 @@
 	c.fecha_apertura,
 	c.fecha_cierre,
 	c.fecha_salida,
-	c.observacion,
+	c.observacion observacionCon,
+	
 	sll.candado_plastico,
 	sll.candado_botella,
 	sll.sticker_llegada,
 	sll.rastreo_satelital,
 	sll.sello_cadena,
-	sll.sticker_naviera_ventilador,
-	sll.sellos_llegada_interno_01,
-	sll.sellos_llegada_interno_02,
-	sll.sticker_patio_ventolera_externa_01,
-	sll.sticker_patio_ventolera_externa_02,
-	sll.nro_serie_funda,
+	sll.sticker_naviera,
+	sll.sello_llegada1,
+	sll.sello_llegada2,
+	sll.sticker_patio_ventolera1,
+	sll.sticker_patio_ventolera2,
+	sll.nro_serie,
 	sll.candado_exportador,
-	sll.observacion,
+	sll.observacion observacionSL,
+	
 	si.candado_naviera,
 	si.sello_verificadora,
 	si.cable_naviera,
 	si.cable_exportadora,
-	si.sticker_naviera,
 	si.sticker_exportadora,
 	si.rastreo,
-	si.termografo01,
-	si.ubicacion01	,
-	si.termografo02,
-	si.ubicacion02	,
+	si.termografo1,
+	si.ubicacion1	,
+	si.termografo2,
+	si.ubicacion2	,
 	si.filtro_proporcionado,
 	si.termoking,
-	t.compania_transporte	,
+	
+	t.compania	,
 	t.chofer	,
 	t.cedula,
 	t.celular,
 	t.placa,
 	t.color_cabezal,
 	t.marca_cabezal,
-	t.observacion,
-	p.cajas_procesadas_despachadas		,
-	p.tipo_fruta,
-	p.tipo_funda_multiple,
-	p.densidad_funda,
-	p.tipo_caja_multiple,
-	p.tipo_presentacion_multiple,
-	p.tipo_estiba,
-	p.tiempo_descarga_fumigacion,
-	p.tipo_cantulina,
+	t.observacion observacionTra,
+	
+	p.caja_procesada,
+	CASE p.tipo_fruta WHEN 'ORG' THEN 'Organica'  ELSE 'Convencional' END AS tipo_fruta,
+	CASE p.tipo_funda WHEN 'BBA' THEN 'Banavac'  WHEN 'PBA'  THEN 'Poliback'  WHEN 'PTU'  THEN 'Politubo'  ELSE 'Cluster Bag' END AS tipo_funda,
+    CASE p.densidad_funda WHEN 'ALT' THEN 'Alta'  ELSE 'Baja' END AS densidad_funda,
+	p.tipo_caja,
+	p.tipo_presentacion,
+	CASE p.tipo_estiba WHEN 'PAL' THEN 'Paletizado'  ELSE 'Granel' END AS tipo_estiba,
+	p.tiempo_descarga,
+	CASE p.tipo_cantulina WHEN 'TRA' THEN 'Tronquel'  ELSE 'Sin Tronquel' END AS tipo_cantulina,
+	
 	cp.balanza_repesa,
-	cp.condicion_balanza,
-	cp.tipo_balanza,
+	CASE cp.condicion_balanza WHEN 'BUE' THEN 'Bueno'  ELSE 'Malo' END AS condicion_balanza,
+	CASE cp.tipo_balanza WHEN 'DIG' THEN 'Digital'  ELSE 'Analoga' END AS tipo_balanza,
 	cp.peso_neto_fruta,
-	cp.observacion,
+	cp.observacion observacionCtr,
+	
 	f.nombre	,
-	f.fuente_agua,
-	f.agua_corrida,
-	f.estado_piso,
-	f.cable_via,
-	f.estado_techo,
-	f.estado_tina,
-	f.fumigacion,
+	CASE f.fuente_agua WHEN 'CAN' THEN 'Canal'  WHEN 'POZ'  THEN 'Pozo'  ELSE 'Potable' END AS fuente_agua,
+    CASE f.estado_piso WHEN 'BUE' THEN 'Bueno'  ELSE 'Malo' END AS estado_piso,
+    CASE f.cable_via WHEN 'PAR' THEN 'Parcial'  WHEN 'TOT'  THEN 'Total'  ELSE 'No Tiene' END AS cable_via,
+    CASE f.estado_techo WHEN 'BUE' THEN 'Bueno' ELSE 'Malo' END AS estado_techo,
+    CASE f.estado_tina WHEN 'BUE' THEN 'Bueno'  ELSE 'Malo' END AS estado_tina,
+    CASE f.fumigacion WHEN 'BEL' THEN 'Bomba Electrica'  WHEN 'BMA'  THEN 'Bomba Manual'  ELSE 'Fogin' END AS fumigacion,
+    f.agua_corrida,
 	f.lavado_racimo,
 	f.embudo,
 	f.division_tina
@@ -124,17 +126,16 @@ left join tab_sol_transportista t on t.id_solicitud = s.id_solicitud and t.estad
 left join tab_sol_proceso p on p.id_solicitud = s.id_solicitud and p.estado = 'A'			
 left join tab_sol_control_peso cp on cp.id_solicitud = s.id_solicitud and cp.estado = 'A'			
 left join tab_sol_finca f on f.id_solicitud = s.id_solicitud and f.estado = 'A'				
-where s.estado = 'A'
-  and s.id_solicitud = $P{idSolicitud}]]>
+where s.id_solicitud = $P{idSolicitud}]]>
 	</queryString>
 	<field name="id_solicitud" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
-	<field name="semana" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="semana"/>
-		<property name="com.jaspersoft.studio.field.label" value="semana"/>
+	<field name="nro_semana" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="nro_semana"/>
+		<property name="com.jaspersoft.studio.field.label" value="nro_semana"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
 	<field name="exportador" class="java.lang.String">
@@ -157,14 +158,14 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="productor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
-	<field name="codigo_productor" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="codigo_productor"/>
-		<property name="com.jaspersoft.studio.field.label" value="codigo_productor"/>
+	<field name="cod_productor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cod_productor"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_productor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
-	<field name="codigo_magap" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="codigo_magap"/>
-		<property name="com.jaspersoft.studio.field.label" value="codigo_magap"/>
+	<field name="cod_magap" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cod_magap"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_magap"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
 	<field name="puerto_embarque" class="java.lang.String">
@@ -192,19 +193,14 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="contenedor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
-	<field name="evaluador" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="evaluador"/>
-		<property name="com.jaspersoft.studio.field.label" value="evaluador"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
-	</field>
 	<field name="observacion" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="observacion"/>
 		<property name="com.jaspersoft.studio.field.label" value="observacion"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
-	<field name="numero_contenedor" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="numero_contenedor"/>
-		<property name="com.jaspersoft.studio.field.label" value="numero_contenedor"/>
+	<field name="nro_contenedor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nro_contenedor"/>
+		<property name="com.jaspersoft.studio.field.label" value="nro_contenedor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_contenedor"/>
 	</field>
 	<field name="vapor" class="java.lang.String">
@@ -262,9 +258,9 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="fecha_salida"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_contenedor"/>
 	</field>
-	<field name="COLUMN_28" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="observacion"/>
-		<property name="com.jaspersoft.studio.field.label" value="observacion"/>
+	<field name="observacioncon" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observacioncon"/>
+		<property name="com.jaspersoft.studio.field.label" value="observacioncon"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_contenedor"/>
 	</field>
 	<field name="candado_plastico" class="java.lang.String">
@@ -292,34 +288,34 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="sello_cadena"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="sticker_naviera_ventilador" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sticker_naviera_ventilador"/>
-		<property name="com.jaspersoft.studio.field.label" value="sticker_naviera_ventilador"/>
+	<field name="sticker_naviera" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sticker_naviera"/>
+		<property name="com.jaspersoft.studio.field.label" value="sticker_naviera"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="sellos_llegada_interno_01" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sellos_llegada_interno_01"/>
-		<property name="com.jaspersoft.studio.field.label" value="sellos_llegada_interno_01"/>
+	<field name="sello_llegada1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sello_llegada1"/>
+		<property name="com.jaspersoft.studio.field.label" value="sello_llegada1"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="sellos_llegada_interno_02" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sellos_llegada_interno_02"/>
-		<property name="com.jaspersoft.studio.field.label" value="sellos_llegada_interno_02"/>
+	<field name="sello_llegada2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sello_llegada2"/>
+		<property name="com.jaspersoft.studio.field.label" value="sello_llegada2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="sticker_patio_ventolera_externa_01" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sticker_patio_ventolera_externa_01"/>
-		<property name="com.jaspersoft.studio.field.label" value="sticker_patio_ventolera_externa_01"/>
+	<field name="sticker_patio_ventolera1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sticker_patio_ventolera1"/>
+		<property name="com.jaspersoft.studio.field.label" value="sticker_patio_ventolera1"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="sticker_patio_ventolera_externa_02" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sticker_patio_ventolera_externa_02"/>
-		<property name="com.jaspersoft.studio.field.label" value="sticker_patio_ventolera_externa_02"/>
+	<field name="sticker_patio_ventolera2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sticker_patio_ventolera2"/>
+		<property name="com.jaspersoft.studio.field.label" value="sticker_patio_ventolera2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="nro_serie_funda" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nro_serie_funda"/>
-		<property name="com.jaspersoft.studio.field.label" value="nro_serie_funda"/>
+	<field name="nro_serie" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nro_serie"/>
+		<property name="com.jaspersoft.studio.field.label" value="nro_serie"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
 	<field name="candado_exportador" class="java.lang.String">
@@ -327,9 +323,9 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="candado_exportador"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
-	<field name="COLUMN_41" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="observacion"/>
-		<property name="com.jaspersoft.studio.field.label" value="observacion"/>
+	<field name="observacionsl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observacionsl"/>
+		<property name="com.jaspersoft.studio.field.label" value="observacionsl"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_llegada"/>
 	</field>
 	<field name="candado_naviera" class="java.lang.String">
@@ -352,11 +348,6 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="cable_exportadora"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
-	<field name="sticker_naviera" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sticker_naviera"/>
-		<property name="com.jaspersoft.studio.field.label" value="sticker_naviera"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
-	</field>
 	<field name="sticker_exportadora" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="sticker_exportadora"/>
 		<property name="com.jaspersoft.studio.field.label" value="sticker_exportadora"/>
@@ -367,24 +358,24 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="rastreo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
-	<field name="termografo01" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="termografo01"/>
-		<property name="com.jaspersoft.studio.field.label" value="termografo01"/>
+	<field name="termografo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="termografo1"/>
+		<property name="com.jaspersoft.studio.field.label" value="termografo1"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
-	<field name="ubicacion01" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="ubicacion01"/>
-		<property name="com.jaspersoft.studio.field.label" value="ubicacion01"/>
+	<field name="ubicacion1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ubicacion1"/>
+		<property name="com.jaspersoft.studio.field.label" value="ubicacion1"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
-	<field name="termografo02" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="termografo02"/>
-		<property name="com.jaspersoft.studio.field.label" value="termografo02"/>
+	<field name="termografo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="termografo2"/>
+		<property name="com.jaspersoft.studio.field.label" value="termografo2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
-	<field name="ubicacion02" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="ubicacion02"/>
-		<property name="com.jaspersoft.studio.field.label" value="ubicacion02"/>
+	<field name="ubicacion2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ubicacion2"/>
+		<property name="com.jaspersoft.studio.field.label" value="ubicacion2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
 	<field name="filtro_proporcionado" class="java.lang.String">
@@ -397,9 +388,9 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="termoking"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_sello_instalado"/>
 	</field>
-	<field name="compania_transporte" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="compania_transporte"/>
-		<property name="com.jaspersoft.studio.field.label" value="compania_transporte"/>
+	<field name="compania" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="compania"/>
+		<property name="com.jaspersoft.studio.field.label" value="compania"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_transportista"/>
 	</field>
 	<field name="chofer" class="java.lang.String">
@@ -432,14 +423,14 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="marca_cabezal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_transportista"/>
 	</field>
-	<field name="COLUMN_62" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="observacion"/>
-		<property name="com.jaspersoft.studio.field.label" value="observacion"/>
+	<field name="observaciontra" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observaciontra"/>
+		<property name="com.jaspersoft.studio.field.label" value="observaciontra"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_transportista"/>
 	</field>
-	<field name="cajas_procesadas_despachadas" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="cajas_procesadas_despachadas"/>
-		<property name="com.jaspersoft.studio.field.label" value="cajas_procesadas_despachadas"/>
+	<field name="caja_procesada" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="caja_procesada"/>
+		<property name="com.jaspersoft.studio.field.label" value="caja_procesada"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
 	<field name="tipo_fruta" class="java.lang.String">
@@ -447,9 +438,9 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="tipo_fruta"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
-	<field name="tipo_funda_multiple" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tipo_funda_multiple"/>
-		<property name="com.jaspersoft.studio.field.label" value="tipo_funda_multiple"/>
+	<field name="tipo_funda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo_funda"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo_funda"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
 	<field name="densidad_funda" class="java.lang.String">
@@ -457,14 +448,14 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="densidad_funda"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
-	<field name="tipo_caja_multiple" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tipo_caja_multiple"/>
-		<property name="com.jaspersoft.studio.field.label" value="tipo_caja_multiple"/>
+	<field name="tipo_caja" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo_caja"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo_caja"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
-	<field name="tipo_presentacion_multiple" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tipo_presentacion_multiple"/>
-		<property name="com.jaspersoft.studio.field.label" value="tipo_presentacion_multiple"/>
+	<field name="tipo_presentacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo_presentacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo_presentacion"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
 	<field name="tipo_estiba" class="java.lang.String">
@@ -472,9 +463,9 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="tipo_estiba"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
-	<field name="tiempo_descarga_fumigacion" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tiempo_descarga_fumigacion"/>
-		<property name="com.jaspersoft.studio.field.label" value="tiempo_descarga_fumigacion"/>
+	<field name="tiempo_descarga" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tiempo_descarga"/>
+		<property name="com.jaspersoft.studio.field.label" value="tiempo_descarga"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_proceso"/>
 	</field>
 	<field name="tipo_cantulina" class="java.lang.String">
@@ -502,9 +493,9 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="peso_neto_fruta"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_control_peso"/>
 	</field>
-	<field name="COLUMN_76" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="observacion"/>
-		<property name="com.jaspersoft.studio.field.label" value="observacion"/>
+	<field name="observacionctr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observacionctr"/>
+		<property name="com.jaspersoft.studio.field.label" value="observacionctr"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_control_peso"/>
 	</field>
 	<field name="nombre" class="java.lang.String">
@@ -515,11 +506,6 @@ where s.estado = 'A'
 	<field name="fuente_agua" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="fuente_agua"/>
 		<property name="com.jaspersoft.studio.field.label" value="fuente_agua"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_finca"/>
-	</field>
-	<field name="agua_corrida" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="agua_corrida"/>
-		<property name="com.jaspersoft.studio.field.label" value="agua_corrida"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_finca"/>
 	</field>
 	<field name="estado_piso" class="java.lang.String">
@@ -547,6 +533,11 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.label" value="fumigacion"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_finca"/>
 	</field>
+	<field name="agua_corrida" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="agua_corrida"/>
+		<property name="com.jaspersoft.studio.field.label" value="agua_corrida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_finca"/>
+	</field>
 	<field name="lavado_racimo" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="lavado_racimo"/>
 		<property name="com.jaspersoft.studio.field.label" value="lavado_racimo"/>
@@ -563,34 +554,49 @@ where s.estado = 'A'
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_finca"/>
 	</field>
 	<title>
-		<band height="168" splitType="Stretch">
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="SubTitle" positionType="Float" x="450" y="92" width="220" height="29" uuid="7094e7dd-950b-476e-9c69-1e37dba437b5"/>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="209" y="80" width="140" height="29" forecolor="#000000" uuid="01951d26-39bc-41bc-b319-ed82fbefd251"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="22" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{id_solicitud}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="Column header" positionType="Float" x="315" y="92" width="132" height="29" forecolor="#000000" uuid="01951d26-39bc-41bc-b319-ed82fbefd251"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="22" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Solicitud]]></text>
+				<text><![CDATA[Solicitud:]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Title" positionType="Float" x="80" y="2" width="624" height="68" uuid="1ff1f195-0272-415c-b22d-303991858742"/>
+				<reportElement style="Title" positionType="Float" x="136" y="2" width="444" height="68" uuid="1ff1f195-0272-415c-b22d-303991858742"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="30" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Reporte Semana " + $P{semana}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reporte Semana " + $F{nro_semana}.toString()]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="240" y="121" width="340" height="37" uuid="6616b056-a6ba-486d-84fa-906adecbe4b9"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="30" isBold="true"/>
+				<reportElement style="Detail" positionType="Float" x="360" y="114" width="260" height="29" uuid="6616b056-a6ba-486d-84fa-906adecbe4b9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="22" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_solicitud}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(
+    $F{tipo_solicitud}.equals("CON")  ?  "Contenedor" :
+    $F{tipo_solicitud}.equals("COP")  ?  "Contenedores" :
+    $F{tipo_solicitud}.equals("CAM") ?  "Camiones" : "Carretas"
+)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="209" y="114" width="140" height="29" forecolor="#000000" uuid="9aad30f3-e944-42da-ae2d-c2e2e650ab2b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Solicitud:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="4" width="157" height="110" uuid="284b2d7a-ec8c-4372-a25d-eb68b6224e0f"/>
+				<imageExpression><![CDATA["/inspector/reportes/imagenes/logo_qsercon.jpg"]]></imageExpression>
+			</image>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="360" y="80" width="260" height="29" uuid="80a0f933-4e69-4a98-805c-0dca41048602"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_solicitud}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -601,7 +607,7 @@ where s.estado = 'A'
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="1205" splitType="Stretch">
+		<band height="1200" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
@@ -616,7 +622,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{exportador}]]></textFieldExpression>
 			</textField>
@@ -632,7 +638,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
 			</textField>
@@ -648,7 +654,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{productor}]]></textFieldExpression>
 			</textField>
@@ -665,9 +671,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{codigo_productor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cod_productor}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="130" width="152" height="20" forecolor="#000000" uuid="1fbe8327-54eb-4acb-bfd6-41d8ccb6d96b"/>
@@ -681,9 +687,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{codigo_magap}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cod_magap}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="150" width="152" height="20" forecolor="#000000" uuid="a8274969-a4c5-43f5-8d41-865a1189ea41"/>
@@ -697,7 +703,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{puerto_embarque}]]></textFieldExpression>
 			</textField>
@@ -713,7 +719,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{zona}]]></textFieldExpression>
 			</textField>
@@ -729,7 +735,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_inicio}]]></textFieldExpression>
 			</textField>
@@ -745,7 +751,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_termino}]]></textFieldExpression>
 			</textField>
@@ -761,7 +767,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{contenedor}]]></textFieldExpression>
 			</textField>
@@ -775,7 +781,7 @@ where s.estado = 'A'
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement style="Detail" positionType="Float" x="170" y="250" width="198" height="77" uuid="a7dbb338-65ad-427b-85ae-0d8a7789d357"/>
 				<textElement>
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
 			</textField>
@@ -789,13 +795,13 @@ where s.estado = 'A'
 				<text><![CDATA[Numero Contenedor]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="50" width="196" height="20" uuid="ab889e4d-f7bc-4e40-aa80-dda091bb4d02">
+				<reportElement style="Detail" positionType="Float" x="546" y="50" width="194" height="20" uuid="ab889e4d-f7bc-4e40-aa80-dda091bb4d02">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{numero_contenedor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nro_contenedor}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="70" width="152" height="20" forecolor="#000000" uuid="69cf7311-715a-4078-ad48-d90d51780545"/>
@@ -805,11 +811,11 @@ where s.estado = 'A'
 				<text><![CDATA[Vapor]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="70" width="196" height="20" uuid="ea5c327b-9e61-4ec2-ae86-2379f133b8a9">
+				<reportElement style="Detail" positionType="Float" x="546" y="70" width="194" height="20" uuid="ea5c327b-9e61-4ec2-ae86-2379f133b8a9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vapor}]]></textFieldExpression>
 			</textField>
@@ -821,11 +827,11 @@ where s.estado = 'A'
 				<text><![CDATA[Booking]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="90" width="196" height="20" uuid="2f48283d-df9e-48cd-a13e-972912e28251">
+				<reportElement style="Detail" positionType="Float" x="546" y="90" width="194" height="20" uuid="2f48283d-df9e-48cd-a13e-972912e28251">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{booking}]]></textFieldExpression>
 			</textField>
@@ -837,11 +843,11 @@ where s.estado = 'A'
 				<text><![CDATA[Tipo Contenedor]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="110" width="196" height="20" uuid="827e925f-519c-4ef0-b1f2-1d1d6deaa276">
+				<reportElement style="Detail" positionType="Float" x="546" y="110" width="194" height="20" uuid="827e925f-519c-4ef0-b1f2-1d1d6deaa276">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_contenedor}]]></textFieldExpression>
 			</textField>
@@ -853,11 +859,11 @@ where s.estado = 'A'
 				<text><![CDATA[Agencia Naviera]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="130" width="196" height="20" uuid="a2c645b9-a138-4093-9f8c-62093a8fb930">
+				<reportElement style="Detail" positionType="Float" x="546" y="130" width="194" height="20" uuid="a2c645b9-a138-4093-9f8c-62093a8fb930">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{agencia_naviera}]]></textFieldExpression>
 			</textField>
@@ -869,11 +875,11 @@ where s.estado = 'A'
 				<text><![CDATA[Tare]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="150" width="196" height="20" uuid="e2193b29-0a0c-490e-85ab-3899849c00c7">
+				<reportElement style="Detail" positionType="Float" x="546" y="150" width="194" height="20" uuid="e2193b29-0a0c-490e-85ab-3899849c00c7">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tare}]]></textFieldExpression>
 			</textField>
@@ -885,11 +891,11 @@ where s.estado = 'A'
 				<text><![CDATA[Max Gross]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="170" width="196" height="20" uuid="37800023-39f1-412c-baad-3607ef8137fd">
+				<reportElement style="Detail" positionType="Float" x="546" y="170" width="194" height="20" uuid="37800023-39f1-412c-baad-3607ef8137fd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{max_gross}]]></textFieldExpression>
 			</textField>
@@ -901,11 +907,11 @@ where s.estado = 'A'
 				<text><![CDATA[Puerto Salida]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="190" width="196" height="20" uuid="ce32a4ff-7832-4810-bb9b-088c6e22aa07">
+				<reportElement style="Detail" positionType="Float" x="546" y="190" width="194" height="20" uuid="ce32a4ff-7832-4810-bb9b-088c6e22aa07">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{puerto_salida}]]></textFieldExpression>
 			</textField>
@@ -917,11 +923,11 @@ where s.estado = 'A'
 				<text><![CDATA[Fecha Llegada]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="210" width="196" height="20" uuid="e50e9193-6edb-4372-86b4-9e4632ad5a87">
+				<reportElement style="Detail" positionType="Float" x="546" y="210" width="194" height="20" uuid="e50e9193-6edb-4372-86b4-9e4632ad5a87">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_llegada}]]></textFieldExpression>
 			</textField>
@@ -933,11 +939,11 @@ where s.estado = 'A'
 				<text><![CDATA[Fecha Apertura]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="230" width="196" height="20" uuid="530ba500-55df-4803-b39d-64f53336251a">
+				<reportElement style="Detail" positionType="Float" x="546" y="230" width="194" height="20" uuid="530ba500-55df-4803-b39d-64f53336251a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_apertura}]]></textFieldExpression>
 			</textField>
@@ -949,11 +955,11 @@ where s.estado = 'A'
 				<text><![CDATA[Fecha Cierre]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="250" width="196" height="20" uuid="6428b2de-62f8-4dbe-bfb3-e4e1bcfb3c9e">
+				<reportElement style="Detail" positionType="Float" x="546" y="250" width="194" height="20" uuid="6428b2de-62f8-4dbe-bfb3-e4e1bcfb3c9e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_cierre}]]></textFieldExpression>
 			</textField>
@@ -965,11 +971,11 @@ where s.estado = 'A'
 				<text><![CDATA[Fecha Salida]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="270" width="196" height="20" uuid="cc478a89-0893-4f77-b688-c0171694585b">
+				<reportElement style="Detail" positionType="Float" x="546" y="270" width="194" height="20" uuid="cc478a89-0893-4f77-b688-c0171694585b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_salida}]]></textFieldExpression>
 			</textField>
@@ -981,11 +987,11 @@ where s.estado = 'A'
 				<text><![CDATA[Observación]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="290" width="196" height="58" uuid="93333814-a2a2-4c66-b77a-0a5fbd12d78d"/>
+				<reportElement style="Detail" positionType="Float" x="546" y="290" width="194" height="58" uuid="93333814-a2a2-4c66-b77a-0a5fbd12d78d"/>
 				<textElement>
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_28}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{observacioncon}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="400" width="152" height="20" forecolor="#000000" uuid="00b7254e-028b-4f5b-9f4b-b471a6e6f633"/>
@@ -999,7 +1005,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{candado_plastico}]]></textFieldExpression>
 			</textField>
@@ -1015,7 +1021,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{candado_botella}]]></textFieldExpression>
 			</textField>
@@ -1031,7 +1037,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sticker_llegada}]]></textFieldExpression>
 			</textField>
@@ -1047,7 +1053,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rastreo_satelital}]]></textFieldExpression>
 			</textField>
@@ -1063,7 +1069,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sello_cadena}]]></textFieldExpression>
 			</textField>
@@ -1079,9 +1085,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sticker_naviera_ventilador}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sticker_naviera}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="520" width="166" height="20" forecolor="#000000" uuid="50315fbe-3ef4-44cb-bdf0-5949f6cca0e4"/>
@@ -1095,9 +1101,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sellos_llegada_interno_01}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sello_llegada1}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="540" width="154" height="20" forecolor="#000000" uuid="aa5988a9-236d-4f83-b9bb-172b2cba501e"/>
@@ -1111,9 +1117,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sellos_llegada_interno_02}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sello_llegada2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="560" width="154" height="20" forecolor="#000000" uuid="07d664a3-e2e0-4b59-b198-4301d22b831b"/>
@@ -1127,9 +1133,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sticker_patio_ventolera_externa_01}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sticker_patio_ventolera1}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="580" width="154" height="20" forecolor="#000000" uuid="ffc3169a-0303-41a6-ab74-2eee5014691d"/>
@@ -1143,9 +1149,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sticker_patio_ventolera_externa_02}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sticker_patio_ventolera2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="600" width="152" height="20" forecolor="#000000" uuid="8ec3ec89-88ee-43c5-bc7a-61ab4f4e6f35"/>
@@ -1159,9 +1165,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nro_serie_funda}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nro_serie}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="620" width="152" height="20" forecolor="#000000" uuid="e3a78b2e-6e28-41a6-84df-3deb02e3402d"/>
@@ -1175,7 +1181,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{candado_exportador}]]></textFieldExpression>
 			</textField>
@@ -1189,9 +1195,9 @@ where s.estado = 'A'
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement style="Detail" positionType="Float" x="170" y="640" width="200" height="59" uuid="b7325330-9bb2-4344-9207-be32aef1063f"/>
 				<textElement>
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_41}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{observacionsl}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="400" width="152" height="20" forecolor="#000000" uuid="5b219845-db44-4b7f-8e7d-35f50056a099"/>
@@ -1201,11 +1207,11 @@ where s.estado = 'A'
 				<text><![CDATA[Candado Naviera]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="400" width="196" height="20" uuid="39ecb03f-50b1-4f7e-a736-0999472354f0">
+				<reportElement style="Detail" positionType="Float" x="546" y="400" width="194" height="20" uuid="39ecb03f-50b1-4f7e-a736-0999472354f0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{candado_naviera}]]></textFieldExpression>
 			</textField>
@@ -1217,11 +1223,11 @@ where s.estado = 'A'
 				<text><![CDATA[Sello Verificadora]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="420" width="196" height="20" uuid="b0bc748f-4fde-4c34-a098-cd7c9bcf4608">
+				<reportElement style="Detail" positionType="Float" x="546" y="420" width="194" height="20" uuid="b0bc748f-4fde-4c34-a098-cd7c9bcf4608">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sello_verificadora}]]></textFieldExpression>
 			</textField>
@@ -1233,11 +1239,11 @@ where s.estado = 'A'
 				<text><![CDATA[Cable Naviera]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="440" width="196" height="20" uuid="918c0fa8-ae8f-4af6-8108-3852cba70a79">
+				<reportElement style="Detail" positionType="Float" x="546" y="440" width="194" height="20" uuid="918c0fa8-ae8f-4af6-8108-3852cba70a79">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cable_naviera}]]></textFieldExpression>
 			</textField>
@@ -1249,11 +1255,11 @@ where s.estado = 'A'
 				<text><![CDATA[Cable Exportadora]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="460" width="196" height="20" uuid="055d5935-d015-48ef-9818-7f1479b54c6e">
+				<reportElement style="Detail" positionType="Float" x="546" y="460" width="194" height="20" uuid="055d5935-d015-48ef-9818-7f1479b54c6e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cable_exportadora}]]></textFieldExpression>
 			</textField>
@@ -1265,11 +1271,11 @@ where s.estado = 'A'
 				<text><![CDATA[Sticker Naviera]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="480" width="196" height="20" uuid="8244284e-d579-44bc-95f1-26ba452f82e1">
+				<reportElement style="Detail" positionType="Float" x="546" y="480" width="194" height="20" uuid="8244284e-d579-44bc-95f1-26ba452f82e1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sticker_naviera}]]></textFieldExpression>
 			</textField>
@@ -1281,11 +1287,11 @@ where s.estado = 'A'
 				<text><![CDATA[Sticker Exportadora]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="500" width="196" height="20" uuid="60ab5ae3-7139-434e-be24-727bfc3ac56f">
+				<reportElement style="Detail" positionType="Float" x="546" y="500" width="194" height="20" uuid="60ab5ae3-7139-434e-be24-727bfc3ac56f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sticker_exportadora}]]></textFieldExpression>
 			</textField>
@@ -1297,11 +1303,11 @@ where s.estado = 'A'
 				<text><![CDATA[Rastreo]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="520" width="196" height="20" uuid="aadb063b-abf0-4ad7-9bf2-7d3b0d0a4b47">
+				<reportElement style="Detail" positionType="Float" x="546" y="520" width="194" height="20" uuid="aadb063b-abf0-4ad7-9bf2-7d3b0d0a4b47">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rastreo}]]></textFieldExpression>
 			</textField>
@@ -1313,13 +1319,13 @@ where s.estado = 'A'
 				<text><![CDATA[Termografo 01]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="540" width="196" height="20" uuid="53197eea-e959-40f9-9492-ec27197fe243">
+				<reportElement style="Detail" positionType="Float" x="546" y="540" width="194" height="20" uuid="53197eea-e959-40f9-9492-ec27197fe243">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{termografo01}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{termografo1}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="560" width="152" height="20" forecolor="#000000" uuid="17ef32c6-dab2-478e-955c-181c0050e693"/>
@@ -1329,13 +1335,13 @@ where s.estado = 'A'
 				<text><![CDATA[Ubicacion 01]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="560" width="196" height="20" uuid="6391b2c1-0f84-476f-b22e-f877e7b2c898">
+				<reportElement style="Detail" positionType="Float" x="546" y="560" width="194" height="20" uuid="6391b2c1-0f84-476f-b22e-f877e7b2c898">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ubicacion01}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ubicacion1}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="580" width="152" height="20" forecolor="#000000" uuid="4fdb88cc-96d3-4962-b7f9-0d2de43854f8"/>
@@ -1345,13 +1351,13 @@ where s.estado = 'A'
 				<text><![CDATA[Termografo 02]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="580" width="196" height="20" uuid="6bae0001-7abf-4e3b-9a88-8bfb0533d7b8">
+				<reportElement style="Detail" positionType="Float" x="546" y="580" width="194" height="20" uuid="6bae0001-7abf-4e3b-9a88-8bfb0533d7b8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{termografo02}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{termografo2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="600" width="152" height="20" forecolor="#000000" uuid="b3c5ccd2-4d4d-491d-8c53-6126d87586ce"/>
@@ -1361,13 +1367,13 @@ where s.estado = 'A'
 				<text><![CDATA[Ubicacion 02]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="600" width="196" height="20" uuid="d49d6405-7660-4704-8483-0d3ee7273b34">
+				<reportElement style="Detail" positionType="Float" x="546" y="600" width="194" height="20" uuid="d49d6405-7660-4704-8483-0d3ee7273b34">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ubicacion02}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ubicacion2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="620" width="152" height="20" forecolor="#000000" uuid="42a3505b-1302-4134-b390-de03e503255a"/>
@@ -1377,11 +1383,11 @@ where s.estado = 'A'
 				<text><![CDATA[Filtro Proporcionado]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="620" width="196" height="20" uuid="7ce48567-1303-422d-a6d6-e6d3d45271e0">
+				<reportElement style="Detail" positionType="Float" x="546" y="620" width="194" height="20" uuid="7ce48567-1303-422d-a6d6-e6d3d45271e0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{filtro_proporcionado}]]></textFieldExpression>
 			</textField>
@@ -1393,11 +1399,11 @@ where s.estado = 'A'
 				<text><![CDATA[Termoking]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="640" width="196" height="20" uuid="da3c8810-fed3-46b4-a07a-4ae62c94380e">
+				<reportElement style="Detail" positionType="Float" x="546" y="640" width="194" height="20" uuid="da3c8810-fed3-46b4-a07a-4ae62c94380e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{termoking}]]></textFieldExpression>
 			</textField>
@@ -1413,9 +1419,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{compania_transporte}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{compania}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="771" width="152" height="20" forecolor="#000000" uuid="765bc2ad-499a-451c-8416-5dfbba30ff38"/>
@@ -1429,7 +1435,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{chofer}]]></textFieldExpression>
 			</textField>
@@ -1445,7 +1451,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
 			</textField>
@@ -1461,7 +1467,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
 			</textField>
@@ -1477,7 +1483,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
 			</textField>
@@ -1493,7 +1499,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{color_cabezal}]]></textFieldExpression>
 			</textField>
@@ -1509,7 +1515,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{marca_cabezal}]]></textFieldExpression>
 			</textField>
@@ -1523,9 +1529,9 @@ where s.estado = 'A'
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement style="Detail" positionType="Float" x="170" y="891" width="200" height="60" uuid="79e64812-1469-4666-9946-7d8d3d7f5a66"/>
 				<textElement>
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_62}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{observaciontra}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="1020" width="152" height="20" forecolor="#000000" uuid="ca9c368d-83d5-4c69-9b96-e9f01bd48b1d"/>
@@ -1539,9 +1545,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cajas_procesadas_despachadas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{caja_procesada}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="1040" width="152" height="20" forecolor="#000000" uuid="c14030ac-36ab-4a02-9a1c-4e8a87b5f075"/>
@@ -1555,7 +1561,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_fruta}]]></textFieldExpression>
 			</textField>
@@ -1571,9 +1577,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_funda_multiple}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_funda}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="1080" width="152" height="20" forecolor="#000000" uuid="cb6a4730-b844-4e7b-93aa-1a403c960c50"/>
@@ -1587,7 +1593,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{densidad_funda}]]></textFieldExpression>
 			</textField>
@@ -1603,9 +1609,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_caja_multiple}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_caja}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="1120" width="152" height="20" forecolor="#000000" uuid="df2ae72e-4969-4a6f-bf3d-a3fe1a1f005c"/>
@@ -1619,9 +1625,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_presentacion_multiple}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_presentacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="1140" width="152" height="20" forecolor="#000000" uuid="af272957-9b13-4379-90ba-044ec11038f5"/>
@@ -1635,7 +1641,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_estiba}]]></textFieldExpression>
 			</textField>
@@ -1651,9 +1657,9 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tiempo_descarga_fumigacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tiempo_descarga}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="3" y="1180" width="152" height="20" forecolor="#000000" uuid="7aa9a67d-75af-4464-9046-32b3edf08b0d"/>
@@ -1667,7 +1673,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_cantulina}]]></textFieldExpression>
 			</textField>
@@ -1679,11 +1685,11 @@ where s.estado = 'A'
 				<text><![CDATA[Balanza Repesa]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="1020" width="196" height="20" uuid="01294035-0777-4a13-8b7d-bcea5286d4dc">
+				<reportElement style="Detail" positionType="Float" x="546" y="1020" width="194" height="20" uuid="01294035-0777-4a13-8b7d-bcea5286d4dc">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{balanza_repesa}]]></textFieldExpression>
 			</textField>
@@ -1695,11 +1701,11 @@ where s.estado = 'A'
 				<text><![CDATA[Condicion Balanza]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="1040" width="196" height="20" uuid="a85ba73d-71a1-4ecf-b73e-7d4d6c3964c2">
+				<reportElement style="Detail" positionType="Float" x="546" y="1040" width="194" height="20" uuid="a85ba73d-71a1-4ecf-b73e-7d4d6c3964c2">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{condicion_balanza}]]></textFieldExpression>
 			</textField>
@@ -1711,11 +1717,11 @@ where s.estado = 'A'
 				<text><![CDATA[Tipo Balanza]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="1060" width="196" height="20" uuid="7f422d71-7f58-4b47-a860-fabd6468775e">
+				<reportElement style="Detail" positionType="Float" x="546" y="1060" width="194" height="20" uuid="7f422d71-7f58-4b47-a860-fabd6468775e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_balanza}]]></textFieldExpression>
 			</textField>
@@ -1727,11 +1733,11 @@ where s.estado = 'A'
 				<text><![CDATA[Peso Neto Fruta]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="1080" width="196" height="20" uuid="b7e5ec88-c7ef-4130-9f2c-bf680850da06">
+				<reportElement style="Detail" positionType="Float" x="546" y="1080" width="194" height="20" uuid="b7e5ec88-c7ef-4130-9f2c-bf680850da06">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{peso_neto_fruta}]]></textFieldExpression>
 			</textField>
@@ -1743,11 +1749,11 @@ where s.estado = 'A'
 				<text><![CDATA[Observación]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="546" y="1100" width="196" height="59" uuid="4e83770f-751e-4408-a8f0-a1f587783d2c"/>
+				<reportElement style="Detail" positionType="Float" x="546" y="1100" width="194" height="59" uuid="4e83770f-751e-4408-a8f0-a1f587783d2c"/>
 				<textElement verticalAlignment="Top">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_76}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{observacionctr}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" positionType="Float" x="380" y="752" width="152" height="20" forecolor="#000000" uuid="446c96d2-eece-4e3e-87a0-85aab17d4c6d"/>
@@ -1761,7 +1767,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
@@ -1777,7 +1783,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fuente_agua}]]></textFieldExpression>
 			</textField>
@@ -1793,7 +1799,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{agua_corrida}]]></textFieldExpression>
 			</textField>
@@ -1809,7 +1815,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{estado_piso}]]></textFieldExpression>
 			</textField>
@@ -1825,7 +1831,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cable_via}]]></textFieldExpression>
 			</textField>
@@ -1841,7 +1847,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{estado_techo}]]></textFieldExpression>
 			</textField>
@@ -1857,7 +1863,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{estado_tina}]]></textFieldExpression>
 			</textField>
@@ -1873,7 +1879,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fumigacion}]]></textFieldExpression>
 			</textField>
@@ -1889,7 +1895,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lavado_racimo}]]></textFieldExpression>
 			</textField>
@@ -1905,7 +1911,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{embudo}]]></textFieldExpression>
 			</textField>
@@ -1921,7 +1927,7 @@ where s.estado = 'A'
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
+					<font size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{division_tina}]]></textFieldExpression>
 			</textField>
@@ -2564,7 +2570,4 @@ where s.estado = 'A'
 			</staticText>
 		</band>
 	</detail>
-	<summary>
-		<band height="220"/>
-	</summary>
 </jasperReport>

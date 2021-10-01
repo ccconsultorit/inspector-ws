@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repCalidad" pageWidth="595" pageHeight="1000" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="e9bb1a27-f975-4aa4-98f9-75524c5daafa">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Ver Desarrollo"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -37,31 +37,32 @@ group by  id_solicitud]]>
 			<property name="com.jaspersoft.studio.field.label" value="tipo"/>
 		</field>
 	</subDataset>
-	<parameter name="semana" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[21]]></defaultValueExpression>
-	</parameter>
 	<parameter name="idSolicitud" class="java.lang.Long"/>
 	<queryString language="SQL">
-		<![CDATA[select  c.id_solicitud, p.nombre productor,  c.nombre_marca,  c.calidad 
-from  tab_sol_productor p, tab_sol_calidad c
-where p.id_sol_productor = c.id_sol_productor
-  and p.estado = 'A'
+		<![CDATA[select  s.id_solicitud, s.productor, s.nro_semana, c.nom_marca,  c.calidad 
+from  tab_solicitud s, tab_sol_calidad c
+where s.id_solicitud = c.id_solicitud
   and c.estado = 'A'
-  and p.id_solicitud = $P{idSolicitud}]]>
+  and c.id_solicitud = $P{idSolicitud}]]>
 	</queryString>
 	<field name="id_solicitud" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
 	<field name="productor" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="productor"/>
 		<property name="com.jaspersoft.studio.field.label" value="productor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_productor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
-	<field name="nombre_marca" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nombre_marca"/>
-		<property name="com.jaspersoft.studio.field.label" value="nombre_marca"/>
+	<field name="nro_semana" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="nro_semana"/>
+		<property name="com.jaspersoft.studio.field.label" value="nro_semana"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
+	</field>
+	<field name="nom_marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_marca"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_calidad"/>
 	</field>
 	<field name="calidad" class="java.lang.Float">
@@ -149,7 +150,7 @@ where p.id_sol_productor = c.id_sol_productor
 	<title>
 		<band height="130" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="555" height="40" forecolor="#253994" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
+				<reportElement style="Title" x="-1" y="0" width="555" height="40" forecolor="#253994" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="34" isBold="false"/>
 				</textElement>
@@ -160,7 +161,7 @@ where p.id_sol_productor = c.id_sol_productor
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{semana}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nro_semana}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="SubTitle" x="10" y="40" width="360" height="80" uuid="adc0e8a0-c05e-4c7f-a8c2-b4650480a902"/>
@@ -199,7 +200,7 @@ A continuación, describimos lo siguiente:]]></text>
 					<reportElement style="Detail" x="0" y="0" width="229" height="15" uuid="8c7f0379-8e11-4395-bdc7-162d8cf0610e">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a7acc7d-6487-4648-8f35-659671f22cb0"/>
 					</reportElement>
-					<textFieldExpression><![CDATA[$F{nombre_marca}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nom_marca}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement style="Detail" x="229" y="0" width="229" height="15" uuid="78fa19e8-df6f-4559-853a-f2dfbc1493e6">

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tree_1" pageWidth="800" pageHeight="2000" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
+	<property name="template.type" value="columnar"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Ver Desarrollo"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="idSolicitud" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[select s.id_solicitud
+from tab_solicitud s		
+where s.id_solicitud = $P{idSolicitud}]]>
+	</queryString>
+	<field name="id_solicitud" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_solicitud"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
+	</field>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="6" width="610" height="44" uuid="fccef614-6b8c-412e-b9d8-425d906a8cb2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="30"/>
+				</textElement>
+				<text><![CDATA[Imagenes de Anexo de la Solicitud]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="142" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement x="0" y="3" width="760" height="139" isRemoveLineWhenBlank="true" uuid="bac05ed7-b1a7-4388-a307-3c2ff64fbfd0"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolicitud.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="142" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement x="0" y="0" width="760" height="139" isRemoveLineWhenBlank="true" uuid="695764f3-e458-49f4-a109-5fe98f3ecb4a"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolContenedor.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="147">
+			<subreport>
+				<reportElement x="0" y="8" width="760" height="139" isRemoveLineWhenBlank="true" uuid="fe23bbad-83e9-46ef-b5d8-325e7fc13d9f"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolSelloLlegada.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="145">
+			<subreport>
+				<reportElement x="0" y="6" width="760" height="139" isRemoveLineWhenBlank="true" uuid="18bccdae-bb0f-47d5-a9dc-62f44b72da31"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolSelloInstalado.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="145">
+			<subreport>
+				<reportElement x="0" y="6" width="760" height="139" isRemoveLineWhenBlank="true" uuid="c4cc7be5-bf19-442c-941f-944fcf76b5a6"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolTransportista.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="142">
+			<subreport>
+				<reportElement x="0" y="2" width="760" height="139" isRemoveLineWhenBlank="true" uuid="efb3e0e6-d738-473a-8f3b-50ae6cb6c804"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolProceso.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="142">
+			<subreport>
+				<reportElement x="0" y="3" width="760" height="139" isRemoveLineWhenBlank="true" uuid="a93b3cc3-c4e9-43f4-b969-b7156fccbecb"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolControlPeso.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="144">
+			<subreport>
+				<reportElement x="0" y="5" width="760" height="139" isRemoveLineWhenBlank="true" uuid="b2fd78fa-6ed5-4605-949c-186659910649"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolFinca.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="144">
+			<subreport>
+				<reportElement x="0" y="5" width="760" height="139" isRemoveLineWhenBlank="true" uuid="3fcc5e90-3dc3-4542-a4de-cc9cf18da084"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolConsolidadoGancho.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="145">
+			<subreport>
+				<reportElement x="0" y="6" width="760" height="139" isRemoveLineWhenBlank="true" uuid="89d01818-c3d3-4af8-a182-05a224ab5a2b"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolCalidad.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="145">
+			<subreport>
+				<reportElement x="0" y="6" width="760" height="139" isRemoveLineWhenBlank="true" uuid="4624d09f-244d-43c8-a9ba-84372c80405f"/>
+				<subreportParameter name="idSolicitud">
+					<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/inspector/reportes/repImaSolCalPackilingList.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

@@ -5,7 +5,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="687"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Ver Desarrollo"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -28,8 +28,8 @@
 	<subDataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
 	<parameter name="idSolicitud" class="java.lang.Long"/>
 	<queryString language="SQL">
-		<![CDATA[select c.id_solicitud,  p.nombre productor,  c.nombre_marca marca, 
-	   peso, numero_gancho_inspeccionado, ph,
+		<![CDATA[select c.id_solicitud,  s.productor,  c.nom_marca marca, 
+	   peso, num_gancho_inspeccionado, ph,
 	sr		,
 	br		,
 	ni		,
@@ -72,13 +72,12 @@
 	f		,
 	ea		,
 	ps
-from tab_sol_productor p, tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
-where p.id_sol_productor = c.id_sol_productor
+from tab_solicitud s, tab_sol_calidad c, tab_sol_cal_defecto_seleccion d
+where s.id_solicitud = c.id_solicitud
   and d.id_sol_calidad = c.id_sol_calidad
-  and p.estado = 'A'
   and c.estado = 'A'
   and d.estado = 'A'
-  and p.id_solicitud = $P{idSolicitud} ]]>
+  and s.id_solicitud = $P{idSolicitud}]]>
 	</queryString>
 	<field name="id_solicitud" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id_solicitud"/>
@@ -88,7 +87,7 @@ where p.id_sol_productor = c.id_sol_productor
 	<field name="productor" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="productor"/>
 		<property name="com.jaspersoft.studio.field.label" value="productor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_productor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tab_solicitud"/>
 	</field>
 	<field name="marca" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="marca"/>
@@ -100,9 +99,9 @@ where p.id_sol_productor = c.id_sol_productor
 		<property name="com.jaspersoft.studio.field.label" value="peso"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_cal_defecto_seleccion"/>
 	</field>
-	<field name="numero_gancho_inspeccionado" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="numero_gancho_inspeccionado"/>
-		<property name="com.jaspersoft.studio.field.label" value="numero_gancho_inspeccionado"/>
+	<field name="num_gancho_inspeccionado" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="num_gancho_inspeccionado"/>
+		<property name="com.jaspersoft.studio.field.label" value="num_gancho_inspeccionado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tab_sol_cal_defecto_seleccion"/>
 	</field>
 	<field name="ph" class="java.lang.String">
@@ -806,30 +805,42 @@ where p.id_sol_productor = c.id_sol_productor
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="321">
+			<band height="160">
 				<subreport>
-					<reportElement x="5" y="21" width="676" height="139" uuid="5d44d0e3-08aa-4e82-a21f-4da68e74b5df"/>
+					<reportElement x="5" y="21" width="676" height="139" uuid="9c3e5a74-77fb-4da1-8526-da78d45d7907"/>
 					<subreportParameter name="idSolicitud">
 						<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
 					</subreportParameter>
 					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					<subreportExpression><![CDATA["repCalibre.jasper"]]></subreportExpression>
+					<subreportExpression><![CDATA["/inspector/reportes/repCalibre.jasper"]]></subreportExpression>
 				</subreport>
 				<subreport>
-					<reportElement x="690" y="21" width="762" height="139" uuid="617a3e52-143d-42ce-91cb-14df7c4c0be3"/>
+					<reportElement x="690" y="21" width="762" height="139" uuid="2c0f348e-51e4-4738-a4e0-6be02eadbcb5"/>
 					<subreportParameter name="idSolicitud">
 						<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
 					</subreportParameter>
 					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					<subreportExpression><![CDATA["repLargoDedos.jasper"]]></subreportExpression>
+					<subreportExpression><![CDATA["/inspector/reportes/repLargoDedos.jasper"]]></subreportExpression>
 				</subreport>
+			</band>
+			<band height="146">
 				<subreport>
-					<reportElement x="6" y="180" width="1447" height="139" uuid="04a56fe1-e301-4e6d-a817-96f7897a229b"/>
+					<reportElement x="7" y="7" width="1447" height="139" uuid="ab2e3bad-4669-48a0-9e5f-2c86f4d9b8c6"/>
 					<subreportParameter name="idSolicitud">
 						<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
 					</subreportParameter>
 					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					<subreportExpression><![CDATA["repPromedioDefectos.jasper"]]></subreportExpression>
+					<subreportExpression><![CDATA["/inspector/reportes/repPromedioDefectos.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="150">
+				<subreport>
+					<reportElement x="5" y="8" width="676" height="139" uuid="cefeb1e6-48ce-4458-b30a-52f9f9f573f6"/>
+					<subreportParameter name="idSolicitud">
+						<subreportParameterExpression><![CDATA[$P{idSolicitud}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["/inspector/reportes/repSolPesoCluster.jrxml"]]></subreportExpression>
 				</subreport>
 			</band>
 		</groupFooter>
@@ -871,7 +882,7 @@ where p.id_sol_productor = c.id_sol_productor
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{numero_gancho_inspeccionado}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{num_gancho_inspeccionado}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement style="Detail" x="141" y="2" width="30" height="20" uuid="ca1d44ac-313d-4844-b680-cb4f1d83edc1">
